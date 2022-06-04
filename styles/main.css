@@ -62,8 +62,8 @@ img {
 section {
     min-height: 90vh;
     border-radius: 30px;
-    border: 1px solid var(--white-alpha-40);
-    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-25);
+    background-color: var(--white-alpha-40);
     backdrop-filter: blur(5px);
 }
 
@@ -170,7 +170,7 @@ section {
     padding: 15px;
 }
 
-.home-img, .img-box {
+.home-img .img-box {
     margin: auto;
     max-width: 360px;
     border-radius: 50%;
@@ -178,7 +178,7 @@ section {
     background-color: var(--white-alpha-40);
 }
 
-.home-img, .img-box, img {
+.home-img .img-box img {
     width: 100%;
     border-radius: 50%;
 }
@@ -192,5 +192,28 @@ section {
 .section-title {
     width: 100%;
     padding: 0 15px;
+    text-align: center;
+    margin-bottom: 50px;
     text-transform: capitalize;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~ ABOUT ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.about-text {
+    width: 60%;
+    padding: 0 15px;
+}
+
+.about-img {
+    width: 40%;
+    padding: 0 15px;
+}
+
+.about-img .img-box {
+    max-width: 380px;
+    border: 5px solid var(--white-alpha-25);
+    background-color: var(--white-alpha-40);
+}
+
+
+
