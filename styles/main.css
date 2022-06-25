@@ -32,6 +32,7 @@ body {
     overflow-x: hidden;
     font-weight: 300;
     font-size: medium;
+    background-attachment: fixed;
     font-family: 'Poppins', sans-serif;
     background-image: linear-gradient(to bottom right, var(--pink), var(--cyan));
 }
@@ -106,11 +107,17 @@ section {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ BUTTONS ~~~~~~~~~~~~~~~~~~~~~ */
 
+button {
+    user-select: none;
+    font-family: inherit;
+}
+
 .btn {
     cursor: pointer;
     overflow: hidden;
     line-height: 1.5;
     font-weight: 500;
+    color: var(--red);
     font-size: medium;
     user-select: none;
     position: relative;
@@ -122,7 +129,6 @@ section {
     text-transform: capitalize;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
-    color: var(--red);
 }
 
 .btn::before {
@@ -174,8 +180,8 @@ section {
     margin: auto;
     max-width: 360px;
     border-radius: 50%;
-    border: 5px solid var(--white-alpha-25);
-    background-color: var(--white-alpha-40);
+    border: 5px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
 }
 
 .home-img .img-box img {
@@ -186,22 +192,43 @@ section {
 /* ~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~ */
 
 .section-padding {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .section-title {
     width: 100%;
     padding: 0 15px;
+    font-size: larger;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     text-transform: capitalize;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ ABOUT ~~~~~~~~~~~~~~~~~~~~~~ */
-
+ 
 .about-text {
     width: 60%;
     padding: 0 15px;
+    text-align: center;
+}
+
+.about-text h3 {
+    margin: 20px 0;
+    font-size: large;
+    text-transform: capitalize;
+}
+
+.about-text .skills {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about-text .skill-item {
+    padding: 5px 15px;
+    margin: 0 10px 10px 0;
+    border-radius: 20px;
+    border: 5px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
 }
 
 .about-img {
@@ -210,10 +237,128 @@ section {
 }
 
 .about-img .img-box {
+    margin: auto;
     max-width: 380px;
-    border: 5px solid var(--white-alpha-25);
-    background-color: var(--white-alpha-40);
+    border-radius: 10px;
+    border: 5px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
 }
 
+.about-img .img-box img {
+    width: 100%;
+}
 
+.about-tabs {
+    margin-top: 20px;
+}
 
+.about-tabs .tab-item {
+    border: none;
+    opacity: 0.5;
+    padding: 1px 0;
+    cursor: pointer;
+    font-size: large;
+    position: relative; 
+    margin: 0 20px 0 10px;
+    display: inline-block;
+    color: var(--dark-blue);
+    transition: all 0.5s ease;
+    text-transform: capitalize;
+    background-color: transparent;
+}
+
+.about-tabs .tab-item:last-child {
+    margin: 0;   
+}
+
+.about-tabs .tab-item::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    position: absolute;
+    transition: width 0.5s ease;
+    background-color: var(--dark-blue);
+}
+
+.about-tabs .tab-item:hover::before {
+    width: 100%;
+}
+
+.about-tabs .tab-item.active::before {
+    width: 100%;
+    background-color: var(--red);
+}
+
+.about-tabs .tab-item.active {
+    opacity: 1;
+    cursor: auto;
+    color: var(--red);
+}
+
+.about-text .tab-content {
+    display: none;
+    padding: 30px 0;
+}
+
+.about-text .tab-content.active {
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.about-text .timeline {
+    position: relative;
+}
+
+.about-text .timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 10px 0 0 30px;
+}
+
+/* .about-text .timeline::before {
+    content: '';
+    top: 0;
+    left: 5px;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    background-color: var(--red);
+} */
+
+/* .about-text .timeline-item::before {
+    content: '';
+    left: 0;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: var(--red);
+} */
+
+.about-text .timeline-item:last-child {
+    margin: 0;
+}
+
+.about-text .timeline-item .date {
+    display: block;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: var(--red);
+}
+
+.about-text .timeline-item h5 {
+    margin: 0 0 10px;
+    font-size: medium;
+    text-transform: capitalize;
+}
+
+.about-text .timeline-item span {
+    font-weight: 400;
+}
+
+.about-text .btn {
+    margin: 20px 0 20px 10px;
+}
