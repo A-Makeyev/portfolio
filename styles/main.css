@@ -84,6 +84,7 @@ section {
 }
 
 .center {
+    text-align: center;
     align-items: center;
 }
 
@@ -355,7 +356,7 @@ button {
     text-transform: capitalize;
 }
 
-.about-text .timeline-item span {
+.about-text .timeline-item h5 span {
     font-weight: 400;
 }
 
@@ -365,8 +366,34 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ PORTFOLIO ~~~~~~~~~~~~~~~~~~~~~~ */
 
+.portfolio-section {
+    padding-bottom: 50px;
+}
 
+.portfolio-item {
+    margin: 0 15px 30px;
+    width: calc((100% / 3) - 30px);
+}
 
+.portfolio-item h2 {
+    margin: 20px 0; 
+    font-size: large;
+    text-transform: capitalize;
+}
 
+.portfolio-item-thumbnail {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
+}
 
+.portfolio-item-thumbnail img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.portfolio-item-details {
+    display: none;
+}
 
