@@ -32,7 +32,7 @@
 body {
     line-height: 1.5;
     min-height: 100vh;
-    padding: 5vh 15px;
+    padding: 35px 15px;
     overflow-x: hidden;
     font-weight: 300;
     font-size: medium;
@@ -73,11 +73,16 @@ img {
 }
 
 section {
-    min-height: 90vh;
-    border-radius: 20px;
+    display: none;
+    min-height: calc(100vh - 70px);
     border: 1px solid var(--white-alpha-25);
     background-color: var(--white-alpha-40);
     backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+
+section.active {
+    display: block;
 }
 
 .main {
@@ -197,6 +202,7 @@ button {
     border: none;
     height: 50px;
     width: 50px;
+    z-index: 1;
 }
 
 .header .nav-toggler span {
@@ -238,21 +244,68 @@ button {
     width: 100%;
     height: 100%;
     position: fixed;
+    overflow-y: auto;
     padding: 30px 15px;
+    visibility: hidden;
 }
 
 .header .nav-inner {
     margin: auto;
-    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
     min-height: calc(100vh - 70px);
+    border-radius: 20px;    
+    max-width: 1200px;
+    padding: 50px 0;
+}
 
+.header .nav-inner ul li {
+    text-align: center;
+}
+
+.header .nav-inner ul li a {
+    display: block;
+    font-weight: 500;
+    font-size: x-large;
+    padding: 10px 15px;
+    position: relative;
+    color: var(--dark-blue);
+    text-transform: capitalize;
+    transition: color 0.5s ease;
+}
+
+.header .nav-inner ul li a::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    background-color: var(--white-alpha-25);
+    transition: width 0.5s ease;    
+    height: 100%;
+    width: 0%;
+    bottom: 0;
+    right: 0;   
+}
+
+.header .nav-inner ul li a:hover::before {
+    width: 100%;
+}
+
+.header .nav-inner ul li a:hover {
+    color: var(--red);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~~~~~~ */
 
 .home-section {
-    display: flex;
     padding: 120px 0;
+}
+
+.home-section.active {
+    display: flex;
 }
 
 .intro {
@@ -277,8 +330,8 @@ button {
     margin: auto;
     max-width: 360px;
     border-radius: 50%;
-    border: 5px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
+    border: 5px solid var(--white-alpha-40);
 }
 
 .home-img .img-box img {
@@ -306,12 +359,12 @@ button {
 .about-text {
     width: 60%;
     padding: 0 15px;
-    text-align: center;
 }
 
-.about-text h3 {
+.about-text h2 {
     margin: 20px 0;
     font-size: large;
+    text-align: center;
     text-transform: capitalize;
 }
 
@@ -323,9 +376,9 @@ button {
 .about-text .skill-item {
     padding: 5px 15px;
     margin: 0 10px 10px 0;
-    border-radius: 20px;
-    border: 5px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
+    border: 5px solid var(--white-alpha-40);
+    border-radius: 20px;
 }
 
 .about-img {
@@ -347,6 +400,7 @@ button {
 
 .about-tabs {
     margin-top: 20px;
+    text-align: center;
 }
 
 .about-tabs .tab-item {
@@ -370,13 +424,13 @@ button {
 
 .about-tabs .tab-item::before {
     content: '';
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 1px;
     position: absolute;
     transition: width 0.5s ease;
     background-color: var(--dark-blue);
+    height: 1px;
+    width: 0%;
+    bottom: 0;
+    left: 0;
 }
 
 .about-tabs .tab-item:hover::before {
@@ -414,26 +468,26 @@ button {
     padding: 10px 0 0 30px;
 }
 
-/* .about-text .timeline::before {
+.about-text .timeline::before {
     content: '';
-    top: 0;
-    left: 5px;
-    width: 1px;
+    position: absolute;
+    background-color: var(--red);
     height: 100%;
-    position: absolute;
-    background-color: var(--red);
-} */
+    width: 1px;
+    left: 5px;
+    top: 0;
+}
 
-/* .about-text .timeline-item::before {
+.about-text .timeline-item::before {
     content: '';
-    left: 0;
-    top: 15px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
     position: absolute;
     background-color: var(--red);
-} */
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    top: 15px;
+    left: 0;
+}
 
 .about-text .timeline-item:last-child {
     margin: 0;
@@ -587,6 +641,10 @@ button {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ CONTACT ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.contact-section {
+
+}
 
 .contact-form,
 .contact-info {

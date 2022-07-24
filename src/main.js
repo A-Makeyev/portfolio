@@ -1,3 +1,7 @@
+/* MAIN NAV */
+
+
+
 /* ABOUT TABS */
 
 const tabContainer = document.querySelector('.about-tabs')
