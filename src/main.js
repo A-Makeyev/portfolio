@@ -1,6 +1,43 @@
 /* MAIN NAV */
 
+function disableScrolling() {
+    document.querySelector('body').classList.toggle('disable-scrolling')
+}
 
+function hideSection() {
+    document.querySelector('section.active').classList.toggle('fade-out')
+}
+
+function toggleNavbar() {
+    document.querySelector('.header').classList.toggle('active')
+}
+
+const navToggler = document.querySelector('.nav-toggler')
+navToggler.addEventListener('click', () => {
+    hideSection()
+    toggleNavbar()
+    disableScrolling()
+})
+
+/* SECTIONS */
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('link-item') && event.target.hash !== '') {
+        const hash = event.target.hash
+        if (event.target.classList.contains('nav-item')) {
+            toggleNavbar()
+        } else {
+            hideSection()
+            document.body.classList.add('disable-scrolling')
+        }
+        setTimeout(() => {
+            document.querySelector('section.active').classList.remove('active', 'fade-out')
+            document.querySelector(event.target.hash).classList.add('active')
+            document.body.classList.remove('disable-scrolling')
+            window.scrollTo(0, 0)
+        }, 500)
+    }
+})
 
 /* ABOUT TABS */
 
@@ -22,8 +59,8 @@ tabContainer.addEventListener('click', (event) => {
 
 function togglePortfolioPopup() {
     document.querySelector('.portfolio-popup').classList.toggle('open')
-    document.querySelector('body').classList.toggle('disable-scrolling')
     document.querySelector('.main').classList.toggle('fade-out')
+    disableScrolling()
 }
 
 function displayPortfolioDetails(portfolioItem) {

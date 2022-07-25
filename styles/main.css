@@ -83,13 +83,18 @@ section {
 
 section.active {
     display: block;
+    animation: fadeIn 0.25s ease-in-out forwards;
+}
+
+section.fade-out {
+    animation: fadeOut 0.25s ease-in-out forwards;
 }
 
 .main {
     margin: auto;
     max-width: 1200px;
     position: relative;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .main.fade-out {
@@ -117,6 +122,24 @@ section.active {
 
 .flex-end {
     justify-content: flex-end;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ ANIMATIONS ~~~~~~~~~~~~~~~~~~~~~ */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ SCROLL BAR ~~~~~~~~~~~~~~~~~~~~~ */
@@ -190,6 +213,17 @@ button {
     position: absolute;
 }
 
+.header.active {
+    top: 35px;
+    position: fixed;
+    padding: 20px 15px;
+}
+
+.header.active .container {
+    margin: auto;
+    max-width: 1200px;
+}
+
 .header .nav-toggler {
     margin: 0;
     display: flex;
@@ -207,9 +241,14 @@ button {
 
 .header .nav-toggler span {
     width: 25px;
-    height: 2.5px;
+    height: 2px;
     position: relative;
     background-color: var(--red);
+    transition: background-color 0.25s ease;
+}
+
+.header.active .nav-toggler span {
+    background-color: transparent;
 }
 
 .header .nav-toggler span::before,
@@ -217,7 +256,7 @@ button {
     content: '';
     position: absolute;
     background-color: var(--red);
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     height: 100%;
     width: 100%;
     top: 0;
@@ -228,13 +267,21 @@ button {
     left: 0;
 }
 
+.header.active .nav-toggler span::before {
+    transform: rotate(45deg);
+}
+
 .header .nav-toggler span::after {
     transform: translateY(10px);
     right: 0;
 }
 
-.header .nav-toggler:hover span::before,
-.header .nav-toggler:hover span::after {
+.header.active .nav-toggler span::after {
+    transform: rotate(-45deg);
+}
+
+.header:not(.active) .nav-toggler:hover span::before,
+.header:not(.active) .nav-toggler:hover span::after {
     width: 50%;
 }
 
@@ -249,6 +296,10 @@ button {
     visibility: hidden;
 }
 
+.header.active .nav-main {
+    visibility: visible;
+}
+
 .header .nav-inner {
     margin: auto;
     display: flex;
@@ -258,9 +309,15 @@ button {
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
     min-height: calc(100vh - 70px);
+    transition: all 0.25s ease;
     border-radius: 20px;    
     max-width: 1200px;
     padding: 50px 0;
+    opacity: 0;
+}
+
+.header.active .nav-inner {
+    opacity: 1;
 }
 
 .header .nav-inner ul li {
@@ -275,7 +332,7 @@ button {
     position: relative;
     color: var(--dark-blue);
     text-transform: capitalize;
-    transition: color 0.5s ease;
+    transition: color 0.25s ease;
 }
 
 .header .nav-inner ul li a::before {
@@ -283,7 +340,7 @@ button {
     z-index: -1;
     position: absolute;
     background-color: var(--white-alpha-25);
-    transition: width 0.5s ease;    
+    transition: width 0.25s ease;    
     height: 100%;
     width: 0%;
     bottom: 0;
@@ -413,7 +470,7 @@ button {
     margin: 0 20px 0 10px;
     display: inline-block;
     color: var(--dark-blue);
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     text-transform: capitalize;
     background-color: transparent;
 }
@@ -425,7 +482,7 @@ button {
 .about-tabs .tab-item::before {
     content: '';
     position: absolute;
-    transition: width 0.5s ease;
+    transition: width 0.25s ease;
     background-color: var(--dark-blue);
     height: 1px;
     width: 0%;
@@ -455,7 +512,7 @@ button {
 
 .about-text .tab-content.active {
     display: block;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 
 .about-text .timeline {
@@ -672,7 +729,7 @@ button {
     border-radius: 20px;
     border: 1px solid transparent;
     background-color: var(--white-alpha-25);
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     color: var(--dark-blue);
     font-family: inherit;
     font-weight: 500;
@@ -711,7 +768,7 @@ button {
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
 }
