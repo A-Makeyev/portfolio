@@ -22,8 +22,11 @@ navToggler.addEventListener('click', () => {
 /* SECTIONS */
 
 document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('link-item') && event.target.hash !== '') {
-        const hash = event.target.hash
+    const hash = event.target.hash
+    if (event.target.classList.contains('link-item') && hash !== '') {
+        // activate overlay to prevent multiple clicks
+        document.querySelector('.overlay').classList.add('active')
+        navToggler.classList.add('hide')
         if (event.target.classList.contains('nav-item')) {
             toggleNavbar()
         } else {
@@ -32,8 +35,10 @@ document.addEventListener('click', (event) => {
         }
         setTimeout(() => {
             document.querySelector('section.active').classList.remove('active', 'fade-out')
-            document.querySelector(event.target.hash).classList.add('active')
+            document.querySelector('.overlay').classList.remove('active')
+            document.querySelector(hash).classList.add('active')
             document.body.classList.remove('disable-scrolling')
+            navToggler.classList.remove('hide')
             window.scrollTo(0, 0)
         }, 500)
     }

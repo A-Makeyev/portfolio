@@ -83,18 +83,18 @@ section {
 
 section.active {
     display: block;
-    animation: fadeIn 0.25s ease-in-out forwards;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 section.fade-out {
-    animation: fadeOut 0.25s ease-in-out forwards;
+    animation: fadeOut 0.5s ease-in-out forwards;
 }
 
 .main {
     margin: auto;
     max-width: 1200px;
     position: relative;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .main.fade-out {
@@ -164,6 +164,7 @@ button {
 }
 
 .btn {
+    margin: 5px;
     cursor: pointer;
     overflow: hidden;
     line-height: 1.5;
@@ -202,6 +203,50 @@ button {
     width: 100%;
 }
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~ BACKGROUND CIRCLES ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.bg-circles {
+    top: 0;
+    left: 50%;
+    position: fixed;
+    max-width: 1200px;
+    width: calc(100% - 30px);
+    transform: translateX(-50%);
+}
+
+.bg-circles div {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.bg-circles .circle-1 {
+    top: 10%;
+    left: 10%;
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+    background-color: var(--blue);
+} 
+
+/* ~~~~~~~~~~~~~~~~~~~~~ OVERLAY ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    opacity: 0.5;
+    position: fixed;
+    visibility: hidden;
+    background-color: transparent;
+}
+
+.overlay.active {
+    visibility: visible;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~ */
 
 .header {
@@ -231,12 +276,21 @@ button {
     justify-content: center;
     background-color: var(--white-alpha-25);
     border: 1px solid var(--white-alpha-40);
+    transition: all 0.25s ease-in-out;
     border-radius: 50%;
     cursor: pointer;
     border: none;
     height: 50px;
     width: 50px;
     z-index: 1;
+}
+
+.header .nav-toggler.hide {
+    opacity: 0;
+}
+
+.header .nav-toggler:hover {
+    background-color: var(--white-alpha-40);
 }
 
 .header .nav-toggler span {
@@ -249,6 +303,11 @@ button {
 
 .header.active .nav-toggler span {
     background-color: transparent;
+}
+
+.header.active .nav-toggler span:hover::before,
+.header.active .nav-toggler span:hover::after {
+    background-color: var(--dark-blue)
 }
 
 .header .nav-toggler span::before,
@@ -345,6 +404,19 @@ button {
     width: 0%;
     bottom: 0;
     right: 0;   
+}
+
+.header .nav-inner ul li a[href="#about"]::before,
+.header .nav-inner ul li a[href="#contact"]::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    background-color: var(--white-alpha-25);
+    transition: width 0.25s ease;
+    height: 100%;
+    width: 0%;
+    bottom: 0;
+    left: 0;
 }
 
 .header .nav-inner ul li a:hover::before {
@@ -648,7 +720,7 @@ button {
 .portfolio-popup.open .popup-content {
     opacity: 1;
     transform: scale(1);
-    transition: all 0.5 ease;
+    transition: all 0.25s ease;
 }
 
 .popup-header {
@@ -699,14 +771,18 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ CONTACT ~~~~~~~~~~~~~~~~~~~~~~ */
 
-.contact-section {
-
+.contact-section h1 {
+    padding: 80px 20px;
 }
 
-.contact-form,
+.contact-form {
+    width: 55%;
+    padding: 0 40px;
+}
+
 .contact-info {
-    width: 50%;
-    padding: 0 20px;
+    width: 45%;
+    padding: 0 40px;
 }
 
 .contact-form .input-group {
