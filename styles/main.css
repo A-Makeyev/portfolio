@@ -158,6 +158,14 @@ section.fade-out {
     }
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~ SCROLL BAR ~~~~~~~~~~~~~~~~~~~~~ */
 
 ::-webkit-scrollbar {
@@ -293,6 +301,56 @@ button {
 
 .overlay.active {
     visibility: visible;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ LOADER ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.loader {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    background-color: var(--white-alpha-25);
+    transition: all 0.5s ease;
+    position: fixed;
+}
+
+.loader.fade-out {
+    opacity: 0;
+}
+
+.loader div {
+    opacity: 0.5;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    animation: spin 1s linear infinite;
+}
+
+.loader div:nth-child(1) {
+    width: 60px;
+    height: 60px;
+    border-color: var(--red);
+}
+
+.loader div:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    border-color: var(--blue);
+    animation-duration: 1.25s;
+}
+
+.loader div:nth-child(3) {
+    width: 20px;
+    height: 20px;
+    border-color: var(--orange);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~ */
