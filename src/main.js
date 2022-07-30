@@ -4,6 +4,9 @@ window.addEventListener('load', () => {
     document.querySelector('.main').classList.remove('hidden')
     document.querySelector('.home-section').classList.add('active')
     document.querySelector('.loader').classList.add('fade-out')
+    setTimeout(() => {
+        document.querySelector('.loader').style.display = 'none'
+    }, 1000)
 })
 
 /* MAIN NAV */

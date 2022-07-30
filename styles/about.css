@@ -1,0 +1,157 @@
+.about-text {
+    width: 60%;
+    padding: 0 15px;
+}
+
+.about-text h2 {
+    margin: 20px 0;
+    font-size: large;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.about-text .skills {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about-text .skill-item {
+    padding: 5px 15px;
+    margin: 0 10px 10px 0;
+    background-color: var(--white-alpha-25);
+    border: 5px solid var(--white-alpha-40);
+    border-radius: 20px;
+}
+
+.about-img {
+    width: 40%;
+    padding: 0 15px;
+}
+
+.about-img .img-box {
+    margin: auto;
+    max-width: 380px;
+    border-radius: 10px;
+    border: 5px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
+}
+
+.about-img .img-box img {
+    width: 100%;
+}
+
+.about-tabs {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.about-tabs .tab-item {
+    border: none;
+    opacity: 0.5;
+    padding: 1px 0;
+    cursor: pointer;
+    font-size: large;
+    position: relative; 
+    margin: 0 20px 0 10px;
+    display: inline-block;
+    color: var(--dark-blue);
+    transition: all 0.25s ease;
+    text-transform: capitalize;
+    background-color: transparent;
+}
+
+.about-tabs .tab-item:last-child {
+    margin: 0;   
+}
+
+.about-tabs .tab-item::before {
+    content: '';
+    position: absolute;
+    transition: width 0.25s ease;
+    background-color: var(--dark-blue);
+    height: 1px;
+    width: 0%;
+    bottom: 0;
+    left: 0;
+}
+
+.about-tabs .tab-item:hover::before {
+    width: 100%;
+}
+
+.about-tabs .tab-item.active::before {
+    width: 100%;
+    background-color: var(--red);
+}
+
+.about-tabs .tab-item.active {
+    opacity: 1;
+    cursor: auto;
+    color: var(--red);
+}
+
+.about-text .tab-content {
+    display: none;
+    padding: 30px 0;
+}
+
+.about-text .tab-content.active {
+    display: block;
+    transition: all 0.25s ease;
+}
+
+.about-text .timeline {
+    position: relative;
+}
+
+.about-text .timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 10px 0 0 30px;
+}
+
+.about-text .timeline::before {
+    content: '';
+    position: absolute;
+    background-color: var(--red);
+    height: 100%;
+    width: 1px;
+    left: 5px;
+    top: 0;
+}
+
+.about-text .timeline-item::before {
+    content: '';
+    position: absolute;
+    background-color: var(--red);
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    top: 15px;
+    left: 0;
+}
+
+.about-text .timeline-item:last-child {
+    margin: 0;
+}
+
+.about-text .timeline-item .date {
+    display: block;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: var(--red);
+}
+
+.about-text .timeline-item h5 {
+    margin: 0 0 10px;
+    font-size: medium;
+    text-transform: capitalize;
+}
+
+.about-text .timeline-item h5 span {
+    font-weight: 400;
+}
+
+.about-text .btn {
+    margin: 20px 0 20px 10px;
+}

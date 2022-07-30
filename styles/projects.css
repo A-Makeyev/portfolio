@@ -1,0 +1,121 @@
+.portfolio-section {
+    padding: 50px;
+}
+
+.portfolio-section h1 {
+    padding-bottom: 50px;
+}
+
+.portfolio-item {
+    margin: 0 15px 30px;
+    width: calc((100% / 3) - 30px);
+}
+
+.portfolio-item h2 {
+    margin: 20px 0; 
+    font-size: large;
+    text-transform: capitalize;
+}
+
+.portfolio-item-thumbnail {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
+}
+
+.portfolio-item-thumbnail img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.portfolio-item-details {
+    display: none;
+}
+
+.portfolio-popup {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: fixed;
+    visibility: hidden;
+}
+
+.portfolio-popup.open {
+    overflow-y: auto;
+    visibility: visible;
+}
+
+.popup-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+    min-height: 100vh;
+}
+
+.popup-content {
+    width: 100%;
+    padding: 30px;
+    max-width: 900px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.portfolio-popup.open .popup-content {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.25s ease;
+}
+
+.popup-header {
+    position: relative;
+}
+
+.popup-header .btn {
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: larger;
+    right: -45px;
+    top: -45px;
+}
+
+.popup-header h2 {
+    font-size: larger;
+    margin: 20px 0 20px;
+    text-transform: capitalize;
+}
+
+.popup-thumbnail img {
+    border-radius: 10px;
+}
+
+.popup-body .description {
+    margin-bottom: 20px;
+}
+
+.popup-body .general-info li {
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.popup-body .general-info li span {
+    font-weight: 300;
+}
+
+.popup-body .general-info li a {
+    text-transform: lowercase;
+    color: var(--red);
+}
