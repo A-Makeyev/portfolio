@@ -23,6 +23,10 @@
     border-radius: 20px;
 }
 
+.about-btns {
+    margin-top: 50px;
+}
+
 .about-img {
     width: 40%;
     padding: 0 15px;

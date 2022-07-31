@@ -30,7 +30,7 @@
     display: block;
     padding: 0 20px;
     border-radius: 20px;
-    border: 1px solid transparent;
+    border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
     transition: all 0.25s ease;
     color: var(--dark-blue);
