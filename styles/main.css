@@ -249,6 +249,7 @@ button {
     max-width: 1200px;
     width: calc(100% - 30px);
     transform: translateX(-50%);
+    animation: fadeIn 1s ease-in forwards;
 }
 
 .bg-icons div {
@@ -286,6 +287,33 @@ button {
 .bg-icons .icon-4 {
     top: 75%;
     left: 65%;
+    opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 50s linear infinite;
+}
+
+.bg-icons .icon-5 {
+    top: 60%;
+    left: 0%;
+    opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 150s linear infinite;
+}
+
+.bg-icons .icon-6 {
+    top: 70%;
+    left: 20%;
+    opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 100s linear infinite;
+}
+
+.bg-icons .icon-7 {
+    top: 80%;
+    left: 5%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
@@ -461,7 +489,7 @@ button {
         width: 100%;
         margin: 20px;
     }
-
+    
     .contact-info {
         order: -1;
     }
@@ -497,8 +525,7 @@ button {
         top: 10%;
         left: 10%;
         width: 100px;
-        height: 100px;
-        animation: zoomAndSpin 100s linear infinite;
+        height: 100px;        
     } 
     
     .bg-icons .icon-2 {
@@ -506,7 +533,6 @@ button {
         left: 35%;
         width: 100px;
         height: 100px;
-        animation: bounceAndSpin 50s ease-in-out infinite;
     }
     
     .bg-icons .icon-3 {
@@ -514,7 +540,6 @@ button {
         right: 10%;
         width: 100px;
         height: 100px;
-        animation: zoomAndSpin 100s linear infinite;
     }
     
     .bg-icons .icon-4 {
@@ -522,6 +547,26 @@ button {
         left: 75%;
         width: 100px;
         height: 100px;
-        animation: zoomAndSpin 50s linear infinite;
+    }
+
+    .bg-icons .icon-5 {
+        top: 70%;
+        left: 5%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-icons .icon-6 {
+        top: 75%;
+        left: 25%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-icons .icon-7 {
+        top: 80%;
+        left: 5%;
+        width: 100px;
+        height: 100px;
     }
 }
