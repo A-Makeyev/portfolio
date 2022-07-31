@@ -29,6 +29,11 @@
     box-sizing: border-box;
 }
 
+.accelerate {
+    will-change: transform, opacity;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
 body {
     line-height: 1.5;
     font-weight: 300;
