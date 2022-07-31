@@ -281,7 +281,7 @@ button {
 
 .bg-icons .icon-4 {
     top: 75%;
-    left: 75%;
+    left: 65%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
@@ -484,4 +484,12 @@ button {
     .popup-header h2 {
         font-size: large;
     }
+
+    .bg-icons .icon-1,
+    .bg-icons .icon-2,
+    .bg-icons .icon-3,
+    .bg-icons .icon-4 {
+        width: 150px;
+        height: 150px;
+    } 
 }
