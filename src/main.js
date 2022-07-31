@@ -71,34 +71,34 @@ tabContainer.addEventListener('click', (event) => {
     }
 })
 
-/* PORTFOLIO ITEM DETAILS POPUP */
+/* PROJECT ITEM DETAILS POPUP */
 
-function togglePortfolioPopup() {
-    document.querySelector('.portfolio-popup').classList.toggle('open')
+function toggleProjectPopup() {
+    document.querySelector('.project-popup').classList.toggle('open')
     document.querySelector('.main').classList.toggle('fade-out')
     disableScrolling()
 }
 
-function displayPortfolioDetails(portfolioItem) {
-    const portfolioImage = portfolioItem.querySelector('.portfolio-item-thumbnail img').src
-    const portfolioTitle = portfolioItem.querySelector('.portfolio-item-title').innerHTML
-    const portfolioDetails = portfolioItem.querySelector('.portfolio-item-details').innerHTML
+function displayprojectDetails(projectItem) {
+    const projectImage = projectItem.querySelector('.project-item-thumbnail img').src
+    const projectTitle = projectItem.querySelector('.project-item-title').innerHTML
+    const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
 
-    document.querySelector('.popup-thumbnail img').src = portfolioImage
-    document.querySelector('.popup-header h2').innerHTML = portfolioTitle
-    document.querySelector('.popup-body').innerHTML = portfolioDetails
+    document.querySelector('.popup-thumbnail img').src = projectImage
+    document.querySelector('.popup-header h2').innerHTML = projectTitle
+    document.querySelector('.popup-body').innerHTML = projectDetails
 }
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
-        togglePortfolioPopup()
-        displayPortfolioDetails(event.target.parentElement)
-        document.querySelector('.portfolio-popup').scrollTo(0, 0)
+        toggleProjectPopup()
+        displayprojectDetails(event.target.parentElement)
+        document.querySelector('.project-popup').scrollTo(0, 0)
     }
 
     if (event.target.classList.contains('popup-inner')) {
-        togglePortfolioPopup()
+        toggleProjectPopup()
     }
 })
 
-document.querySelector('.popup-close').addEventListener('click', togglePortfolioPopup)
+document.querySelector('.popup-close').addEventListener('click', toggleProjectPopup)

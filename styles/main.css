@@ -124,48 +124,6 @@ section.fade-out {
     justify-content: flex-end;
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~ ANIMATIONS ~~~~~~~~~~~~~~~~~~~~~ */
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    } 100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    } 100% {
-        opacity: 0;
-    }
-}
-
-@keyframes zoomInAndOut {
-    0%, 100% {
-        transform: scale(0.5);
-    } 50% {
-        transform: scale(1);
-    }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(-50px);
-    } 50% {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    } 100% {
-        transform: rotate(360deg);
-    }
-}
-
 /* ~~~~~~~~~~~~~~~~~~~~~ SCROLL BAR ~~~~~~~~~~~~~~~~~~~~~ */
 
 ::-webkit-scrollbar {
@@ -227,10 +185,59 @@ button {
     width: 100%;
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~ ANIMATIONS ~~~~~~~~~~~~~~~~~~~~~ */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes zoomAndSpin {
+    0%, 100% {
+        transform: scale(0.5) rotate(360deg);
+    } 50% {
+        transform: scale(1) rotate(-360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-50px);
+    } 50% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounceAndSpin {
+    0%, 100% {
+        transform: translateY(100px) rotate(-360deg);
+    } 50% {
+        transform: translateY(300px) rotate(360deg);
+    }
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~ BACKGROUND CIRCLES ~~~~~~~~~~~~~~~~~~~~~~ */
 
-.bg-circles {
+.bg-icons {
     top: 0;
     left: 50%;
     height: 100%;
@@ -240,49 +247,45 @@ button {
     transform: translateX(-50%);
 }
 
-.bg-circles div {
+.bg-icons div {
     position: absolute;
     border-radius: 50%;
 }
 
-.bg-circles .circle-1 {
-    top: 10%;
+.bg-icons .icon-1 {
+    top: 5%;
     left: 10%;
-    width: 60px;
-    height: 60px;
     opacity: 0.5;
-    background-color: var(--blue);
-    animation: zoomInAndOut 10s linear infinite;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 100s linear infinite;
 } 
 
-.bg-circles .circle-2 {
-    top: 30%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
+.bg-icons .icon-2 {
+    top: 20%;
+    left: 40%;
     opacity: 0.5;
-    background-color: var(--red);
-    animation: bounce 5s ease-in-out infinite;
+    width: 200px;
+    height: 200px;
+    animation: bounceAndSpin 50s ease-in-out infinite;
 }
 
-.bg-circles .circle-3 {
-    top: 50%;
-    right: -5%;
-    width: 90px;
-    height: 90px;
+.bg-icons .icon-3 {
+    top: 10%;
+    right: 10%;
     opacity: 0.5;
-    background-color: var(--white);
-    animation: zoomInAndOut 10s linear infinite;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 100s linear infinite;
 }
 
-.bg-circles .circle-4 {
-    top: 70%;
-    left: 25%;
-    width: 50px;
-    height: 50px;
+.bg-icons .icon-4 {
+    top: 75%;
+    left: 75%;
     opacity: 0.5;
-    background-color: var(--dark-blue);
-    animation: zoomInAndOut 10s linear infinite;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 50s linear infinite;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ OVERLAY ~~~~~~~~~~~~~~~~~~~~~~ */
@@ -394,14 +397,6 @@ button {
     border-radius: 50%;
 }
 
-#A {
-    top: 590px;
-    right: 270px;
-    width: 100px;
-    height: 75px;
-    position: fixed;
-}
-
 /* ~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~ */
 
 .section-padding {
@@ -449,7 +444,7 @@ button {
         margin: 0 5px 15px;
     }
 
-    .portfolio-item {
+    .project-item {
         width: calc(50% - 30px);
     }
  }
@@ -467,7 +462,7 @@ button {
         order: -1;
     }
 
-    .portfolio-item {
+    .project-item {
         width: calc(100% - 30px);
     }
 
