@@ -47,6 +47,7 @@
 
 .about-img .img-box img {
     width: 100%;
+    border-radius: 5px;
 }
 
 .about-tabs {
@@ -161,6 +162,6 @@
     font-weight: 400;
 }
 
-.about-text .btn {
-    margin: 20px 0 20px 10px;
+.about-section .btn {
+    margin: 5px;
 }

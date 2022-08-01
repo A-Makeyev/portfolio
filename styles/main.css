@@ -267,7 +267,7 @@ button {
 } 
 
 .bg-icons .icon-2 {
-    top: 15%;
+    top: 5%;
     left: 40%;
     opacity: 0.5;
     width: 200px;
@@ -281,7 +281,7 @@ button {
     opacity: 0.5;
     width: 200px;
     height: 200px;
-    animation: zoomAndSpin 100s linear infinite;
+    animation: zoomAndSpin 150s linear infinite;
 }
 
 .bg-icons .icon-4 {
@@ -290,34 +290,34 @@ button {
     opacity: 0.5;
     width: 200px;
     height: 200px;
-    animation: zoomAndSpin 50s linear infinite;
-}
-
-.bg-icons .icon-5 {
-    top: 60%;
-    left: 5%;
-    opacity: 0.5;
-    width: 200px;
-    height: 200px;
     animation: zoomAndSpin 150s linear infinite;
 }
 
-.bg-icons .icon-6 {
-    top: 70%;
-    left: 20%;
+.bg-icons .icon-5 {
+    top: 45%;
+    left: 5%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
     animation: zoomAndSpin 100s linear infinite;
 }
 
+.bg-icons .icon-6 {
+    top: 60%;
+    left: 20%;
+    opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    animation: zoomAndSpin 150s linear infinite;
+}
+
 .bg-icons .icon-7 {
-    top: 80%;
+    top: 70%;
     left: 5%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
-    animation: zoomAndSpin 50s linear infinite;
+    animation: zoomAndSpin 200s linear infinite;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ OVERLAY ~~~~~~~~~~~~~~~~~~~~~~ */
@@ -486,6 +486,7 @@ button {
     .about-text,
     .contact-form,
     .contact-info {
+        padding: 0;
         width: 100%;
         margin: 20px;
     }
@@ -517,8 +518,17 @@ button {
         font-size: large;
     }
 
-    .about-btns .btn {
-        margin: 5px;
+    .contact-section {
+        padding: 0;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 0;
+    }
+
+    .contact-form {
+        padding-bottom: 20px;
     }
 
     .bg-icons .icon-1 {
@@ -529,8 +539,8 @@ button {
     } 
     
     .bg-icons .icon-2 {
-        top: 25%;
-        left: 35%;
+        top: 30%;
+        left: 55%;
         width: 100px;
         height: 100px;
     }
@@ -543,22 +553,22 @@ button {
     }
     
     .bg-icons .icon-4 {
-        top: 65%;
-        left: 75%;
+        top: 80%;
+        left: 70%;
         width: 100px;
         height: 100px;
     }
 
     .bg-icons .icon-5 {
-        top: 70%;
+        top: 40%;
         left: 5%;
         width: 100px;
         height: 100px;
     }
     
     .bg-icons .icon-6 {
-        top: 75%;
-        left: 25%;
+        top: 60%;
+        left: 5%;
         width: 100px;
         height: 100px;
     }
