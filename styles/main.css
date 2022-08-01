@@ -547,21 +547,25 @@ button {
         margin: 20px;
     }
     
-    .contact-info {
-        order: -1;
+    .skill-item {
+        padding: 5px 10px;
     }
 
-    .project-item {
-        width: calc(100% - 30px);
+    .contact-info {
+        order: -1;
     }
 
     .contact-info-item {
         padding: 5px;
     }
+
+    .project-item {
+        width: calc(100% - 30px);
+    }
  }
 
  @media (max-width: 575px) {
-    section {
+    section.home-section {
         max-height: calc(100vh - 50px);
     }
 
