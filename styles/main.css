@@ -72,6 +72,10 @@ a {
     text-decoration: none;
 }
 
+p {
+    font-size: large;
+}
+
 img {
     max-width: 100%;
     vertical-align: middle;
@@ -225,7 +229,7 @@ button {
 
 @keyframes bounceAndSpin {
     0%, 100% {
-        transform: translateY(100px) rotate(-360deg);
+        transform: translateY(150px) rotate(-360deg);
     } 50% {
         transform: translateY(250px) rotate(360deg);
     }
@@ -277,8 +281,8 @@ button {
 }
 
 .bg-icons .icon-4 {
-    top: 70%;
-    left: 80%;
+    top: 75%;
+    left: 70%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
@@ -471,6 +475,66 @@ button {
     .project-item {
         width: calc(50% - 30px);
     }
+
+    .popup-header .btn {
+        width: 30px;
+        height: 30px;
+        right: -40px;
+        top: -40px;
+    }
+
+    .popup-close i {
+        font-size: large;
+    }
+
+    .bg-icons .icon-1 {
+        top: 10%;
+        left: 10%;
+        width: 100px;
+        height: 100px;        
+    } 
+    
+    .bg-icons .icon-2 {
+        top: 25%;
+        left: 70%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-icons .icon-3 {
+        top: 15%;
+        right: 10%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-icons .icon-4 {
+        top: 80%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .bg-icons .icon-5 {
+        top: 40%;
+        left: 5%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-icons .icon-6 {
+        top: 60%;
+        left: 5%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bg-icons .icon-7 {
+        top: 80%;
+        left: 5%;
+        width: 100px;
+        height: 100px;
+    }
  }
 
  @media (max-width: 767px) {
@@ -497,17 +561,29 @@ button {
  }
 
  @media (max-width: 575px) {
+    p {
+        font-size: medium;
+    }
+    
+    .intro-text h1 {
+        font-size: large;
+    }
+
+    .home-img .img-box {
+        max-width: 250px;
+    }
+
     .section-title h1,
     .header .nav-inner ul li a {
         font-size: large;
     }
 
-    .intro {
-        font-size: medium;
-    }
-
     .popup-header h2 {
         font-size: large;
+    }
+
+    .skill-item {
+        padding: 5px 10px;
     }
 
     .contact-form,
@@ -517,54 +593,5 @@ button {
 
     .contact-form {
         padding-bottom: 20px;
-    }
-
-    .bg-icons .icon-1 {
-        top: 10%;
-        left: 10%;
-        width: 100px;
-        height: 100px;        
-    } 
-    
-    .bg-icons .icon-2 {
-        top: 25%;
-        left: 50%;
-        width: 100px;
-        height: 100px;
-    }
-    
-    .bg-icons .icon-3 {
-        top: 20%;
-        right: 10%;
-        width: 100px;
-        height: 100px;
-    }
-    
-    .bg-icons .icon-4 {
-        top: 80%;
-        left: 70%;
-        width: 100px;
-        height: 100px;
-    }
-
-    .bg-icons .icon-5 {
-        top: 40%;
-        left: 5%;
-        width: 100px;
-        height: 100px;
-    }
-    
-    .bg-icons .icon-6 {
-        top: 60%;
-        left: 5%;
-        width: 100px;
-        height: 100px;
-    }
-    
-    .bg-icons .icon-7 {
-        top: 80%;
-        left: 5%;
-        width: 100px;
-        height: 100px;
     }
 }

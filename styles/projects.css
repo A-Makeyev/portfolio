@@ -97,6 +97,10 @@
     text-transform: capitalize;
 }
 
+.popup-close i {
+    font-size: x-large;
+}
+
 .popup-thumbnail img {
     border-radius: 10px;
 }
