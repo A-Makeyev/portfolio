@@ -56,6 +56,11 @@
     padding-left: 30px;
 }
 
+.contact-info-item a {
+    font-weight: 500;
+    color: var(--dark-blue);
+}
+
 .contact-info-item h2 {
     margin: 0 0 5px;
     font-size: larger;
