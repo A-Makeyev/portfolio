@@ -273,7 +273,7 @@ button {
 
 .bg-icons .icon-3 {
     top: 10%;
-    right: 10%;
+    left: 70%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
@@ -281,8 +281,8 @@ button {
 }
 
 .bg-icons .icon-4 {
-    top: 75%;
-    left: 70%;
+    top: 70%;
+    left: 75%;
     opacity: 0.5;
     width: 200px;
     height: 200px;
@@ -495,7 +495,7 @@ button {
     } 
     
     .bg-icons .icon-2 {
-        top: 25%;
+        top: 15%;
         left: 70%;
         width: 100px;
         height: 100px;
@@ -561,6 +561,10 @@ button {
  }
 
  @media (max-width: 575px) {
+    section {
+        max-height: calc(100vh - 50px);
+    }
+
     p {
         font-size: medium;
     }
@@ -594,4 +598,15 @@ button {
     .contact-form {
         padding-bottom: 20px;
     }
+
+    .bg-icons .icon-1,
+    .bg-icons .icon-2,
+    .bg-icons .icon-3,
+    .bg-icons .icon-4,
+    .bg-icons .icon-5,
+    .bg-icons .icon-6,
+    .bg-icons .icon-7 {
+        width: 70px;
+        height: 70px;        
+    } 
 }
