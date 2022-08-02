@@ -1,6 +1,6 @@
 .about-text {
-    width: 60%;
-    padding: 0 15px;
+    width: 100%;
+    padding: 0 50px;
 }
 
 .about-text h2 {
@@ -192,6 +192,7 @@
 }
 
 .timeline-images img {
+    height: 150px;
     max-width: 250px;
     border-radius: 20px;
     border: 5px solid var(--white-alpha-40);
@@ -201,4 +202,11 @@
 .timeline-images img:hover {
     transform: scale(1.025);
     opacity: 0.9;
+}
+
+.line {
+    height: 1px; 
+    width: 100%;
+    margin: 50px 0;
+    background-color: var(--red);  
 }
