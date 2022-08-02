@@ -405,7 +405,12 @@ button {
 }
 
 .intro-text p:nth-child(3) {
+    text-transform: lowercase;
+}
+
+.intro-text p:nth-child(4) {
     margin-bottom: 30px;
+    text-transform: lowercase;
 }
 
 .intro, .home-img {
