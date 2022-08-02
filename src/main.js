@@ -1,3 +1,13 @@
+const today = new Date()
+const currentHour = today.getHours()
+const greeting = document.getElementById('greeting')
+
+if (currentHour < 12) {
+    greeting.innerText = 'bonjour'
+} else if (currentHour < 18) {
+    greeting.innerText = 'bonsoir'
+} 
+
 /* LOADER */
 
 window.addEventListener('load', () => {
