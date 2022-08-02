@@ -2,13 +2,14 @@
 
 :root {
     --red: #E02F6B;
+    --blue: #0000FF;
     --pink: #EFA2B4;
     --cyan: #AEF1EE;
     --white: #FFFFFF;
-    --orange: #FFA500;
     --green: #CDDC39;
-    --blue: #0000FF;
+    --orange: #FFA500;
     --dark-blue: #18293C;
+    --light-red: #EE3472;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
     --white-alpha-25: rgba(225, 255, 255, 0.25);
 }
@@ -156,6 +157,7 @@ button {
 }
 
 .btn {
+    outline: none;
     cursor: pointer;
     overflow: hidden;
     line-height: 1.5;
@@ -188,6 +190,7 @@ button {
 
 .btn:hover {
     color: var(--white);
+    border-color: var(--white-alpha-25);
 }
 
 .btn:hover::before {
