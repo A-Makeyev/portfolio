@@ -236,7 +236,7 @@ button {
     0%, 100% {
         transform: translateY(200px) rotate(-360deg);
     } 50% {
-        transform: translateY(300px) rotate(360deg);
+        transform: translateY(250px) rotate(360deg);
     }
 }
 
@@ -618,8 +618,7 @@ button {
     }
 
     .about-text p {
-        width: 100%;
-        padding: 0 5px;
+        width: 90%;
     }
 
     .popup-header h2 {
