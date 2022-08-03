@@ -234,9 +234,9 @@ button {
 
 @keyframes bounceAndSpin {
     0%, 100% {
-        transform: translateY(150px) rotate(-360deg);
+        transform: translateY(200px) rotate(-360deg);
     } 50% {
-        transform: translateY(250px) rotate(360deg);
+        transform: translateY(300px) rotate(360deg);
     }
 }
 
@@ -247,7 +247,7 @@ button {
     left: 50%;
     height: 100%;
     position: fixed;
-    max-width: 1200px;
+    max-width: 1150px;
     width: calc(100% - 30px);
     transform: translateX(-50%);
     animation: fadeIn 5s ease-in forwards;
@@ -262,17 +262,17 @@ button {
     top: 5%;
     left: 10%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: zoomAndSpin 100s linear infinite;
 } 
 
 .bg-icons .icon-2 {
-    top: 5%;
+    top: 10%;
     left: 40%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: bounceAndSpin 50s ease-in-out infinite;
 }
 
@@ -280,8 +280,8 @@ button {
     top: 10%;
     left: 70%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: zoomAndSpin 150s linear infinite;
 }
 
@@ -289,8 +289,8 @@ button {
     top: 70%;
     left: 75%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: zoomAndSpin 150s linear infinite;
 }
 
@@ -298,8 +298,8 @@ button {
     top: 50%;
     left: 5%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: zoomAndSpin 100s linear infinite;
 }
 
@@ -307,8 +307,8 @@ button {
     top: 65%;
     left: 20%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: zoomAndSpin 150s linear infinite;
 }
 
@@ -316,8 +316,8 @@ button {
     top: 75%;
     left: 5%;
     opacity: 0.5;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     animation: zoomAndSpin 200s linear infinite;
 }
 
@@ -609,6 +609,11 @@ button {
         font-size: large;
     }
 
+    .about-text p {
+        width: 75%;
+        margin: auto;
+    }
+
     .popup-header h2 {
         font-size: large;
     }
@@ -627,14 +632,23 @@ button {
     }
 
     .timeline-box {
-        width: 100%;
-        padding: 0 10px;
+        width: 95%;
+        padding: 0 15px;
         margin: 15px auto;
     }
 
-    .timeline-item li {
+    .timeline-box .timeline-item h5 {
+        font-size: small;
+    }
+
+    .timeline-box .timeline-item li {
         font-size: small;
         font-weight: 400;
+    }
+
+    .timeline-images a {
+        padding: 5px;
+        margin: auto;
     }
 
     .contact-form,
