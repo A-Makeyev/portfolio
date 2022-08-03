@@ -39,7 +39,6 @@
 body {
     line-height: 1.5;
     font-weight: 300;
-    min-width: 450px;
     min-height: 100vh;
     font-size: medium;
     padding: 35px 15px;
