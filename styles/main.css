@@ -5,7 +5,8 @@
     --blue: #0000FF;
     --pink: #EFA2B4;
     --cyan: #AEF1EE;
-    --white: #FFFFFF;
+    --gray: #707070;
+    --white: #F8F8F8;
     --green: #CDDC39;
     --orange: #FFA500;
     --dark-blue: #18293C;
@@ -403,6 +404,10 @@ button {
     text-transform: capitalize;
 }
 
+.intro .btn {
+    margin: 5px;
+}
+
 .intro-text {
     margin-left: 5px;
 }
@@ -553,9 +558,18 @@ button {
     .contact-info {
         padding: 0;
         width: 100%;
-        margin: 20px;
+        margin: 10px 20px;
     }
     
+    .about-img .img-box {
+        margin: 0 auto;
+    }
+
+    .quote {
+        padding: 5px;
+        color: var(--gray);
+    }
+
     .skill-item {
         padding: 5px 10px;
     }
@@ -599,8 +613,28 @@ button {
         font-size: large;
     }
 
+    .about-text h2 {
+        font-size: medium;
+    }
+
+    .quote {
+        font-size: small;
+        padding-top: 15px;
+    }
+
     .skill-item {
         padding: 5px 10px;
+    }
+
+    .timeline-box {
+        width: 100%;
+        padding: 0 10px;
+        margin: 15px auto;
+    }
+
+    .timeline-item li {
+        font-size: small;
+        font-weight: 400;
     }
 
     .contact-form,
