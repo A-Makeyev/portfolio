@@ -3,6 +3,11 @@
     padding: 0 30px;
 }
 
+.about-text p {
+    width: 90%;
+    margin: auto;
+}
+
 .about-text h2 {
     margin: 25px 0;
     font-size: large;
@@ -60,8 +65,8 @@
 }
 
 .timeline-box {
+    width: 75%;
     padding: 0;
-    width: 100%;
     margin: 45px auto;
 }
 
