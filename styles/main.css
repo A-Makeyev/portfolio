@@ -607,9 +607,14 @@ button {
     }
 
     p {
-        font-size: medium;
+        font-size: small;
     }
     
+    .btn {
+        font-size: small;
+        padding: 5px 15px;
+    }
+
     .intro-text h1 {
         font-size: large;
     }
@@ -645,6 +650,7 @@ button {
     }
 
     .skill-item {
+        font-size: small;
         padding: 5px 10px;
     }
 
@@ -663,14 +669,18 @@ button {
         font-weight: 400;
     }
 
+    .timeline-images img {
+        height: 125px;
+        max-width: 200px;
+    }
+
     .timeline-images a {
         padding: 5px;
         margin: auto;
     }
 
     .about-btns {
-        display: flex;
-        flex-direction: column;
+        margin: auto;
     }
 
     .contact-form,
