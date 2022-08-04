@@ -490,12 +490,28 @@ button {
         width: calc(50% - 30px);
     }
 
+    .popup-header h2 {
+        margin: 10px;
+    }
+
     .popup-body {
         flex-direction: column;
     }
 
     .popup-body > div {
         width: 90%;
+    }
+
+    .popup-body .description {
+        width: 100%;
+    }
+
+    .popup-body .general-info {
+        width: 100%;
+    }
+
+    .popup-body .general-info h5 {
+        padding-bottom: 30px;
     }
 
     .popup-header .btn {

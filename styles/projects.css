@@ -35,6 +35,27 @@
     display: none;
 }
 
+.project-item-btn {
+    width: 40px;
+    height: 40px;
+    margin: 5px 5px;
+    cursor: pointer;
+    color: var(--red);
+    font-size: x-large;
+    border-radius: 50%;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    transition: all 0.25s ease;
+    border: 1px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
+}
+
+.project-item-btn:hover {
+    color: var(--white);
+    background-color: var(--red);
+}
+
 .project-popup {
     top: 0;
     left: 0;
@@ -94,8 +115,8 @@
 }
 
 .popup-header h2 {
+    margin: 20px;
     font-size: larger;
-    margin: 20px 0 20px;
     text-transform: capitalize;
 }
 
@@ -124,9 +145,10 @@
     padding: 20px 0;
 }
 
-.popup-body .description p {
+.popup-body .description {
+    width: 65%;
     text-align: left;
-    padding-left: 5px;
+    padding: 20px 20px;
 }
 
 .popup-body .project-links {
@@ -136,6 +158,10 @@
 
 .popup-body .project-links a {
     margin: 5px;
+}
+
+.popup-body .general-info {
+    width: 35%;
 }
 
 .popup-body .general-info h5 {
