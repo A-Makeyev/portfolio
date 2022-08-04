@@ -18,7 +18,9 @@
 }
 
 .project-item-thumbnail {
+    margin: auto;
     padding: 10px;
+    max-width: 300px;
     border-radius: 10px;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
@@ -101,25 +103,47 @@
     font-size: x-large;
 }
 
+.popup-thumbnail {
+    padding: 25px;
+}
+
 .popup-thumbnail img {
+    width: 100%;
     border-radius: 10px;
 }
 
-.popup-body .description {
-    margin-bottom: 20px;
+.popup-body {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.popup-body .general-info li {
-    font-weight: 500;
-    margin-bottom: 10px;
+.popup-body > div {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.popup-body .description p {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.popup-body .project-links {
+    height: auto;
+    margin: 20px auto;
+}
+
+.popup-body .project-links a {
+    margin: 5px;
+}
+
+.popup-body .general-info h5 {
+    font-size: medium;
+    padding-bottom: 20px;
     text-transform: capitalize;
 }
 
-.popup-body .general-info li span {
-    font-weight: 300;
-}
-
-.popup-body .general-info li a {
-    text-transform: lowercase;
-    color: var(--red);
+.popup-body .general-info a {
+    display: inline-block;
 }

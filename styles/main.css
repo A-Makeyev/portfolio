@@ -486,10 +486,16 @@ button {
         margin: 0 1px 15px;
     }
 
-
-
     .project-item {
         width: calc(50% - 30px);
+    }
+
+    .popup-body {
+        flex-direction: column;
+    }
+
+    .popup-body > div {
+        width: 90%;
     }
 
     .popup-header .btn {
@@ -621,8 +627,12 @@ button {
         width: 90%;
     }
 
+    .popup-body > div {
+        width: 100%;
+    }
+
     .popup-header h2 {
-        font-size: large;
+        font-size: medium;
     }
 
     .about-text h2 {
