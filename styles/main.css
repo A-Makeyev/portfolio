@@ -625,11 +625,6 @@ button {
     p {
         font-size: small;
     }
-    
-    .btn {
-        font-size: small;
-        padding: 5px 15px;
-    }
 
     .intro-text h1 {
         font-size: large;
@@ -699,6 +694,11 @@ button {
         margin: auto;
     }
 
+    .about-btns .btn {
+        font-size: small;
+        padding: 5px 15px;
+    }
+    
     .contact-form,
     .contact-info {
         padding: 0;
