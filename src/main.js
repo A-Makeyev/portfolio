@@ -95,8 +95,8 @@ function displayprojectDetails(projectItem) {
     const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
 
     document.querySelector('.popup-thumbnail img').src = projectImage
-    document.querySelector('.popup-header h2').innerHTML = projectTitle
     document.querySelector('.popup-body').innerHTML = projectDetails
+    // document.querySelector('.popup-header h2').innerHTML = projectTitle
 }
 
 document.addEventListener('click', (event) => {

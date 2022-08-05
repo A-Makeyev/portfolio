@@ -109,6 +109,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
+    border-radius: 50%;
     font-size: larger;
     right: -45px;
     top: -45px;
