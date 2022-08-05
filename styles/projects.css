@@ -12,7 +12,7 @@
 }
 
 .project-item h2 {
-    margin: 20px 0; 
+    margin: 20px 0;
     font-size: large;
     text-transform: capitalize;
 }
@@ -139,7 +139,7 @@
     flex-wrap: wrap;
 }
 
-.popup-body > div {
+.popup-body>div {
     width: 50%;
     height: auto;
     margin: 0 auto;

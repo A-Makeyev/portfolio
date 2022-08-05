@@ -113,13 +113,13 @@
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     backdrop-filter: blur(5px);
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
     min-height: calc(100vh - 70px);
     transition: all 0.25s ease;
-    border-radius: 20px;    
+    border-radius: 20px;
     max-width: 1200px;
     padding: 50px 0;
     opacity: 0;
@@ -149,11 +149,11 @@
     z-index: -1;
     position: absolute;
     background-color: var(--white-alpha-25);
-    transition: width 0.25s ease;    
+    transition: width 0.25s ease;
     height: 100%;
     width: 0%;
     bottom: 0;
-    right: 0;   
+    right: 0;
 }
 
 .header .nav-inner ul li a[href="#about"]::before,

@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --red: #E02F6B;
-    --blue: #0000FF;
+    --red: #D61656;
+    --blue: #2A85bE;
     --pink: #EFA2B4;
     --cyan: #AEF1EE;
     --gray: #707070;
-    --white: #F8F8F8;
+    --white: #F4FAFD;
     --green: #CDDC39;
     --orange: #FFA500;
     --dark-blue: #18293C;
     --light-red: #EE3472;
+    --light-blue: #A9D5F1;
+    --light-purple: #939DED;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
     --white-alpha-25: rgba(225, 255, 255, 0.25);
 }
@@ -45,7 +47,7 @@ body {
     overflow-x: hidden;
     background-attachment: fixed;
     font-family: 'Poppins', sans-serif;
-    background-image: linear-gradient(to bottom right, var(--pink), var(--cyan));
+    background-image: linear-gradient(to bottom right, var(--light-blue), var(--light-purple));
 }
 
 body::before {
@@ -203,7 +205,9 @@ button {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-    } 100% {
+    }
+
+    100% {
         opacity: 1;
     }
 }
@@ -211,15 +215,21 @@ button {
 @keyframes fadeOut {
     0% {
         opacity: 1;
-    } 100% {
+    }
+
+    100% {
         opacity: 0;
     }
 }
 
 @keyframes zoomAndSpin {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(0.5) rotate(360deg);
-    } 50% {
+    }
+
+    50% {
         transform: scale(1) rotate(-360deg);
     }
 }
@@ -227,20 +237,26 @@ button {
 @keyframes spin {
     0% {
         transform: rotate(0deg);
-    } 100% {
+    }
+
+    100% {
         transform: rotate(360deg);
     }
 }
 
 @keyframes bounceAndSpin {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(200px) rotate(-360deg);
-    } 50% {
+    }
+
+    50% {
         transform: translateY(250px) rotate(360deg);
     }
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~ BACKGROUND CIRCLES ~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~ BACKGROUND ICONS ~~~~~~~~~~~~~~~~~~~~~~ */
 
 .bg-icons {
     top: 0;
@@ -265,7 +281,7 @@ button {
     width: 150px;
     height: 150px;
     animation: zoomAndSpin 100s linear infinite;
-} 
+}
 
 .bg-icons .icon-2 {
     top: 10%;
@@ -373,13 +389,13 @@ button {
 .loader div:nth-child(1) {
     width: 60px;
     height: 60px;
-    border-color: var(--red);
+    border-color: var(--blue);
 }
 
 .loader div:nth-child(2) {
     width: 40px;
     height: 40px;
-    border-color: var(--blue);
+    border-color: var(--red);
     animation-duration: 1.25s;
 }
 
@@ -387,6 +403,34 @@ button {
     width: 20px;
     height: 20px;
     border-color: var(--orange);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    border: 1px solid var(--white-alpha-40);
+    transition: all 0.25s ease;
+    text-transform: capitalize;
+    border-radius: 10px;    
+    position: absolute;
+    color: var(--red);
+    font-weight: 400;
+    font-size: large;
+    padding: 5px;
+    width: 200px;
+    opacity: 0;
+}
+
+[data-tooltip]:hover:before {
+    background: var(--white-alpha-25);
+    margin-top: 120px;
+    margin-left: 20px;    
+    opacity: 1;
+}
+
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~~~~~~ */
@@ -421,7 +465,8 @@ button {
     text-transform: lowercase;
 }
 
-.intro, .home-img {
+.intro,
+.home-img {
     width: 50%;
     padding: 15px;
 }
@@ -456,7 +501,7 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~~ */
 
- @media (max-width: 991px) {
+@media (max-width: 991px) {
     .header .nav-toggler {
         margin: 0 20px;
     }
@@ -465,7 +510,7 @@ button {
         padding: 0;
     }
 
-    .intro, 
+    .intro,
     .home-img {
         width: 100%;
     }
@@ -498,7 +543,7 @@ button {
         flex-direction: column;
     }
 
-    .popup-body > div {
+    .popup-body>div {
         width: 90%;
     }
 
@@ -529,23 +574,23 @@ button {
         top: 10%;
         left: 10%;
         width: 100px;
-        height: 100px;        
-    } 
-    
+        height: 100px;
+    }
+
     .bg-icons .icon-2 {
         top: 10%;
         left: 60%;
         width: 100px;
         height: 100px;
     }
-    
+
     .bg-icons .icon-3 {
         top: 15%;
         right: 10%;
         width: 100px;
         height: 100px;
     }
-    
+
     .bg-icons .icon-4 {
         top: 75%;
         left: 65%;
@@ -559,24 +604,25 @@ button {
         width: 100px;
         height: 100px;
     }
-    
+
     .bg-icons .icon-6 {
         top: 55%;
         left: 5%;
         width: 100px;
         height: 100px;
     }
-    
+
     .bg-icons .icon-7 {
         top: 75%;
         left: 15%;
         width: 100px;
         height: 100px;
     }
- }
+}
 
- @media (max-width: 767px) {
-    .about-img, 
+@media (max-width: 767px) {
+
+    .about-img,
     .about-text,
     .contact-form,
     .contact-info {
@@ -584,7 +630,7 @@ button {
         width: 100%;
         margin: 10px 20px;
     }
-    
+
     .about-img .img-box {
         margin: 0 auto;
     }
@@ -615,9 +661,9 @@ button {
     .project-item {
         width: calc(100% - 30px);
     }
- }
+}
 
- @media (max-width: 575px) {
+@media (max-width: 575px) {
     section.home-section {
         max-height: calc(100vh - 30px);
     }
@@ -643,7 +689,7 @@ button {
         width: 90%;
     }
 
-    .popup-body > div {
+    .popup-body>div {
         width: 100%;
     }
 
@@ -698,7 +744,7 @@ button {
         font-size: small;
         padding: 5px 15px;
     }
-    
+
     .contact-form,
     .contact-info {
         padding: 0;
@@ -716,6 +762,6 @@ button {
     .bg-icons .icon-6,
     .bg-icons .icon-7 {
         width: 70px;
-        height: 70px;        
-    } 
+        height: 70px;
+    }
 }
