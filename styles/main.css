@@ -389,13 +389,13 @@ button {
 .loader div:nth-child(1) {
     width: 60px;
     height: 60px;
-    border-color: var(--blue);
+    border-color: var(--red);
 }
 
 .loader div:nth-child(2) {
     width: 40px;
     height: 40px;
-    border-color: var(--red);
+    border-color: var(--blue);
     animation-duration: 1.25s;
 }
 
@@ -403,34 +403,6 @@ button {
     width: 20px;
     height: 20px;
     border-color: var(--orange);
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
-
-[data-tooltip]:before {
-    content: attr(data-tooltip);
-    border: 1px solid var(--white-alpha-40);
-    transition: all 0.25s ease;
-    text-transform: capitalize;
-    border-radius: 10px;    
-    position: absolute;
-    color: var(--red);
-    font-weight: 400;
-    font-size: large;
-    padding: 5px;
-    width: 200px;
-    opacity: 0;
-}
-
-[data-tooltip]:hover:before {
-    background: var(--white-alpha-25);
-    margin-top: 120px;
-    margin-left: 20px;    
-    opacity: 1;
-}
-
-[data-tooltip]:not([data-tooltip-persistent]):before {
-    pointer-events: none;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~~~~~~ */
@@ -497,6 +469,35 @@ button {
     text-align: center;
     margin-bottom: 10px;
     text-transform: capitalize;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
+
+@media (min-width: 1224px) {
+    [data-tooltip]:before {
+        content: attr(data-tooltip);
+        border: 1px solid var(--white-alpha-40);
+        transition: all 0.25s ease;
+        text-transform: capitalize;
+        border-radius: 10px;    
+        position: absolute;
+        color: var(--red);
+        font-weight: 400;
+        font-size: medium;
+        padding: 5px;
+        width: 180px;
+        opacity: 0;
+    }
+    
+    [data-tooltip]:hover:before {
+        background: var(--white-alpha-25);
+        margin-top: 120px;   
+        opacity: 1;
+    }
+    
+    [data-tooltip]:not([data-tooltip-persistent]):before {
+        pointer-events: none;
+    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~~ */
@@ -650,6 +651,10 @@ button {
         margin: 15px auto;
     }
 
+    .popup-body .description {
+        text-align: center;
+    }
+
     .contact-info {
         order: -1;
     }
@@ -689,16 +694,17 @@ button {
         width: 90%;
     }
 
-    .popup-body>div {
-        width: 100%;
-    }
-
+    .about-text h2,
     .popup-header h2 {
         font-size: medium;
     }
 
-    .about-text h2 {
-        font-size: medium;
+    .popup-body>div {
+        width: 100%;
+    }
+
+    .popup-body .description {
+        margin-top: -20px;
     }
 
     .quote {

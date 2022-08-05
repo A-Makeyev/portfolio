@@ -102,7 +102,7 @@ function displayprojectDetails(projectItem) {
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
         toggleProjectPopup()
-        displayprojectDetails(event.target.parentElement)
+        displayprojectDetails(event.target.parentNode.parentNode)
         document.querySelector('.project-popup').scrollTo(0, 0)
     }
 
