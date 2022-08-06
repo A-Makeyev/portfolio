@@ -252,7 +252,7 @@ button {
     }
 
     50% {
-        transform: translateY(250px) rotate(360deg);
+        transform: translateY(300px) rotate(360deg);
     }
 }
 
@@ -276,7 +276,7 @@ button {
 
 .bg-icons .icon-1 {
     top: 5%;
-    left: 10%;
+    left: 5%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
@@ -633,7 +633,7 @@ button {
     }
 
     .about-img .img-box {
-        margin: 0 auto;
+        margin: 10px auto;
     }
 
     .quote {
