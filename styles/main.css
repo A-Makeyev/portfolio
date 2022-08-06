@@ -223,7 +223,6 @@ button {
 }
 
 @keyframes zoomAndSpin {
-
     0%,
     100% {
         transform: scale(0.5) rotate(360deg);
@@ -245,14 +244,13 @@ button {
 }
 
 @keyframes bounceAndSpin {
-
     0%,
     100% {
         transform: translateY(200px) rotate(-360deg);
     }
 
     50% {
-        transform: translateY(300px) rotate(360deg);
+        transform: translateY(250px) rotate(360deg);
     }
 }
 
