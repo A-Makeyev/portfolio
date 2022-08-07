@@ -58,6 +58,11 @@
 .contact-info-item a {
     font-weight: 500;
     color: var(--dark-blue);
+    transition: color 0.25s;
+}
+
+.contact-info-item a:hover {
+    color: var(--red);
 }
 
 .contact-info-item h2 {
