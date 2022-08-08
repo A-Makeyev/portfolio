@@ -63,6 +63,13 @@ document.addEventListener('click', (event) => {
             window.scrollTo(0, 0)
         }, 500)
     }
+
+    if (event.target.hasAttribute('href') && event.target.href.includes('#')) {
+        let title = hash.replace(/[^\w\s]/gi, '')
+        title = title.charAt(0).toUpperCase() + title.slice(1)
+        document.title = `AM || ${title}`
+    }
+
 })
 
 /* ABOUT TABS */
