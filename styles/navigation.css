@@ -47,7 +47,7 @@
     width: 25px;
     height: 2px;
     position: relative;
-    background-color: var(--red);
+    background-color: var(--dark-blue);
     transition: background-color 0.25s ease;
 }
 
@@ -57,14 +57,14 @@
 
 .header.active .nav-toggler span:hover::before,
 .header.active .nav-toggler span:hover::after {
-    background-color: var(--dark-blue)
+    background-color: var(--red)
 }
 
 .header .nav-toggler span::before,
 .header .nav-toggler span::after {
     content: '';
     position: absolute;
-    background-color: var(--red);
+    background-color: var(--dark-blue);
     transition: all 0.25s ease;
     height: 100%;
     width: 100%;

@@ -75,12 +75,12 @@
     width: 40px;
     height: 40px;
     margin: 5px 5px;
-    color: var(--red);
     font-size: larger;
     border-radius: 50%;
     align-items: center;
     display: inline-flex;
     justify-content: center;
+    color: var(--dark-blue);
     transition: all 0.25s ease;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);

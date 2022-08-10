@@ -74,6 +74,11 @@
     text-align: center;
 }
 
+.date {
+    font-weight: 400;
+    font-size: medium;
+}
+
 .about-tabs .tab-item {
     border: none;
     opacity: 0.5;
@@ -162,13 +167,6 @@
 
 .timeline-box .timeline-item:last-child {
     margin: 0;
-}
-
-.timeline-box .timeline-item .date {
-    display: block;
-    font-weight: 500;
-    margin: 0 0 10px;
-    color: var(--red);
 }
 
 .timeline-box .timeline-item h5 {
