@@ -3,12 +3,11 @@
 :root {
     --red: #C9163D;
     --blue: #2A85bE;
-    --pink: #EFA2B4;
     --cyan: #AEF1EE;
     --gray: #707070;
     --white: #F4FAFD;
-    --green: #CDDC39;
-    --orange: #FFA500;
+    --green: #3EC515;
+    --orange: #D19616;
     --dark-blue: #18293C;
     --light-red: #Df316b;
     --light-blue: #A9D5F1;
@@ -112,7 +111,9 @@ section.fade-out {
     transition: all 0.5s ease-in-out;
 }
 
-.main.fade-out {
+.main.fade-out,
+.surprise-img.fade-out,
+.surprise-links.fade-out {
     opacity: 0;
 }
 
@@ -390,20 +391,20 @@ button {
 .loader div:nth-child(1) {
     width: 60px;
     height: 60px;
-    border-color: var(--red);
+    border-color: var(--dark-blue);
 }
 
 .loader div:nth-child(2) {
     width: 40px;
     height: 40px;
-    border-color: var(--blue);
+    border-color: var(--red);
     animation-duration: 1.25s;
 }
 
 .loader div:nth-child(3) {
     width: 20px;
     height: 20px;
-    border-color: var(--orange);
+    border-color: var(--blue);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~~~~~~ */
@@ -454,7 +455,14 @@ button {
 
 .home-img .img-box img {
     width: 100%;
+    cursor: pointer;
     border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.5s;
+}
+
+.home-img .img-box img:hover {
+    transform: scale(1.025);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~ */
@@ -470,6 +478,142 @@ button {
     text-align: center;
     margin-bottom: 10px;
     text-transform: capitalize;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ SURPRISE ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.surprise-img {
+    display: none;
+}
+
+.surprise-links {
+    display: none;
+}
+
+.surprise-links a {
+    display: none;
+}
+
+@media (min-width: 1224px) and (min-height: 1279px)  {
+    .surprise {
+        right: 0;
+        top: 180px;
+        position: absolute;
+        height: 750px;
+        width: 750px;    
+        z-index: -99;
+    }
+    
+    .surprise-img {
+        top: -10px;
+        right: 10px;
+        position: relative;
+        transform: rotate(-35deg);
+        transition: all 2s ease-in-out;
+        display: block;
+        height: 500px;
+        width: 500px;
+        opacity: 0.9;
+    }
+    
+    .surprise-links {
+        display: flex;
+        flex-direction: column;
+        transition: all 4s ease-in-out;
+        position: absolute;
+        display: block;
+        height: 750px;
+        width: 200px;  
+        left: 470px;
+        top: 170px;
+    }
+    
+    .surprise-links a {
+        width: 40px;
+        height: 40px;
+        display: block;
+        margin: 5px 5px;
+        padding: 5px 5px;
+        font-size: larger;
+        border-radius: 50%;
+        position: relative;
+        color: var(--dark-blue);
+        transition: all 0.25s ease;
+        border: 1px solid var(--white-alpha-40);
+        background-color: var(--white-alpha-25);
+    }
+    
+    .surprise-links a:nth-child(1) {
+        top: 30px;
+        left: 50px;
+        animation: bounceAndSpin 50s infinite;
+    }
+    
+    .surprise-links a:nth-child(2) {
+        top: 30px;
+        left: 100px;
+        animation: bounceAndSpin 55s infinite;
+    }
+    
+    .surprise-links a:nth-child(1):hover,
+    .surprise-links a:nth-child(2):hover {
+        color: var(--white);
+        background-color: var(--dark-blue);
+    }
+    
+    .surprise-links a:nth-child(3) {
+        top: 30px;
+        left: 50px;
+        animation: bounceAndSpin 60s infinite;
+    }
+    
+    .surprise-links a:nth-child(4) {
+        top: 30px;
+        left: 100px;
+        animation: bounceAndSpin 65s infinite;
+    }
+    
+    .surprise-links a:nth-child(3):hover,
+    .surprise-links a:nth-child(4):hover {
+        color: var(--white);
+        background-color: var(--blue);
+    }
+    
+    .surprise-links a:nth-child(5) {
+        top: 30px;
+        left: 50px;
+        animation: bounceAndSpin 70s infinite;
+    }
+    
+    .surprise-links a:nth-child(6) {
+        top: 30px;
+        left: 100px;
+        animation: bounceAndSpin 75s infinite;
+    }
+    
+    .surprise-links a:nth-child(5):hover,
+    .surprise-links a:nth-child(6):hover {
+        color: var(--white);
+        background-color: var(--red);
+    }
+    
+    .surprise-links a:nth-child(7) {
+        top: 30px;
+        left: 50px;
+        animation: bounceAndSpin 80s infinite;
+    }
+    
+    .surprise-links a:nth-child(8) {
+        top: 30px;
+        left: 100px;
+        animation: bounceAndSpin 80s infinite;
+    }
+    
+    .surprise-links a:nth-child(8):hover,
+    .surprise-links a:nth-child(7):hover {
+        color: var(--white);
+        background-color: var(--green);
+    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
@@ -704,7 +848,7 @@ button {
         font-size: medium;
     }
 
-    .popup-body>div {
+    .popup-body > div {
         width: 100%;
     }
 

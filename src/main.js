@@ -122,3 +122,12 @@ document.addEventListener('click', (event) => {
 })
 
 document.querySelector('.popup-close').addEventListener('click', toggleProjectPopup)
+
+/* SECRET SURPRISE */
+
+document.getElementById('secret').addEventListener('click', () => {
+    document.querySelector('.surprise-img').classList.toggle('fade-out')
+    setTimeout(() => {
+        document.querySelector('.surprise-links').classList.toggle('fade-out')
+    }, 1500)
+})
