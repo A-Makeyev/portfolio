@@ -494,7 +494,7 @@ button {
     display: none;
 }
 
-@media (min-width: 1224px) and (min-height: 1279px) {
+@media (min-width: 1045px) and (min-height: 1275px)  {
     .surprise {
         right: 0;
         top: 180px;
