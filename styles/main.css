@@ -494,13 +494,12 @@ button {
     display: none;
 }
 
-@media (min-width: 1045px) and (min-height: 1275px)  {
+@media (min-width: 1046px) {
     .surprise {
-        right: 0;
-        top: 180px;
         position: absolute;
-        height: 750px;
-        width: 750px;    
+        transform: translate(-30%, -110%);
+        height: 550px;
+        width: 550px;    
         z-index: -99;
     }
     
@@ -509,7 +508,7 @@ button {
         right: 10px;
         position: relative;
         transform: rotate(-35deg);
-        transition: all 2s ease-in-out;
+        transition: all 1s ease-in-out;
         display: block;
         height: 500px;
         width: 500px;
@@ -519,13 +518,12 @@ button {
     .surprise-links {
         display: flex;
         flex-direction: column;
-        transition: all 4s ease-in-out;
+        transition: all 2s ease-in-out;
+        transform: translate(-65%, -80%);
         position: absolute;
         display: block;
         height: 750px;
         width: 200px;  
-        left: 470px;
-        top: 170px;
     }
     
     .surprise-links a {
@@ -624,9 +622,21 @@ button {
     }
 }
 
+@media (min-width: 1046px) and (max-width: 1225px) {
+    .surprise-img {
+        top: -70px;
+        right: -40px;
+        transform: rotate(-15deg);
+    }
+
+    .surprise-links {
+        transform: translate(-65%, -95%);
+    }
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
 
-@media (min-width: 1224px) {
+@media (min-width: 1225px) {
     [data-tooltip]:before {
         content: attr(data-tooltip);
         border: 1px solid var(--white-alpha-40);
