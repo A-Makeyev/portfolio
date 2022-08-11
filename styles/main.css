@@ -6,7 +6,7 @@
     --cyan: #AEF1EE;
     --gray: #707070;
     --white: #F4FAFD;
-    --green: #3EC515;
+    --green: #40BD1A;
     --orange: #D19616;
     --dark-blue: #18293C;
     --light-red: #Df316b;
@@ -494,7 +494,7 @@ button {
     display: none;
 }
 
-@media (min-width: 1224px) and (min-height: 1279px)  {
+@media (min-width: 1224px) and (min-height: 1279px) {
     .surprise {
         right: 0;
         top: 180px;
@@ -546,12 +546,14 @@ button {
     .surprise-links a:nth-child(1) {
         top: 30px;
         left: 50px;
+        color: var(--dark-blue);
         animation: bounceAndSpin 50s infinite;
     }
     
     .surprise-links a:nth-child(2) {
         top: 30px;
         left: 100px;
+        color: var(--dark-blue);
         animation: bounceAndSpin 55s infinite;
     }
     
@@ -564,12 +566,14 @@ button {
     .surprise-links a:nth-child(3) {
         top: 30px;
         left: 50px;
+        color: var(--blue);
         animation: bounceAndSpin 60s infinite;
     }
     
     .surprise-links a:nth-child(4) {
         top: 30px;
         left: 100px;
+        color: var(--blue);
         animation: bounceAndSpin 65s infinite;
     }
     
@@ -582,12 +586,14 @@ button {
     .surprise-links a:nth-child(5) {
         top: 30px;
         left: 50px;
+        color: var(--red);
         animation: bounceAndSpin 70s infinite;
     }
     
     .surprise-links a:nth-child(6) {
         top: 30px;
         left: 100px;
+        color: var(--red);
         animation: bounceAndSpin 75s infinite;
     }
     
@@ -600,12 +606,14 @@ button {
     .surprise-links a:nth-child(7) {
         top: 30px;
         left: 50px;
+        color: var(--green);
         animation: bounceAndSpin 80s infinite;
     }
     
     .surprise-links a:nth-child(8) {
         top: 30px;
         left: 100px;
+        color: var(--green);
         animation: bounceAndSpin 80s infinite;
     }
     
