@@ -127,7 +127,13 @@ document.querySelector('.popup-close').addEventListener('click', toggleProjectPo
 
 document.getElementById('secret').addEventListener('click', () => {
     document.querySelector('.surprise-img').classList.toggle('fade-out')
+
+    const links = document.querySelectorAll('.surprise-links a')
     setTimeout(() => {
-        document.querySelector('.surprise-links').classList.toggle('fade-out')
+        for (let i = 0; i < links.length; i++) {
+            setTimeout(() => {
+                links[i].classList.toggle('fade-out')
+            }, 250 * i)
+        }
     }, 1000)
 })

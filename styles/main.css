@@ -112,8 +112,9 @@ section.fade-out {
 }
 
 .main.fade-out,
+.loader.fade-out,
 .surprise-img.fade-out,
-.surprise-links.fade-out {
+.surprise-links a.fade-out {
     opacity: 0;
     visibility: hidden;
 }
@@ -375,10 +376,6 @@ button {
     position: fixed;
 }
 
-.loader.fade-out {
-    opacity: 0;
-}
-
 .loader div {
     opacity: 0.5;
     position: absolute;
@@ -515,11 +512,10 @@ button {
         width: 500px;
         opacity: 0.9;
     }
-    
+
     .surprise-links {
         display: flex;
         flex-direction: column;
-        transition: all 2s ease-in-out;
         transform: translate(-75%, -85%);
         position: absolute;
         display: block;
@@ -537,7 +533,7 @@ button {
         border-radius: 50%;
         position: relative;
         color: var(--dark-blue);
-        transition: all 0.25s ease;
+        transition: all 0.5s ease-in-out;
         border: 1px solid var(--white-alpha-40);
         background-color: var(--white-alpha-25);
     }
