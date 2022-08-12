@@ -3,7 +3,7 @@
 :root {
     --red: #C9163D;
     --blue: #2A85bE;
-    --cyan: #AEF1EE;
+    --cyan: #9EF5F0;
     --gray: #707070;
     --white: #F4FAFD;
     --green: #40BD1A;
@@ -24,7 +24,7 @@
 }
 
 *::selection {
-    text-shadow: 5px 5px 5px var(--dark-blue);
+    text-shadow: 5px 5px 5px var(--light-purple);
 }
 
 ::before,
@@ -115,6 +115,7 @@ section.fade-out {
 .surprise-img.fade-out,
 .surprise-links.fade-out {
     opacity: 0;
+    visibility: hidden;
 }
 
 .container {
@@ -304,8 +305,8 @@ button {
 }
 
 .bg-icons .icon-4 {
-    top: 70%;
-    left: 75%;
+    top: 75%;
+    left: 80%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
@@ -507,8 +508,8 @@ button {
         top: -10px;
         right: 10px;
         position: relative;
-        transform: rotate(-35deg);
         transition: all 1s ease-in-out;
+        transform: rotate(-35deg);
         display: block;
         height: 500px;
         width: 500px;
@@ -519,7 +520,7 @@ button {
         display: flex;
         flex-direction: column;
         transition: all 2s ease-in-out;
-        transform: translate(-65%, -80%);
+        transform: translate(-75%, -85%);
         position: absolute;
         display: block;
         height: 750px;
@@ -624,19 +625,37 @@ button {
 
 @media (min-width: 1046px) and (max-width: 1225px) {
     .surprise-img {
-        top: -70px;
-        right: -40px;
-        transform: rotate(-15deg);
+        top: 70px;
+        right: -30px;
+        transform: rotate(-30deg);
+        height: 400px;
+        width: 400px;
     }
 
     .surprise-links {
-        transform: translate(-65%, -95%);
+        transform: translate(-65%, -80%);
+    }
+}
+
+@media (max-height: 999px) {
+    .surprise-img {
+        top: 70px;
+        right: -40px;
+        transform: rotate(-35deg);
+        height: 400px;
+        width: 400px;
+    }
+    
+    .surprise-links {
+        transform: translate(-65%, -80%);
+        height: 750px;
+        width: 200px;  
     }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
 
-@media (min-width: 1225px) {
+@media (min-width: 767px) {
     [data-tooltip]:before {
         content: attr(data-tooltip);
         border: 1px solid var(--white-alpha-40);
@@ -664,6 +683,25 @@ button {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media (max-width: 1225px) {
+    .about-img,
+    .about-text {
+        padding: 0;
+        width: 100%;
+        margin: 10px 20px;
+    }
+
+    .about-img .img-box {
+        margin: 10px auto;
+    }
+
+    .quote {
+        padding: 1px;
+        text-align: center;
+        color: var(--gray);
+    }
+}
 
 @media (max-width: 1045px) {
     .header .nav-toggler {
@@ -783,23 +821,12 @@ button {
         height: 100px;
     }
 
-    .about-img,
-    .about-text,
     .contact-form,
     .contact-info {
         padding: 0;
         width: 100%;
         margin: 10px 20px;
-    }
-
-    .about-img .img-box {
-        margin: 10px auto;
-    }
-
-    .quote {
-        padding: 1px;
         text-align: center;
-        color: var(--gray);
     }
 
     .contact-info {
@@ -921,6 +948,14 @@ button {
     .contact-form,
     .contact-info {
         padding: 0;
+    }
+
+    .contact-info h2 {
+        font-size: medium;
+    }
+
+    .contact-info-item a {
+        font-weight: 400;
     }
 
     .contact-form {
