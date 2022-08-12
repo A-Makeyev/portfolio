@@ -1,29 +1,17 @@
-const today = new Date()
-const currentHour = today.getHours()
-const greeting = document.getElementById('greeting')
-
-if (currentHour < 18) {
-    greeting.innerText = 'bonjour'
-} else {
-    greeting.innerText = 'bonsoir'
-} 
-
 /* LOADER */
 
 window.addEventListener('load', () => {
+    const today = new Date()
+    const currentHour = today.getHours()
+    const greeting = document.getElementById('greeting')
+    greeting.innerText = currentHour < 18 ? 'bonjour' : 'bonsoir'
+
     document.querySelector('.main').classList.remove('hidden')
     document.querySelector('.home-section').classList.add('active')
     document.querySelector('.loader').classList.add('fade-out')
     setTimeout(() => {
         document.querySelector('.loader').style.display = 'none'
     }, 1000)
-
-    const icons = document.querySelector('.bg-icons').children
-    for (let i = 0; i < icons.length; i++) {
-        setTimeout(() => {
-            icons[i].classList.remove('fade-out')
-        }, 1000 * i)
-    }
 })
 
 /* MAIN NAV */
