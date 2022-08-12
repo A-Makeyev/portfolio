@@ -40,12 +40,12 @@
     height: 40px;
     margin: 5px 5px;
     cursor: pointer;
-    color: var(--dark-blue);
     font-size: x-large;
     border-radius: 50%;
     align-items: center;
     display: inline-flex;
     justify-content: center;
+    color: var(--dark-blue);
     transition: all 0.25s ease;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
@@ -94,7 +94,7 @@
 .project-popup.open .popup-content {
     opacity: 1;
     transform: scale(1);
-    transition: all 0.25s ease;
+    transition: all 0.5s ease;
 }
 
 .popup-header {
@@ -121,6 +121,11 @@
     text-transform: capitalize;
 }
 
+.popup-close:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
 .popup-close i {
     font-size: x-large;
 }
@@ -139,7 +144,7 @@
     flex-wrap: wrap;
 }
 
-.popup-body>div {
+.popup-body > div {
     width: 50%;
     height: auto;
     margin: 0 auto;
@@ -159,6 +164,11 @@
 
 .popup-body .project-links a {
     margin: 5px;
+}
+
+.popup-body .project-links a:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
 }
 
 .popup-body .general-info {

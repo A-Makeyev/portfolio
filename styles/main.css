@@ -4,7 +4,7 @@
     --red: #C9163D;
     --blue: #2A85bE;
     --cyan: #9EF5F0;
-    --gray: #707070;
+    --gray: #555555;
     --white: #F4FAFD;
     --green: #40BD1A;
     --orange: #D19616;
@@ -114,7 +114,14 @@ section.fade-out {
 .main.fade-out,
 .loader.fade-out,
 .surprise-img.fade-out,
-.surprise-links a.fade-out {
+.surprise-links a.fade-out,
+.bg-icons .icon-1.fade-out,
+.bg-icons .icon-2.fade-out,
+.bg-icons .icon-3.fade-out,
+.bg-icons .icon-4.fade-out,
+.bg-icons .icon-5.fade-out,
+.bg-icons .icon-6.fade-out,
+.bg-icons .icon-7.fade-out {
     opacity: 0;
     visibility: hidden;
 }
@@ -284,6 +291,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: zoomAndSpin 100s linear infinite;
 }
 
@@ -293,6 +301,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: bounceAndSpin 50s ease-in-out infinite;
 }
 
@@ -302,6 +311,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: zoomAndSpin 150s linear infinite;
 }
 
@@ -311,6 +321,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: zoomAndSpin 150s linear infinite;
 }
 
@@ -320,6 +331,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: zoomAndSpin 100s linear infinite;
 }
 
@@ -329,6 +341,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: zoomAndSpin 150s linear infinite;
 }
 
@@ -338,6 +351,7 @@ button {
     opacity: 0.5;
     width: 150px;
     height: 150px;
+    transition: all 2s ease-in-out;
     animation: zoomAndSpin 200s linear infinite;
 }
 
@@ -422,6 +436,11 @@ button {
 
 .intro .btn {
     margin: 5px;
+}
+
+.intro .btn:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
 }
 
 .intro-text {

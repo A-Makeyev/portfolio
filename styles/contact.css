@@ -50,6 +50,11 @@
     padding-top: 20px;
 }
 
+.submit-btn .btn:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
 .contact-info-item {
     margin: 0 0 30px;
     padding-left: 30px;
@@ -62,7 +67,7 @@
 }
 
 .contact-info-item a:hover {
-    color: var(--red);
+    color: var(--gray);
 }
 
 .contact-info-item h2 {
@@ -88,5 +93,5 @@
 
 .contact-info-item .social-links a:hover {
     color: var(--white);
-    background-color: var(--red);
+    background-color: var(--dark-blue);
 }

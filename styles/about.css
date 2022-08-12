@@ -216,6 +216,11 @@
     margin: 5px;
 }
 
+.about-section .btn:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
 .about-btns {
     margin: 0 auto;
 }

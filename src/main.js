@@ -17,6 +17,13 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelector('.loader').style.display = 'none'
     }, 1000)
+
+    const icons = document.querySelector('.bg-icons').children
+    for (let i = 0; i < icons.length; i++) {
+        setTimeout(() => {
+            icons[i].classList.remove('fade-out')
+        }, 1000 * i)
+    }
 })
 
 /* MAIN NAV */
