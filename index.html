@@ -1,503 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="/assets/images/avatar.png">
-    <link rel="stylesheet" href="/assets/fontawesome/all.min.css">
-    <link rel="stylesheet" href="styles/navigation.css">
-    <link rel="stylesheet" href="styles/projects.css">
-    <link rel="stylesheet" href="styles/contact.css">
-    <link rel="stylesheet" href="styles/about.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <title>Anatoly Makeyev</title>
-  </head>
-  <body>
 
-    <!-- LOADER -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="/assets/images/avatar.png">
+  <link rel="stylesheet" href="/assets/fontawesome/all.min.css">
+  <link rel="stylesheet" href="styles/navigation.css">
+  <link rel="stylesheet" href="styles/projects.css">
+  <link rel="stylesheet" href="styles/contact.css">
+  <link rel="stylesheet" href="styles/about.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Anatoly Makeyev</title>
+</head>
 
-    <div class="loader accelerate">
-      <div></div>
-      <div></div>
-      <div></div>
+<body>
+
+  <!-- LOADER -->
+
+  <div class="loader accelerate">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- BACKGROUND CIRCLES -->
+
+  <div class="bg-icons">
+    <div class="icon-1">
+      <img src="/assets/icons/redux.png" alt="redux icon">
     </div>
-
-    <!-- BACKGROUND CIRCLES -->
-
-    <div class="bg-icons">
-      <div class="icon-1">
-        <img src="/assets/icons/redux.png" alt="redux icon">
-      </div>
-      <div class="icon-2">
-        <img src="/assets/icons/react.png" alt="react icon">
-      </div>
-      <div class="icon-3">
-        <img src="/assets/icons/python.png" alt="python icon">
-      </div>
-      <div class="icon-4">
-        <img src="/assets/icons/node.png" alt="node icon">
-      </div>
-      <div class="icon-5">
-        <img src="/assets/icons/html.png" alt="html icon">
-      </div>
-      <div class="icon-6">
-        <img src="/assets/icons/css.png" alt="css icon">
-      </div>
-      <div class="icon-7">
-        <img src="/assets/icons/js.png" alt="js icon">
-      </div>
+    <div class="icon-2">
+      <img src="/assets/icons/react.png" alt="react icon">
     </div>
+    <div class="icon-3">
+      <img src="/assets/icons/python.png" alt="python icon">
+    </div>
+    <div class="icon-4">
+      <img src="/assets/icons/node.png" alt="node icon">
+    </div>
+    <div class="icon-5">
+      <img src="/assets/icons/html.png" alt="html icon">
+    </div>
+    <div class="icon-6">
+      <img src="/assets/icons/css.png" alt="css icon">
+    </div>
+    <div class="icon-7">
+      <img src="/assets/icons/js.png" alt="js icon">
+    </div>
+  </div>
 
-    <!-- MAIN -->
+  <!-- MAIN -->
 
-    <div class="overlay"></div>
-    <div class="main hidden">
+  <div class="overlay"></div>
+  <div class="main hidden">
 
-      <!-- HEADER -->
+    <!-- HEADER -->
 
-      <header class="header">
-        <div class="container">
-          <div class="row flex-end">
-            <button type="button" class="nav-toggler">
-              <span></span>
-            </button>
-            <nav class="nav-main">
-              <div class="nav-inner">
-                <ul>
-                  <li><a href="#home" class="nav-item link-item">home</a></li>
-                  <li><a href="#about" class="nav-item link-item">about</a></li>
-                  <li><a href="#projects" class="nav-item link-item">projects</a></li>
-                  <li><a href="#contact" class="nav-item link-item">contact</a></li>
-                </ul>
+    <header class="header">
+      <div class="container">
+        <div class="row flex-end">
+          <button type="button" class="nav-toggler">
+            <span></span>
+          </button>
+          <nav class="nav-main">
+            <div class="nav-inner">
+              <ul>
+                <li><a href="#home" class="nav-item link-item">home</a></li>
+                <li><a href="#about" class="nav-item link-item">about</a></li>
+                <li><a href="#projects" class="nav-item link-item">projects</a></li>
+                <li><a href="#contact" class="nav-item link-item">contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+
+    <section id="home" class="home-section center accelerate">
+      <div class="container">
+        <div class="row center">
+          <div class="intro">
+            <div class="intro-text">
+              <p><span id="greeting"></span>, i'm</p>
+              <h1>anatoly makeyev</h1>
+              <p>an automation engineer by day</p>
+              <p>a web developer by night</p>
+            </div>
+            <a href="#about" class="btn accelerate link-item">about me</a>
+            <a href="#projects" class="btn accelerate link-item">projects</a>
+          </div>
+          <div class="home-img">
+            <div class="img-box">
+              <img src="/assets/images/profile.png" alt="profile image">
+            </div>
+
+            <div class="home-icons">
+              <img src="/assets/icons/saltbae.png" alt="salt bae" class="midget-salt-bae">
+            </div>
+
+            <!-- SECRET -->
+
+            <div class="surprise">
+              <div class="giant-salt-bae fade-out accelerate">
+                <img src="/assets/icons/saltbae.png" alt="surprise bae">
               </div>
-            </nav>
+            </div>
+
+            <div class="surprise-links">
+              <a href="https://github.com/a-makeyev" target="_blank" class="fade-out accelerate">
+                <i class="fa-brands fa-github-alt"></i>
+              </a>
+              <a href="https://www.freecodecamp.org/a-makeyev" target="_blank" class="fade-out accelerate">
+                <i class="fa-brands fa-free-code-camp"></i>
+              </a>
+              <a href="https://www.facebook.com/anatoly.makeyev" target="_blank" class="fade-out accelerate">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/a-makeyev/" target="_blank" class="fade-out accelerate">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UCJipBTLHg9KdzMY2lm3qExA" target="_blank"
+                class="fade-out accelerate">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="mailto:anatoly.makeyev@gmail.com" target="_blank" class="fade-out accelerate">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+              <a href="https://wa.me/972527729974" target="_blank" class="fade-out accelerate">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="tel:+972527729974" target="_blank" class="fade-out accelerate">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+            </div>
+
           </div>
         </div>
-      </header>
+      </div>
+    </section>
 
-      <!-- HOME -->
+    <!-- ABOUT -->
 
-      <section id="home" class="home-section center accelerate">
-        <div class="container">
-          <div class="row center">
-            <div class="intro">
-              <div class="intro-text">
-                <p><span id="greeting"></span>, i'm</p>
-                <h1>anatoly makeyev</h1>
-                <p>an automation engineer by day</p>
-                <p>a web developer by night</p>
-              </div>
-              <a href="#about" class="btn accelerate link-item">about me</a>
-              <a href="#projects" class="btn accelerate link-item">projects</a>
+    <section id="about" class="about-section section-padding accelerate">
+      <div class="container">
+        <div class="row">
+
+          <div class="about-img">
+            <div class="img-box">
+              <a href="/assets/images/anatoly.png" target="_blank">
+                <img src="/assets/images/anatoly.png" alt="anatoly makeyev">
+              </a>
             </div>
-            <div class="home-img">
-              <div id="secret" class="img-box">
-                <img src="assets/images/profile.png" alt="profile image">
-              </div>
-
-              <!-- SECRET -->
-
-              <div class="surprise">
-                <div class="surprise-img fade-out accelerate">
-                  <img src="/assets/icons/saltbae.png" alt="surprise bae">
-                </div>
-              </div>
-
-              <div class="surprise-links">
-                <a href="https://github.com/a-makeyev" target="_blank" class="fade-out accelerate">
-                  <i class="fa-brands fa-github-alt"></i>
-                </a>
-                <a href="https://www.freecodecamp.org/a-makeyev" target="_blank" class="fade-out accelerate">
-                  <i class="fa-brands fa-free-code-camp"></i>
-                </a>
-                <a href="https://www.facebook.com/anatoly.makeyev" target="_blank" class="fade-out accelerate">
-                  <i class="fa-brands fa-facebook-f"></i>
-                </a> 
-                <a href="https://www.linkedin.com/in/a-makeyev/" target="_blank" class="fade-out accelerate">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.youtube.com/channel/UCJipBTLHg9KdzMY2lm3qExA" target="_blank" class="fade-out accelerate">
-                  <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="mailto:anatoly.makeyev@gmail.com" target="_blank" class="fade-out accelerate">
-                  <i class="fa-solid fa-envelope"></i>
-                </a>
-                <a href="https://wa.me/972527729974" target="_blank" class="fade-out accelerate">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="tel:+972527729974" target="_blank" class="fade-out accelerate">
-                  <i class="fa-solid fa-phone"></i>
-                </a>
-              </div>
-
+            <div class="quote">
+              <q>excuse me, do you have a moment to talk about the oxygen database module?</q>
             </div>
           </div>
-        </div>
-      </section>
-    
-      <!-- ABOUT -->
 
-      <section id="about" class="about-section section-padding accelerate">
-        <div class="container">
-          <div class="row">
+          <div class="about-text">
+            <div class="section-title">
+              <h2>I'm passionate about the web</h2>
+            </div>
+            <p>
+              From designing web apps and bringing them to life, then watching them shrink smoothly without anything
+              falling off the screen,
+              to building automated processes and seeing them do all sorts of stuff on the page while I take a sip from
+              my caffè mocha
+              and listening to the Joe Rogan podcust. Oh and also I climb walls and jump out of planes, casually.
+            </p>
 
-            <div class="about-img">
-              <div class="img-box">
-                <a href="/assets/images/anatoly.png" target="_blank">
-                  <img src="/assets/images/anatoly.png" alt="anatoly makeyev">
-                </a>
-              </div>
-              <div class="quote">
-                <q>excuse me, do you have a moment to talk about the oxygen database module?</q>
-              </div>
+            <!-- SKILLS -->
+
+            <h2>Technologies I've used</h2>
+            <div class="skills">
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
+                class="skill-item">JavaScript</a>
+              <a href="https://nodejs.org/" target="_blank" class="skill-item">Node</a>
+              <a href="https://reactjs.org/" target="_blank" class="skill-item">React</a>
+              <a href="https://expressjs.com/" target="_blank" class="skill-item">Express</a>
+              <a href="https://www.java.com/" target="_blank" class="skill-item">Java</a>
+              <a href="https://www.python.org/" target="_blank" class="skill-item">Python</a>
+              <a href="https://www.mysql.com/" target="_blank" class="skill-item">SQL</a>
+              <a href="https://jquery.com/" target="_blank" class="skill-item">jQuery</a>
+              <a href="https://redux.js.org/" target="_blank" class="skill-item">Redux</a>
+              <a href="https://getbootstrap.com/" target="_blank" class="skill-item">Bootstrap</a>
+              <a href="https://firebase.google.com/" target="_blank" class="skill-item">Firebase</a>
+              <a href="https://playwright.dev/" target="_blank" class="skill-item">Playwright</a>
+              <a href="https://www.selenium.dev/" target="_blank" class="skill-item">Selenium</a>
+              <a href="https://appium.io/" target="_blank" class="skill-item">Appium</a>
+              <a href="https://www.mongodb.com/" target="_blank" class="skill-item">MongoDB</a>
+              <a href="https://www.postman.com/" target="_blank" class="skill-item">Postman</a>
+              <a href="https://jmeter.apache.org/" target="_blank" class="skill-item">JMeter</a>
+              <a href="https://git-scm.com/" target="_blank" class="skill-item">Git</a>
+              <a href="https://jira.atlassian.com/" target="_blank" class="skill-item">Jira</a>
+              <a href="https://www.figma.com/" target="_blank" class="skill-item">Figma</a>
+              <a href="https://code.visualstudio.com/" target="_blank" class="skill-item">VSCode</a>
+              <a href="https://oxygenhq.org/" target="_blank" class="skill-item">Oxygen</a>
+              <a href="https://www.cloudbeat.io/" target="_blank" class="skill-item">Cloudbeat</a>
+            </div>
+          </div>
+
+          <div class="timeline-box">
+            <div class="about-tabs">
+              <button type="button" class="tab-item active" data-target="#experience">experience</button>
+              <button type="button" class="tab-item" data-target="#education">education</button>
             </div>
 
-            <div class="about-text">
-              <div class="section-title">
-                <h2>I'm passionate about the web</h2>
-              </div>
-              <p>
-                From designing web apps and bringing them to life, then watching them shrink smoothly without anything falling off the screen,
-                to building automated processes and seeing them do all sorts of stuff on the page while I take a sip from my caffè mocha
-                and listening to the Joe Rogan podcust. Oh and also I climb walls and jump out of planes, casually.
-              </p>
+            <!-- EXPERIENCE -->
 
-              <!-- SKILLS -->
+            <div class="tab-content active" id="experience">
+              <div class="timeline">
 
-              <h2>Technologies I've used</h2>
-              <div class="skills">
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item">JavaScript</a>
-                <a href="https://nodejs.org/" target="_blank" class="skill-item">Node</a>
-                <a href="https://reactjs.org/" target="_blank" class="skill-item">React</a>
-                <a href="https://expressjs.com/" target="_blank" class="skill-item">Express</a>
-                <a href="https://www.java.com/" target="_blank" class="skill-item">Java</a>
-                <a href="https://www.python.org/" target="_blank" class="skill-item">Python</a>
-                <a href="https://www.mysql.com/" target="_blank" class="skill-item">SQL</a>
-                <a href="https://jquery.com/" target="_blank" class="skill-item">jQuery</a>
-                <a href="https://redux.js.org/" target="_blank" class="skill-item">Redux</a>
-                <a href="https://getbootstrap.com/" target="_blank" class="skill-item">Bootstrap</a>
-                <a href="https://firebase.google.com/" target="_blank" class="skill-item">Firebase</a>
-                <a href="https://playwright.dev/" target="_blank" class="skill-item">Playwright</a>
-                <a href="https://www.selenium.dev/" target="_blank" class="skill-item">Selenium</a>
-                <a href="https://appium.io/" target="_blank" class="skill-item">Appium</a>
-                <a href="https://www.mongodb.com/" target="_blank" class="skill-item">MongoDB</a>
-                <a href="https://www.postman.com/" target="_blank" class="skill-item">Postman</a>
-                <a href="https://jmeter.apache.org/" target="_blank" class="skill-item">JMeter</a>
-                <a href="https://git-scm.com/" target="_blank" class="skill-item">Git</a>
-                <a href="https://jira.atlassian.com/" target="_blank" class="skill-item">Jira</a>
-                <a href="https://www.figma.com/" target="_blank" class="skill-item">Figma</a>
-                <a href="https://code.visualstudio.com/" target="_blank" class="skill-item">VSCode</a>
-                <a href="https://oxygenhq.org/" target="_blank" class="skill-item">Oxygen</a>
-                <a href="https://www.cloudbeat.io/" target="_blank" class="skill-item">Cloudbeat</a>
-              </div>
-            </div>
-
-            <div class="timeline-box">
-              <div class="about-tabs">
-                <button type="button" class="tab-item active" data-target="#experience">experience</button>
-                <button type="button" class="tab-item" data-target="#education">education</button>  
-              </div>
-
-              <!-- EXPERIENCE -->
-
-              <div class="tab-content active" id="experience">
-                <div class="timeline">
-
-                  <div class="timeline-item">
-                    <span class="date">2019 - Present</span>
-                    <h5>
-                      Automation Engineer <span>-</span> 
-                      <a href="https://cloudbeat.io/" target="_blank" class="timeline-item-link">CloudBeat</a>
-                    </h5>
-                    <ul>
-                      <li>⦁ Developing and maintaining scripts in a page object model using Oxygen, Java, Selenium, playwright on all sorts of websites as well as SaaS apps including Dynamics CRM & Salesforce.</li>
-                      <li>⦁ Helping various customers to implement test automation from scratch in their organization.</li>
-                      <li>⦁ Creating automated tests for native and hybrid mobile apps using Appium with Oxygen.</li>
-                      <li>⦁ Instructing QA teams on CloudBeat, Oxygen, web & mobile automation best practices.</li>
-                      <li>⦁ Building SOAP and REST API performance tests using JMeter and Postman.</li>
-                      <li>⦁ Managing version control using Git with Github and Bitbucket.</li>
-                    </ul>
-                    <!-- <div class="timeline-images">
+                <div class="timeline-item">
+                  <span class="date">2019 - Present</span>
+                  <h5>
+                    Automation Engineer <span>-</span>
+                    <a href="https://cloudbeat.io/" target="_blank" class="timeline-item-link">CloudBeat</a>
+                  </h5>
+                  <ul>
+                    <li>⦁ Developing and maintaining scripts in a page object model using Oxygen, Java, Selenium,
+                      playwright on all sorts of websites as well as SaaS apps including Dynamics CRM & Salesforce.</li>
+                    <li>⦁ Helping various customers to implement test automation from scratch in their organization.
+                    </li>
+                    <li>⦁ Creating automated tests for native and hybrid mobile apps using Appium with Oxygen.</li>
+                    <li>⦁ Instructing QA teams on CloudBeat, Oxygen, web & mobile automation best practices.</li>
+                    <li>⦁ Building SOAP and REST API performance tests using JMeter and Postman.</li>
+                    <li>⦁ Managing version control using Git with Github and Bitbucket.</li>
+                  </ul>
+                  <!-- <div class="timeline-images">
                       <a href="/assets/images/timeline/cloudbeat-conference.jpg" target="_blank">
                         <img src="/assets/images/timeline/cloudbeat-conference.jpg" alt="Cloudbeat at the John Bryce geek week conference">
                       </a>
                     </div> -->
-                  </div>
-
-                  <div class="timeline-item">
-                    <span class="date">2018 - 2019</span>
-                    <h5>
-                      Quality Assurance Engineer <span>-</span> 
-                      <a href="https://www.fast-apps.com/" target="_blank" class="timeline-item-link">FAST</a>
-                    </h5>
-                    <ul>
-                      <li>⦁ Helped to insure we release the best possible version in time for the global entrepreneur week, which we ended up winning and getting an investment from the Israeli Shark Tank.</li>
-                      <li>⦁ Carrying out in depth manual tests including sanity, functionality, error handling, recovery, integration, compatibility, regression and UI / UX on both web and mobile environments.</li>
-                      <li>⦁ Responsibility for planning and executing STP, STD, STR documents for the entire team.</li>
-                      <li>⦁ Tracking issues, visual bugs as well as logical errors and reporting them using JIRA.</li>
-                    </ul>
-                    <div class="timeline-images">
-                      <a href="/assets/images/timeline/fast-team.jpg" target="_blank">
-                        <img src="/assets/images/timeline/fast-team.jpg" alt="We won as the most influential startup company of Haifa">
-                      </a>
-                      <a href="/assets/images/timeline/startup-awards.jpg" target="_blank">
-                        <img src="/assets/images/timeline/startup-awards.jpg" alt="Global Entrepreneurship Week, Israel 2018">
-                      </a>
-                      <a href="https://www.youtube.com/watch?v=t47f_Nlsn7U" target="_blank">
-                        <img src="/assets/images/timeline/awards-video.jpg" alt="Global Entrepreneurship Week winners video">
-                      </a>
-                    </div>
-                  </div>
-                  
                 </div>
-              </div>
 
-              <!-- EDUCATION -->
-
-              <div class="tab-content" id="education">
-                <div class="timeline">
-                  <div class="timeline-item">
-                    <span class="date">2019 - 2021</span>
-                    <h5>
-                      Web Development  <span>-</span> 
-                      <a href="https://www.freecodecamp.org/" target="_blank" class="timeline-item-link">freeCodeCamp</a>
-                    </h5>
-                    <ul>
-                      <li>⦁ HTML, CSS (Flexbox & Grid), Accessibility, Applied Visual Design and Responsive Principles.</li>
-                      <li>⦁ JavaScript, Regex, Debugging, Data Structures, Functional Programming and OOP.</li>
-                    </ul>
-                    <div class="timeline-images">
-                      <a href="https://www.freecodecamp.org/certification/a-makeyev/responsive-web-design" target="_blank">
-                        <img src="/assets/images/timeline/Responsive-Web-Design.jpg" alt="Responsive Web Design Certificate">
-                      </a>
-                      <a href="https://www.freecodecamp.org/certification/a-makeyev/javascript-algorithms-and-data-structures" target="_blank">
-                        <img src="/assets/images/timeline/JavaScript-Algorithms-and-Data-Structures.jpg" alt="JavaScript Algorithms and Data Structures Certificate">
-                      </a>
-                    </div>
+                <div class="timeline-item">
+                  <span class="date">2018 - 2019</span>
+                  <h5>
+                    Quality Assurance Engineer <span>-</span>
+                    <a href="https://www.fast-apps.com/" target="_blank" class="timeline-item-link">FAST</a>
+                  </h5>
+                  <ul>
+                    <li>⦁ Helped to insure we release the best possible version in time for the global entrepreneur
+                      week, which we ended up winning and getting an investment from the Israeli Shark Tank.</li>
+                    <li>⦁ Carrying out in depth manual tests including sanity, functionality, error handling, recovery,
+                      integration, compatibility, regression and UI / UX on both web and mobile environments.</li>
+                    <li>⦁ Responsibility for planning and executing STP, STD, STR documents for the entire team.</li>
+                    <li>⦁ Tracking issues, visual bugs as well as logical errors and reporting them using JIRA.</li>
+                  </ul>
+                  <div class="timeline-images">
+                    <a href="/assets/images/timeline/fast-team.jpg" target="_blank">
+                      <img src="/assets/images/timeline/fast-team.jpg"
+                        alt="We won as the most influential startup company of Haifa">
+                    </a>
+                    <a href="/assets/images/timeline/startup-awards.jpg" target="_blank">
+                      <img src="/assets/images/timeline/startup-awards.jpg"
+                        alt="Global Entrepreneurship Week, Israel 2018">
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=t47f_Nlsn7U" target="_blank">
+                      <img src="/assets/images/timeline/awards-video.jpg"
+                        alt="Global Entrepreneurship Week winners video">
+                    </a>
                   </div>
-
-                  <div class="timeline-item">
-                    <span class="date">2018 - 2019</span>
-                    <h5>
-                      Software Quality Assurance <span>-</span> 
-                      <a href="https://svcollege.co.il/" target="_blank" class="timeline-item-link">SVCollege</a>
-                    </h5>
-                    <ul>
-                      <li>⦁ Understanding the process and various types and methods of testing web and mobile apps.</li>
-                      <li>⦁ Getting familiar with database structures and to manipulate and retrieve data with SQL.</li>
-                      <li>⦁ Learning test automation using Java programming with Selenium and Appium.</li>
-                    </ul>
-                    <div class="timeline-images">
-                      <a href="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg" target="_blank">
-                        <img src="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg" alt="Software Quality Assurance Certificate">
-                      </a>
-                    </div>
-                  </div>
-
                 </div>
+
               </div>
             </div>
 
-            <!-- <div class="line"></div> -->
+            <!-- EDUCATION -->
 
-            <div class="about-btns accelerates center">
-              <a href="#projects" class="btn accelerate link-item">projects</a>
-              <a href="#contact" class="btn accelerate link-item">contect me</a>
-              <a href="assets/Anatoly Makeyev - Automation Engineer.pdf" target="_blank" class="btn accelerate">CV</a>
-            </div>
+            <div class="tab-content" id="education">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <span class="date">2019 - 2021</span>
+                  <h5>
+                    Web Development <span>-</span>
+                    <a href="https://www.freecodecamp.org/" target="_blank" class="timeline-item-link">freeCodeCamp</a>
+                  </h5>
+                  <ul>
+                    <li>⦁ HTML, CSS (Flexbox & Grid), Accessibility, Applied Visual Design and Responsive Principles.
+                    </li>
+                    <li>⦁ JavaScript, Regex, Debugging, Data Structures, Functional Programming and OOP.</li>
+                  </ul>
+                  <div class="timeline-images">
+                    <a href="https://www.freecodecamp.org/certification/a-makeyev/responsive-web-design"
+                      target="_blank">
+                      <img src="/assets/images/timeline/Responsive-Web-Design.jpg"
+                        alt="Responsive Web Design Certificate">
+                    </a>
+                    <a href="https://www.freecodecamp.org/certification/a-makeyev/javascript-algorithms-and-data-structures"
+                      target="_blank">
+                      <img src="/assets/images/timeline/JavaScript-Algorithms-and-Data-Structures.jpg"
+                        alt="JavaScript Algorithms and Data Structures Certificate">
+                    </a>
+                  </div>
+                </div>
 
-          </div>
-        </div>
-      </section>
+                <div class="timeline-item">
+                  <span class="date">2018 - 2019</span>
+                  <h5>
+                    Software Quality Assurance <span>-</span>
+                    <a href="https://svcollege.co.il/" target="_blank" class="timeline-item-link">SVCollege</a>
+                  </h5>
+                  <ul>
+                    <li>⦁ Understanding the process and various types and methods of testing web and mobile apps.</li>
+                    <li>⦁ Getting familiar with database structures and to manipulate and retrieve data with SQL.</li>
+                    <li>⦁ Learning test automation using Java programming with Selenium and Appium.</li>
+                  </ul>
+                  <div class="timeline-images">
+                    <a href="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg" target="_blank">
+                      <img src="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg"
+                        alt="Software Quality Assurance Certificate">
+                    </a>
+                  </div>
+                </div>
 
-      <!-- PROJECTS -->
-
-      <section id="projects" class="project-section section-padding accelerate">
-        <div class="container">
-          <div class="row">
-            <div class="section-title">
-              <h1>recent work</h1>
+              </div>
             </div>
           </div>
 
-          <div class="row">
+          <!-- <div class="line"></div> -->
 
-            <!-- PROJECT 1 -->
-
-            <div class="project-item center">
-              <div class="project-item-thumbnail">
-                <img src="assets/images/projects/Makeyev-Finance.jpg" alt="Makeyev Finance" class="view-project-btn">
-              </div>
-
-              <h2 class="project-item-title center">Makeyev Finance</h2>
-              
-              <a href="javascript:void(0)" class="project-item-btn accelerate center" data-tooltip="view project details">
-                <i class="fa-solid fa-circle-info view-project-btn"></i>
-              </a>
-              <a href="https://github.com/A-Makeyev/makeyev-finance" target="_blank" class="project-item-btn accelerate center" data-tooltip="view source code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-              <a href="https://makeyev-finance.netlify.app/" target="_blank" class="project-item-btn accelerate center" data-tooltip="view live website">
-                <i class="fa-solid fa-globe"></i>
-              </a>
-
-              <div class="project-item-details">
-                <div class="description">
-                  <p>
-                    I love to invest in real estate and I've decided to also become a mortgage advisor.
-                    So I made myself this website to present the services I provide, also added a mortgage calculator tool and finance related articles.
-                    This website uses smtp.js & Elastic to send me emails whenever new prospects leave their details.
-                  </p>
-                </div>
-
-                <div class="general-info">
-                  <h5>technologies used</h5>
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item">JavaScript</a>
-                  <a href="https://playwright.dev/" target="_blank" class="skill-item">Playwright</a>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/A-Makeyev/makeyev-finance" target="_blank" class="btn">Source Code</a>
-                  <a href="https://makeyev-finance.netlify.app/" target="_blank" class="btn">Live Website</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- PROJECT 2 -->
-
-            <div class="project-item center">
-              <div class="project-item-thumbnail">
-                <img src="assets/images/projects/ChatUp.jpg" alt="ChatUp">
-              </div>
-
-              <h2 class="project-item-title center">ChatUp</h2>
-              
-              <a href="javascript:void(0)" class="project-item-btn accelerate center" data-tooltip="view project details">
-                <i class="fa-solid fa-circle-info view-project-btn"></i>
-              </a>
-              <a href="https://github.com/A-Makeyev/chatup" target="_blank" class="project-item-btn accelerate center" data-tooltip="view source code">
-                <i class="fa-brands fa-github"></i>
-              </a>
-              <a href="https://chat-up.netlify.app/" target="_blank" class="project-item-btn accelerate center" data-tooltip="view live website">
-                <i class="fa-solid fa-globe"></i>
-              </a>
-
-              <div class="project-item-details">
-                <div class="description">
-                  <p>
-                    A simple chat app that lets users choose a name and send text messages.
-                    There are two rooms, one is public which anyone can see and have access to,
-                    and the other one is private and requires a password.
-                  </p>
-                </div>
-
-                <div class="general-info">
-                  <h5>technologies used</h5>
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
-                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item">JavaScript</a>
-                  <a href="https://firebase.google.com/" target="_blank" class="skill-item">Firebase</a>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/A-Makeyev/chatup" target="_blank" class="btn">Source Code</a>
-                  <a href="https://chat-up.netlify.app/" target="_blank" class="btn">Live Website</a>
-                </div>
-              </div>
-            </div>
-
+          <div class="about-btns accelerates center">
+            <a href="#projects" class="btn accelerate link-item">projects</a>
+            <a href="#contact" class="btn accelerate link-item">contect me</a>
+            <a href="assets/Anatoly Makeyev - Automation Engineer.pdf" target="_blank" class="btn accelerate">CV</a>
           </div>
-        </div>
-      </section>
 
-      <!-- CONTACT -->
-
-      <section id="contact" class="contact-section section-padding accelerate">
-        <div class="container">
-          <div class="row">
-            <div class="section-title">
-              <h1>get in touch</h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="contact-form">
-              <form>
-                <div class="row">
-                  <div class="input-group">
-                    <input type="text" placeholder="Name" class="input-control" required>
-                  </div>
-                  <div class="input-group">
-                    <input type="text" placeholder="Email" class="input-control" required>
-                  </div>
-                  <div class="input-group">
-                    <input type="text" placeholder="Subject" class="input-control" required>
-                  </div>
-                  <div class="input-group">
-                    <textarea placeholder="Message" class="input-control" required></textarea>
-                  </div>
-                </div>
-                <div class="submit-btn accelerate">
-                  <button type="submit" class="btn accelerate">send</button>
-                </div>
-              </form>
-            </div>
-            <div class="contact-info">
-              <div class="contact-info-item">
-                <h2>phone</h2>
-                <a href="tel:+972-52-772-9974" target="_blank">+972-52-772-9974</a>
-              </div>
-              <div class="contact-info-item">
-                <h2>email</h2>
-                <a href="mailto:anatoly.makeyev@gmail.com">anatoly.makeyev@gmail.com</a>
-              </div>
-              <div class="contact-info-item">
-                <h2>socials</h2>
-                <div class="social-links">
-                  <a href="https://github.com/a-makeyev" target="_blank" rel=”noreferrer”>
-                    <i class="fa-brands fa-github-alt"></i>
-                  </a>
-                  <a href="https://www.freecodecamp.org/a-makeyev" target="_blank" rel=”noreferrer”>
-                    <i class="fa-brands fa-free-code-camp"></i>
-                  </a>
-                  <a href="https://www.youtube.com/channel/UCJipBTLHg9KdzMY2lm3qExA" target="_blank" rel=”noreferrer”>
-                    <i class="fa-brands fa-youtube"></i>
-                  </a>
-                  <a href="https://www.facebook.com/anatoly.makeyev" target="_blank" rel=”noreferrer”>
-                    <i class="fa-brands fa-facebook-f"></i>
-                  </a> 
-                  <a href="https://www.linkedin.com/in/a-makeyev/" target="_blank" rel=”noreferrer”>
-                    <i class="fa-brands fa-linkedin-in"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div> <!-- main -->
-
-    <!-- PROJECT DETAILS POPUP -->
-
-    <div class="project-popup center">
-      <div class="popup-inner">
-        <div class="popup-content accelerate">
-          <div class="popup-header">
-            <button type="button" class="btn accelerate popup-close">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="popup-thumbnail">
-              <img src="" alt="">
-            </div>
-            <h2></h2>
-          </div>
-          <div class="popup-body"></div>
         </div>
       </div>
-    </div>  
+    </section>
 
-    <script src="src/main.js"></script>
-  </body>
+    <!-- PROJECTS -->
+
+    <section id="projects" class="project-section section-padding accelerate">
+      <div class="container">
+        <div class="row">
+          <div class="section-title">
+            <h1>recent work</h1>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <!-- PROJECT 1 -->
+
+          <div class="project-item center">
+            <div class="project-item-thumbnail">
+              <img src="assets/images/projects/Makeyev-Finance.jpg" alt="Makeyev Finance" class="view-project-btn">
+            </div>
+
+            <h2 class="project-item-title center">Makeyev Finance</h2>
+
+            <a href="javascript:void(0)" class="project-item-btn accelerate center" data-tooltip="view project details">
+              <i class="fa-solid fa-circle-info view-project-btn"></i>
+            </a>
+            <a href="https://github.com/A-Makeyev/makeyev-finance" target="_blank"
+              class="project-item-btn accelerate center" data-tooltip="view source code">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://makeyev-finance.netlify.app/" target="_blank" class="project-item-btn accelerate center"
+              data-tooltip="view live website">
+              <i class="fa-solid fa-globe"></i>
+            </a>
+
+            <div class="project-item-details">
+              <div class="description">
+                <p>
+                  I love to invest in real estate and I've decided to also become a mortgage advisor.
+                  So I made myself this website to present the services I provide, also added a mortgage calculator tool
+                  and finance related articles.
+                  This website uses smtp.js & Elastic to send me emails whenever new prospects leave their details.
+                </p>
+              </div>
+
+              <div class="general-info">
+                <h5>technologies used</h5>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
+                  class="skill-item">JavaScript</a>
+                <a href="https://playwright.dev/" target="_blank" class="skill-item">Playwright</a>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/A-Makeyev/makeyev-finance" target="_blank" class="btn">Source Code</a>
+                <a href="https://makeyev-finance.netlify.app/" target="_blank" class="btn">Live Website</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 2 -->
+
+          <div class="project-item center">
+            <div class="project-item-thumbnail">
+              <img src="assets/images/projects/ChatUp.jpg" alt="ChatUp">
+            </div>
+
+            <h2 class="project-item-title center">ChatUp</h2>
+
+            <a href="javascript:void(0)" class="project-item-btn accelerate center" data-tooltip="view project details">
+              <i class="fa-solid fa-circle-info view-project-btn"></i>
+            </a>
+            <a href="https://github.com/A-Makeyev/chatup" target="_blank" class="project-item-btn accelerate center"
+              data-tooltip="view source code">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://chat-up.netlify.app/" target="_blank" class="project-item-btn accelerate center"
+              data-tooltip="view live website">
+              <i class="fa-solid fa-globe"></i>
+            </a>
+
+            <div class="project-item-details">
+              <div class="description">
+                <p>
+                  A simple chat app that lets users choose a name and send text messages.
+                  There are two rooms, one is public which anyone can see and have access to,
+                  and the other one is private and requires a password.
+                </p>
+              </div>
+
+              <div class="general-info">
+                <h5>technologies used</h5>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
+                  class="skill-item">JavaScript</a>
+                <a href="https://firebase.google.com/" target="_blank" class="skill-item">Firebase</a>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/A-Makeyev/chatup" target="_blank" class="btn">Source Code</a>
+                <a href="https://chat-up.netlify.app/" target="_blank" class="btn">Live Website</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact-section section-padding accelerate">
+      <div class="container">
+        <div class="row">
+          <div class="section-title">
+            <h1>get in touch</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="contact-form">
+            <form>
+              <div class="row">
+                <div class="input-group">
+                  <input type="text" placeholder="Name" class="input-control" required>
+                </div>
+                <div class="input-group">
+                  <input type="text" placeholder="Email" class="input-control" required>
+                </div>
+                <div class="input-group">
+                  <input type="text" placeholder="Subject" class="input-control" required>
+                </div>
+                <div class="input-group">
+                  <textarea placeholder="Message" class="input-control" required></textarea>
+                </div>
+              </div>
+              <div class="submit-btn accelerate">
+                <button type="submit" class="btn accelerate">send</button>
+              </div>
+            </form>
+          </div>
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <h2>phone</h2>
+              <a href="tel:+972-52-772-9974" target="_blank">+972-52-772-9974</a>
+            </div>
+            <div class="contact-info-item">
+              <h2>email</h2>
+              <a href="mailto:anatoly.makeyev@gmail.com">anatoly.makeyev@gmail.com</a>
+            </div>
+            <div class="contact-info-item">
+              <h2>socials</h2>
+              <div class="social-links">
+                <a href="https://github.com/a-makeyev" target="_blank" rel=”noreferrer”>
+                  <i class="fa-brands fa-github-alt"></i>
+                </a>
+                <a href="https://www.freecodecamp.org/a-makeyev" target="_blank" rel=”noreferrer”>
+                  <i class="fa-brands fa-free-code-camp"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCJipBTLHg9KdzMY2lm3qExA" target="_blank" rel=”noreferrer”>
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/anatoly.makeyev" target="_blank" rel=”noreferrer”>
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/a-makeyev/" target="_blank" rel=”noreferrer”>
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- main -->
+
+  <!-- PROJECT DETAILS POPUP -->
+
+  <div class="project-popup center">
+    <div class="popup-inner">
+      <div class="popup-content accelerate">
+        <div class="popup-header">
+          <button type="button" class="btn accelerate popup-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <div class="popup-thumbnail">
+            <img src="" alt="">
+          </div>
+          <h2></h2>
+        </div>
+        <div class="popup-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+
 </html>

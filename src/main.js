@@ -120,15 +120,29 @@ document.querySelector('.popup-close').addEventListener('click', toggleProjectPo
 
 /* SECRET SURPRISE */
 
-document.getElementById('secret').addEventListener('click', () => {
-    document.querySelector('.surprise-img').classList.toggle('fade-out')
-
-    const links = document.querySelectorAll('.surprise-links a')
+function displaySocials(links, action) {
     setTimeout(() => {
         for (let i = 0; i < links.length; i++) {
             setTimeout(() => {
-                links[i].classList.toggle('fade-out')
+                if (action == 'fadeOut') links[i].classList.add('fade-out')
+                if (action == 'fadeIn') links[i].classList.remove('fade-out')
             }, 250 * i)
-        }
+        } 
     }, 1000)
+}
+
+document.querySelector('.midget-salt-bae').addEventListener('click', () => {
+    const links = document.querySelectorAll('.surprise-links a')
+
+    document.querySelector('.giant-salt-bae').classList.remove('fade-out')
+    document.querySelector('.midget-salt-bae').classList.add('fade-out') 
+    displaySocials(links, 'fadeIn')
+
+    document.querySelector('.giant-salt-bae').addEventListener('click', () => {
+        document.querySelector('.giant-salt-bae').classList.add('fade-out')
+        displaySocials(links, 'fadeOut')
+        setTimeout(() => {
+            document.querySelector('.midget-salt-bae').classList.remove('fade-out')
+        }, 500 * links.length)
+    })
 })
