@@ -1157,13 +1157,13 @@ button {
 
     .surprise-links a:nth-child(1) {
         top: -300px;
-        left: 120px;
+        left: 125px;
         animation: bounceAndSpin 35s infinite;
     }
 
     .surprise-links a:nth-child(2) {
         top: -200px;
-        left: 75px;
+        left: 80px;
         animation: bounceAndSpin 40s infinite;
     }
 
