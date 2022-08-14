@@ -40,7 +40,6 @@
 body {
     line-height: 1.5;
     font-weight: 300;
-/*  min-width: 360px; */
     min-height: 100vh;
     font-size: medium;
     padding: 35px 15px;
@@ -1145,25 +1144,25 @@ button {
 
     .surprise-links a:nth-child(1) {
         top: -300px;
-        left: 110px;
+        left: 115px;
         animation: bounceAndSpin 35s infinite;
     }
 
     .surprise-links a:nth-child(2) {
         top: -200px;
-        left: 65px;
+        left: 70px;
         animation: bounceAndSpin 40s infinite;
     }
 
     .surprise-links a:nth-child(3) {
         top: -100px;
-        left: 35px;
+        left: 40px;
         animation: bounceAndSpin 45s infinite;
     }
 
     .surprise-links a:nth-child(4) {
         top: -40px;
-        left: 40px;
+        left: 45px;
         animation: bounceAndSpin 50s infinite;
     }
 
