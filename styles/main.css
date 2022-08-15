@@ -27,6 +27,10 @@
     text-shadow: 5px 5px 5px var(--light-purple);
 }
 
+:focus {
+    outline: none !important;
+}
+
 ::before,
 ::after {
     box-sizing: border-box;
@@ -41,6 +45,7 @@
     -ms-user-select: none;
     user-select: none;
 }
+
 .remove-highlight:focus {
     outline: none !important;
 }
@@ -65,7 +70,7 @@ body {
 body::before {
     content: '';
     z-index: -1;
-    opacity: 0.10;
+    opacity: 0.1;
     line-height: 1.5;
     color: var(--dark-blue);
     background-color: var(--green);
@@ -177,6 +182,7 @@ button {
 }
 
 .btn {
+    z-index: 999;
     outline: none;
     cursor: pointer;
     overflow: hidden;
@@ -281,7 +287,7 @@ button {
     max-width: 1150px;
     width: calc(100% - 30px);
     transform: translateX(-50%);
-    animation: fadeIn 5s ease-in forwards;
+    animation: fadeIn 8s ease-in forwards;
 }
 
 .bg-icons div {
@@ -720,7 +726,7 @@ button {
     .about-text {
         padding: 0;
         width: 100%;
-        margin: 10px 20px;
+        margin: 10px 15px;
     }
 
     .about-img .img-box {
@@ -974,7 +980,7 @@ button {
     }
 }
 
-@media (max-height: 999px) and (max-width: 1046px) {
+@media (max-height: 999px) and (max-width: 1046px) {    
     .giant-salt-bae {
         transform: translate(0%, -15%) rotate(-35deg) scale(1);
         height: 300px;
@@ -987,10 +993,10 @@ button {
 
     .surprise-links {
         top: 50%;
-        right: 40%;
+        right: 35%;
         display: flex;
         flex-direction: row;
-        transform: translate(35%, -35%);
+        transform: translate(30%, -35%);
         height: 500px;
         width: 500px;
     }
