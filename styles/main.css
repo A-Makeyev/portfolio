@@ -46,10 +46,6 @@
     user-select: none;
 }
 
-.remove-highlight:focus {
-    outline: none !important;
-}
-
 .accelerate {
     will-change: transform, opacity;
     -webkit-transform: translate3d(0, 0, 0);
@@ -130,6 +126,7 @@ section.fade-out {
 
 .main.fade-out,
 .loader.fade-out,
+.bg-icons.fade-out,
 .giant-salt-bae.fade-out,
 .midget-salt-bae.fade-out,
 .surprise-links a.fade-out {
@@ -183,7 +180,6 @@ button {
 
 .btn {
     z-index: 999;
-    outline: none;
     cursor: pointer;
     overflow: hidden;
     line-height: 1.5;
@@ -212,6 +208,10 @@ button {
     width: 0%;
     left: 0;
     top: 0;
+}
+
+.btn:focus {
+    outline: none !important;
 }
 
 .btn:hover {
@@ -287,7 +287,7 @@ button {
     max-width: 1150px;
     width: calc(100% - 30px);
     transform: translateX(-50%);
-    animation: fadeIn 8s ease-in forwards;
+    animation: fadeIn 6s ease-in forwards;
 }
 
 .bg-icons div {
@@ -518,6 +518,10 @@ button {
     z-index: 99;
 }
 
+.midget-salt-bae:focus {
+    outline: none !important;
+}
+
 .midget-salt-bae:hover {
     transform: translate(-100.5%, -370.5%) rotate(-35deg);
 }
@@ -578,6 +582,10 @@ button {
     height: 500px;
     width: 500px;
     opacity: 0.9;
+}
+
+.giant-salt-bae:focus {
+    outline: none !important;
 }
 
 .giant-salt-bae:hover {
