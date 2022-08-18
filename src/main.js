@@ -8,8 +8,9 @@ window.addEventListener('load', () => {
 
     document.querySelector('.main').classList.remove('hidden')
     document.querySelector('.home-section').classList.add('active')
-    document.querySelector('.loader').classList.add('fade-out')
     document.querySelector('.bg-icons').classList.remove('fade-out')
+    document.querySelector('.loader').classList.add('fade-out')
+
     setTimeout(() => {
         document.querySelector('.loader').style.display = 'none'
     }, 1000)
@@ -33,7 +34,6 @@ const navToggler = document.querySelector('.nav-toggler')
 navToggler.addEventListener('click', () => {
     hideSection()
     toggleNavbar()
-    disableScrolling()
 })
 
 /* SECTIONS */
@@ -90,9 +90,8 @@ tabContainer.addEventListener('click', (event) => {
 /* PROJECT ITEM DETAILS POPUP */
 
 function toggleProjectPopup() {
-    document.querySelector('.project-popup').classList.toggle('open')
     document.querySelector('.main').classList.toggle('fade-out')
-    disableScrolling()
+    document.querySelector('.project-popup').classList.toggle('open')
 }
 
 function displayprojectDetails(projectItem) {
