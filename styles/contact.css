@@ -95,3 +95,48 @@
     color: var(--white);
     background-color: var(--dark-blue);
 }
+
+@media (max-width: 1045px) {
+    .contact-form,
+    .contact-info {
+        padding: 0;
+        width: 100%;
+        margin: 10px 20px;
+        text-align: center;
+    }
+
+    .contact-info {
+        order: -1;
+    }
+
+    .contact-info-item {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 575px) {
+    .about-text p {
+        width: 90%;
+    }
+
+    .about-text h2 {
+        font-size: medium;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 0;
+    }
+
+    .contact-info h2 {
+        font-size: medium;
+    }
+
+    .contact-info-item a {
+        font-weight: 400;
+    }
+
+    .contact-form {
+        padding-bottom: 20px;
+    }
+}

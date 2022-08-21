@@ -184,3 +184,68 @@
 .popup-body .general-info a {
     display: inline-block;
 }
+
+@media (max-width: 1045px) {
+    .project-item {
+        width: calc(50% - 30px);
+    }
+
+    .popup-header h2 {
+        margin: 10px;
+    }
+
+    .popup-body {
+        flex-direction: column;
+    }
+
+    .popup-body > div {
+        width: 90%;
+    }
+
+    .popup-body .description {
+        width: 100%;
+    }
+
+    .popup-body .general-info {
+        width: 100%;
+    }
+
+    .popup-body .general-info h5 {
+        padding-bottom: 30px;
+    }
+
+    .popup-header .btn {
+        width: 30px;
+        height: 30px;
+        right: -40px;
+        top: -40px;
+    }
+
+    .popup-close i {
+        font-size: large;
+    }
+}
+
+@media (max-width: 767px) {
+    .popup-body .description {
+        text-align: center;
+    }
+
+    .project-item {
+        width: calc(100% - 30px);
+    }
+}
+
+@media (max-width: 575px) {
+    .popup-header h2 {
+        font-size: medium;
+    }
+
+    .popup-body > div {
+        width: 100%;
+    }
+
+    .popup-body .description {
+        margin-top: -20px;
+    }
+}

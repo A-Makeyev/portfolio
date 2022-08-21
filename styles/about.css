@@ -231,3 +231,89 @@
     margin: 50px 0;
     background-color: var(--red);
 }
+
+@media (max-width: 1225px) {
+    .about-img,
+    .about-text {
+        padding: 0;
+        width: 100%;
+        margin: 10px 15px;
+    }
+
+    .about-img .img-box {
+        margin: 10px auto;
+    }
+
+    .quote {
+        padding: 1px;
+        text-align: center;
+        color: var(--gray);
+    }
+}
+
+@media (max-width: 767px) {
+    .skill-item {
+        padding: 5px 10px;
+    }
+
+    .timeline-box {
+        width: 95%;
+        padding: 0 15px;
+        margin: 15px auto;
+    }
+}
+
+@media (max-width: 575px) {
+    .about-text p {
+        width: 90%;
+    }
+
+    .about-text h2 {
+        font-size: medium;
+    }
+
+    .quote {
+        font-size: small;
+        margin-top: -15px;
+        padding-top: 15px;
+    }
+
+    .skill-item {
+        font-size: small;
+        padding: 5px 10px;
+    }
+
+    .timeline-box {
+        width: 95%;
+        padding: 0 15px;
+        margin: 15px auto;
+    }
+
+    .timeline-box .timeline-item h5 {
+        font-size: small;
+    }
+
+    .timeline-box .timeline-item li {
+        font-size: small;
+        font-weight: 400;
+    }
+
+    .timeline-images img {
+        height: 125px;
+        max-width: 200px;
+    }
+
+    .timeline-images a {
+        padding: 5px;
+        margin: auto;
+    }
+
+    .about-btns {
+        margin: auto;
+    }
+
+    .about-btns .btn {
+        font-size: small;
+        padding: 5px 15px;
+    }
+}

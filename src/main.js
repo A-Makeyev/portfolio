@@ -132,7 +132,7 @@ function displaySocials(links, action) {
 }
 
 document.querySelector('.midget-salt-bae').addEventListener('click', () => {
-    const links = document.querySelectorAll('.surprise-links a')
+    const links = document.querySelectorAll('.secret-links a')
 
     document.querySelector('.giant-salt-bae').classList.remove('fade-out')
     document.querySelector('.midget-salt-bae').classList.add('fade-out') 
