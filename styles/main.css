@@ -135,7 +135,7 @@ section.fade-out {
 
 .main.fade-out,
 .loader.fade-out,
-.bg-icons.fade-out,
+.bg-icons-box.fade-out,
 .midget-salt-bae.fade-out {
     opacity: 0;
     visibility: hidden;
@@ -186,7 +186,7 @@ button {
 }
 
 .btn {
-    z-index: 999;
+    z-index: 100;
     cursor: pointer;
     overflow: hidden;
     line-height: 1.5;
@@ -251,7 +251,7 @@ button {
 @keyframes zoomAndSpin {
     0%,
     100% {
-        transform: scale(0.5) rotate(360deg);
+        transform: scale(0.75) rotate(360deg);
     }
 
     50% {
@@ -282,7 +282,7 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ BACKGROUND ICONS ~~~~~~~~~~~~~~~~~~~~~~ */
 
-.bg-icons {
+.bg-icons-box {
     top: 0;
     left: 50%;
     height: 100%;
@@ -293,22 +293,22 @@ button {
     animation: fadeIn 6s ease-in forwards;
 }
 
-.bg-icons div {
+.bg-icons-box div {
     position: absolute;
     border-radius: 50%;
 }
 
-.bg-icons .icon-1 {
+.bg-icons-box .bg-icon:nth-child(1) {
     top: 5%;
     left: 5%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
     animation: zoomAndSpin 75s linear infinite;
 }
 
-.bg-icons .icon-2 {
+.bg-icons-box .bg-icon:nth-child(2) {
     top: 35%;
     left: 40%;
     opacity: 0.5;
@@ -318,53 +318,53 @@ button {
     animation: zoomAndSpin 100s ease-in-out infinite;
 }
 
-.bg-icons .icon-3 {
+.bg-icons-box .bg-icon:nth-child(3) {
     top: 10%;
     left: 70%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
-    transition: all 2s ease-in-out;
+    transition: all 3s ease-in-out;
     animation: zoomAndSpin 125s linear infinite;
 }
 
-.bg-icons .icon-4 {
+.bg-icons-box .bg-icon:nth-child(4) {
     top: 75%;
     left: 80%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
-    transition: all 2s ease-in-out;
+    transition: all 4s ease-in-out;
     animation: zoomAndSpin 150s linear infinite;
 }
 
-.bg-icons .icon-5 {
+.bg-icons-box .bg-icon:nth-child(5) {
     top: 55%;
     left: 5%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
-    transition: all 2s ease-in-out;
+    transition: all 5s ease-in-out;
     animation: zoomAndSpin 175s linear infinite;
 }
 
-.bg-icons .icon-6 {
+.bg-icons-box .bg-icon:nth-child(6) {
     top: 65%;
     left: 20%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
-    transition: all 2s ease-in-out;
+    transition: all 6s ease-in-out;
     animation: zoomAndSpin 200s linear infinite;
 }
 
-.bg-icons .icon-7 {
+.bg-icons-box .bg-icon:nth-child(7) {
     top: 75%;
     left: 5%;
     opacity: 0.5;
     width: 150px;
     height: 150px;
-    transition: all 2s ease-in-out;
+    transition: all 7s ease-in-out;
     animation: zoomAndSpin 225s linear infinite;
 }
 
@@ -541,13 +541,13 @@ button {
 }
 
 .midget-salt-bae {
+    z-index: 100;
     cursor: pointer;
     position: absolute;
     transform: translate(-115.5%, -355.5%) rotate(-50deg);
     transition: all 0.25s ease;
     height: 60px;
     width: 60px;
-    z-index: 99;
 }
 
 .midget-salt-bae:focus {
@@ -584,49 +584,49 @@ button {
         margin: 0 1px 15px;
     }
 
-    .bg-icons .icon-1 {
+    .bg-icons-box .bg-icon:nth-child(1) {
         top: 10%;
         left: 10%;
         width: 100px;
         height: 100px;
     }
 
-    .bg-icons .icon-2 {
+    .bg-icons-box .bg-icon:nth-child(2) {
         top: 50%;
         left: 75%;
         width: 100px;
         height: 100px;
     }
 
-    .bg-icons .icon-3 {
+    .bg-icons-box .bg-icon:nth-child(3) {
         top: 15%;
         right: 10%;
         width: 100px;
         height: 100px;
     }
 
-    .bg-icons .icon-4 {
+    .bg-icons-box .bg-icon:nth-child(4) {
         top: 75%;
         left: 65%;
         width: 100px;
         height: 100px;
     }
 
-    .bg-icons .icon-5 {
+    .bg-icons-box .bg-icon:nth-child(5) {
         top: 35%;
         left: 15%;
         width: 100px;
         height: 100px;
     }
 
-    .bg-icons .icon-6 {
+    .bg-icons-box .bg-icon:nth-child(6) {
         top: 55%;
         left: 5%;
         width: 100px;
         height: 100px;
     }
 
-    .bg-icons .icon-7 {
+    .bg-icons-box .bg-icon:nth-child(7) {
         top: 75%;
         left: 15%;
         width: 100px;
@@ -651,13 +651,7 @@ button {
         font-size: large;
     }
 
-    .bg-icons .icon-1,
-    .bg-icons .icon-2,
-    .bg-icons .icon-3,
-    .bg-icons .icon-4,
-    .bg-icons .icon-5,
-    .bg-icons .icon-6,
-    .bg-icons .icon-7 {
+    .bg-icons-box .bg-icon {
         width: 70px;
         height: 70px;
     }

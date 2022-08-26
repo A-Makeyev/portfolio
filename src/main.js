@@ -7,10 +7,10 @@ window.addEventListener('load', () => {
     greeting.innerText = currentHour < 18 ? 'bonjour' : 'bonsoir'
 
     document.querySelector('.main').classList.remove('hidden')
-    document.querySelector('.home-section').classList.add('active')
-    document.querySelector('.bg-icons').classList.remove('fade-out')
     document.querySelector('.loader').classList.add('fade-out')
-
+    document.querySelector('.home-section').classList.add('active')
+    document.querySelector('.bg-icons-box').classList.remove('fade-out')
+    
     setTimeout(() => {
         document.querySelector('.loader').style.display = 'none'
     }, 1000)
