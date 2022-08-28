@@ -6,14 +6,16 @@ window.addEventListener('load', () => {
     const greeting = document.getElementById('greeting')
     greeting.innerText = currentHour < 18 ? 'bonjour' : 'bonsoir'
 
-    document.querySelector('.loader').classList.add('fade-out')
+    const isMobileDevice = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    document.querySelector('.loader div:nth-child(1)').style.display = isMobileDevice ? 'none' : 'block'
 
+    document.querySelector('.loader').classList.add('fade-out')
     setTimeout(() => {
         document.querySelector('.loader').style.display = 'none'
         document.querySelector('.main').classList.remove('hidden')
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
-    }, 500)
+    }, 750)
 })
 
 /* MAIN NAV */
