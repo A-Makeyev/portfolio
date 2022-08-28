@@ -550,12 +550,12 @@ button {
     width: 60px;
 }
 
-.midget-salt-bae:focus {
-    outline: none !important;
-}
-
 .midget-salt-bae:hover {
     transform: translate(-100.5%, -370.5%) rotate(-35deg);
+}
+
+.midget-salt-bae:focus {
+    outline: none !important;
 }
 
 @media (max-width: 1045px) {
@@ -631,6 +631,16 @@ button {
         left: 15%;
         width: 100px;
         height: 100px;
+    }
+
+    .midget-salt-bae {
+        transform: translate(-115.5%, -355.5%) rotate(-50deg);
+        height: 50px;
+        width: 50px;
+    }
+    
+    .midget-salt-bae:hover {
+        transform: translate(-100.5%, -370.5%) rotate(-35deg);
     }
 }
 
