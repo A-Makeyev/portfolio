@@ -1,13 +1,14 @@
 /* LOADER */
 
+if (window.matchMedia('(max-width: 574px)').matches) {
+    document.querySelector('.loader div:nth-child(1)').style.display = 'none'
+}
+
 window.addEventListener('load', () => {
     const today = new Date()
     const currentHour = today.getHours()
     const greeting = document.getElementById('greeting')
     greeting.innerText = currentHour < 18 ? 'bonjour' : 'bonsoir'
-
-    const isMobileDevice = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    document.querySelector('.loader div:nth-child(1)').style.display = isMobileDevice ? 'none' : 'block'
 
     document.querySelector('.loader').classList.add('fade-out')
     setTimeout(() => {
@@ -15,7 +16,7 @@ window.addEventListener('load', () => {
         document.querySelector('.main').classList.remove('hidden')
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
-    }, 750)
+    }, 500)
 })
 
 /* MAIN NAV */
@@ -34,8 +35,9 @@ function toggleNavbar() {
 
 const navToggler = document.querySelector('.nav-toggler')
 navToggler.addEventListener('click', () => {
-    hideSection()
+    disableScrolling()
     toggleNavbar()
+    hideSection()
 })
 
 /* SECTIONS */
@@ -46,12 +48,14 @@ document.addEventListener('click', (event) => {
         // activate overlay to prevent multiple clicks
         document.querySelector('.overlay').classList.add('active')
         navToggler.classList.add('hide')
+        
         if (event.target.classList.contains('nav-item')) {
             toggleNavbar()
         } else {
             hideSection()
             document.body.classList.add('disable-scrolling')
         }
+        
         setTimeout(() => {
             document.querySelector('section.active').classList.remove('active', 'fade-out')
             document.querySelector('.overlay').classList.remove('active')
@@ -89,32 +93,54 @@ tabContainer.addEventListener('click', (event) => {
     }
 })
 
-/* PROJECT ITEM DETAILS POPUP */
+/* POPUPS */
 
 function toggleProjectPopup() {
     document.querySelector('.main').classList.toggle('fade-out')
     document.querySelector('.project-popup').classList.toggle('open')
 }
 
-function displayprojectDetails(projectItem) {
+function displayProjectDetails(projectItem) {
     const projectImage = projectItem.querySelector('.project-item-thumbnail img').src
-    const projectTitle = projectItem.querySelector('.project-item-title').innerHTML
     const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
 
     document.querySelector('.popup-thumbnail img').src = projectImage
     document.querySelector('.popup-body').innerHTML = projectDetails
-    // document.querySelector('.popup-header h2').innerHTML = projectTitle
+}
+
+function displayImage(id) {
+    id = id.replace('img-to-display-', '')
+    document.querySelector('.main').classList.add('fade-out')
+    document.querySelector('.image-popup').classList.add('open')
+    document.querySelector('body').classList.add('disable-scrolling')
+
+    if (window.location.href.includes('#about')) {
+        document.querySelector('.image-content img').src = `assets/images/timeline/${id}.jpg`
+    } else if (window.location.href.includes('#projects')) {
+        document.querySelector('.image-content img').src = `assets/images/projects/${id}.jpg`
+    }
+
+    document.querySelector('.image-content img').alt = id
+    document.querySelector('.image-popup-close').addEventListener('click', () => {
+        document.querySelector('.main').classList.remove('fade-out')
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('body').classList.remove('disable-scrolling')
+    })
 }
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
         toggleProjectPopup()
-        displayprojectDetails(event.target.parentNode.parentNode)
+        displayProjectDetails(event.target.parentNode.parentNode)
         document.querySelector('.project-popup').scrollTo(0, 0)
     }
 
     if (event.target.classList.contains('popup-inner')) {
         toggleProjectPopup()
+    }
+
+    if (event.target.id != 'undefined' && event.target.id.includes('img-to-display')) {
+        displayImage(event.target.id)
     }
 })
 
