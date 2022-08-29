@@ -175,6 +175,8 @@
     color: var(--red);
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
+
 @media (max-width: 1045px) {
     .header .nav-toggler {
         margin: 0 20px;

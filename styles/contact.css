@@ -96,6 +96,8 @@
     background-color: var(--dark-blue);
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
+
 @media (max-width: 1045px) {
     .contact-form,
     .contact-info {

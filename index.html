@@ -152,8 +152,8 @@
 
           <div class="about-img">
             <div class="img-box">
-              <a href="/assets/images/anatoly.png" target="_blank">
-                <img src="/assets/images/anatoly.png" alt="anatoly makeyev">
+              <a href="javascript: void(0);">
+                <img id="img-to-display-anatoly" src="/assets/images/timeline/anatoly.jpg" alt="anatoly makeyev">
               </a>
             </div>
             <div class="quote">
@@ -255,13 +255,11 @@
                     <li>⦁ Tracking issues, visual bugs as well as logical errors and reporting them using JIRA.</li>
                   </ul>
                   <div class="timeline-images">
-                    <a href="/assets/images/timeline/fast-team.jpg" target="_blank">
-                      <img src="/assets/images/timeline/fast-team.jpg"
-                        alt="We won as the most influential startup company of Haifa">
+                    <a href="javascript: void(0);">
+                      <img id="img-to-display-fast-team" src="/assets/images/timeline/fast-team.jpg" alt="We won as the most influential startup company of Haifa">
                     </a>
-                    <a href="/assets/images/timeline/startup-awards.jpg" target="_blank">
-                      <img src="/assets/images/timeline/startup-awards.jpg"
-                        alt="Global Entrepreneurship Week, Israel 2018">
+                    <a href="javascript: void(0);">
+                      <img id="img-to-display-startup-awards" src="/assets/images/timeline/startup-awards.jpg" alt="Global Entrepreneurship Week, Israel 2018">
                     </a>
                     <a href="https://www.youtube.com/watch?v=t47f_Nlsn7U" target="_blank">
                       <img src="/assets/images/timeline/awards-video.jpg"
@@ -289,15 +287,15 @@
                     <li>⦁ JavaScript, Regex, Debugging, Data Structures, Functional Programming and OOP.</li>
                   </ul>
                   <div class="timeline-images">
-                    <a href="https://www.freecodecamp.org/certification/a-makeyev/responsive-web-design"
-                      target="_blank">
-                      <img src="/assets/images/timeline/Responsive-Web-Design.jpg"
-                        alt="Responsive Web Design Certificate">
+                    <a href="javascript: void(0);">
+                      <img id="img-to-display-Responsive-Web-Design" 
+                           src="/assets/images/timeline/Responsive-Web-Design.jpg"
+                           alt="Responsive Web Design Certificate">
                     </a>
-                    <a href="https://www.freecodecamp.org/certification/a-makeyev/javascript-algorithms-and-data-structures"
-                      target="_blank">
-                      <img src="/assets/images/timeline/JavaScript-Algorithms-and-Data-Structures.jpg"
-                        alt="JavaScript Algorithms and Data Structures Certificate">
+                    <a href="javascript: void(0);">
+                      <img id="img-to-display-JavaScript-Algorithms-and-Data-Structures" 
+                           src="/assets/images/timeline/JavaScript-Algorithms-and-Data-Structures.jpg"
+                           alt="JavaScript Algorithms and Data Structures Certificate">
                     </a>
                   </div>
                 </div>
@@ -314,9 +312,10 @@
                     <li>⦁ Learning test automation using Java programming with Selenium and Appium.</li>
                   </ul>
                   <div class="timeline-images">
-                    <a href="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg" target="_blank">
-                      <img src="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg"
-                        alt="Software Quality Assurance Certificate">
+                    <a href="javascript: void(0);">
+                      <img id="img-to-display-Software-Quality-Assurance-Certificate" 
+                           src="/assets/images/timeline/Software-Quality-Assurance-Certificate.jpg"
+                           alt="Software Quality Assurance Certificate">
                     </a>
                   </div>
                 </div>
@@ -349,7 +348,48 @@
 
         <div class="row">
 
-          <!-- PROJECT 1 -->
+          <!-- PROJECT 1 ~ THIS PORTFOLIO WEBSITE -->
+
+          <div class="project-item center">
+            <div class="project-item-thumbnail">
+              <img src="assets/images/projects/Portfolio-Website.jpg" alt="Makeyev Finance" class="view-project-btn">
+            </div>
+
+            <h2 class="project-item-title center">Portfolio Website</h2>
+
+            <a href="javascript:void(0)" class="project-item-btn accelerate remove-highlight center" data-tooltip="view project details">
+              <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
+            </a>
+            <a href="https://github.com/A-Makeyev/portfolio-website/" target="_blank"
+              class="project-item-btn accelerate remove-highlight center" data-tooltip="view source code">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="javascript: void(0);" class="project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
+              <i class="fa-solid fa-globe" id="img-to-display-already-inside"></i>
+            </a>
+
+            <div class="project-item-details">
+              <div class="description">
+                <p>
+                  This is where I convey my personality and creativity,
+                  hopefully the animations do not slow your device. 
+                </p>
+              </div>
+
+              <div class="general-info">
+                <h5>technologies used</h5>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item">JavaScript</a>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/A-Makeyev/portfolio-website/" target="_blank" class="btn remove-highlight">Source Code</a>
+                <a href="javascript: window.location.href = window.location.href.split('#')[0];" class="btn remove-highlight">Live Website</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECT 2 -->
 
           <div class="project-item center">
             <div class="project-item-thumbnail">
@@ -361,7 +401,7 @@
             <a href="javascript:void(0)" class="project-item-btn accelerate remove-highlight center" data-tooltip="view project details">
               <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
             </a>
-            <a href="https://github.com/A-Makeyev/makeyev-finance" target="_blank"
+            <a href="https://github.com/A-Makeyev/makeyev-finance/" target="_blank"
               class="project-item-btn accelerate remove-highlight center" data-tooltip="view source code">
               <i class="fa-brands fa-github"></i>
             </a>
@@ -383,18 +423,17 @@
                 <h5>technologies used</h5>
                 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
                 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
-                  class="skill-item">JavaScript</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item">JavaScript</a>
                 <a href="https://playwright.dev/" target="_blank" class="skill-item">Playwright</a>
               </div>
               <div class="project-links">
-                <a href="https://github.com/A-Makeyev/makeyev-finance" target="_blank" class="btn remove-highlight">Source Code</a>
+                <a href="https://github.com/A-Makeyev/makeyev-finance/" target="_blank" class="btn remove-highlight">Source Code</a>
                 <a href="https://makeyev-finance.netlify.app/" target="_blank" class="btn remove-highlight">Live Website</a>
               </div>
             </div>
           </div>
 
-          <!-- PROJECT 2 -->
+          <!-- PROJECT 3 -->
 
           <div class="project-item center">
             <div class="project-item-thumbnail">
@@ -406,7 +445,7 @@
             <a href="javascript:void(0)" class="project-item-btn accelerate remove-highlight center" data-tooltip="view project details">
               <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
             </a>
-            <a href="https://github.com/A-Makeyev/chatup" target="_blank" class="project-item-btn accelerate remove-highlight center" data-tooltip="view source code">
+            <a href="https://github.com/A-Makeyev/chatup/" target="_blank" class="project-item-btn accelerate remove-highlight center" data-tooltip="view source code">
               <i class="fa-brands fa-github"></i>
             </a>
             <a href="https://chat-up.netlify.app/" target="_blank" class="project-item-btn accelerate remove-highlight center"
@@ -418,7 +457,7 @@
               <div class="description">
                 <p>
                   A simple chat app that lets users choose a name and send text messages.
-                  There are two rooms, one is public which anyone can see and have access to,
+                  There are two rooms, where one is public which anyone can see and have access to,
                   and the other one is private and requires a password.
                 </p>
               </div>
@@ -427,12 +466,11 @@
                 <h5>technologies used</h5>
                 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item">HTML</a>
                 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item">CSS</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
-                  class="skill-item">JavaScript</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item">JavaScript</a>
                 <a href="https://firebase.google.com/" target="_blank" class="skill-item">Firebase</a>
               </div>
               <div class="project-links">
-                <a href="https://github.com/A-Makeyev/chatup" target="_blank" class="btn accelerate remove-highlight">Source Code</a>
+                <a href="https://github.com/A-Makeyev/chatup/" target="_blank" class="btn accelerate remove-highlight">Source Code</a>
                 <a href="https://chat-up.netlify.app/" target="_blank" class="btn accelerate remove-highlight">Live Website</a>
               </div>
             </div>
@@ -528,7 +566,21 @@
     </div>
   </div>
 
+    <!-- IMAGE POPUP -->
+
+    <div class="image-popup center">
+      <div class="image-inner">
+        <div class="image-popup-header">
+          <button type="button" class="accelerate image-popup-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <div class="image-content accelerate">
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
   <script src="src/main.js"></script>
 </body>
-
 </html>
