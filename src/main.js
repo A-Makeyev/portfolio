@@ -122,9 +122,10 @@ function displayImage(id) {
 
     document.querySelector('.image-content img').alt = id
     document.querySelector('.image-popup-close').addEventListener('click', () => {
-        document.querySelector('.main').classList.remove('fade-out')
-        document.querySelector('.image-popup').classList.remove('open')
         document.querySelector('body').classList.remove('disable-scrolling')
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('.main').classList.remove('fade-out')
+        document.querySelector('.image-content img').src = ''
     })
 }
 
@@ -136,6 +137,7 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.classList.contains('popup-inner')) {
+        document.querySelector('.popup-thumbnail img').src = ''
         toggleProjectPopup()
     }
 

@@ -83,7 +83,7 @@ body::before {
 }
 
 body.disable-scrolling {
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 ul {

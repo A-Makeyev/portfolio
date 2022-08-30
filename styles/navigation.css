@@ -99,7 +99,7 @@
     width: 100%;
     height: 100%;
     position: fixed;
-    overflow-y: auto;
+    overflow-y: hidden;
     padding: 30px 15px;
     visibility: hidden;
 }
