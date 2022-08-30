@@ -568,14 +568,13 @@ button {
     height: 100%;
     z-index: 1000;
     position: fixed;
-    overflow-y: hidden;
     visibility: hidden;
     opacity: 0;
 }
 
 .image-popup.open {
     opacity: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     visibility: visible;
 }
 
