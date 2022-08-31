@@ -1,7 +1,7 @@
 /* LOADER */
 
 if (window.matchMedia('(max-width: 574px)').matches) {
-    document.querySelector('.loader div:nth-child(1)').style.display = 'none'
+    document.querySelector('.loader div:nth-child(1)').remove()
 }
 
 window.addEventListener('load', () => {
@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
 
     document.querySelector('.loader').classList.add('fade-out')
     setTimeout(() => {
-        document.querySelector('.loader').style.display = 'none'
+        document.querySelector('.loader').remove()
         document.querySelector('.main').classList.remove('hidden')
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
@@ -143,6 +143,16 @@ document.addEventListener('click', (event) => {
 
     if (event.target.id != 'undefined' && event.target.id.includes('img-to-display')) {
         displayImage(event.target.id)
+    }
+
+    if (event.target.id != 'undefined' && event.target.id.includes('bg-animations')) {
+        if (event.target.id.includes('remove-bg-animations')) {
+            document.querySelector('.bg-icons-box').style.display = 'none'
+            document.getElementById('remove-bg-animations').setAttribute('id', 'add-bg-animations')
+        } else if (event.target.id.includes('add-bg-animations')) {
+            document.getElementById('add-bg-animations').setAttribute('id', 'remove-bg-animations')
+            document.querySelector('.bg-icons-box').style.display = 'block'
+        }
     }
 })
 

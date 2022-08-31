@@ -28,7 +28,6 @@
     border-radius: 50%;
     cursor: pointer;
     margin: 0 -20px;
-    border: none;
     height: 50px;
     width: 50px;
     z-index: 1;
@@ -173,6 +172,41 @@
 
 .header .nav-inner ul li a:hover {
     color: var(--red);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ REMOVE ANIMATIONS BUTTON ~~~~~~~~~~~~~~~~~~~~~ */
+
+#remove-animations {
+    display: none;
+}
+
+@media (min-width: 767px) {
+    #add-bg-animations,
+    #remove-bg-animations {
+        top: 80px;
+        right: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease-in-out;
+        background-color: var(--white-alpha-25);
+        border: 1px solid var(--white-alpha-40);
+        border-radius: 50%;
+        position: absolute;
+        font-size: larger;
+        cursor: pointer;
+        margin: 0 -20px;
+        height: 30px;
+        width: 30px;
+        z-index: 1;
+    }
+
+    #add-bg-animations:hover,
+    #remove-bg-animations:hover {
+        color: var(--white);
+        background-color: var(--dark-blue);
+        border: 1px solid var(--white-alpha-25);
+    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
