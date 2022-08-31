@@ -1,7 +1,7 @@
 /* LOADER */
 
 if (window.matchMedia('(max-width: 574px)').matches) {
-    document.querySelector('.loader div:nth-child(1)').remove()
+    document.querySelector('.loader div:nth-child(1)').style.display = 'none'
 }
 
 window.addEventListener('load', () => {
@@ -34,7 +34,9 @@ function toggleNavbar() {
 }
 
 const navToggler = document.querySelector('.nav-toggler')
-navToggler.addEventListener('click', () => {
+navToggler.addEventListener('click', (event) => {
+    event.preventDefault()
+    document.querySelector('.bg-animation-toggler').classList.toggle('fade-out')
     disableScrolling()
     toggleNavbar()
     hideSection()
@@ -145,12 +147,12 @@ document.addEventListener('click', (event) => {
         displayImage(event.target.id)
     }
 
-    if (event.target.id != 'undefined' && event.target.id.includes('bg-animations')) {
-        if (event.target.id.includes('remove-bg-animations')) {
+    if (event.target.id != 'undefined' && event.target.id.includes('bg-animation')) {
+        if (event.target.id.includes('remove-bg-animation')) {
             document.querySelector('.bg-icons-box').style.display = 'none'
-            document.getElementById('remove-bg-animations').setAttribute('id', 'add-bg-animations')
-        } else if (event.target.id.includes('add-bg-animations')) {
-            document.getElementById('add-bg-animations').setAttribute('id', 'remove-bg-animations')
+            document.getElementById('remove-bg-animation').setAttribute('id', 'add-bg-animation')
+        } else if (event.target.id.includes('add-bg-animation')) {
+            document.getElementById('add-bg-animation').setAttribute('id', 'remove-bg-animation')
             document.querySelector('.bg-icons-box').style.display = 'block'
         }
     }

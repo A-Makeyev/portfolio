@@ -176,13 +176,19 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~ REMOVE ANIMATIONS BUTTON ~~~~~~~~~~~~~~~~~~~~~ */
 
-#remove-animations {
+.bg-animation-toggler.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#add-bg-animation,
+#remove-bg-animation {
     display: none;
 }
 
 @media (min-width: 767px) {
-    #add-bg-animations,
-    #remove-bg-animations {
+    #add-bg-animation,
+    #remove-bg-animation {
         top: 80px;
         right: 50px;
         display: flex;
@@ -201,8 +207,8 @@
         z-index: 1;
     }
 
-    #add-bg-animations:hover,
-    #remove-bg-animations:hover {
+    #add-bg-animation:hover,
+    #remove-bg-animation:hover {
         color: var(--white);
         background-color: var(--dark-blue);
         border: 1px solid var(--white-alpha-25);
