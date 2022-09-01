@@ -116,7 +116,7 @@
     background-color: var(--white-alpha-25);
     min-height: calc(100vh - 70px);
     transition: all 0.25s ease;
-    border-radius: 20px;
+    border-radius: 10px;
     max-width: 1200px;
     margin: 5px auto;
     opacity: 0;
@@ -172,47 +172,6 @@
 
 .header .nav-inner ul li a:hover {
     color: var(--red);
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~ REMOVE ANIMATIONS BUTTON ~~~~~~~~~~~~~~~~~~~~~ */
-
-.bg-animation-toggler.fade-out {
-    opacity: 0;
-    visibility: hidden;
-}
-
-#add-bg-animation,
-#remove-bg-animation {
-    display: none;
-}
-
-@media (min-width: 767px) {
-    #add-bg-animation,
-    #remove-bg-animation {
-        top: 80px;
-        right: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.25s ease-in-out;
-        background-color: var(--white-alpha-25);
-        border: 1px solid var(--white-alpha-40);
-        border-radius: 50%;
-        position: absolute;
-        font-size: larger;
-        cursor: pointer;
-        margin: 0 -20px;
-        height: 30px;
-        width: 30px;
-        z-index: 1;
-    }
-
-    #add-bg-animation:hover,
-    #remove-bg-animation:hover {
-        color: var(--white);
-        background-color: var(--dark-blue);
-        border: 1px solid var(--white-alpha-25);
-    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */

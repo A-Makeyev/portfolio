@@ -16,6 +16,10 @@ window.addEventListener('load', () => {
         document.querySelector('.main').classList.remove('hidden')
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
+        document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
+        setTimeout(() => {
+            document.querySelector('.m-logo').click()
+        }, 2500)
     }, 500)
 })
 
@@ -36,7 +40,6 @@ function toggleNavbar() {
 const navToggler = document.querySelector('.nav-toggler')
 navToggler.addEventListener('click', (event) => {
     event.preventDefault()
-    document.querySelector('.bg-animation-toggler').classList.toggle('fade-out')
     disableScrolling()
     toggleNavbar()
     hideSection()
@@ -142,19 +145,19 @@ document.addEventListener('click', (event) => {
         document.querySelector('.popup-thumbnail img').src = ''
         toggleProjectPopup()
     }
-
+    
     if (event.target.id != 'undefined' && event.target.id.includes('img-to-display')) {
         displayImage(event.target.id)
     }
 
-    if (event.target.id != 'undefined' && event.target.id.includes('bg-animation')) {
-        if (event.target.id.includes('remove-bg-animation')) {
-            document.querySelector('.bg-icons-box').style.display = 'none'
-            document.getElementById('remove-bg-animation').setAttribute('id', 'add-bg-animation')
-        } else if (event.target.id.includes('add-bg-animation')) {
-            document.getElementById('add-bg-animation').setAttribute('id', 'remove-bg-animation')
-            document.querySelector('.bg-icons-box').style.display = 'block'
-        }
+    if (event.target.id != 'undefined' && event.target.id === 'activate-salt-bae') {
+        setTimeout(() => {
+            document.querySelector('.midget-salt-bae').click()
+        }, 1500)
+    }
+
+    if (event.target.classList.contains('m-logo')) {
+        document.querySelector('.bg-icons-box').classList.toggle('active')
     }
 })
 

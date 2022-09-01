@@ -54,7 +54,7 @@
 .about-img .img-box {
     max-width: 380px;
     margin-top: 55px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 5px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
 }
@@ -207,7 +207,7 @@
 .timeline-images img {
     height: 150px;
     max-width: 250px;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 5px solid var(--white-alpha-40);
     transition: all 0.25s ease-in;
     cursor: pointer;

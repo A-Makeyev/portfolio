@@ -21,7 +21,7 @@
     margin: auto;
     padding: 10px;
     max-width: 450px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
 }
@@ -86,7 +86,7 @@
     width: 100%;
     padding: 20px;
     max-width: 900px;
-    border-radius: 10px;
+    border-radius: 5px;
     backdrop-filter: blur(5px);
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);

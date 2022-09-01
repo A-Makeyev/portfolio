@@ -110,7 +110,7 @@ section {
     border: 1px solid var(--white-alpha-25);
     background-color: var(--white-alpha-40);
     backdrop-filter: blur(5px);
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 section.active {
@@ -284,9 +284,14 @@ button {
 /* ~~~~~~~~~~~~~~~~~~~~~ BACKGROUND ICONS ~~~~~~~~~~~~~~~~~~~~~~ */
 
 .bg-icons-box {
+    display: none;
+}
+
+.bg-icons-box.active {
     top: 0;
     left: 50%;
     height: 100%;
+    display: block;
     position: fixed;
     max-width: 1150px;
     width: calc(100% - 30px);
@@ -526,8 +531,18 @@ button {
     transform: translate(-100.5%, -370.5%) rotate(-35deg);
 }
 
-.midget-salt-bae:focus {
-    outline: none !important;
+.m-logo {
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-53%, -497%);
+    transition: all 0.25s ease;
+    height: 35px;
+    width: 55px;
+}
+
+.m-logo:hover {
+    transform: translate(-53%, -497%) scale(1.1);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ IMAGE POPUP ~~~~~~~~~~~~~~~~~~~~~ */
@@ -562,7 +577,7 @@ button {
     width: 100%;
     padding: 20px;
     max-width: 900px;
-    border-radius: 10px;
+    border-radius: 5px;
     backdrop-filter: blur(5px);
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
@@ -723,6 +738,16 @@ button {
     .midget-salt-bae:hover {
         transform: translate(-100.5%, -370.5%) rotate(-35deg);
     }
+
+    .m-logo {
+        transform: translate(-52%, -486%);
+        height: 30px;
+        width: 50px;
+    }
+
+    .m-logo:hover {
+        transform: translate(-52%, -486%) scale(1.1);
+    }
 }
 
 @media (max-width: 575px) {
@@ -755,5 +780,15 @@ button {
     
     .midget-salt-bae:hover {
         transform: translate(-105.5%, -380%) rotate(-35deg);
+    }
+
+    .m-logo {
+        transform: translate(-53%, -486%);
+        height: 25px;
+        width: 35px;
+    }
+
+    .m-logo:hover {
+        transform: translate(-53%, -486%) scale(1.1); 
     }
 }
