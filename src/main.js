@@ -129,9 +129,15 @@ function displayImage(id) {
     document.querySelector('body').classList.add('disable-scrolling')
 
     if (window.location.href.includes('#about')) {
-        document.querySelector('.image-content img').src = `assets/images/timeline/${id}.jpg`
+        fetch(`assets/images/timeline/${id}.jpg`)
+        .then(res => {
+            document.querySelector('.image-content img').src = res.url
+        })
     } else if (window.location.href.includes('#projects')) {
-        document.querySelector('.image-content img').src = `assets/images/projects/${id}.jpg`
+        fetch(`assets/images/projects/${id}.jpg`)
+        .then(res => {
+            document.querySelector('.image-content img').src = res.url
+        })
     }
 
     document.querySelector('.image-content img').alt = id
