@@ -282,30 +282,14 @@
 @media (max-width: 767px) {
     .skill-item {
         padding: 5px 10px;
-    }
-
-    .about-tabs .tab-item {
-        font-size: medium;
-    }
-
-    .timeline-box {
-        width: 95%;
-        padding: 0 15px;
-        margin: 15px auto;
-    }
-
-    .timeline-images img {
-        height: 85px;
-        max-width: 165px;
-    }
-}
-
-@media (max-width: 575px) {
-    .about-text p {
-        width: 90%;
+        margin: 0 1px 1px 0;
     }
 
     .about-text h2 {
+        font-size: medium;
+    }
+
+    .about-text p {
         font-size: medium;
     }
 
@@ -315,11 +299,15 @@
         padding-top: 15px;
     }
 
+    .about-tabs .tab-item {
+        font-size: medium;
+    }
+
     .skill-item {
         font-size: small;
         padding: 5px 10px;
     }
-
+    
     .timeline-box {
         width: 95%;
         padding: 0 15px;
@@ -333,6 +321,23 @@
     .timeline-box .timeline-item li {
         font-size: small;
         font-weight: 400;
+    }
+
+    .timeline-images img {
+        height: 85px;
+        max-width: 165px;
+    }
+}
+
+@media (max-width: 575px) {
+    .about-text p {
+        width: 90%;
+    }
+
+    .timeline-box {
+        width: 95%;
+        padding: 0 15px;
+        margin: 15px auto;
     }
 
     .timeline-images img {

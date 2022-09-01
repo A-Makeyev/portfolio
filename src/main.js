@@ -1,3 +1,23 @@
+var saltBaeWasActivated = false
+
+function disableScrolling() {
+    document.querySelector('body').classList.toggle('disable-scrolling')
+}
+
+function hideSection() {
+    document.querySelector('section.active').classList.toggle('fade-out')
+}
+
+function toggleNavbar() {
+    document.querySelector('.header').classList.toggle('active')
+}
+
+function scrollInto(selector) {
+    document.querySelector(selector).scrollIntoView({ 
+        behavior: 'smooth', block: 'center', inline: 'center' 
+    })
+}
+
 /* LOADER */
 
 if (window.matchMedia('(max-width: 574px)').matches) {
@@ -12,11 +32,11 @@ window.addEventListener('load', () => {
 
     document.querySelector('.loader').classList.add('fade-out')
     setTimeout(() => {
+        scrollInto('#home')
         document.querySelector('.loader').remove()
         document.querySelector('.main').classList.remove('hidden')
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
-        document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
         setTimeout(() => {
             document.querySelector('.m-logo').click()
         }, 2500)
@@ -25,21 +45,10 @@ window.addEventListener('load', () => {
 
 /* MAIN NAV */
 
-function disableScrolling() {
-    document.querySelector('body').classList.toggle('disable-scrolling')
-}
-
-function hideSection() {
-    document.querySelector('section.active').classList.toggle('fade-out')
-}
-
-function toggleNavbar() {
-    document.querySelector('.header').classList.toggle('active')
-}
-
 const navToggler = document.querySelector('.nav-toggler')
 navToggler.addEventListener('click', (event) => {
     event.preventDefault()
+    scrollInto('.nav-inner')
     disableScrolling()
     toggleNavbar()
     hideSection()
@@ -151,9 +160,12 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.id != 'undefined' && event.target.id === 'activate-salt-bae') {
-        setTimeout(() => {
-            document.querySelector('.midget-salt-bae').click()
-        }, 1500)
+        if (!saltBaeWasActivated) {
+            setTimeout(() => {
+                document.querySelector('.midget-salt-bae').click()
+                saltBaeWasActivated = true
+            }, 2000)
+        }
     }
 
     if (event.target.classList.contains('m-logo')) {
