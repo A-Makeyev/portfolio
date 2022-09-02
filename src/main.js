@@ -20,15 +20,17 @@ function toggleNavbar() {
 }
 
 function togglePopup() {
-    document.querySelector('.main').classList.add('fade-out')
-    document.querySelector('.image-popup').classList.add('open')
-    document.querySelector('body').classList.add('disable-scrolling')
-
-    document.querySelector('.image-popup-close').addEventListener('click', () => {
-        document.querySelector('body').classList.remove('disable-scrolling')
-        document.querySelector('.image-popup').classList.remove('open')
-        document.querySelector('.main').classList.remove('fade-out')
-    })
+    setTimeout(() => {
+        document.querySelector('.main').classList.add('fade-out')
+        document.querySelector('.image-popup').classList.add('open')
+        document.querySelector('body').classList.add('disable-scrolling')
+    
+        document.querySelector('.image-popup-close').addEventListener('click', () => {
+            document.querySelector('body').classList.remove('disable-scrolling')
+            document.querySelector('.image-popup').classList.remove('open')
+            document.querySelector('.main').classList.remove('fade-out')
+        })
+    }, 250)
 }
 
 /* LOADER */
@@ -50,9 +52,6 @@ window.addEventListener('load', () => {
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
         scrollInto('#home')
-        setTimeout(() => {
-            document.querySelector('.bg-icons-box').classList.toggle('active')
-        }, 2500)
     }, 500)
 })
 
@@ -171,6 +170,7 @@ document.addEventListener('click', (event) => {
         if (!saltBaeWasActivated) {
             setTimeout(() => {
                 document.querySelector('.midget-salt-bae').click()
+                document.querySelector('.m-logo').click()
                 saltBaeWasActivated = true
             }, 3000)
         }
