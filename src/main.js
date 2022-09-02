@@ -31,7 +31,7 @@ function togglePopup() {
             document.querySelector('.main').classList.remove('fade-out')
             document.querySelector('.image-content').innerHTML = ''
         })
-    }, 200)
+    }, 250)
 }
 
 /* LOADER */
