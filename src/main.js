@@ -20,17 +20,16 @@ function toggleNavbar() {
 }
 
 function togglePopup() {
-    setTimeout(() => {
-        document.querySelector('.main').classList.add('fade-out')
-        document.querySelector('.image-popup').classList.add('open')
-        document.querySelector('body').classList.add('disable-scrolling')
-    
-        document.querySelector('.image-popup-close').addEventListener('click', () => {
-            document.querySelector('body').classList.remove('disable-scrolling')
-            document.querySelector('.image-popup').classList.remove('open')
-            document.querySelector('.main').classList.remove('fade-out')
-        })
-    }, 250)
+    document.querySelector('.main').classList.add('fade-out')
+    document.querySelector('.image-popup').classList.add('open')
+    document.querySelector('body').classList.add('disable-scrolling')
+
+    document.querySelector('.image-popup-close').addEventListener('click', () => {
+        document.querySelector('body').classList.remove('disable-scrolling')
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('.main').classList.remove('fade-out')
+        document.querySelector('.image-content').innerHTML = ''
+    })
 }
 
 /* LOADER */
