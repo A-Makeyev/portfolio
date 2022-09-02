@@ -32,11 +32,11 @@ window.addEventListener('load', () => {
 
     document.querySelector('.loader').classList.add('fade-out')
     setTimeout(() => {
-        scrollInto('#home')
         document.querySelector('.loader').remove()
         document.querySelector('.main').classList.remove('hidden')
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
+        scrollInto('#home')
         setTimeout(() => {
             document.querySelector('.m-logo').click()
         }, 2500)
@@ -46,8 +46,7 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 const navToggler = document.querySelector('.nav-toggler')
-navToggler.addEventListener('click', (event) => {
-    event.preventDefault()
+navToggler.addEventListener('click', () => {
     scrollInto('.nav-inner')
     disableScrolling()
     toggleNavbar()
@@ -167,7 +166,7 @@ document.addEventListener('click', (event) => {
         displayImage(event.target.id)
     }
 
-    if (event.target.id != 'undefined' && event.target.id === 'activate-salt-bae') {
+    if (event.target.classList.contains('activate-salt-bae')) {
         if (!saltBaeWasActivated) {
             setTimeout(() => {
                 document.querySelector('.midget-salt-bae').click()
