@@ -122,32 +122,33 @@ function displayProjectDetails(projectItem) {
 }
 
 function displayImage(id) {
+    id = id.replace('img-to-display-', '')
+    document.querySelector('.main').classList.add('fade-out')
+    document.querySelector('.image-popup').classList.add('open')
+    document.querySelector('body').classList.add('disable-scrolling')
+
+    document.querySelector('.image-content').innerHTML = `<p>Loading...</p>`
+
     setTimeout(() => {
-        id = id.replace('img-to-display-', '')
-        document.querySelector('.main').classList.add('fade-out')
-        document.querySelector('.image-popup').classList.add('open')
-        document.querySelector('body').classList.add('disable-scrolling')
-    
         if (window.location.href.includes('#about')) {
             fetch(`assets/images/timeline/${id}.jpg`)
             .then(res => {
-                document.querySelector('.image-content img').src = res.url
+                document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
             })
         } else if (window.location.href.includes('#projects')) {
             fetch(`assets/images/projects/${id}.jpg`)
             .then(res => {
-                document.querySelector('.image-content img').src = res.url
+                document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
             })
         }
-    
-        document.querySelector('.image-content img').alt = id
-        document.querySelector('.image-popup-close').addEventListener('click', () => {
-            document.querySelector('body').classList.remove('disable-scrolling')
-            document.querySelector('.image-popup').classList.remove('open')
-            document.querySelector('.main').classList.remove('fade-out')
-            document.querySelector('.image-content img').src = ''
-        })
-    }, 250)
+    }, 500)
+
+    document.querySelector('.image-popup-close').addEventListener('click', () => {
+        document.querySelector('body').classList.remove('disable-scrolling')
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('.main').classList.remove('fade-out')
+        document.querySelector('.image-content img').src = ''
+    })
 }
 
 document.addEventListener('click', (event) => {
