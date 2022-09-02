@@ -545,17 +545,37 @@ button {
     transform: translate(-53%, -497%) scale(1.1);
 }
 
+.github-ninja {
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(65%, -350%);
+    transition: all 0.25s ease;
+    height: 60px;
+    width: 60px;
+}
+
+.github-ninja:hover {
+    transform: translate(65%, -350%) scale(1.1);
+}
+
+.invaders {
+    border: none;
+    width: 600px;
+    height: 600px;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~ IMAGE POPUP ~~~~~~~~~~~~~~~~~~~~~ */
 
 .image-popup {
     top: 0;
     left: 0;
+    opacity: 0;
     width: 100%;
     height: 100%;
     z-index: 1000;
     position: fixed;
     visibility: hidden;
-    opacity: 0;
 }
 
 .image-popup.open {
@@ -748,6 +768,21 @@ button {
     .m-logo:hover {
         transform: translate(-52%, -486%) scale(1.1);
     }
+
+    .github-ninja {
+        transform: translate(64%, -350%);
+        height: 50px;
+        width: 50px;
+    }
+    
+    .github-ninja:hover {
+        transform: translate(64%, -350%) scale(1.1);
+    }
+
+    .invaders {
+        width: 500px;
+        height: 500px;
+    }
 }
 
 @media (max-width: 575px) {
@@ -790,5 +825,20 @@ button {
 
     .m-logo:hover {
         transform: translate(-53%, -486%) scale(1.1); 
+    }
+
+    .github-ninja {
+        transform: translate(68%, -360%);
+        height: 40px;
+        width: 40px;
+    }
+    
+    .github-ninja:hover {
+        transform: translate(68%, -360%) scale(1.1);
+    }
+
+    .invaders {
+        width: 310px;
+        height: 450px;
     }
 }

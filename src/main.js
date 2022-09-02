@@ -1,4 +1,11 @@
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 var saltBaeWasActivated = false
+
+function scrollInto(selector) {
+    document.querySelector(selector).scrollIntoView({ 
+        behavior: 'smooth', block: 'center', inline: 'center' 
+    })
+}
 
 function disableScrolling() {
     document.querySelector('body').classList.toggle('disable-scrolling')
@@ -12,9 +19,15 @@ function toggleNavbar() {
     document.querySelector('.header').classList.toggle('active')
 }
 
-function scrollInto(selector) {
-    document.querySelector(selector).scrollIntoView({ 
-        behavior: 'smooth', block: 'center', inline: 'center' 
+function togglePopup() {
+    document.querySelector('.main').classList.add('fade-out')
+    document.querySelector('.image-popup').classList.add('open')
+    document.querySelector('body').classList.add('disable-scrolling')
+
+    document.querySelector('.image-popup-close').addEventListener('click', () => {
+        document.querySelector('body').classList.remove('disable-scrolling')
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('.main').classList.remove('fade-out')
     })
 }
 
@@ -37,9 +50,9 @@ window.addEventListener('load', () => {
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
         scrollInto('#home')
-        setTimeout(() => {
-            document.querySelector('.m-logo').click()
-        }, 2500)
+        // setTimeout(() => {
+        //     document.querySelector('.m-logo').click()
+        // }, 2500)
     }, 500)
 })
 
@@ -135,17 +148,7 @@ function displayImage(id) {
             document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
         })
     }
-
-    document.querySelector('.main').classList.add('fade-out')
-    document.querySelector('.image-popup').classList.add('open')
-    document.querySelector('body').classList.add('disable-scrolling')
-
-    document.querySelector('.image-popup-close').addEventListener('click', () => {
-        document.querySelector('body').classList.remove('disable-scrolling')
-        document.querySelector('.image-popup').classList.remove('open')
-        document.querySelector('.main').classList.remove('fade-out')
-        document.querySelector('.image-content img').src = ''
-    })
+    togglePopup()   
 }
 
 document.addEventListener('click', (event) => {
@@ -175,6 +178,18 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('m-logo')) {
         document.querySelector('.bg-icons-box').classList.toggle('active')
+    }
+
+    if (event.target.classList.contains('github-ninja')) {
+        if (isMobileDevice) { 
+            document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸⚡👾🔥</h2>` 
+        } else {
+            fetch(`assets/invaders.html`)
+            .then(res => {
+                document.querySelector('.image-content').innerHTML = `<iframe src="${res.url}" class="invaders"></iframe>`
+            })
+        }
+        togglePopup()
     }
 })
 
