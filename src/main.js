@@ -50,9 +50,9 @@ window.addEventListener('load', () => {
         document.querySelector('.home-section').classList.add('active')
         document.querySelector('.bg-icons-box').classList.remove('fade-out')
         scrollInto('#home')
-        // setTimeout(() => {
-        //     document.querySelector('.m-logo').click()
-        // }, 2500)
+        setTimeout(() => {
+            document.querySelector('.bg-icons-box').classList.toggle('active')
+        }, 2500)
     }, 500)
 })
 
@@ -184,10 +184,13 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) { 
             document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸⚡👾🔥</h2>` 
         } else {
-            fetch(`assets/invaders.html`)
-            .then(res => {
-                document.querySelector('.image-content').innerHTML = `<iframe src="${res.url}" class="invaders"></iframe>`
-            })
+            document.querySelector('.image-content').innerHTML = `<p>Loading...</p>`
+            setTimeout(() => {
+                fetch(`assets/invaders.html`)
+                .then(res => {
+                    document.querySelector('.image-content').innerHTML = `<iframe src="${res.url}" class="invaders"></iframe>`
+                })
+            }, 1000)
         }
         togglePopup()
     }
