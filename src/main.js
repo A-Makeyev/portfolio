@@ -171,7 +171,7 @@ document.addEventListener('click', (event) => {
             setTimeout(() => {
                 document.querySelector('.midget-salt-bae').click()
                 saltBaeWasActivated = true
-            }, 2000)
+            }, 3000)
         }
     }
 
