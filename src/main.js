@@ -1,5 +1,6 @@
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 var saltBaeWasActivated = false
+var bgIconsWereActivated = false
 
 function scrollInto(selector) {
     document.querySelector(selector).scrollIntoView({ 
@@ -171,14 +172,23 @@ document.addEventListener('click', (event) => {
         if (!saltBaeWasActivated) {
             setTimeout(() => {
                 document.querySelector('.midget-salt-bae').click()
-                document.querySelector('.m-logo').click()
                 saltBaeWasActivated = true
+
+                if (!bgIconsWereActivated) {
+                    document.querySelector('.m-logo').click()
+                    bgIconsWereActivated = true
+                }
             }, 2000)
         }
     }
 
     if (event.target.classList.contains('m-logo')) {
         document.querySelector('.bg-icons-box').classList.toggle('active')
+        if (document.querySelector('.bg-icons-box').classList.contains('active')) {
+            bgIconsWereActivated = true
+        } else {
+            bgIconsWereActivated = false
+        }
     }
 
     if (event.target.classList.contains('github-ninja')) {

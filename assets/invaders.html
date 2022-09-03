@@ -96,7 +96,7 @@
                 function destroyShooter() {
                     setTimeout(() => { 
                         document.querySelector('.shooter').remove() 
-                    }, 1500)
+                    }, 500)
                 }
 
                 // move shooter
@@ -142,14 +142,16 @@
 
                     // lose
                     if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
-                        resultDisplay.textContent = 'GAME OVER'
+                        document.removeEventListener('keydown', moveShooter)
                         squares[currentShooterIndex].classList.add('boom')
+                        resultDisplay.textContent = 'GAME OVER'
                         clearInterval(invaderId)
                         destroyShooter()
                     }
 
                     for (let x = 0; x <= invaders.length -1; x++) {
                         if (invaders[x] > (squares.length - (width - 1))) {
+                            document.removeEventListener('keydown', moveShooter)
                             resultDisplay.textContent = 'GAME OVER'
                             clearInterval(invaderId)
                             destroyShooter()
