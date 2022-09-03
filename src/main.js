@@ -183,7 +183,7 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('github-ninja')) {
         if (isMobileDevice) { 
-            document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸⚡👾🔥</h2>` 
+            document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸⚡👾💥</h2>` 
         } else {
             document.querySelector('.image-content').innerHTML = `<p>Loading...</p>`
             setTimeout(() => {
