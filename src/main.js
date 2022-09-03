@@ -173,7 +173,7 @@ document.addEventListener('click', (event) => {
                 document.querySelector('.midget-salt-bae').click()
                 document.querySelector('.m-logo').click()
                 saltBaeWasActivated = true
-            }, 3000)
+            }, 2000)
         }
     }
 
