@@ -6,7 +6,6 @@
 .about-text p {
     width: 90%;
     margin: auto;
-    font-weight: 300;
 }
 
 .about-text h2 {
@@ -290,7 +289,7 @@
     }
 
     .about-text p {
-        font-size: medium;
+        font-size: small;
     }
 
     .quote {

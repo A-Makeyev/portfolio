@@ -596,7 +596,7 @@ button {
     opacity: 0;
     width: 100%;
     padding: 20px;
-    max-width: 700px;
+    max-width: 900px;
     border-radius: 5px;
     backdrop-filter: blur(5px);
     border: 1px solid var(--white-alpha-40);

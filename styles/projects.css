@@ -97,7 +97,7 @@
 .project-popup.open .popup-content {
     opacity: 1;
     transform: scale(1);
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 
 .popup-header {

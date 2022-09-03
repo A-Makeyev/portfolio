@@ -1,3 +1,14 @@
+console.log(
+    '%c perhaps you want to shoot some aliens? check out the ninja icon', 
+    [
+        'padding: 10px',
+        'color: aliceblue',
+        'font-size: xx-large',
+        'text-shadow: 2px 2px 2px black',
+        'background: linear-gradient(0deg, aliceblue, darkblue)',
+    ].join(';')
+)
+
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 var saltBaeWasActivated = false
 var bgIconsWereActivated = false
@@ -32,7 +43,7 @@ function togglePopup() {
             document.querySelector('.main').classList.remove('fade-out')
             document.querySelector('.image-content').innerHTML = ''
         })
-    }, 250)
+    }, 100)
 }
 
 /* LOADER */
@@ -123,33 +134,32 @@ tabContainer.addEventListener('click', (event) => {
 /* POPUPS */
 
 function toggleProjectPopup() {
-    document.querySelector('.main').classList.toggle('fade-out')
-    document.querySelector('.project-popup').classList.toggle('open')
+    setTimeout(() => {
+        document.querySelector('.main').classList.toggle('fade-out')
+        document.querySelector('.project-popup').classList.toggle('open')
+    }, 100)
 }
 
 function displayProjectDetails(projectItem) {
     const projectImage = projectItem.querySelector('.project-item-thumbnail img').src
     const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
-
-    document.querySelector('.popup-thumbnail img').src = projectImage
+    
+    document.querySelector('.popup-thumbnail img').src = projectImage.includes('portfolio') ? projectImage.replace('portfolio', 'portfolio-secret') : projectImage
     document.querySelector('.popup-body').innerHTML = projectDetails
 }
 
 function displayImage(id) {
+    const folder = window.location.href.split('#')[1]
     id = id.replace('img-to-display-', '')
-
-    if (window.location.href.includes('#about')) {
-        fetch(`assets/images/timeline/${id}.jpg`)
-        .then(res => {
-            document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
-        })
-    } else if (window.location.href.includes('#projects')) {
-        fetch(`assets/images/projects/${id}.jpg`)
-        .then(res => {
-            document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
-        })
-    }
-    togglePopup()   
+    
+    fetch(`assets/images/${folder}/${id}.jpg`)
+    .then(res => {
+        if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
+        document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
+    })
+    .then(() => {
+        togglePopup() 
+    })
 }
 
 document.addEventListener('click', (event) => {
@@ -195,13 +205,16 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) { 
             document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸⚡👾💥</h2>` 
         } else {
-            document.querySelector('.image-content').innerHTML = `<p>Loading...</p>`
+            document.querySelector('.image-content').innerHTML = `<p>Press 🡰 🡲 to move</p> <p>and space to shoot</p>`
             setTimeout(() => {
                 fetch(`assets/invaders.html`)
                 .then(res => {
                     document.querySelector('.image-content').innerHTML = `<iframe src="${res.url}" class="invaders"></iframe>`
                 })
-            }, 1000)
+                .then(() => { 
+                    document.querySelector('.invaders').contentWindow.focus() 
+                })
+            }, 2000)
         }
         togglePopup()
     }
