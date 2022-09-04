@@ -9,7 +9,7 @@
     --green: #40BD1A;
     --orange: #D19616;
     --dark-blue: #18293C;
-    --light-red: #Df316b;
+    --light-red: #DF316B;
     --light-blue: #A9D5F1;
     --light-purple: #939DED;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
@@ -394,11 +394,6 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ LOADER ~~~~~~~~~~~~~~~~~~~~~~ */
 
-/* .loading {
-    width: 50px;
-    height: 50px;
-} */
-
 .loader {
     top: 0;
     left: 0;
@@ -446,7 +441,7 @@ button {
 .loader div:nth-child(4) {
     width: 20px;
     height: 20px;
-    border-color: var(--orange);
+    border-color: var(--light-red);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~ */
