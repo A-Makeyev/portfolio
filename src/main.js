@@ -32,18 +32,17 @@ function toggleNavbar() {
 }
 
 function togglePopup() {
-    setTimeout(() => {
-        document.querySelector('.main').classList.add('fade-out')
-        document.querySelector('.image-popup').classList.add('open')
-        document.querySelector('body').classList.add('disable-scrolling')
-    
-        document.querySelector('.image-popup-close').addEventListener('click', () => {
-            document.querySelector('body').classList.remove('disable-scrolling')
-            document.querySelector('.image-popup').classList.remove('open')
-            document.querySelector('.main').classList.remove('fade-out')
-            document.querySelector('.image-content').innerHTML = ''
-        })
-    }, 100)
+    // document.querySelector('.image-content').innerHTML = '<img src="assets/icons/loading.gif" alt="loading" class="loading">'
+    document.querySelector('.main').classList.add('fade-out')
+    document.querySelector('.image-popup').classList.add('open')
+    document.querySelector('body').classList.add('disable-scrolling')
+
+    document.querySelector('.image-popup-close').addEventListener('click', () => {
+        document.querySelector('body').classList.remove('disable-scrolling')
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('.main').classList.remove('fade-out')
+        document.querySelector('.image-content').innerHTML = ''
+    })
 }
 
 /* LOADER */
@@ -134,10 +133,8 @@ tabContainer.addEventListener('click', (event) => {
 /* POPUPS */
 
 function toggleProjectPopup() {
-    setTimeout(() => {
-        document.querySelector('.main').classList.toggle('fade-out')
-        document.querySelector('.project-popup').classList.toggle('open')
-    }, 100)
+    document.querySelector('.main').classList.toggle('fade-out')
+    document.querySelector('.project-popup').classList.toggle('open')
 }
 
 function displayProjectDetails(projectItem) {
@@ -149,24 +146,24 @@ function displayProjectDetails(projectItem) {
 }
 
 function displayImage(id) {
+    togglePopup() 
     const folder = window.location.href.split('#')[1]
     id = id.replace('img-to-display-', '')
     
-    fetch(`assets/images/${folder}/${id}.jpg`)
-    .then(res => {
-        if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
-        document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
-    })
-    .then(() => {
-        togglePopup() 
-    })
+    if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
+    document.querySelector('.image-content').innerHTML = `<img src="assets/images/${folder}/${id}.jpg" alt="${id}">`
+    // fetch(`assets/images/${folder}/${id}.jpg`)
+    // .then(res => {
+    //     if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
+    //     document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
+    // })
 }
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
-        toggleProjectPopup()
         displayProjectDetails(event.target.parentNode.parentNode)
         document.querySelector('.project-popup').scrollTo(0, 0)
+        toggleProjectPopup()
     }
 
     if (event.target.classList.contains('popup-inner')) {
@@ -203,7 +200,7 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('github-ninja')) {
         if (isMobileDevice) { 
-            document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸⚡👾💥</h2>` 
+            document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸 ⚡ 👾 💥</h2>` 
         } else {
             document.querySelector('.image-content').innerHTML = `<p>Press 🡰 🡲 to move</p> <p>and space to shoot</p>`
             setTimeout(() => {
