@@ -1,3 +1,9 @@
+/*
+
+ADD PROJECT WEB COMPONENT
+
+*/
+
 console.log(
     '%c perhaps you want to shoot some aliens? check out the ninja icon', 
     [
@@ -10,8 +16,8 @@ console.log(
 )
 
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-var saltBaeWasActivated = false
 var bgIconsWereActivated = false
+var saltBaeWasActivated = false
 
 function scrollInto(selector) {
     document.querySelector(selector).scrollIntoView({ 
@@ -32,17 +38,63 @@ function toggleNavbar() {
 }
 
 function togglePopup() {
-    // document.querySelector('.image-content').innerHTML = '<img src="assets/icons/loading.gif" alt="loading" class="loading">'
     document.querySelector('.main').classList.add('fade-out')
     document.querySelector('.image-popup').classList.add('open')
     document.querySelector('body').classList.add('disable-scrolling')
 
-    document.querySelector('.image-popup-close').addEventListener('click', () => {
-        document.querySelector('body').classList.remove('disable-scrolling')
-        document.querySelector('.image-popup').classList.remove('open')
+    const close = () => {
         document.querySelector('.main').classList.remove('fade-out')
-        document.querySelector('.image-content').innerHTML = ''
-    })
+        document.querySelector('.image-popup').classList.remove('open')
+        document.querySelector('body').classList.remove('disable-scrolling')
+        document.querySelector('.image-body').innerHTML = '<img src="assets/icons/loading.gif" alt="loading.." class="loading-gif">'
+    }
+
+    document.querySelector('.image-popup-close').addEventListener('click', close)
+    document.querySelector('.image-inner').addEventListener('click', close)
+}
+
+async function loadImage(url) {
+    let response = await fetch(url, { method: 'GET' })
+    if (response.status === 200) {
+        const imageBlob = await response.blob()
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+        const image = document.createElement('img')
+        image.src = imageObjectURL
+
+        document.querySelector('.loading-gif').style.display = 'none'
+        document.querySelector('.image-body').append(image)
+    } else {
+        console.log(response.status)
+    }
+}
+
+async function loadInvaders(url) {
+    let response = await fetch(url, { method: 'GET' })
+    if (response.status === 200) {
+        document.querySelector('.image-body').innerHTML = 
+        `
+            <div style="padding:50px;">
+                <p>press <b>🡰 🡲</b> to move</p> 
+                <p>and <b>space</b> to shoot</p>
+            </div>
+        `
+        
+        setTimeout(() => {
+            document.querySelector('.image-body').innerHTML = `<iframe src="${url}" class="invaders"></iframe>`
+            document.querySelector('.invaders').contentWindow.focus() 
+        }, 2000)
+    } else {
+        console.log(response.status)
+    }
+}
+
+function displayImage(id) {
+    const folder = window.location.href.split('#')[1]
+    id = id.replace('img-to-display-', '')
+    
+    if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
+    loadImage(`assets/images/${folder}/${id}.jpg`)
+    togglePopup()
 }
 
 /* LOADER */
@@ -145,20 +197,6 @@ function displayProjectDetails(projectItem) {
     document.querySelector('.popup-body').innerHTML = projectDetails
 }
 
-function displayImage(id) {
-    togglePopup() 
-    const folder = window.location.href.split('#')[1]
-    id = id.replace('img-to-display-', '')
-    
-    if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
-    document.querySelector('.image-content').innerHTML = `<img src="assets/images/${folder}/${id}.jpg" alt="${id}">`
-    // fetch(`assets/images/${folder}/${id}.jpg`)
-    // .then(res => {
-    //     if (id.includes('facepalm')) document.querySelector('.project-popup').classList.toggle('open')
-    //     document.querySelector('.image-content').innerHTML = `<img src="${res.url}" alt="${id}">`
-    // })
-}
-
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
         displayProjectDetails(event.target.parentNode.parentNode)
@@ -166,7 +204,7 @@ document.addEventListener('click', (event) => {
         toggleProjectPopup()
     }
 
-    if (event.target.classList.contains('popup-inner')) {
+    if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
         document.querySelector('.popup-thumbnail img').src = ''
         toggleProjectPopup()
     }
@@ -191,33 +229,18 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('m-logo')) {
         document.querySelector('.bg-icons-box').classList.toggle('active')
-        if (document.querySelector('.bg-icons-box').classList.contains('active')) {
-            bgIconsWereActivated = true
-        } else {
-            bgIconsWereActivated = false
-        }
+        bgIconsWereActivated = document.querySelector('.bg-icons-box').classList.contains('active') ? true : false
     }
 
     if (event.target.classList.contains('github-ninja')) {
         if (isMobileDevice) { 
-            document.querySelector('.image-content').innerHTML = `<h4>This requires a PC</h4> <h2>🛸 ⚡ 👾 💥</h2>` 
+            document.querySelector('.image-body').innerHTML = `<h4>This requires a PC</h4> <h2>🛸 ⚡ 👾 💥</h2>` 
         } else {
-            document.querySelector('.image-content').innerHTML = `<p>Press 🡰 🡲 to move</p> <p>and space to shoot</p>`
-            setTimeout(() => {
-                fetch(`assets/invaders.html`)
-                .then(res => {
-                    document.querySelector('.image-content').innerHTML = `<iframe src="${res.url}" class="invaders"></iframe>`
-                })
-                .then(() => { 
-                    document.querySelector('.invaders').contentWindow.focus() 
-                })
-            }, 2000)
+            loadInvaders(`${window.location.href.split('#')[0]}assets/invaders.html`)
         }
         togglePopup()
     }
 })
-
-document.querySelector('.popup-close').addEventListener('click', toggleProjectPopup)
 
 /* SECRET SURPRISE */
 

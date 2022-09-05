@@ -551,9 +551,9 @@
     <div class="popup-inner">
       <div class="popup-content">
         <div class="popup-header">
-          <button type="button" class="btn popup-close remove-highlight">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+          <a href="javascript:void(0)" class="btn popup-close remove-highlight">
+            <i class="fa-solid fa-xmark popup-close"></i>
+          </a>
           <div class="popup-thumbnail">
             <img src="" alt="">
           </div>
@@ -564,19 +564,22 @@
     </div>
   </div>
 
-    <!-- IMAGE POPUP -->
+  <!-- IMAGE POPUP -->
 
-    <div class="image-popup accelerate center">
-      <div class="image-inner">
+  <div class="image-popup center accelerate">
+    <div class="image-inner">
+      <div class="image-content">
         <div class="image-popup-header">
-          <button type="button" class="btn image-popup-close remove-highlight">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <div class="image-content">
-          </div>
+          <a href="javascript:void(0)" class="btn image-popup-close remove-highlight">
+            <i class="fa-solid fa-xmark image-popup-close"></i>
+          </a>
+        </div>
+        <div class="image-body">
+          <img src="assets/icons/loading.gif" alt="loading.." class="loading-gif">
         </div>
       </div>
     </div>
+  </div>
 
   <script src="src/main.js"></script>
 </body>

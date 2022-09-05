@@ -17,10 +17,16 @@
         }
 
         .board {
+            opacity: 0;
+        }
+
+        .board.open {
             top: 50%;
             left: 50%;
+            opacity: 1;
             position: absolute;
             text-align: center;
+            transition: opacity 1s ease-in;
             transform: translate(-50%, -50%);
             font-family: Roboto  Mono, sans-serif;
         } 
@@ -39,19 +45,45 @@
 
         .shooter::before {
             content: '🛸';
+            font-size: x-large;
         }
 
         .invader::before {
             content: '👾';
+            font-size: x-large;
         }
 
         .laser::before {
-            content: '⚡'
+            content: '⚡';
+            font-size: x-large;
         }
 
         .boom::before {
-            content: '💥'
+            content: '💥';
+            font-size: x-large;
         }
+
+        @media (max-width: 575px) {
+            .shooter::before {
+                content: '🛸';
+                font-size: large;
+            }
+
+            .invader::before {
+                content: '👾';
+                font-size: large;
+            }
+
+            .laser::before {
+                content: '⚡';
+                font-size: large;
+            }
+
+            .boom::before {
+                content: '💥';
+                font-size: large;
+            }
+        } 
     </style>
 </head>
     <body>
@@ -62,6 +94,10 @@
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => {
+                    document.querySelector('.board').classList.add('open')
+                }, 500)
+
                 for (let i = 0; i < 225; i++) {
                     let div = document.createElement('div')
                     document.querySelector('.grid').appendChild(div)

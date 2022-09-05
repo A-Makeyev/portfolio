@@ -133,6 +133,7 @@ section.fade-out {
     transition: all 0.5s ease-in-out;
 }
 
+
 .main.fade-out,
 .loader.fade-out,
 .loader div.fade-out,
@@ -394,6 +395,11 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ LOADER ~~~~~~~~~~~~~~~~~~~~~~ */
 
+.loading-gif {
+    width: 50px;
+    height: 50px;
+}
+
 .loader {
     top: 0;
     left: 0;
@@ -405,7 +411,7 @@ button {
     justify-content: center;
     backdrop-filter: blur(5px);
     background-color: var(--white-alpha-25);
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-out;
     position: fixed;
 }
 
@@ -570,17 +576,15 @@ button {
 .image-popup {
     top: 0;
     left: 0;
-    opacity: 0;
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    z-index: 100;
     position: fixed;
     visibility: hidden;
 }
 
 .image-popup.open {
-    opacity: 1;
-    overflow-y: hidden;
+    overflow-y: auto;
     visibility: visible;
 }
 
@@ -594,8 +598,7 @@ button {
 
 .image-content {
     opacity: 0;
-    width: 100%;
-    padding: 20px;
+    padding: 15px;
     max-width: 900px;
     border-radius: 5px;
     backdrop-filter: blur(5px);
@@ -603,44 +606,50 @@ button {
     background-color: var(--white-alpha-25);
 }
 
-.image-content img {
-    border-radius: 5px;
-    /* border-radius: 1px;
-    border: 2px solid var(--dark-blue); */
-}
-
 .image-popup.open .image-content {
     opacity: 1;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .image-popup-header {
     position: relative;
 }
 
-.image-popup-header .image-popup-close {
+.image-popup-header .btn {
     padding: 0;
     width: 30px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
     transition: all 0.25s ease;
-    font-size: larger;
     position: absolute;
+    font-size: large;
     cursor: pointer;
     border: none;
     z-index: 100;
-    right: -10px;
-    top: -10px;
+    right: -30px;
+    top: -30px;
 }
 
-.image-popup-close:hover {
+.image-popup-header .btn:hover {
     color: var(--white);
     background-color: var(--dark-blue);
-    border: 1px solid var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+}
+
+.image-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-body img {
+    width: 100%;
+    border-radius: 5px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
@@ -846,5 +855,13 @@ button {
     .invaders {
         width: 310px;
         height: 450px;
+    }
+
+    .image-popup-header .image-popup-close {
+        width: 25px;
+        height: 25px;
+        font-size: medium;
+        right: -25px;
+        top: -25px;
     }
 }
