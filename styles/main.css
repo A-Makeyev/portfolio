@@ -857,7 +857,7 @@ button {
         height: 450px;
     }
 
-    .image-popup-header .image-popup-close {
+    .image-popup-header .btn {
         width: 25px;
         height: 25px;
         font-size: medium;

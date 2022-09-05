@@ -265,12 +265,6 @@
         color: var(--gray);
     }
 
-    .skill-item,
-    .timeline-item li {
-        font-size: small;
-        font-weight: 400;
-    }
-
     .timeline-images img {
         height: 125px;
         max-width: 225px;
@@ -278,6 +272,12 @@
 }
 
 @media (max-width: 1045px) {
+    .skill-item,
+    .timeline-item li {
+        font-size: small;
+        font-weight: 400;
+    }
+    
     .timeline-images img {
         height: 95px;
         max-width: 175px;
