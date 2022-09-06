@@ -441,13 +441,13 @@ button {
 .loader div:nth-child(3) {
     width: 40px;
     height: 40px;
-    border-color: var(--blue);
+    border-color: var(--dark-blue);
 }
 
 .loader div:nth-child(4) {
     width: 20px;
     height: 20px;
-    border-color: var(--light-red);
+    border-color: var(--red);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~ */
@@ -584,7 +584,7 @@ button {
 }
 
 .image-popup.open {
-    overflow-y: auto;
+    overflow: hidden;
     visibility: visible;
 }
 
@@ -690,6 +690,11 @@ button {
 }
 
 @media (max-width: 1045px) {
+    .loading-gif {
+        width: 35px;
+        height: 35px;
+    }
+
     .container {
         padding: 0;
     }
@@ -801,6 +806,11 @@ button {
 }
 
 @media (max-width: 575px) {
+    .loading-gif {
+        width: 25px;
+        height: 25px;
+    }
+
     p {
         font-size: small;
     }

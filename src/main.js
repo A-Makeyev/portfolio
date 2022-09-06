@@ -1,6 +1,6 @@
 /*
 
-ADD PROJECT WEB COMPONENT
+    ADD PROJECT WEB COMPONENT
 
 */
 
@@ -19,15 +19,16 @@ const greeting = document.getElementById('greeting')
 const loader = document.querySelector('.loader')
 const homeSection = document.querySelector('.home-section')
 const bgIconsBox = document.querySelector('.bg-icons-box')
-
+const navToggler = document.querySelector('.nav-toggler')
+const overlay = document.querySelector('.overlay')
+const midgetSaltBae = document.querySelector('.midget-salt-bae')
+const giantSaltBae = document.querySelector('.giant-salt-bae')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 
-
-
 function scrollInto(selector) {
-    document.querySelector(selector).scrollIntoView({ 
-        behavior: 'smooth', block: 'center', inline: 'center' 
+    document.querySelector(selector).scrollIntoView({
+        behavior: 'smooth', block: 'center', inline: 'center'
     })
 }
 
@@ -41,6 +42,19 @@ function hideSection() {
 
 function toggleNavbar() {
     header.classList.toggle('active')
+}
+
+function toggleProjectPopup() {
+    main.classList.toggle('fade-out')
+    projectPopup.classList.toggle('open')
+}
+
+function displayProjectDetails(projectItem) {
+    const projectImage = projectItem.querySelector('.project-item-thumbnail img').src
+    const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
+
+    document.querySelector('.popup-thumbnail img').src = projectImage.includes('portfolio') ? projectImage.replace('portfolio', 'portfolio-secret') : projectImage
+    document.querySelector('.popup-body').innerHTML = projectDetails
 }
 
 function togglePopup() {
@@ -59,58 +73,69 @@ function togglePopup() {
     imageInner.addEventListener('click', close)
 }
 
+function displayImage(id) {
+    let folder = window.location.href.split('#')[1]
+    id = id.replace('img-to-display-', '')
+
+    if (id.includes('facepalm')) projectPopup.classList.toggle('open')
+    loadImage(`assets/images/${folder}/${id}.jpg`)
+    togglePopup()
+}
+
+function displaySocials(links, action) {
+    setTimeout(() => {
+        for (let i = 0; i < links.length; i++) {
+            setTimeout(() => {
+                if (action == 'fadeOut') links[i].classList.add('fade-out')
+                if (action == 'fadeIn') links[i].classList.remove('fade-out')
+            }, 250 * i)
+        }
+    }, 1000)
+}
+
 async function loadImage(url) {
     let res = await fetch(url, { method: 'GET' })
     if (res.status === 200) {
-        const imageBlob = await res.blob()
-        const imageObjectURL = URL.createObjectURL(imageBlob);
-        const image = document.createElement('img')
+        let imageBlob = await res.blob()
+        let imageObjectURL = URL.createObjectURL(imageBlob);
+        let image = document.createElement('img')
         image.src = imageObjectURL
 
         document.querySelector('.loading-gif').style.display = 'none'
         imageBody.append(image)
     } else {
-        console.log(res.status)
+        alert(res.status)
     }
 }
 
 async function summonAliens() {
-    const url = `${window.location.href.split('#')[0]}assets/invaders.html`
+    let url = `${window.location.href.split('#')[0]}assets/invaders.html`
     await fetch(url, { method: 'GET' })
-    .then((res) => {
-        return res.text()
-    })
-    .then((html) => {
-        imageBody.innerHTML = 
-        `
+        .then((res) => {
+            return res.text()
+        })
+        .then((html) => {
+            imageBody.innerHTML =
+                `
             <div style="padding:30px;">
                 <p style="padding:5px;">
                     press <b>🡰 🡲</b> to move</p> 
                 <p>and <b>space</b> to shoot</p>
             </div>
         `
-        
-        setTimeout(() => {
-            imageBody.innerHTML = `<iframe class="invaders"></iframe>`
-            let invadersFrame = document.querySelector('.invaders').contentWindow.document
-            invadersFrame.open()
-            invadersFrame.write(html)
-            invadersFrame.close()
-            document.querySelector('.invaders').contentWindow.focus() 
-        }, 2000)
-    })
-    .catch((err) => {  
-        alert(`Failed to fetch ${url}`, err)
-    })
-}
 
-function displayImage(id) {
-    const folder = window.location.href.split('#')[1]
-    id = id.replace('img-to-display-', '')
-    
-    if (id.includes('facepalm')) projectPopup.classList.toggle('open')
-    loadImage(`assets/images/${folder}/${id}.jpg`)
-    togglePopup()
+            setTimeout(() => {
+                imageBody.innerHTML = `<iframe class="invaders"></iframe>`
+                let invadersFrame = document.querySelector('.invaders').contentWindow.document
+                invadersFrame.open()
+                invadersFrame.write(html)
+                invadersFrame.close()
+                document.querySelector('.invaders').contentWindow.focus()
+            }, 2000)
+        })
+        .catch((err) => {
+            alert(`Failed to fetch ${url}`, err)
+        })
 }
 
 /* LOADER */
@@ -135,7 +160,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some aliens? check out the ninja icon', 
+        '%c perhaps you want to shoot some aliens? check out the ninja icon',
         [
             'padding: 10px',
             'color: aliceblue',
@@ -148,7 +173,6 @@ window.addEventListener('load', () => {
 
 /* MAIN NAV */
 
-const navToggler = document.querySelector('.nav-toggler')
 navToggler.addEventListener('click', () => {
     scrollInto('.nav-inner')
     disableScrolling()
@@ -156,27 +180,27 @@ navToggler.addEventListener('click', () => {
     hideSection()
 })
 
-/* SECTIONS */
+/* CLICK EVENTS */
 
 document.addEventListener('click', (event) => {
     const hash = event.target.hash
     if (event.target.classList.contains('link-item') && hash !== '') {
         // activate overlay to prevent multiple clicks
-        document.querySelector('.overlay').classList.add('active')
+        overlay.classList.add('active')
         navToggler.classList.add('hide')
-        
+
         if (event.target.classList.contains('nav-item')) {
             toggleNavbar()
         } else {
             hideSection()
-            document.body.classList.add('disable-scrolling')
+            body.classList.add('disable-scrolling')
         }
-        
+
         setTimeout(() => {
             document.querySelector('section.active').classList.remove('active', 'fade-out')
-            document.querySelector('.overlay').classList.remove('active')
+            overlay.classList.remove('active')
             document.querySelector(hash).classList.add('active')
-            document.body.classList.remove('disable-scrolling')
+            body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
             window.scrollTo(0, 0)
         }, 500)
@@ -190,6 +214,56 @@ document.addEventListener('click', (event) => {
         } else {
             document.title = `AM | ${title}`
         }
+    }
+
+    if (event.target.classList.contains('view-project-btn')) {
+        displayProjectDetails(event.target.parentNode.parentNode)
+        projectPopup.scrollTo(0, 0)
+        toggleProjectPopup()
+    }
+
+    if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
+        document.querySelector('.popup-thumbnail img').src = ''
+        toggleProjectPopup()
+    }
+
+    if (event.target.id != 'undefined' && event.target.id.includes('img-to-display')) {
+        displayImage(event.target.id)
+    }
+
+    if (event.target.classList.contains('activate-salt-bae')) {
+        if (!saltBaeWasActivated) {
+            setTimeout(() => {
+                midgetSaltBae.click()
+                saltBaeWasActivated = true
+
+                if (!bgIconsWereActivated) {
+                    document.querySelector('.m-logo').click()
+                    bgIconsWereActivated = true
+                }
+            }, 1000)
+        }
+    }
+
+    if (event.target.classList.contains('m-logo')) {
+        bgIconsBox.classList.toggle('active')
+        bgIconsWereActivated = bgIconsBox.classList.contains('active') ? true : false
+    }
+
+    if (event.target.classList.contains('github-ninja')) {
+        if (isMobileDevice) {
+            imageBody.innerHTML =
+                `   <div style="padding:10px;">
+                    <h4 style="padding:5px;">
+                        This requires a PC
+                    </h4>
+                    <h2>🛸 ⚡ 👾 💥</h2>
+                </div>
+             `
+        } else {
+            summonAliens()
+        }
+        togglePopup()
     }
 })
 
@@ -206,98 +280,20 @@ tabContainer.addEventListener('click', (event) => {
     }
 })
 
-/* POPUPS */
-
-function toggleProjectPopup() {
-    main.classList.toggle('fade-out')
-    projectPopup.classList.toggle('open')
-}
-
-function displayProjectDetails(projectItem) {
-    const projectImage = projectItem.querySelector('.project-item-thumbnail img').src
-    const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
-    
-    document.querySelector('.popup-thumbnail img').src = projectImage.includes('portfolio') ? projectImage.replace('portfolio', 'portfolio-secret') : projectImage
-    document.querySelector('.popup-body').innerHTML = projectDetails
-}
-
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('view-project-btn')) {
-        displayProjectDetails(event.target.parentNode.parentNode)
-        projectPopup.scrollTo(0, 0)
-        toggleProjectPopup()
-    }
-
-    if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
-        document.querySelector('.popup-thumbnail img').src = ''
-        toggleProjectPopup()
-    }
-    
-    if (event.target.id != 'undefined' && event.target.id.includes('img-to-display')) {
-        displayImage(event.target.id)
-    }
-
-    if (event.target.classList.contains('activate-salt-bae')) {
-        if (!saltBaeWasActivated) {
-            setTimeout(() => {
-                document.querySelector('.midget-salt-bae').click()
-                saltBaeWasActivated = true
-
-                if (!bgIconsWereActivated) {
-                    document.querySelector('.m-logo').click()
-                    bgIconsWereActivated = true
-                }
-            }, 2000)
-        }
-    }
-
-    if (event.target.classList.contains('m-logo')) {
-        bgIconsBox.classList.toggle('active')
-        bgIconsWereActivated = bgIconsBox.classList.contains('active') ? true : false
-    }
-
-    if (event.target.classList.contains('github-ninja')) {
-        if (isMobileDevice) { 
-            imageBody.innerHTML =
-            `   <div style="padding:10px;">
-                    <h4 style="padding:5px;">
-                        This requires a PC
-                    </h4>
-                    <h2>🛸 ⚡ 👾 💥</h2>
-                </div>
-             ` 
-        } else {
-            summonAliens()
-        }
-        togglePopup()
-    }
-})
-
 /* SECRET SURPRISE */
 
-function displaySocials(links, action) {
-    setTimeout(() => {
-        for (let i = 0; i < links.length; i++) {
-            setTimeout(() => {
-                if (action == 'fadeOut') links[i].classList.add('fade-out')
-                if (action == 'fadeIn') links[i].classList.remove('fade-out')
-            }, 250 * i)
-        } 
-    }, 1000)
-}
-
-document.querySelector('.midget-salt-bae').addEventListener('click', () => {
+midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
 
-    document.querySelector('.giant-salt-bae').classList.remove('fade-out')
-    document.querySelector('.midget-salt-bae').classList.add('fade-out') 
+    giantSaltBae.classList.remove('fade-out')
+    midgetSaltBae.classList.add('fade-out')
     displaySocials(links, 'fadeIn')
 
-    document.querySelector('.giant-salt-bae').addEventListener('click', () => {
-        document.querySelector('.giant-salt-bae').classList.add('fade-out')
+    giantSaltBae.addEventListener('click', () => {
+        giantSaltBae.classList.add('fade-out')
         displaySocials(links, 'fadeOut')
         setTimeout(() => {
-            document.querySelector('.midget-salt-bae').classList.remove('fade-out')
+            midgetSaltBae.classList.remove('fade-out')
         }, 500 * links.length)
     })
 })
