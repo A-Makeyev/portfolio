@@ -8,6 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
 
+        :root {
+            --orangered-shadow: -1px 1px orangered, -2px 2px orangered, -3px 3px orangered, -4px 4px orangered, -5px 5px orangered, -6px 6px orangered, -7px 7px orangered, -8px 8px orangered;
+            --greenyellow-shadow: -1px 1px greenyellow, -2px 2px greenyellow, -3px 3px greenyellow, -4px 4px greenyellow, -5px 5px greenyellow, -6px 6px greenyellow, -7px 7px greenyellow, -8px 8px greenyellow;
+        }
+
         .grid {
             width: 300px;
             height: 300px;
@@ -45,6 +50,7 @@
             position: absolute;
             text-align: center;
             transform: translate(-50%, -50%);
+            -webkit-text-stroke: 1px black;
         }
 
         .shooter::before {
@@ -172,6 +178,7 @@
                     document.removeEventListener('keydown', moveShooter)
                     squares[currentShooterIndex].classList.add('boom')
                     resultDisplay.textContent = 'GAME OVER'
+                    resultDisplay.style.textShadow = 'var(--orangered-shadow)'
                     clearInterval(invaderId)
                     destroyShooter()
                 }
@@ -180,6 +187,7 @@
                     if (invaders[x] > (squares.length - (width - 1))) {
                         document.removeEventListener('keydown', moveShooter)
                         resultDisplay.textContent = 'GAME OVER'
+                        resultDisplay.style.textShadow = 'var(--orangered-shadow)'
                         clearInterval(invaderId)
                         destroyShooter()
                     }
@@ -188,6 +196,7 @@
                 // win
                 if (invadersShotDown.length === invaders.length) {
                     resultDisplay.textContent = 'VICTORY'
+                    resultDisplay.style.textShadow = 'var(--greenyellow-shadow)'
                     clearInterval(invaderId)
                 }
             }
