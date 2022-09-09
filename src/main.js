@@ -165,7 +165,7 @@ window.addEventListener('load', () => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
-        //scrollInto('#home')
+        scrollInto('#home')
     }, 500)
 
     console.log(
@@ -183,7 +183,7 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    //scrollInto('.nav-inner')
+    scrollInto('.nav-inner')
     disableScrolling()
     toggleNavbar()
     hideSection()
@@ -211,7 +211,7 @@ document.addEventListener('click', (event) => {
             document.querySelector(hash).classList.add('active')
             body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
-            window.scrollTo(0, 0)
+            // window.scrollTo(0, 0)
         }, 500)
     }
 
