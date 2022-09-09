@@ -81,7 +81,6 @@ function displayImage(id) {
 
     if (id.includes('facepalm')) projectPopup.classList.toggle('open')
     loadImage(`assets/images/${folder}/${id}.jpg`, 'popup')
-    togglePopup()
 }
 
 function displaySocials(links, action) {
@@ -99,17 +98,25 @@ async function loadImage(url, location) {
     loader.classList.remove('fade-out')
     let res = await fetch(url, { method: 'GET' })
     if (res.status === 200) {
+        url = url.split('/')
+
         let imageBlob = await res.blob()
         let imageObjectURL = URL.createObjectURL(imageBlob);
         let image = document.createElement('img')
-        image.src = imageObjectURL
+        let imageId = url[url.length - 1]
 
+        image.src = imageObjectURL
+        image.alt = imageId
+        
         loader.classList.add('fade-out')
         if (location == 'popup') {
-            imageBody.append(image)
+            togglePopup()
+            // imageBody.appendChild(image)
+            imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`           
         } else if (location == 'projects') {
             toggleProjectPopup()
-            popupThumbnail.append(image)
+            // popupThumbnail.appendChild(image)
+            popupThumbnail.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
         }
     } else {
         alert(res.status)
@@ -211,7 +218,7 @@ document.addEventListener('click', (event) => {
             document.querySelector(hash).classList.add('active')
             body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
-            // window.scrollTo(0, 0)
+            window.scrollTo(0, 0)
         }, 500)
     }
 
