@@ -290,11 +290,8 @@
         margin: 5px 1px 1px 0;
     }
 
+    .about-text p,
     .about-text h2 {
-        font-size: medium;
-    }
-
-    .about-text p {
         font-size: small;
     }
 
