@@ -15,6 +15,8 @@ const imageBody = document.querySelector('.image-body')
 const imagePopupClose = document.querySelector('.image-popup-close')
 const imageInner = document.querySelector('.image-inner')
 const projectPopup = document.querySelector('.project-popup')
+const popupBody = document.querySelector('.popup-body')
+const popupThumbnail = document.querySelector('.popup-thumbnail')
 const greeting = document.getElementById('greeting')
 const loader = document.querySelector('.loader')
 const homeSection = document.querySelector('.home-section')
@@ -50,11 +52,11 @@ function toggleProjectPopup() {
 }
 
 function displayProjectDetails(projectItem) {
-    const projectImage = projectItem.querySelector('.project-item-thumbnail img').src
-    const projectDetails = projectItem.querySelector('.project-item-details').innerHTML
-
-    document.querySelector('.popup-thumbnail img').src = projectImage.includes('portfolio') ? projectImage.replace('portfolio', 'portfolio-secret') : projectImage
-    document.querySelector('.popup-body').innerHTML = projectDetails
+    let projectImageSrc = projectItem.querySelector('.project-item-thumbnail img').src
+    projectImageSrc = projectImageSrc.includes('portfolio') ? projectImageSrc.replace('portfolio', 'portfolio-secret') : projectImageSrc
+    popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
+    
+    loadImage(projectImageSrc, 'projects') 
 }
 
 function togglePopup() {
@@ -66,7 +68,7 @@ function togglePopup() {
         main.classList.remove('fade-out')
         imagePopup.classList.remove('open')
         body.classList.remove('disable-scrolling')
-        imageBody.innerHTML = '<img src="assets/icons/loading.gif" alt="loading.." class="loading-gif">'
+        imageBody.innerHTML = ''
     }
 
     imagePopupClose.addEventListener('click', close)
@@ -78,7 +80,7 @@ function displayImage(id) {
     id = id.replace('img-to-display-', '')
 
     if (id.includes('facepalm')) projectPopup.classList.toggle('open')
-    loadImage(`assets/images/${folder}/${id}.jpg`)
+    loadImage(`assets/images/${folder}/${id}.jpg`, 'popup')
     togglePopup()
 }
 
@@ -93,7 +95,8 @@ function displaySocials(links, action) {
     }, 1000)
 }
 
-async function loadImage(url) {
+async function loadImage(url, location) {
+    loader.classList.remove('fade-out')
     let res = await fetch(url, { method: 'GET' })
     if (res.status === 200) {
         let imageBlob = await res.blob()
@@ -101,20 +104,27 @@ async function loadImage(url) {
         let image = document.createElement('img')
         image.src = imageObjectURL
 
-        document.querySelector('.loading-gif').style.display = 'none'
-        imageBody.append(image)
+        loader.classList.add('fade-out')
+        if (location == 'popup') {
+            imageBody.append(image)
+        } else if (location == 'projects') {
+            toggleProjectPopup()
+            popupThumbnail.append(image)
+        }
     } else {
         alert(res.status)
     }
 }
 
 async function summonAliens() {
+    loader.classList.remove('fade-out')
     let url = `${window.location.href.split('#')[0]}assets/invaders.html`
     await fetch(url, { method: 'GET' })
         .then((res) => {
             return res.text()
         })
         .then((html) => {
+            loader.classList.add('fade-out')
             imageBody.innerHTML =
                 `
             <div style="padding:30px;">
@@ -152,7 +162,6 @@ window.addEventListener('load', () => {
     loader.classList.add('fade-out')
 
     setTimeout(() => {
-        loader.remove()
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
@@ -174,7 +183,7 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    scrollInto('.nav-inner')
+    // scrollInto('.nav-inner')
     disableScrolling()
     toggleNavbar()
     hideSection()
@@ -219,11 +228,10 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
         displayProjectDetails(event.target.parentNode.parentNode)
         projectPopup.scrollTo(0, 0)
-        toggleProjectPopup()
     }
 
     if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
-        document.querySelector('.popup-thumbnail img').src = ''
+        popupThumbnail.innerHTML = ''
         toggleProjectPopup()
     }
 
