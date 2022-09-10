@@ -176,7 +176,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some aliens? check out the ninja icon',
+        '%c perhaps you want to shoot some aliens? click on the ninja icon',
         [
             'padding: 10px',
             'color: aliceblue',

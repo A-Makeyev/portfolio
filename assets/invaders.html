@@ -9,12 +9,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
 
         :root {
-            --orangered-shadow: -1px 1px orangered, -2px 2px orangered, -3px 3px orangered, -4px 4px orangered, -5px 5px orangered, -6px 6px orangered, -7px 7px orangered, -8px 8px orangered;
-            --greenyellow-shadow: -1px 1px greenyellow, -2px 2px greenyellow, -3px 3px greenyellow, -4px 4px greenyellow, -5px 5px greenyellow, -6px 6px greenyellow, -7px 7px greenyellow, -8px 8px greenyellow;
+            --crimson-shadow: -1px 1px crimson, -2px 2px black, -3px 3px crimson, -4px 4px black, -5px 5px crimson, -6px 6px black, -7px 7px crimson, -8px 8px black;
+            --turquoise-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px turquoise, -4px 4px black, -5px 5px turquoise, -6px 6px black, -7px 7px turquoise, -8px 8px black;
         }
 
         .grid {
-            width: 300px;
+            width: 300px; 
             height: 300px;
             display: flex;
             flex-wrap: wrap;
@@ -53,6 +53,11 @@
             -webkit-text-stroke: 1px black;
         }
 
+        .shooter.pilot::before {
+            content: attr(emoji);
+            font-size: x-large;
+        }
+
         .shooter::before {
             content: '🛸';
             font-size: x-large;
@@ -74,6 +79,7 @@
         }
 
         @media (max-width: 575px) {
+            .pilot::before,
             .shooter::before,
             .invader::before,
             .laser::before,
@@ -99,6 +105,11 @@
                 let div = document.createElement('div')
                 document.querySelector('.grid').appendChild(div)
             }
+
+            const laserGun = new Audio('assets/sounds/laser-gun.mp3')
+            const alienKill = new Audio('assets/sounds/alien-kill.mp3')
+            const explosion = new Audio('assets/sounds/explosion.mp3')
+            const victory = new Audio('assets/sounds/victory.mp3')
 
             const squares = document.querySelectorAll('.grid div')
             const scoreDisplay = document.querySelector('#score')
@@ -126,10 +137,39 @@
             // draw shooter
             squares[currentShooterIndex].classList.add('shooter')
 
-            function destroyShooter() {
+            function endGame() {
+                document.removeEventListener('keydown', moveShooter)
+                document.removeEventListener('keyup', shoot)
+            }
+
+            function destroySpaceship() {
+                explosion.play()
                 setTimeout(() => { 
                     document.querySelector('.shooter').remove() 
                 }, 500)
+            }
+
+            function setPilot() {
+                let number = Math.floor(Math.random() * 5)
+                switch(number) {
+                    case 1:
+                        return '😎'
+                        break
+                    case 2:
+                        return '🤩'
+                        break
+                    case 3:
+                        return '🥳'
+                        break
+                    case 4:
+                        return '🥰'
+                        break
+                    case 5:
+                        return '🤪'
+                        break
+                    default: 
+                    return '😏'
+                }
             }
 
             // move shooter
@@ -174,30 +214,39 @@
                 }
 
                 // lose
-                if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
-                    document.removeEventListener('keydown', moveShooter)
+                if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {          
                     squares[currentShooterIndex].classList.add('boom')
+                    resultDisplay.style.textShadow = 'var(--crimson-shadow)'
                     resultDisplay.textContent = 'GAME OVER'
-                    resultDisplay.style.textShadow = 'var(--orangered-shadow)'
                     clearInterval(invaderId)
-                    destroyShooter()
+                    destroySpaceship()
+                    endGame()
                 }
 
                 for (let x = 0; x <= invaders.length -1; x++) {
                     if (invaders[x] > (squares.length - (width - 1))) {
-                        document.removeEventListener('keydown', moveShooter)
+                        squares[currentShooterIndex].classList.add('boom')
+                        resultDisplay.style.textShadow = 'var(--crimson-shadow)'
                         resultDisplay.textContent = 'GAME OVER'
-                        resultDisplay.style.textShadow = 'var(--orangered-shadow)'
                         clearInterval(invaderId)
-                        destroyShooter()
+                        destroySpaceship()
+                        endGame()
                     }
                 }
 
                 // win
                 if (invadersShotDown.length === invaders.length) {
+                    squares[currentShooterIndex].classList.add('pilot')
+                    document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot())
+                    console.log(
+                        `%c ${document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length)}`,
+                        ['font-size: xx-large', 'text-shadow: 2px 2px 2px black'].join(';')
+                    )
+                    resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
                     resultDisplay.textContent = 'VICTORY'
-                    resultDisplay.style.textShadow = 'var(--greenyellow-shadow)'
                     clearInterval(invaderId)
+                    victory.play()
+                    endGame()
                 }
             }
 
@@ -218,6 +267,7 @@
                         squares[currentLaserIndex].classList.remove('invader')
                         squares[currentLaserIndex].classList.remove('laser')
                         squares[currentLaserIndex].classList.add('boom')
+                        alienKill.play()
 
                         setTimeout(() => squares[currentLaserIndex].classList.remove('boom'), 250)
                         clearInterval(laserId)
@@ -236,6 +286,7 @@
 
                 switch (event.keyCode) {
                     case 32:
+                        laserGun.play()
                         laserId = setInterval(moveLaser, 100)
                         break
                 }
