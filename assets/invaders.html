@@ -17,6 +17,7 @@
         * {
             cursor: default;
             user-select: none;
+            font-family: Roboto  Mono, sans-serif;
         }
 
         .grid {
@@ -31,32 +32,42 @@
             height: 20px;
         }
 
-        .board {
-            opacity: 0;
+        .menu.open,
+        .board.open,
+        .result.open {
+            opacity: 1;
         }
 
-        .board.open {
+        .menu {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        .board {
             top: 50%;
             left: 50%;
-            opacity: 1;
+            opacity: 0;
+            margin-top: 50px;
             position: absolute;
             text-align: center;
             transition: opacity 1s ease-in;
             transform: translate(-50%, -50%);
-            font-family: Roboto  Mono, sans-serif;
         } 
 
-        .board h2 {
-            margin-bottom: 150px;
-        }
-
-        #result {
-            top: -5%;
+        .result {
+            top: 20%;
             left: 50%;
+            opacity: 0;
+            font-size: 3em;
             position: absolute;
             text-align: center;
+            transition: opacity 2s ease-in;
             transform: translate(-50%, -50%);
-            -webkit-text-stroke: 1px black;
+        }
+
+        #volume {
+            cursor: pointer;
+            margin-left: 25px;
         }
 
         .shooter.pilot::before {
@@ -84,37 +95,34 @@
             font-size: x-large;
         }
 
-        .fire::before {
-            content: '🔥';
-            font-size: x-large;
-        }
-
         @media (max-width: 575px) {
             .pilot::before,
             .shooter::before,
             .invader::before,
             .laser::before,
-            .boom::before,
-            .fire::before {
+            .boom::before {
                 font-size: large;
             }
         } 
     </style>
 </head>
 <body>
+    <div class="menu">
+        <h3>Score: <span id="score">0</span></h3>
+        <h3><i id="volume"></i></h3>
+    </div>
     <div class="board">
-        <h2 id="result"></h2>
-        <h3><i class="fa-solid fa-volume-xmark"></i></h3>
-        <h3><i class="fa-solid fa-volume-high"></i></h3>
-        
-        <h2>Score: <span id="score"></span></h2>
+        <div class="result"></div>
         <div class="grid"><!-- 225 --></div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.querySelector('.board').classList.add('open')
-            }, 250)
+                setTimeout(() => {
+                    document.querySelector('.menu').classList.add('open')
+                }, 1250)
+            }, 250) 
 
             for (let i = 0; i < 225; i++) {
                 let div = document.createElement('div')
@@ -126,9 +134,10 @@
             const explosion = new Audio('assets/sounds/explosion.mp3')
             const victory = new Audio('assets/sounds/victory.mp3')
 
+            const volume = document.getElementById('volume')
             const squares = document.querySelectorAll('.grid div')
+            const resultDisplay = document.querySelector('.result')
             const scoreDisplay = document.querySelector('#score')
-            const resultDisplay = document.querySelector('#result')
             let currentShooterIndex = 202
             let currentInvaderIndex = 0
             let invadersShotDown = []
@@ -136,6 +145,24 @@
             let score = 0
             let width = 15
             let invaderId
+
+            // toggle volume
+            volume.classList.add('fa-solid', 'fa-volume-high') // fa-volume-high
+            volume.addEventListener('click', () => {
+                if (volume.classList.contains('fa-volume-high')) {
+                    volume.classList.replace('fa-volume-high', 'fa-volume-xmark')
+                    laserGun.muted = true
+                    alienKill.muted = true
+                    explosion.muted = true
+                    victory.muted = true
+                } else {
+                    volume.classList.replace('fa-volume-xmark', 'fa-volume-high')
+                    laserGun.muted = false
+                    alienKill.muted = false
+                    explosion.muted = false
+                    victory.muted = false
+                }
+            })
 
             // define invaders
             const invaders = [
@@ -157,33 +184,51 @@
                 document.removeEventListener('keyup', shoot)
             }
 
-            function destroySpaceship() {
-                explosion.play()
-                setTimeout(() => { 
-                    document.querySelector('.shooter').remove() 
-                }, 2000)
-            }
+            function setPilot(status) {
+                let number = Math.floor(Math.random() * 6)
 
-            function setPilot() {
-                let number = Math.floor(Math.random() * 5)
-                switch(number) {
-                    case 1:
-                        return '😎'
-                        break
-                    case 2:
-                        return '🤩'
-                        break
-                    case 3:
-                        return '🥳'
-                        break
-                    case 4:
-                        return '🥰'
-                        break
-                    case 5:
-                        return '🤪'
-                        break
-                    default: 
-                    return '😏'
+                if (status == 'captured') {
+                    switch(number) {
+                        case 1:
+                            return '😵'
+                            break
+                        case 2:
+                            return '😭'
+                            break
+                        case 3:
+                            return '🥵'
+                            break
+                        case 4:
+                            return '🤕'
+                            break
+                        case 5:
+                            return '🥴'
+                            break
+                        case 6:
+                            return '☹️'
+                            break
+                    }
+                } else if (status == 'victorious') {
+                    switch(number) {
+                        case 1:
+                            return '😎'
+                            break
+                        case 2:
+                            return '🤩'
+                            break
+                        case 3:
+                            return '🥳'
+                            break
+                        case 4:
+                            return '🥰'
+                            break
+                        case 5:
+                            return '🤪'
+                            break  
+                        case 6:
+                            return '😏'
+                            break
+                    }
                 }
             }
 
@@ -230,21 +275,25 @@
 
                 // lose
                 if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {        
-                    squares[currentShooterIndex].classList.add('fire')
+                    squares[currentShooterIndex].classList.add('pilot')
+                    document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('captured'))
                     resultDisplay.style.textShadow = 'var(--crimson-shadow)'
                     resultDisplay.textContent = 'GAME OVER'
+                    resultDisplay.classList.add('open')
                     clearInterval(invaderId)
-                    destroySpaceship()
+                    explosion.play()
                     endGame()
                 }
 
                 for (let x = 0; x <= invaders.length -1; x++) {
                     if (invaders[x] > (squares.length - (width - 1))) {
-                        squares[currentShooterIndex].classList.add('fire')
+                        squares[currentShooterIndex].classList.add('pilot')
+                        document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('captured'))
                         resultDisplay.style.textShadow = 'var(--crimson-shadow)'
                         resultDisplay.textContent = 'GAME OVER'
+                        resultDisplay.classList.add('open')
                         clearInterval(invaderId)
-                        destroySpaceship()
+                        explosion.play()
                         endGame()
                     }
                 }
@@ -252,13 +301,14 @@
                 // win
                 if (invadersShotDown.length === invaders.length) {
                     squares[currentShooterIndex].classList.add('pilot')
-                    document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot())
+                    document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('victorious'))
                     console.log(
                         `%c ${document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length)}`,
                         ['font-size: xx-large', 'text-shadow: 2px 2px 2px black'].join(';')
                     )
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
                     resultDisplay.textContent = 'VICTORY'
+                    resultDisplay.classList.add('open')
                     clearInterval(invaderId)
                     victory.play()
                     endGame()
@@ -290,7 +340,7 @@
                         const killedInvaders = invaders.indexOf(currentLaserIndex)
                         invadersShotDown.push(killedInvaders)
                         score++
-                        scoreDisplay.textContent = score
+                        scoreDisplay.textContent = score >= 20 ? `${score}🔥` : score
                     }
 
                     if (currentLaserIndex < width) {
