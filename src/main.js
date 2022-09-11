@@ -133,13 +133,13 @@ async function summonAliens() {
         .then((html) => {
             loader.classList.add('fade-out')
             imageBody.innerHTML =
-                `
-            <div style="padding:30px;">
-                <p style="padding:5px;">
-                    press <b>🡰 🡲</b> to move</p> 
-                <p>and <b>space</b> to shoot</p>
-            </div>
-        `
+            `
+                <div style="padding:30px;">
+                    <p style="padding:5px;">
+                        press <b>🡰 🡲</b> to move</p> 
+                    <p>and <b>space</b> to shoot</p>
+                </div>
+            `
 
             setTimeout(() => {
                 imageBody.innerHTML = `<iframe class="invaders"></iframe>`
@@ -176,7 +176,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some aliens? click on the ninja icon',
+        '%c perhaps you want to shoot some aliens? check out the ninja icon',
         [
             'padding: 10px',
             'color: aliceblue',
