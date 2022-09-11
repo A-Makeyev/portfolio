@@ -121,14 +121,6 @@
 }
 
 @media (max-width: 575px) {
-    .about-text p {
-        width: 90%;
-    }
-
-    .about-text h2 {
-        font-size: medium;
-    }
-
     .contact-form,
     .contact-info {
         padding: 0;

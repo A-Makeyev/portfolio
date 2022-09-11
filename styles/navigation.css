@@ -168,6 +168,7 @@
 
 .header .nav-inner ul li a:hover::before {
     width: 100%;
+    border: 1px solid var(--white-alpha-40);
 }
 
 .header .nav-inner ul li a:hover {
