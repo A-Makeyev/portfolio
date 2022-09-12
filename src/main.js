@@ -191,7 +191,7 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    scrollInto('bottom')
+    scrollInto(overlay)
     disableScrolling()
     toggleNavbar()
     hideSection()  
