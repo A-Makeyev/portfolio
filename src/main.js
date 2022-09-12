@@ -6,6 +6,7 @@
 
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 const body = document.querySelector('body')
+const home = document.querySelector('#home')
 const header = document.querySelector('.header')
 const tabContainer = document.querySelector('.about-tabs')
 const aboutSection = document.querySelector('.about-section')
@@ -17,7 +18,7 @@ const imageInner = document.querySelector('.image-inner')
 const projectPopup = document.querySelector('.project-popup')
 const popupBody = document.querySelector('.popup-body')
 const popupThumbnail = document.querySelector('.popup-thumbnail')
-const greeting = document.getElementById('greeting')
+const greeting = document.querySelector('#greeting')
 const loader = document.querySelector('.loader')
 const homeSection = document.querySelector('.home-section')
 const bgIconsBox = document.querySelector('.bg-icons-box')
@@ -28,22 +29,23 @@ const giantSaltBae = document.querySelector('.giant-salt-bae')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 
-function scrollInto(selector) {
-    document.querySelector(selector).scrollIntoView({
-        behavior: 'smooth', block: 'center', inline: 'center'
-    })
+
+function toggleNavbar() {
+    header.classList.toggle('active')
 }
 
 function disableScrolling() {
     body.classList.toggle('disable-scrolling')
 }
 
-function hideSection() {
-    document.querySelector('section.active').classList.toggle('fade-out')
+function scrollInto(selector) {
+    if (selector == 'top') window.scrollTo({top: 0, behavior: 'smooth'})
+    if (selector == 'bottom') window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+    if (selector != null && typeof selector == 'object') selector.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'})
 }
 
-function toggleNavbar() {
-    header.classList.toggle('active')
+function hideSection() {
+    document.querySelector('section.active').classList.toggle('fade-out')
 }
 
 function toggleProjectPopup() {
@@ -55,7 +57,6 @@ function displayProjectDetails(projectItem) {
     let projectImageSrc = projectItem.querySelector('.project-item-thumbnail img').src
     projectImageSrc = projectImageSrc.includes('portfolio') ? projectImageSrc.replace('portfolio', 'portfolio-secret') : projectImageSrc
     popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
-    
     loadImage(projectImageSrc, 'projects') 
 }
 
@@ -172,7 +173,7 @@ window.addEventListener('load', () => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
-        scrollInto('#home')
+        scrollInto(home)
     }, 500)
 
     console.log(
@@ -190,10 +191,10 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    scrollInto('.nav-inner')
     disableScrolling()
+    scrollInto('top')
     toggleNavbar()
-    hideSection()
+    hideSection()  
 })
 
 /* CLICK EVENTS */
@@ -218,7 +219,7 @@ document.addEventListener('click', (event) => {
             document.querySelector(hash).classList.add('active')
             body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
-            window.scrollTo(0, 0)
+            scrollInto('top')
         }, 500)
     }
 
@@ -234,7 +235,7 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('view-project-btn')) {
         displayProjectDetails(event.target.parentNode.parentNode)
-        projectPopup.scrollTo(0, 0)
+        scrollInto(projectPopup)
     }
 
     if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
@@ -269,10 +270,10 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) {
             imageBody.innerHTML =
                 `   <div style="padding:10px;">
-                    <h4 style="padding:5px;">
+                    <h3 style="padding:5px;">
                         This requires a PC
-                    </h4>
-                    <h2>🛸 ⚡ 👾 💥</h2>
+                    </h3>
+                    <h1>🛸 ⚡ 👾 💥</h1>
                 </div>
              `
         } else {
