@@ -8,6 +8,7 @@ const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera
 const body = document.querySelector('body')
 const home = document.querySelector('#home')
 const header = document.querySelector('.header')
+const nav = document.querySelector('.nav-inner')
 const tabContainer = document.querySelector('.about-tabs')
 const aboutSection = document.querySelector('.about-section')
 const main = document.querySelector('.main')
@@ -191,8 +192,8 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    scrollInto(overlay)
     disableScrolling()
+    scrollInto(nav)
     toggleNavbar()
     hideSection()  
 })
