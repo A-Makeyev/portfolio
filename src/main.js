@@ -210,7 +210,7 @@ document.addEventListener('click', (event) => {
             toggleNavbar()
         } else {
             hideSection()
-            body.classList.add('disable-scrolling')
+            disableScrolling()
         }
 
         setTimeout(() => {
