@@ -24,14 +24,19 @@
     border-radius: 5px;
     border: 1px solid var(--white-alpha-40);
     background-color: var(--white-alpha-25);
+    transition: all 0.25s ease-in-out;
+    transform: scale(1);
+}
+
+.project-item-thumbnail:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
 }
 
 .project-item-thumbnail img {
     width: 100%;
     cursor: pointer;
     border-radius: 5px;
-    /* border-radius: 1px;
-    border: 2px solid var(--dark-blue); */
 }
 
 .project-item-details {

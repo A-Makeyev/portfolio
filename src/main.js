@@ -177,7 +177,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some aliens? check out the ninja icon',
+        '%c perhaps you want to shoot some aliens? check out the ninja icon in the home section',
         [
             'padding: 10px',
             'color: aliceblue',
@@ -191,8 +191,8 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
+    scrollInto('bottom')
     disableScrolling()
-    scrollInto('top')
     toggleNavbar()
     hideSection()  
 })
