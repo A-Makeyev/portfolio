@@ -44,7 +44,7 @@
         }
         
         .board {
-            top: 50%;
+            top: 55%;
             left: 50%;
             opacity: 0;
             margin-top: 50px;
@@ -55,7 +55,7 @@
         } 
 
         .result {
-            top: 20%;
+            top: 5%;
             left: 50%;
             opacity: 0;
             font-size: 3em;
@@ -96,6 +96,14 @@
         }
 
         @media (max-width: 575px) {
+            .board {
+            top: 50%;
+        } 
+
+        .result {
+            top: 20%;
+        }
+
             .pilot::before,
             .shooter::before,
             .invader::before,
@@ -340,7 +348,7 @@
                         const killedInvaders = invaders.indexOf(currentLaserIndex)
                         invadersShotDown.push(killedInvaders)
                         score++
-                        scoreDisplay.textContent = score >= 20 ? `${score}🔥` : score
+                        scoreDisplay.textContent = score >= 20 ? `${score} 🔥` : score
                     }
 
                     if (currentLaserIndex < width) {
