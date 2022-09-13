@@ -65,13 +65,13 @@ function displayProjectDetails(projectItem) {
 function togglePopup() {
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
-    body.classList.add('disable-scrolling')
+    disableScrolling()
 
     const close = () => {
         main.classList.remove('fade-out')
         imagePopup.classList.remove('open')
-        body.classList.remove('disable-scrolling')
         imageBody.innerHTML = ''
+        disableScrolling()
     }
 
     imagePopupClose.addEventListener('click', close)
@@ -193,9 +193,9 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    toggleNavbar()
-    document.querySelector('.header.active') != null ? scrollInto('bottom') : scrollInto('top')
+    scrollInto('top')
     disableScrolling()
+    toggleNavbar()
     hideSection()  
 })
 
@@ -204,23 +204,22 @@ navToggler.addEventListener('click', () => {
 document.addEventListener('click', (event) => {
     const hash = event.target.hash
     if (event.target.classList.contains('link-item') && hash !== '') {
-        // activate overlay to prevent multiple clicks
         overlay.classList.add('active')
         navToggler.classList.add('hide')
 
         if (event.target.classList.contains('nav-item')) {
             toggleNavbar()
         } else {
-            hideSection()
             disableScrolling()
+            hideSection()
         }
 
         setTimeout(() => {
             document.querySelector('section.active').classList.remove('active', 'fade-out')
             document.querySelector(hash).classList.add('active')
-            body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
             overlay.classList.remove('active')
+            disableScrolling()
             scrollInto('top')
         }, 500)
     }
