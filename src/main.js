@@ -8,7 +8,7 @@ const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera
 const body = document.querySelector('body')
 const home = document.querySelector('#home')
 const header = document.querySelector('.header')
-const nav = document.querySelector('.nav-inner')
+const nav = document.querySelector('.nav-main')
 const tabContainer = document.querySelector('.about-tabs')
 const aboutSection = document.querySelector('.about-section')
 const main = document.querySelector('.main')
@@ -227,6 +227,7 @@ document.addEventListener('click', (event) => {
     if (event.target.hasAttribute('href') && event.target.href.includes('#')) {
         let title = hash.replace(/[^\w\s]/gi, '')
         title = title.charAt(0).toUpperCase() + title.slice(1)
+        
         if (title.includes('Home')) {
             document.title = `Anatoly Makeyev`
         } else {
@@ -274,7 +275,7 @@ document.addEventListener('click', (event) => {
                     <h3 style="padding:5px;">
                         This requires a PC
                     </h3>
-                    <h1>🛸 ⚡ 👾 💥</h1>
+                    <h2>🛸 ⚡ 👾 💥</h2>
                 </div>
              `
         } else {
