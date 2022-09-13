@@ -7,6 +7,7 @@
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 const body = document.querySelector('body')
 const home = document.querySelector('#home')
+const activeSection = document.querySelector('section.active')
 const header = document.querySelector('.header')
 const nav = document.querySelector('.nav-main')
 const tabContainer = document.querySelector('.about-tabs')
@@ -127,8 +128,8 @@ async function loadImage(url, location) {
 
 async function summonAliens() {
     loader.classList.remove('fade-out')
-    let url = `${window.location.href.split('#')[0]}assets/invaders.html`
-    await fetch(url, { method: 'GET' })
+    let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
+    await fetch(invaders, { method: 'GET' })
         .then((res) => {
             return res.text()
         })
@@ -174,11 +175,11 @@ window.addEventListener('load', () => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
-        scrollInto(home)
+        scrollInto(activeSection)
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some aliens? check out the ninja icon in the home section',
+        '%c perhaps you want to shoot some aliens? Check out the top right icon',
         [
             'padding: 10px',
             'color: aliceblue',
@@ -193,7 +194,7 @@ window.addEventListener('load', () => {
 
 navToggler.addEventListener('click', () => {
     disableScrolling()
-    scrollInto(nav)
+    scrollInto('top')
     toggleNavbar()
     hideSection()  
 })
