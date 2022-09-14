@@ -220,9 +220,9 @@ document.addEventListener('click', (event) => {
         setTimeout(() => {
             document.querySelector('section.active').classList.remove('active', 'fade-out')
             document.querySelector(hash).classList.add('active')
+            body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
             overlay.classList.remove('active')
-            body.classList.remove('disable-scrolling')
             scrollInto('top')
         }, 500)
     }
@@ -275,10 +275,10 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) {
             imageBody.innerHTML =
                 `   <div style="padding:10px;">
-                    <h3 style="padding:5px;">
+                    <h2 style="padding:5px;">
                         This requires a PC
-                    </h3>
-                    <h2>🛸 ⚡ 👾 💥</h2>
+                    </h2>
+                    <h1>🛸 ⚡ 👾 💥</h1>
                 </div>
              `
         } else {
