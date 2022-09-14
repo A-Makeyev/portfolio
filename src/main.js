@@ -165,6 +165,8 @@ if (window.matchMedia('(max-width: 574px)').matches) {
 }
 
 window.addEventListener('load', () => {
+    if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
+
     const today = new Date()
     const currentHour = today.getHours()
 
@@ -193,8 +195,8 @@ window.addEventListener('load', () => {
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    scrollInto('top')
     disableScrolling()
+    scrollInto('top')
     toggleNavbar()
     hideSection()  
 })
@@ -203,6 +205,7 @@ navToggler.addEventListener('click', () => {
 
 document.addEventListener('click', (event) => {
     const hash = event.target.hash
+
     if (event.target.classList.contains('link-item') && hash !== '') {
         overlay.classList.add('active')
         navToggler.classList.add('hide')
