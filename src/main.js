@@ -65,13 +65,13 @@ function displayProjectDetails(projectItem) {
 function togglePopup() {
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
-    disableScrolling()
+    body.classList.add('disable-scrolling')
 
     const close = () => {
         main.classList.remove('fade-out')
         imagePopup.classList.remove('open')
+        body.classList.remove('disable-scrolling')
         imageBody.innerHTML = ''
-        disableScrolling()
     }
 
     imagePopupClose.addEventListener('click', close)
@@ -222,7 +222,7 @@ document.addEventListener('click', (event) => {
             document.querySelector(hash).classList.add('active')
             navToggler.classList.remove('hide')
             overlay.classList.remove('active')
-            disableScrolling()
+            body.classList.remove('disable-scrolling')
             scrollInto('top')
         }, 500)
     }
