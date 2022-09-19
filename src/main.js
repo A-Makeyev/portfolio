@@ -134,12 +134,13 @@ async function summonAliens() {
             return res.text()
         })
         .then((html) => {
+            togglePopup()
             loader.classList.add('fade-out')
             imageBody.innerHTML =
             `
                 <div style="padding:30px;">
                     <p style="padding:5px;">
-                        press <b>🡰 🡲</b> to move</p> 
+                        press <b style="font-size: x-large;">↔️</b> to move</p>
                     <p>and <b>space</b> to shoot</p>
                 </div>
             `
@@ -275,16 +276,16 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) {
             imageBody.innerHTML =
                 `   <div style="padding:10px;">
-                    <h2 style="padding:5px;">
+                    <h3 style="padding:5px;">
                         This requires a PC
-                    </h2>
-                    <h1>🛸 ⚡ 👾 💥</h1>
+                    </h3>
+                    <h2>🛸 ⚡ 👾 💥</h2>
                 </div>
              `
+             togglePopup()
         } else {
             summonAliens()
         }
-        togglePopup()
     }
 })
 

@@ -678,7 +678,17 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
 
-@media (max-height: 600px) and (min-width: 1045px) {
+@media (max-height: 900px) and (min-width: 1045px) {
+    .image-content {
+        max-width: 700px;
+    }
+}
+
+@media (max-height: 700px) and (min-width: 1045px) {
+    .image-content {
+        max-width: 600px;
+    }
+
     .image-popup {
         overflow: scroll !important;
     }
