@@ -31,7 +31,6 @@ const giantSaltBae = document.querySelector('.giant-salt-bae')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 
-
 function toggleNavbar() {
     header.classList.toggle('active')
 }
@@ -164,6 +163,11 @@ async function summonAliens() {
 if (window.matchMedia('(max-width: 574px)').matches) {
     document.querySelector('.loader div:nth-child(1)').style.display = 'none'
 }
+
+// window.addEventListener('hashchange', () => {
+//     let currentSection = window.location.href.split('#')[1]
+//     console.log(currentSection) 
+// })
 
 window.addEventListener('load', () => {
     if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
