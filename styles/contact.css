@@ -137,4 +137,17 @@
     .contact-form {
         padding-bottom: 20px;
     }
+
+    .contact-form .input-control {
+        width: 100%;
+        height: 45px;
+        padding: 0 20px;
+        font-size: small;
+    }
+
+    .contact-info-item .social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: medium;
+    }
 }

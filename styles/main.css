@@ -822,6 +822,11 @@ button {
         font-size: large;
     }
 
+    .btn {
+        font-size: small;
+        padding: 10px 20px;
+    }
+
     .bg-icons-box .bg-icon {
         width: 50px !important;
         height: 50px !important;

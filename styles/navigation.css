@@ -180,12 +180,12 @@
 @media (max-width: 1045px) {
     .header .nav-toggler {
         margin: -10px 10px;
-        height: 45px;
-        width: 45px;
+        height: 40px;
+        width: 40px;
     }
 
     .header .nav-toggler span {
-        width: 20px;
+        width: 15px;
         height: 2px;
     }
 }
