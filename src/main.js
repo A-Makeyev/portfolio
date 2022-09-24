@@ -4,6 +4,9 @@
 
 */
 
+const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+const validName = /^[^0-9.,_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
+const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 const body = document.querySelector('body')
 const home = document.querySelector('#home')
@@ -28,6 +31,10 @@ const navToggler = document.querySelector('.nav-toggler')
 const overlay = document.querySelector('.overlay')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
+const form = document.querySelector('form')
+const nameInput = document.getElementById('name')
+const emailInput = document.getElementById('email')
+const phoneInput = document.getElementById('phone')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 
@@ -129,33 +136,43 @@ async function summonAliens() {
     loader.classList.remove('fade-out')
     let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
     await fetch(invaders, { method: 'GET' })
-        .then((res) => {
-            return res.text()
-        })
-        .then((html) => {
-            togglePopup()
-            loader.classList.add('fade-out')
-            imageBody.innerHTML =
-            `
-                <div style="padding:30px;">
-                    <p style="padding:5px;">
-                        press <b style="font-size: x-large;">↔️</b> to move</p>
-                    <p>and <b>space</b> to shoot</p>
-                </div>
-            `
+    .then((res) => {
+        return res.text()
+    })
+    .then((html) => {
+        togglePopup()
+        loader.classList.add('fade-out')
+        imageBody.innerHTML =
+        `
+            <div style="padding:30px;">
+                <p style="padding:5px;">
+                    press <b style="font-size: x-large;">↔️</b> to move</p>
+                <p>and <b>space</b> to shoot</p>
+            </div>
+        `
 
-            setTimeout(() => {
-                imageBody.innerHTML = `<iframe class="invaders"></iframe>`
-                let invadersFrame = document.querySelector('.invaders').contentWindow.document
-                invadersFrame.open()
-                invadersFrame.write(html)
-                invadersFrame.close()
-                document.querySelector('.invaders').contentWindow.focus()
-            }, 2000)
-        })
-        .catch((err) => {
-            alert(`Failed to fetch ${url}`, err)
-        })
+        setTimeout(() => {
+            imageBody.innerHTML = `<iframe class="invaders"></iframe>`
+            let invadersFrame = document.querySelector('.invaders').contentWindow.document
+            invadersFrame.open()
+            invadersFrame.write(html)
+            invadersFrame.close()
+            document.querySelector('.invaders').contentWindow.focus()
+        }, 2000)
+    })
+    .catch((err) => {
+        alert(`Failed to fetch ${url}`, err)
+    })
+}
+
+function validate(input, regex) {
+    input.addEventListener('input', (event) => {
+        if (event.target.value.match(regex)) {
+            input.style.boxShadow = '4px 4px 4px var(--green)'
+        } else {
+            input.style.boxShadow = '4px 4px 4px var(--red)'
+        }
+    })
 }
 
 /* LOADER */
@@ -170,7 +187,10 @@ if (window.matchMedia('(max-width: 574px)').matches) {
 // })
 
 window.addEventListener('load', () => {
-    if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
+    if (window.location.href.includes('#')) 
+        window.location.href = window.location.href.split('#')[0]
+    else if (window.location.href.includes('?'))
+        window.location.href = window.location.href.split('?')[0]
 
     const today = new Date()
     const currentHour = today.getHours()
@@ -322,4 +342,18 @@ midgetSaltBae.addEventListener('click', () => {
             midgetSaltBae.classList.remove('fade-out')
         }, 500 * links.length)
     })
+})
+
+/* CONTACT */
+
+validate(nameInput, validName)
+validate(emailInput, validEmail)
+validate(phoneInput, validPhone)
+
+form.addEventListener('submit', (event) => {
+    if (!nameInput.value.match(validName) || !emailInput.value.match(validEmail) || !phoneInput.value.match(validPhone)) {
+        event.preventDefault()
+    } else {
+        alert('Why would you use this form? Just email/call me directly :)')
+    }
 })

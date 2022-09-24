@@ -489,19 +489,19 @@
         </div>
         <div class="row">
           <div class="contact-form">
-            <form>
+            <form action="">
               <div class="row">
                 <div class="input-group">
-                  <input type="text" placeholder="Name" class="input-control" required>
+                  <input id="name" type="text" placeholder="Name" class="input-control" maxlength="100" required>
                 </div>
                 <div class="input-group">
-                  <input type="text" placeholder="Email" class="input-control" required>
+                  <input id="email" type="email" placeholder="Email" class="input-control" maxlength="100" required>
                 </div>
                 <div class="input-group">
-                  <input type="text" placeholder="Subject" class="input-control" required>
+                  <input id="phone" type="tel" placeholder="Phone" class="input-control" maxlength="100" required>
                 </div>
                 <div class="input-group">
-                  <textarea placeholder="Message" class="input-control" required></textarea>
+                  <textarea placeholder="Message" class="input-control" maxlength="1000" required></textarea>
                 </div>
               </div>
               <div class="submit-btn accelerate remove-highlight">
