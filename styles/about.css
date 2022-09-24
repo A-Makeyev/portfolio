@@ -39,9 +39,9 @@
 }
 
 .quote {
-    margin: auto;
-    padding: 5px;
+    padding: 1px;
     max-width: 380px;
+    text-align: center;
     color: var(--gray);
 }
 
@@ -265,10 +265,9 @@
     }
 
     .quote {
-        padding: 1px;
+        margin: auto;
+        max-width: 300px;
         font-size: small;
-        text-align: center;
-        color: var(--gray);
     }
 
     .timeline-images img {
