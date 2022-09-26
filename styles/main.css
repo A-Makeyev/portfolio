@@ -173,7 +173,7 @@ section.fade-out {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--dark-blue);
+    background-color: var(--red);
 }
 
 ::-webkit-scrollbar-track {

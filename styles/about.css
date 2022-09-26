@@ -39,8 +39,8 @@
 }
 
 .quote {
-    padding: 1px;
     max-width: 380px;
+    padding: 10px 1px;
     text-align: center;
     color: var(--gray);
 }
@@ -266,6 +266,7 @@
 
     .quote {
         margin: auto;
+        padding: 1px;
         max-width: 310px;
         font-size: small;
     }
@@ -338,10 +339,6 @@
 @media (max-width: 575px) {
     .about-text p {
         width: 90%;
-    }
-
-    .about-text h2 {
-        font-size: medium;
     }
 
     .timeline-box {
