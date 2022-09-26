@@ -31,7 +31,7 @@ const navToggler = document.querySelector('.nav-toggler')
 const overlay = document.querySelector('.overlay')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
-const form = document.querySelector('form')
+const submit = document.querySelector('#submit')
 const nameInput = document.getElementById('name')
 const emailInput = document.getElementById('email')
 const phoneInput = document.getElementById('phone')
@@ -68,10 +68,17 @@ function displayProjectDetails(projectItem) {
     loadImage(projectImageSrc, 'projects') 
 }
 
-function togglePopup() {
+function togglePopup(message) {
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
     body.classList.add('disable-scrolling')
+
+    if (message) imageBody.innerHTML = 
+    `
+        <div style="max-width: 300px;">
+            <h3>${message}</h3>
+        </div>
+    `
 
     const close = () => {
         main.classList.remove('fade-out')
@@ -187,10 +194,8 @@ if (window.matchMedia('(max-width: 574px)').matches) {
 // })
 
 window.addEventListener('load', () => {
-    if (window.location.href.includes('#')) 
-        window.location.href = window.location.href.split('#')[0]
-    else if (window.location.href.includes('?'))
-        window.location.href = window.location.href.split('?')[0]
+    if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
+    else if (window.location.href.includes('?')) window.location.href = window.location.href.split('?')[0]
 
     const today = new Date()
     const currentHour = today.getHours()
@@ -350,10 +355,10 @@ validate(nameInput, validName)
 validate(emailInput, validEmail)
 validate(phoneInput, validPhone)
 
-form.addEventListener('submit', (event) => {
+submit.addEventListener('click', (event) => {
     if (!nameInput.value.match(validName) || !emailInput.value.match(validEmail) || !phoneInput.value.match(validPhone)) {
         event.preventDefault()
     } else {
-        alert('Why would you use this form? Just email/call me directly :)')
+        togglePopup('Why would you use this form? Just email/call me directly :)')
     }
 })
