@@ -40,7 +40,7 @@
 
 .quote {
     max-width: 380px;
-    padding: 10px 1px;
+    padding: 5px 1px;
     text-align: center;
     color: var(--gray);
 }
