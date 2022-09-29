@@ -687,7 +687,7 @@ button {
 
 @media (max-height: 700px) and (min-width: 1045px) {
     .image-content {
-        max-width: 600px;
+        max-width: 650px;
     }
 
     .image-popup {
