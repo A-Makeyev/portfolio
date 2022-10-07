@@ -265,10 +265,10 @@
     }
 
     .quote {
-        margin: auto;
         padding: 1px;
         max-width: 310px;
         font-size: small;
+        margin: -5px auto;
     }
 
     .timeline-images img {
@@ -302,7 +302,7 @@
     }
 
     .quote {
-        margin-top: -15px;
+        margin: -20px auto;
         padding-top: 15px;
     }
 
