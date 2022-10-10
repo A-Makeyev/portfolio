@@ -29,6 +29,7 @@ const homeSection = document.querySelector('.home-section')
 const bgIconsBox = document.querySelector('.bg-icons-box')
 const navToggler = document.querySelector('.nav-toggler')
 const overlay = document.querySelector('.overlay')
+const logo = document.querySelector('.m-logo')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
 const submit = document.querySelector('#submit')
@@ -207,7 +208,6 @@ window.addEventListener('load', () => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
-        scrollInto(home)
     }, 500)
 
     console.log(
@@ -287,18 +287,19 @@ document.addEventListener('click', (event) => {
             setTimeout(() => {
                 midgetSaltBae.click()
                 saltBaeWasActivated = true
-
-                if (!bgIconsWereActivated) {
-                    document.querySelector('.m-logo').click()
-                    bgIconsWereActivated = true
-                }
+            }, 1000)
+        }
+        if (!bgIconsWereActivated) {
+            setTimeout(() => {
+                logo.click()
+                bgIconsWereActivated = true
             }, 1000)
         }
     }
 
     if (event.target.classList.contains('m-logo')) {
         bgIconsBox.classList.toggle('active')
-        bgIconsWereActivated = bgIconsBox.classList.contains('active') ? true : false
+        bgIconsWereActivated = true
     }
 
     if (event.target.classList.contains('github-ninja')) {
@@ -347,6 +348,7 @@ midgetSaltBae.addEventListener('click', () => {
             midgetSaltBae.classList.remove('fade-out')
         }, 500 * links.length)
     })
+    saltBaeWasActivated = true
 })
 
 /* CONTACT */

@@ -278,7 +278,7 @@ button {
     }
 
     50% {
-        transform: translateY(230px) rotate(360deg);
+        transform: translateY(220px) rotate(360deg);
     }
 }
 
