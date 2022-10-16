@@ -237,6 +237,7 @@ document.addEventListener('click', (event) => {
     const hash = event.target.hash
 
     if (event.target.classList.contains('link-item') && hash !== '') {
+        event.preventDefault()
         overlay.classList.add('active')
         navToggler.classList.add('hide')
 
@@ -253,7 +254,6 @@ document.addEventListener('click', (event) => {
             body.classList.remove('disable-scrolling')
             navToggler.classList.remove('hide')
             overlay.classList.remove('active')
-            scrollInto('top')
         }, 500)
     }
 
