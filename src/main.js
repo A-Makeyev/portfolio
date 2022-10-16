@@ -38,6 +38,7 @@ const emailInput = document.getElementById('email')
 const phoneInput = document.getElementById('phone')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
+var currentSection = ''
 
 function toggleNavbar() {
     header.classList.toggle('active')
@@ -93,11 +94,10 @@ function togglePopup(message) {
 }
 
 function displayImage(id) {
-    let folder = window.location.href.split('#')[1]
     id = id.replace('img-to-display-', '')
 
     if (id.includes('facepalm')) projectPopup.classList.toggle('open')
-    loadImage(`assets/images/${folder}/${id}.jpg`, 'popup')
+    loadImage(`assets/images/${currentSection}/${id}.jpg`, 'popup')
 }
 
 function displaySocials(links, action) {
@@ -189,14 +189,9 @@ if (window.matchMedia('(max-width: 574px)').matches) {
     document.querySelector('.loader div:nth-child(1)').style.display = 'none'
 }
 
-// window.addEventListener('hashchange', () => {
-//     let currentSection = window.location.href.split('#')[1]
-//     console.log(currentSection) 
-// })
-
 window.addEventListener('load', () => {
     if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
-    else if (window.location.href.includes('?')) window.location.href = window.location.href.split('?')[0]
+    if (window.location.href.includes('?')) window.location.href = window.location.href.split('?')[0]
 
     const today = new Date()
     const currentHour = today.getHours()
@@ -238,6 +233,8 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('link-item') && hash !== '') {
         event.preventDefault()
+        currentSection = hash.split('#')[1]
+
         overlay.classList.add('active')
         navToggler.classList.add('hide')
 
