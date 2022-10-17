@@ -108,7 +108,7 @@ function displaySocials(links, action) {
                 if (action == 'fadeIn') links[i].classList.remove('fade-out')
             }, 250 * i)
         }
-    }, 1000)
+    }, 1500)
 }
 
 async function loadImage(url, location) {
@@ -303,9 +303,9 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) {
             imageBody.innerHTML =
                 `   <div style="padding:10px;">
-                    <h3 style="padding:5px;">
+                    <p style="padding:5px;">
                         This requires a PC
-                    </h3>
+                    </p>
                     <h2>🛸 ⚡ 👾 💥</h2>
                 </div>
              `
