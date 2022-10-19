@@ -110,7 +110,7 @@ function displaySocials(links, action) {
                 if (action == 'fadeIn') links[i].classList.remove('fade-out')
             }, 250 * i)
         }
-    }, 1500)
+    }, 1250)
 }
 
 async function loadImage(url, location) {
@@ -130,11 +130,9 @@ async function loadImage(url, location) {
         loader.classList.add('fade-out')
         if (location == 'popup') {
             togglePopup()
-            // imageBody.appendChild(image)
             imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`           
         } else if (location == 'projects') {
             toggleProjectPopup()
-            // popupThumbnail.appendChild(image)
             popupThumbnail.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
         }
     } else {
@@ -279,7 +277,9 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.id != 'undefined' && event.target.id.includes('img-to-display')) {
-        displayImage(event.target.id)
+        if (!(event.target.id.includes('anatoly') && window.innerWidth < 750)) {
+            displayImage(event.target.id)
+        }
     }
 
     if (event.target.classList.contains('activate-salt-bae')) {
@@ -293,7 +293,7 @@ document.addEventListener('click', (event) => {
             setTimeout(() => {
                 logo.click()
                 bgIconsWereActivated = true
-            }, 1000)
+            }, 1250)
         }
     }
 
