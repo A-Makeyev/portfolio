@@ -237,6 +237,7 @@ document.addEventListener('click', (event) => {
         event.preventDefault()
         currentSection = hash.split('#')[1]
 
+        scrollInto('top')
         overlay.classList.add('active')
         navToggler.classList.add('hide')
 
@@ -305,9 +306,9 @@ document.addEventListener('click', (event) => {
         if (isMobileDevice) {
             imageBody.innerHTML =
                 `   <div style="padding:10px;">
-                    <p style="padding:5px;">
+                    <h3 style="padding:5px;">
                         This requires a PC
-                    </p>
+                    </h3>
                     <h2>🛸 ⚡ 👾 💥</h2>
                 </div>
              `
