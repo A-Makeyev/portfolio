@@ -16,8 +16,10 @@
 }
 
 .skills {
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
+    max-width: 450px;
     justify-content: center;
 }
 
@@ -25,17 +27,17 @@
     cursor: pointer;
     font-weight: 500;
     padding: 5px 15px;
+    font-size: xx-large;
     margin: 0 5px 5px 0;
     border-radius: 20px;
+    transform: scale(1);
     color: var(--dark-blue);
-    border: 5px solid var(--white-alpha-40);
-    background-color: var(--white-alpha-25);
     transition: all 0.25s ease;
+    -webkit-text-stroke: 0.5px var(--dark-blue);
 }
 
 .skill-item:hover {
-    border-color: var(--white-alpha-25);
-    background-color: var(--white-alpha-40);
+    transform: scale(1.1);
 }
 
 .quote {
@@ -278,7 +280,6 @@
 }
 
 @media (max-width: 1045px) {
-    .skill-item,
     .timeline-item li {
         font-size: small;
         font-weight: 400;
@@ -291,9 +292,12 @@
 }
 
 @media (max-width: 767px) {
+    .skills {
+        max-width: 400px;
+    }
+
     .skill-item {
-        padding: 5px 10px;
-        margin: 5px 1px 1px 0;
+        font-size: x-large;
     }
 
     .about-text p,
@@ -308,11 +312,6 @@
 
     .about-tabs .tab-item {
         font-size: medium;
-    }
-
-    .skill-item {
-        font-size: small;
-        padding: 5px 10px;
     }
     
     .timeline-box {

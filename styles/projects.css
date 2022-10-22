@@ -41,6 +41,23 @@
     display: none;
 }
 
+.project-skill-item {
+    cursor: pointer;
+    font-weight: 500;
+    padding: 5px 15px;
+    margin: 0 5px 5px 0;
+    border-radius: 20px;
+    color: var(--dark-blue);
+    border: 5px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
+    transition: all 0.25s ease;
+}
+
+.project-skill-item:hover {
+    border-color: var(--white-alpha-25);
+    background-color: var(--white-alpha-40);
+}
+
 .project-item-btn {
     width: 40px;
     height: 40px;
@@ -242,6 +259,12 @@
     .project-item {
         width: calc(100% - 30px);
     }
+
+    .project-skill-item {
+        font-size: small;
+        padding: 5px 10px;
+        margin: 5px 1px 1px 0;
+    }
 }
 
 @media (max-width: 575px) {
@@ -255,5 +278,6 @@
 
     .popup-body .description {
         margin-top: -20px;
+        padding: 20px 20px;
     }
 }
