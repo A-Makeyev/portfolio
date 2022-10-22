@@ -112,6 +112,29 @@
                 font-size: large;
             }
         } 
+
+        .click-box {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            height: 300px;
+            width: 300px;
+        }
+
+        .click-box-column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+        }
+        .left-side {
+            width: 50%;
+            height: 300px;
+        }
+        .right-side {
+            width: 50%;
+            height: 300px;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +143,10 @@
         <h3><i id="volume"></i></h3>
     </div>
     <div class="board">
+        <div class="click-box">
+            <div class="click-box-column left-side"></div>
+            <div class="click-box-column right-side"></div>
+        </div>
         <div class="result"></div>
         <div class="grid"><!-- 225 --></div>
     </div>
@@ -146,6 +173,8 @@
             const squares = document.querySelectorAll('.grid div')
             const resultDisplay = document.querySelector('.result')
             const scoreDisplay = document.querySelector('#score')
+            const leftSide = document.querySelector('.left-side')
+            const rightSide = document.querySelector('.right-side')
             let currentShooterIndex = 202
             let currentInvaderIndex = 0
             let invadersShotDown = []
@@ -245,9 +274,11 @@
                 squares[currentShooterIndex].classList.remove('shooter')
                 switch (event.keyCode) {
                     case 37:
+                        // move left
                         if (currentShooterIndex % width !== 0) currentShooterIndex -= 1
                         break
                     case 39:
+                        // move right
                         if (currentShooterIndex % width < width - 1) currentShooterIndex += 1
                         break
                 }
@@ -326,7 +357,7 @@
             invaderId = setInterval(moveInvaders, 500)
 
             // shoot
-            function shoot(event) {
+            function shoot(event, mobileDevice) {
                 let laserId
                 let currentLaserIndex = currentShooterIndex
 
@@ -357,15 +388,28 @@
                     }
                 }
 
-                switch (event.keyCode) {
-                    case 32:
-                        laserGun.play()
-                        laserId = setInterval(moveLaser, 100)
-                        break
+                if (event.keyCode == 32 || mobileDevice) {
+                    laserGun.play()
+                    laserId = setInterval(moveLaser, 100)
                 }
             }
 
             document.addEventListener('keyup', shoot)
+
+            // mouse usage for mobile devices
+            leftSide.onclick = () => {
+                shoot(32, true)
+                squares[currentShooterIndex].classList.remove('shooter')
+                if (currentShooterIndex % width !== 0) currentShooterIndex -= 1
+                squares[currentShooterIndex].classList.add('shooter')
+            }
+
+            rightSide.onclick = () => {
+                shoot(32, true)
+                squares[currentShooterIndex].classList.remove('shooter')
+                if (currentShooterIndex % width < width - 1) currentShooterIndex += 1
+                squares[currentShooterIndex].classList.add('shooter')
+            }
         })
     </script>
 </body>
