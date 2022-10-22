@@ -287,13 +287,13 @@ document.addEventListener('click', (event) => {
             setTimeout(() => {
                 midgetSaltBae.click()
                 saltBaeWasActivated = true
-            }, 1000)
+            }, 1500)
         }
         if (!bgIconsWereActivated) {
             setTimeout(() => {
                 logo.click()
                 bgIconsWereActivated = true
-            }, 1250)
+            }, 1750)
         }
     }
 

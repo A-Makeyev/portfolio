@@ -33,6 +33,7 @@
     transform: scale(1);
     color: var(--dark-blue);
     transition: all 0.25s ease;
+    border: 1px solid transparent;
     -webkit-text-stroke: 0.5px var(--dark-blue);
 }
 
