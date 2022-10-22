@@ -168,7 +168,7 @@
             const alienKill = new Audio('assets/sounds/alien-kill.mp3')
             const explosion = new Audio('assets/sounds/explosion.mp3')
             const victory = new Audio('assets/sounds/victory.mp3')
-
+            const mobileDeviceControls = new AbortController()
             const volume = document.getElementById('volume')
             const squares = document.querySelectorAll('.grid div')
             const resultDisplay = document.querySelector('.result')
@@ -219,6 +219,7 @@
             function endGame() {
                 document.removeEventListener('keydown', moveShooter)
                 document.removeEventListener('keyup', shoot)
+                mobileDeviceControls.abort()
             }
 
             function setPilot(status) {
@@ -397,19 +398,21 @@
             document.addEventListener('keyup', shoot)
 
             // mouse usage for mobile devices
-            leftSide.onclick = () => {
+            function mobileControl(side) {
                 shoot(32, true)
                 squares[currentShooterIndex].classList.remove('shooter')
-                if (currentShooterIndex % width !== 0) currentShooterIndex -= 1
+
+                if (side == 'left') {
+                    if (currentShooterIndex % width !== 0) currentShooterIndex -= 1
+                } else if (side == 'right') {
+                    if (currentShooterIndex % width < width - 1) currentShooterIndex += 1
+                }
+
                 squares[currentShooterIndex].classList.add('shooter')
             }
 
-            rightSide.onclick = () => {
-                shoot(32, true)
-                squares[currentShooterIndex].classList.remove('shooter')
-                if (currentShooterIndex % width < width - 1) currentShooterIndex += 1
-                squares[currentShooterIndex].classList.add('shooter')
-            }
+            leftSide.addEventListener('click', () => { mobileControl('left') }, { signal: mobileDeviceControls.signal })
+            rightSide.addEventListener('click', () => { mobileControl('right') }, { signal: mobileDeviceControls.signal })
         })
     </script>
 </body>
