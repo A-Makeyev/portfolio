@@ -27,6 +27,7 @@ const popupBody = document.querySelector('.popup-body')
 const popupThumbnail = document.querySelector('.popup-thumbnail')
 const greeting = document.querySelector('#greeting')
 const loader = document.querySelector('.loader')
+const spaceLoader = document.querySelector('.space-loader')
 const homeSection = document.querySelector('.home-section')
 const bgIconsBox = document.querySelector('.bg-icons-box')
 const navToggler = document.querySelector('.nav-toggler')
@@ -141,34 +142,47 @@ async function loadImage(url, location) {
 }
 
 async function summonAliens() {
-    loader.classList.remove('fade-out')
+    main.classList.add('fade-out')
+    spaceLoader.classList.remove('fade-out')
     let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
     await fetch(invaders, { method: 'GET' })
     .then((res) => {
         return res.text()
     })
     .then((html) => {
-        togglePopup()
-        loader.classList.add('fade-out')
-        imageBody.innerHTML =
-        `
-            <div style="padding:30px;">
-                <p style="padding:5px;">
-                    press <b style="font-size: x-large;">↔️</b> to move</p>
-                <p>and <b>space</b> to shoot</p>
-            </div>
-        `
-
-        setTimeout(() => {
+        const displayBoard = () => {
+            imagePopup.style.display = 'block'
             imageBody.innerHTML = `<iframe class="invaders"></iframe>`
             let invadersFrame = document.querySelector('.invaders').contentWindow.document
             invadersFrame.open()
             invadersFrame.write(html)
             invadersFrame.close()
             document.querySelector('.invaders').contentWindow.focus()
-        }, 2000)
-    })
-    .catch((err) => {
+        }
+
+        if (isMobileDevice) {
+            setTimeout(() => {
+                togglePopup()
+                spaceLoader.classList.add('fade-out')
+                imagePopup.style.display = 'none'
+                displayBoard()
+            }, 2000)
+        } else {
+            togglePopup()
+            spaceLoader.classList.add('fade-out')
+            imageBody.innerHTML = 
+            `
+                <div style="padding:30px;">
+                    <p style="padding:5px;">
+                        press <b style="font-size: x-large;">↔️</b> to move</p>
+                    <p>and <b>space</b> to shoot</p>
+                </div>
+            `
+            setTimeout(() => { 
+                displayBoard()  
+            }, 2000)
+        }
+    }).catch((err) => {
         alert(`Failed to fetch ${url}`, err)
     })
 }
@@ -184,10 +198,6 @@ function validate(input, regex) {
 }
 
 /* LOADER */
-
-if (window.matchMedia('(max-width: 574px)').matches) {
-    document.querySelector('.loader div:nth-child(1)').style.display = 'none'
-}
 
 window.addEventListener('load', () => {
     if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
@@ -303,19 +313,7 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.classList.contains('github-ninja')) {
-        if (isMobileDevice) {
-            imageBody.innerHTML =
-                `   <div style="padding:10px;">
-                    <h3 style="padding:5px;">
-                        This requires a PC
-                    </h3>
-                    <h2>🛸 ⚡ 👾 💥</h2>
-                </div>
-             `
-             togglePopup()
-        } else {
-            summonAliens()
-        }
+        summonAliens()
     }
 })
 

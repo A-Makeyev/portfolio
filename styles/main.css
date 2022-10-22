@@ -136,6 +136,7 @@ section.fade-out {
 
 .main.fade-out,
 .loader.fade-out,
+.space-loader.fade-out,
 .popup-loader.fade-out,
 .bg-icons-box.fade-out,
 .midget-salt-bae.fade-out {
@@ -251,6 +252,7 @@ button {
 }
 
 @keyframes zoomAndSpin {
+
     0%,
     100% {
         transform: scale(0.75) rotate(360deg);
@@ -272,6 +274,7 @@ button {
 }
 
 @keyframes bounceAndSpin {
+
     0%,
     100% {
         transform: translateY(200px) rotate(-360deg);
@@ -407,6 +410,7 @@ button {
     backdrop-filter: blur(5px);
     background-color: var(--white-alpha-25);
     transition: all 0.5s ease-out;
+    user-select: none;
     position: fixed;
 }
 
@@ -424,26 +428,82 @@ button {
     width: 80px;
     height: 80px;
     border-color: var(--dark-blue);
+    animation-duration: 1.25s;
 }
 
 .loader div:nth-child(2) {
     width: 60px;
     height: 60px;
     border-color: var(--red);
-    animation-duration: 1.25s;
+    animation-duration: 1.5s;
 }
 
 .loader div:nth-child(3) {
     width: 40px;
     height: 40px;
     border-color: var(--dark-blue);
+    animation-duration: 1.75s;
 }
 
 .loader div:nth-child(4) {
     width: 20px;
     height: 20px;
     border-color: var(--red);
+    animation-duration: 2s;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~ ALIEN LOADER ~~~~~~~~~~~~~~~~~~~~~~ */
+
+.space-loader {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    background-color: var(--white-alpha-25);
+    transition: all 0.5s ease-out;
+    user-select: none;
+    position: fixed;
+}
+
+.space-loader div {
+    opacity: 1;
+    position: absolute;
+    animation: spin 1s linear infinite;
+}
+
+.space-loader div:nth-child(1) {
+    width: 160px;
+    height: 160px;
+    font-size: larger;
+    animation-duration: 2s;
+}
+
+.space-loader div:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    font-size: large;
+    animation-duration: 4s;
+}
+
+.space-loader div:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    font-size: large;
+    animation-duration: 6s;
+}
+
+.space-loader div:nth-child(4) {
+    width: 20px;
+    height: 20px;
+    font-size: larger;
+    animation-duration: 8s;
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -640,7 +700,7 @@ button {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    min-height: 150px; 
+    min-height: 150px;
 }
 
 .image-body img {
@@ -775,7 +835,7 @@ button {
         height: 50px;
         width: 50px;
     }
-    
+
     .midget-salt-bae:hover {
         transform: translate(-100.5%, -370.5%) rotate(-35deg);
     }
@@ -795,7 +855,7 @@ button {
         height: 50px;
         width: 50px;
     }
-    
+
     .github-ninja:hover {
         transform: translate(64%, -350%) scale(1.1);
     }
@@ -803,6 +863,34 @@ button {
     .invaders {
         width: 500px;
         height: 500px;
+    }
+
+    .loader div:nth-child(1) {
+        width: 80px;
+        height: 80px;
+        border-color: var(--dark-blue);
+        animation-duration: 1s;
+    }
+
+    .loader div:nth-child(2) {
+        width: 60px;
+        height: 60px;
+        border-color: var(--red);
+        animation-duration: 1.25s;
+    }
+
+    .loader div:nth-child(3) {
+        width: 40px;
+        height: 40px;
+        border-color: var(--dark-blue);
+        animation-duration: 1.5s;
+    }
+
+    .loader div:nth-child(4) {
+        width: 20px;
+        height: 20px;
+        border-color: var(--red);
+        animation-duration: 1.75;
     }
 }
 
@@ -838,7 +926,7 @@ button {
         height: 40px;
         width: 40px;
     }
-    
+
     .midget-salt-bae:hover {
         transform: translate(-105.5%, -380%) rotate(-35deg);
     }
@@ -850,7 +938,7 @@ button {
     }
 
     .m-logo:hover {
-        transform: translate(-53%, -486%) scale(1.1); 
+        transform: translate(-53%, -486%) scale(1.1);
     }
 
     .github-ninja {
@@ -858,7 +946,7 @@ button {
         height: 40px;
         width: 40px;
     }
-    
+
     .github-ninja:hover {
         transform: translate(68%, -360%) scale(1.1);
     }
