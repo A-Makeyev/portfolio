@@ -251,6 +251,10 @@
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
 
 @media (max-width: 1225px) {
+    .about-text p {
+        width: 75%;
+    }
+
     .about-text p,
     .about-text h2 {
         font-size: medium;

@@ -216,7 +216,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some aliens? Check out the top right icon',
+        '%c perhaps you want to shoot some invaders? Check out the top right icon 🐙',
         [
             'padding: 10px',
             'color: aliceblue',
