@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/assets/fontawesome/all.min.css">
-    <title>Alien Invaders</title>
+    <title>Invaders</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
 
@@ -80,22 +80,22 @@
 
         .shooter.pilot::before {
             content: attr(emoji);
-            font-size: x-large;
+            font-size: larger;
         }
 
         .shooter::before {
             content: '🛸';
-            font-size: x-large;
+            font-size: larger;
         }
 
         .laser::before {
             content: '⚡';
-            font-size: x-large;
+            font-size: larger;
         }
 
         .boom::before {
             content: '💥';
-            font-size: x-large;
+            font-size: larger;
         }
 
         .click-box {
@@ -125,11 +125,11 @@
 
         @media (max-width: 575px) {
             .board {
-                top: 55%;
+                top: 50%;
             } 
 
             .result {
-                top: 25%;
+                top: 20%;
             }
 
             .pilot::before,
@@ -137,7 +137,7 @@
             .invader::before,
             .laser::before,
             .boom::before {
-                font-size: large;
+                font-size: medium;
             }
         } 
     </style>
@@ -226,10 +226,10 @@
                         theChoosenOne = '🐙'
                         break
                     case 3:
-                        theChoosenOne = '👽'
+                        theChoosenOne = '👻'
                         break
                     case 4:
-                        theChoosenOne = '🐷'
+                        theChoosenOne = '🤡'
                         break
                     case 5:
                         theChoosenOne = '🐥'
@@ -242,8 +242,13 @@
                 `
                     .invader::before {
                         content: '${theChoosenOne}';
-                        font-size: x-large;
+                        font-size: larger;
                     }
+                    @media (max-width: 575px) {
+                        .invader::before {
+                            font-size: medium;
+                        }
+                    } 
                 `
                 document.getElementsByTagName('head')[0].appendChild(invaderStyle)
             })()
