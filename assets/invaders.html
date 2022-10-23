@@ -17,6 +17,7 @@
         * {
             cursor: default;
             user-select: none;
+            touch-action: none;
             font-family: Roboto  Mono, sans-serif;
         }
 
@@ -68,6 +69,13 @@
         #volume {
             cursor: pointer;
             margin-left: 25px;
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .shooter.pilot::before {
@@ -77,11 +85,6 @@
 
         .shooter::before {
             content: '🛸';
-            font-size: x-large;
-        }
-
-        .invader::before {
-            content: '👾';
             font-size: x-large;
         }
 
@@ -95,29 +98,10 @@
             font-size: x-large;
         }
 
-        @media (max-width: 575px) {
-            .board {
-                top: 50%;
-            } 
-
-            .result {
-                top: 20%;
-            }
-
-            .pilot::before,
-            .shooter::before,
-            .invader::before,
-            .laser::before,
-            .boom::before {
-                font-size: large;
-            }
-        } 
-
         .click-box {
             display: flex;
             flex-direction: row;
             position: absolute;
-            touch-action: none;
             height: 300px;
             width: 300px;
         }
@@ -128,14 +112,34 @@
             flex-basis: 100%;
             flex: 1;
         }
+
         .left-side {
             width: 50%;
             height: 300px;
         }
+
         .right-side {
             width: 50%;
             height: 300px;
         }
+
+        @media (max-width: 575px) {
+            .board {
+                top: 55%;
+            } 
+
+            .result {
+                top: 25%;
+            }
+
+            .pilot::before,
+            .shooter::before,
+            .invader::before,
+            .laser::before,
+            .boom::before {
+                font-size: large;
+            }
+        } 
     </style>
 </head>
 <body>
@@ -202,6 +206,48 @@
                 }
             })
 
+            function endGame() {
+                document.removeEventListener('keydown', moveShooter)
+                document.removeEventListener('keyup', shoot)
+                mobileDeviceControls.abort()
+            }
+
+            (function setInvader() {
+                let number = Math.floor(Math.random() * 6)
+                let theChoosenOne
+                switch(number) {
+                    case 0:
+                        theChoosenOne = '👾'
+                        break
+                    case 1:
+                        theChoosenOne = '👹'
+                        break
+                    case 2:
+                        theChoosenOne = '🐙'
+                        break
+                    case 3:
+                        theChoosenOne = '👽'
+                        break
+                    case 4:
+                        theChoosenOne = '🐷'
+                        break
+                    case 5:
+                        theChoosenOne = '🐥'
+                        break
+                }
+
+                let invaderStyle = document.createElement('style')
+                invaderStyle.type = 'text/css'
+                invaderStyle.innerHTML = 
+                `
+                    .invader::before {
+                        content: '${theChoosenOne}';
+                        font-size: x-large;
+                    }
+                `
+                document.getElementsByTagName('head')[0].appendChild(invaderStyle)
+            })()
+
             // define invaders
             const invaders = [
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -210,19 +256,11 @@
             ]
 
             // draw invaders
-            invaders.forEach(
-                invader => squares[currentInvaderIndex + invader].classList.add('invader')
-            )
+            invaders.forEach(invader => squares[currentInvaderIndex + invader].classList.add('invader'))
 
             // draw shooter
             squares[currentShooterIndex].classList.add('shooter')
-
-            function endGame() {
-                document.removeEventListener('keydown', moveShooter)
-                document.removeEventListener('keyup', shoot)
-                mobileDeviceControls.abort()
-            }
-
+            
             function setPilot(status) {
                 let number = Math.floor(Math.random() * 6)
 
@@ -235,13 +273,13 @@
                             return '😭'
                             break
                         case 2:
-                            return '🥵'
+                            return '🤮'
                             break
                         case 3:
                             return '🤕'
                             break
                         case 4:
-                            return '🥴'
+                            return '😰'
                             break
                         case 5:
                             return '☹️'
@@ -256,10 +294,10 @@
                             return '🤩'
                             break
                         case 2:
-                            return '🥳'
+                            return '😋'
                             break
                         case 3:
-                            return '🥰'
+                            return '🤓'
                             break
                         case 4:
                             return '🤪'
@@ -344,7 +382,7 @@
                     squares[currentShooterIndex].classList.add('pilot')
                     document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('victorious'))
                     console.log(
-                        `%c ${document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length)}`,
+                        `%c ${document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length * 30)}`,
                         ['font-size: xx-large', 'text-shadow: 2px 2px 2px black'].join(';')
                     )
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
