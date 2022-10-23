@@ -178,11 +178,11 @@ section.fade-out {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--red);
+    background-color: var(--white-alpha-40);
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--white);
+    background-color: var(--white-alpha-25);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ BUTTONS ~~~~~~~~~~~~~~~~~~~~~ */
