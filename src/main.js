@@ -201,9 +201,6 @@ function validate(input, regex) {
 /* LOADER */
 
 window.addEventListener('load', () => {
-    if (window.location.href.includes('#')) window.location.href = window.location.href.split('#')[0]
-    if (window.location.href.includes('?')) window.location.href = window.location.href.split('?')[0]
-
     const today = new Date()
     const currentHour = today.getHours()
 
@@ -217,7 +214,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some invaders? Check out the top right icon 🐙',
+        '%c perhaps you want to shoot some invaders? Check out the top right icon ~ 🐱‍👤',
         [
             'padding: 10px',
             'color: aliceblue',
