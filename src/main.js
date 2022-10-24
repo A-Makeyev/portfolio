@@ -158,6 +158,7 @@ async function summonAliens() {
             invadersFrame.write(html)
             invadersFrame.close()
             document.querySelector('.invaders').contentWindow.focus()
+            scrollInto(imageBody)
         }
 
         if (isMobileDevice) {
