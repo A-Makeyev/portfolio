@@ -214,7 +214,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c perhaps you want to shoot some invaders? Check out the top right icon ~ 🐱‍👤',
+        '%c Perhaps you want to shoot some invaders? Check out the top right icon ~ 🐱‍👤',
         [
             'padding: 10px',
             'color: aliceblue',
@@ -296,7 +296,8 @@ document.addEventListener('click', (event) => {
                 midgetSaltBae.click()
                 saltBaeWasActivated = true
             }, 1500)
-        }
+        } 
+
         if (!bgIconsWereActivated) {
             setTimeout(() => {
                 logo.click()
@@ -331,6 +332,18 @@ tabContainer.addEventListener('click', (event) => {
 /* SECRET SURPRISE */
 
 midgetSaltBae.addEventListener('click', () => {
+
+    // if (saltBaeWasActivated) {
+    //     document.addEventListener('mousemove', () => {
+    //         console.log('X: ' + event.pageX)
+    //         console.log('Y: ' + event.pageY)
+        
+    //         if (event.pageX == 100 && event.pageY == 2000) {
+    //             alert('asd')
+    //         }
+    //     })
+    // }
+
     const links = document.querySelectorAll('.secret-links a')
 
     giantSaltBae.classList.remove('fade-out')

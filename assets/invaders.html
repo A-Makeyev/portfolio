@@ -43,6 +43,10 @@
             opacity: 0;
             transition: opacity 1s ease-in;
         }
+
+        .menu h3 {
+            font-size: large;
+        }
         
         .board {
             top: 55%;
@@ -66,9 +70,14 @@
             transform: translate(-50%, -50%);
         }
 
+        #score::selection {
+            text-shadow: var(--turquoise-shadow);
+        }
+
         #volume {
+            float: right;
+            margin-top: 5px;
             cursor: pointer;
-            margin-left: 25px;
             user-select: none;
             -ms-user-select: none;
             -moz-user-select: none;
@@ -124,6 +133,14 @@
         }
 
         @media (max-width: 575px) {
+            .menu h3 {
+                font-size: small;
+            }
+
+            #volume {
+                margin-top: 2.5px;
+            }
+
             .board {
                 top: 50%;
             } 
@@ -144,8 +161,7 @@
 </head>
 <body>
     <div class="menu">
-        <h3>Score: <span id="score">0</span></h3>
-        <h3><i id="volume"></i></h3>
+        <h3>Score: <span id="score">0</span> <i id="volume"></i></h3>
     </div>
     <div class="board">
         <div class="click-box">
@@ -180,7 +196,7 @@
             const scoreDisplay = document.querySelector('#score')
             const leftSide = document.querySelector('.left-side')
             const rightSide = document.querySelector('.right-side')
-            let currentShooterIndex = 202
+            let currentShooterIndex = 217
             let currentInvaderIndex = 0
             let invadersShotDown = []
             let direction = 1
@@ -386,12 +402,24 @@
                 if (invadersShotDown.length === invaders.length) {
                     squares[currentShooterIndex].classList.add('pilot')
                     document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('victorious'))
+                    let emojis = document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length * 15)
+
                     console.log(
-                        `%c ${document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length * 30)}`,
-                        ['font-size: xx-large', 'text-shadow: 2px 2px 2px black'].join(';')
+                        '%c' + emojis 
+                        + '\n ++++++++++ [ > + > +++ > +++++++ > ++++++++++ <<<< - ] >>> +++++++++++++ . >'
+                        + '--- . +++++++++++ . ++++++++ . << ++ . > +++++++++++++++ . - . ++++ . < . >>'
+                        + '------- . < ++++ . -- . + . > +++++++ . << . > . ------- . > ++ . < ++++ . <'
+                        + '. > -- . > ------- .. ---- . < ++ . - . < . >> ++++++++ . ---- . -- . < + . >'
+                        + '+++++++ . < +++ . + . +++++ . ------- . < . > - . > ----- . +++ . << . >>'
+                        + '+++++++ . < +++++++++ . > ---- . << ++++++++++++++ . \n' + emojis,
+                        ['font-size: x-large', 'text-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px crimson'].join(';')
                     )
+
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
-                    resultDisplay.textContent = 'VICTORY'
+                    scoreDisplay.textContent = '01000110 00110001 00110010'
+                    scoreDisplay.style.userSelect = 'text' 
+                    scoreDisplay.style.cursor = 'help'
+                    resultDisplay.textContent = 'VICTORY'  
                     resultDisplay.classList.add('open')
                     clearInterval(invaderId)
                     victory.play()
