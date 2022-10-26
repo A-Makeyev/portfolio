@@ -24,7 +24,7 @@
 }
 
 *::selection {
-    text-shadow: 5px 5px 5px var(--light-purple);
+    text-shadow: 5px 5px 5px var(--white);
 }
 
 :focus {
@@ -704,7 +704,6 @@ button {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    min-height: 150px;
 }
 
 .image-body img {

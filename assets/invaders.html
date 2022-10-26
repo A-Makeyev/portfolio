@@ -402,7 +402,7 @@
                 if (invadersShotDown.length === invaders.length) {
                     squares[currentShooterIndex].classList.add('pilot')
                     document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('victorious'))
-                    let emojis = document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length * 15)
+                    let emojis = document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length * 30)
 
                     console.log(
                         '%c' + emojis 
@@ -414,7 +414,7 @@
                         + '+++++++ . < +++++++++ . > ---- . << ++++++++++++++ . \n' + emojis,
                         ['font-size: x-large', 'text-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px crimson'].join(';')
                     )
-
+                    
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
                     scoreDisplay.textContent = '01000110 00110001 00110010'
                     scoreDisplay.style.userSelect = 'text' 

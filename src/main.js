@@ -35,6 +35,7 @@ const overlay = document.querySelector('.overlay')
 const logo = document.querySelector('.m-logo')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
+const classified = document.querySelector('.classified')
 const submit = document.querySelector('#submit')
 const nameInput = document.getElementById('name')
 const emailInput = document.getElementById('email')
@@ -332,17 +333,22 @@ tabContainer.addEventListener('click', (event) => {
 /* SECRET SURPRISE */
 
 midgetSaltBae.addEventListener('click', () => {
+    if (saltBaeWasActivated) {
+        classified.classList.add('exposed')
+        classified.addEventListener('mouseover', (event) => {
 
-    // if (saltBaeWasActivated) {
-    //     document.addEventListener('mousemove', () => {
-    //         console.log('X: ' + event.pageX)
-    //         console.log('Y: ' + event.pageY)
-        
-    //         if (event.pageX == 100 && event.pageY == 2000) {
-    //             alert('asd')
-    //         }
-    //     })
-    // }
+            // shake animation
+
+            if (window.innerWidth == 1900 && window.innerHeight == 800) {
+                if ((event.pageX <= 930 && event.pageX >= 890) && (event.pageY <= 720 && event.pageY >= 670)) {
+                    classified.style.cursor = 'pointer'
+                    classified.onclick = () => {
+                        togglePopup('🚩')
+                    }
+                }
+            }
+        })
+    }
 
     const links = document.querySelectorAll('.secret-links a')
 
