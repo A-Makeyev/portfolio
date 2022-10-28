@@ -212,6 +212,7 @@ window.addEventListener('load', () => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
+        spaceLoader.classList.remove('.hidden')
     }, 500)
 
     console.log(
@@ -339,8 +340,8 @@ midgetSaltBae.addEventListener('click', () => {
 
             // shake animation
 
-            if (window.innerWidth == 1900 && window.innerHeight == 800) {
-                if ((event.pageX <= 930 && event.pageX >= 890) && (event.pageY <= 720 && event.pageY >= 670)) {
+            if (window.innerWidth == 1380 && window.innerHeight == 690) { 
+                if ((event.pageX <= 700 && event.pageX >= 600) && (event.pageY <= 700 && event.pageY >= 600)) {
                     classified.style.cursor = 'pointer'
                     classified.onclick = () => {
                         togglePopup('🚩')
