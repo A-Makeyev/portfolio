@@ -211,17 +211,6 @@ window.addEventListener('load', () => {
         bgIconsBox.classList.remove('fade-out')
         spaceLoader.classList.remove('.hidden')
     }, 500)
-
-    console.log(
-        `%casd asd`,
-        [
-            'padding: 10px',
-            'color: aliceblue',
-            'font-size: xx-large',
-            'text-shadow: 2px 2px 2px black',
-            'background: linear-gradient(0deg, aliceblue, darkblue)',
-        ].join(';')
-    )
 })
 
 /* MAIN NAV */
@@ -332,11 +321,27 @@ tabContainer.addEventListener('click', (event) => {
 
 midgetSaltBae.addEventListener('click', () => {
     // if (saltBaeWasActivated) {
-        classified.classList.add('exposed')
+        const displayPosition = (event) => {
+            let positionX = (event.pageX > 1100 || event.pageX < 400) ? event.pageX + ' ❄️' : event.pageX + ' 🔥'
+            let positionY = (event.pageY > 1100 || event.pageY < 400) ? event.pageY + ' ❄️' : event.pageY + ' 🔥'
 
-        classified.addEventListener('mouseover', (event) => {
-            console.log('Page X: ' + event.pageX) // x: 700 ~ 900
-            console.log('Page Y: ' + event.pageY) // y: 600 ~ 800
+            if (window.innerWidth >= 1045) {
+                console.log(
+                    `%cX: ${positionX} Y: ${positionY}`,
+                    [ 
+                        'padding: 10px',
+                        'color: aliceblue',
+                        'font-size: xx-large',
+                        'text-shadow: 2px 2px 2px black',
+                        'background: linear-gradient(0deg, aliceblue, darkblue)',
+                    ].join(';')
+                )
+            }
+        }
+        document.addEventListener('mouseover', displayPosition) 
+
+        classified.classList.add('exposed')
+        classified.addEventListener('mouseover', () => {
             if (window.innerWidth == 1380 && window.innerHeight == 690) { 
                 classified.style.cursor = 'pointer'
                 classified.onclick = () => {
@@ -354,6 +359,7 @@ midgetSaltBae.addEventListener('click', () => {
 
             // execute only once
             classified.removeEventListener('mouseover', sendAstroid)
+            document.removeEventListener('mouseover', displayPosition)
         }
         classified.addEventListener('mouseover', sendAstroid)
     // }
