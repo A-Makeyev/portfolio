@@ -73,8 +73,6 @@ body::before {
     z-index: -1;
     opacity: 0.1;
     line-height: 1.5;
-    color: var(--dark-blue);
-    background-color: var(--green);
     position: fixed;
     height: 100%;
     width: 100%;

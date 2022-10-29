@@ -75,6 +75,7 @@ function displayProjectDetails(projectItem) {
 }
 
 function togglePopup(message) {
+    scrollInto(imageBody)
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
     body.classList.add('disable-scrolling')
@@ -99,7 +100,6 @@ function togglePopup(message) {
 
 function displayImage(id) {
     id = id.replace('img-to-display-', '')
-
     if (id.includes('facepalm')) projectPopup.classList.toggle('open')
     loadImage(`assets/images/${currentSection}/${id}.jpg`, 'popup')
 }
@@ -202,10 +202,7 @@ function validate(input, regex) {
 /* LOADER */
 
 window.addEventListener('load', () => {
-    const today = new Date()
-    const currentHour = today.getHours()
-
-    greeting.innerText = currentHour < 18 ? 'bonjour' : 'bonsoir'
+    greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
 
     setTimeout(() => {
@@ -216,7 +213,7 @@ window.addEventListener('load', () => {
     }, 500)
 
     console.log(
-        '%c Perhaps you want to shoot some invaders? Check out the top right icon ~ 🐱‍👤',
+        `%casd asd`,
         [
             'padding: 10px',
             'color: aliceblue',
@@ -334,22 +331,32 @@ tabContainer.addEventListener('click', (event) => {
 /* SECRET SURPRISE */
 
 midgetSaltBae.addEventListener('click', () => {
-    if (saltBaeWasActivated) {
+    // if (saltBaeWasActivated) {
         classified.classList.add('exposed')
+
         classified.addEventListener('mouseover', (event) => {
-
-            // shake animation
-
+            console.log('Page X: ' + event.pageX) // x: 700 ~ 900
+            console.log('Page Y: ' + event.pageY) // y: 600 ~ 800
             if (window.innerWidth == 1380 && window.innerHeight == 690) { 
-                if ((event.pageX <= 700 && event.pageX >= 600) && (event.pageY <= 700 && event.pageY >= 600)) {
-                    classified.style.cursor = 'pointer'
-                    classified.onclick = () => {
-                        togglePopup('🚩')
-                    }
+                classified.style.cursor = 'pointer'
+                classified.onclick = () => {
+                    togglePopup('🚩')
                 }
             }
         })
-    }
+
+        const sendAstroid = () => {  
+            let astroid = document.createElement('div')
+            astroid.setAttribute('id', 'crash-site')
+            body.appendChild(astroid)
+            astroid.style.animation = 'crash 6s linear'
+            body.style.animation = 'shake 6s ease-in-out forwards'
+
+            // execute only once
+            classified.removeEventListener('mouseover', sendAstroid)
+        }
+        classified.addEventListener('mouseover', sendAstroid)
+    // }
 
     const links = document.querySelectorAll('.secret-links a')
 
