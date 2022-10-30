@@ -342,12 +342,20 @@ midgetSaltBae.addEventListener('click', () => {
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
-            if (window.innerWidth == 1380 && window.innerHeight == 690) { 
-                classified.style.cursor = 'pointer'
-                classified.onclick = () => {
-                    togglePopup('🚩')
+            let exposed = document.querySelector('.exposed')
+            exposed.classList.remove('classified')
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth == 1380 && window.innerHeight == 690) { 
+                    exposed.style.pointerEvents = 'auto'
+                    exposed.style.cursor = 'pointer'
+                    exposed.onclick = () => {
+                        togglePopup('🚩')
+                    }
+                } else {
+                    exposed.style.pointerEvents = 'none'
                 }
-            }
+            })
         })
 
         const sendAstroid = () => {  
