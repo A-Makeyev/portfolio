@@ -209,7 +209,7 @@ window.addEventListener('load', () => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
         bgIconsBox.classList.remove('fade-out')
-        spaceLoader.classList.remove('.hidden')
+        spaceLoader.classList.remove('hidden')
     }, 500)
 })
 

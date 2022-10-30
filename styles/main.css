@@ -641,7 +641,7 @@ button {
 }
 
 .image-popup.open {
-    overflow: hidden;
+    overflow: auto;
     visibility: visible;
 }
 
