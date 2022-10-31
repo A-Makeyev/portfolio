@@ -14,6 +14,8 @@
     --light-purple: #939DED;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
     --white-alpha-25: rgba(225, 255, 255, 0.25);
+    --turquoise-shadow: -1px 1px turquoise;
+    --crimson-shadow: -1px 1px crimson;
 }
 
 * {

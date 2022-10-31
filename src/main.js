@@ -115,6 +115,27 @@ function displaySocials(links, action) {
     }, 1250)
 }
 
+function displayCoordinates(links, action) {
+    setTimeout(() => {
+        for (let i = 0; i < links.length; i++) {
+            setTimeout(() => {
+                links[i].style.width = '55px'
+                links[i].style.height = '55px'
+                links[i].style.border = 'none'
+                links[i].style.fontWeight = '500'
+                links[i].style.padding = '15px 5px'
+                links[i].style.color = 'var(--dark-blue)'
+                links[i].style.backgroundColor = 'transparent'
+                links[i].style.pointerEvents = i == 8 ? 'auto' : 'none'
+                links[i].textContent = i == 0 ? '1501' : i == 1 ? '1015' : i == 8 ? '😨' : '?'
+                if (i == 8) links[i].setAttribute('title', 'oh %#!$&')
+                if (action == 'fadeOut') links[i].classList.add('fade-out')
+                if (action == 'fadeIn') links[i].classList.remove('fade-out')
+            }, 250 * i)
+        }
+    }, 1250)
+}
+
 async function loadImage(url, location) {
     loader.classList.remove('fade-out')
     let res = await fetch(url, { method: 'GET' })
@@ -170,19 +191,21 @@ async function summonAliens() {
                 displayBoard()
             }, 2000)
         } else {
-            togglePopup()
-            spaceLoader.classList.add('fade-out')
-            imageBody.innerHTML = 
-            `
-                <div style="padding:30px;">
-                    <p style="padding:5px;">
-                        press <b style="font-size: x-large;">↔️</b> to move</p>
-                    <p>and <b>space</b> to shoot</p>
-                </div>
-            `
+            setTimeout(() => {
+                togglePopup()
+                spaceLoader.classList.add('fade-out')
+                imageBody.innerHTML = 
+                `
+                    <div style="padding:30px;">
+                        <p style="padding:5px;">
+                            press <b style="font-size: x-large;">↔️</b> to move</p>
+                        <p>and <b>space</b> to shoot</p>
+                    </div>
+                `
+            }, 1500)
             setTimeout(() => { 
                 displayBoard()  
-            }, 2000)
+            }, 3500)
         }
     }).catch((err) => {
         alert(`Failed to fetch ${url}`, err)
@@ -204,6 +227,17 @@ function validate(input, regex) {
 window.addEventListener('load', () => {
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
+
+    console.log(
+        '%c asd asd ',
+        [ 
+            'padding: 10px',
+            'color: aliceblue',
+            'font-size: xx-large',
+            'text-shadow: 2px 2px 2px black',
+            'background: linear-gradient(0deg, aliceblue, darkblue)',
+        ].join(';')
+    )
 
     setTimeout(() => {
         main.classList.remove('hidden')
@@ -320,25 +354,30 @@ tabContainer.addEventListener('click', (event) => {
 /* SECRET SURPRISE */
 
 midgetSaltBae.addEventListener('click', () => {
-    // if (saltBaeWasActivated) {
-        const displayPosition = (event) => {
-            let positionX = (event.pageX > 1100 || event.pageX < 400) ? event.pageX + ' ❄️' : event.pageX + ' 🔥'
-            let positionY = (event.pageY > 1100 || event.pageY < 400) ? event.pageY + ' ❄️' : event.pageY + ' 🔥'
+    const links = document.querySelectorAll('.secret-links a')
 
+    if (saltBaeWasActivated) {
+        const displayPosition = (event) => {
             if (window.innerWidth >= 1045) {
-                console.log(
-                    `%cX: ${positionX} Y: ${positionY}`,
-                    [ 
-                        'padding: 10px',
-                        'color: aliceblue',
-                        'font-size: xx-large',
-                        'text-shadow: 2px 2px 2px black',
-                        'background: linear-gradient(0deg, aliceblue, darkblue)',
-                    ].join(';')
-                )
+                let positionX = (event.pageX > 1050 || event.pageX < 450)
+                let positionY = (event.pageY > 1250 || event.pageY < 650)
+                let shadowX = positionX ? 'var(--crimson-shadow)' : 'var(--turquoise-shadow)'
+                let shadowY = positionY ? 'var(--crimson-shadow)' : 'var(--turquoise-shadow)'
+
+                document.querySelector('.secret-links a:nth-child(3)').textContent = 'X'
+                document.querySelector('.secret-links a:nth-child(3)').style.textShadow = shadowX
+                document.querySelector('.secret-links a:nth-child(4)').textContent = event.pageX
+                document.querySelector('.secret-links a:nth-child(5)').textContent = positionX ? '❄️' : '🔥'
+                document.querySelector('.secret-links a:nth-child(5)').style.textShadow = shadowX
+
+                document.querySelector('.secret-links a:nth-child(6)').textContent = 'Y'
+                document.querySelector('.secret-links a:nth-child(6)').style.textShadow = shadowY
+                document.querySelector('.secret-links a:nth-child(7)').textContent = event.pageY
+                document.querySelector('.secret-links a:nth-child(8)').textContent = positionY ? '❄️' : '🔥'
+                document.querySelector('.secret-links a:nth-child(8)').style.textShadow = shadowY
             }
         }
-        document.addEventListener('mouseover', displayPosition) 
+        body.addEventListener('mouseover', displayPosition) 
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
@@ -346,7 +385,7 @@ midgetSaltBae.addEventListener('click', () => {
             exposed.classList.remove('classified')
 
             window.addEventListener('resize', () => {
-                if (window.innerWidth == 1380 && window.innerHeight == 690) { 
+                if (window.innerWidth == 1501 && window.innerHeight == 1015) { 
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
                     exposed.onclick = () => {
@@ -370,13 +409,15 @@ midgetSaltBae.addEventListener('click', () => {
             document.removeEventListener('mouseover', displayPosition)
         }
         classified.addEventListener('mouseover', sendAstroid)
-    // }
 
-    const links = document.querySelectorAll('.secret-links a')
-
-    giantSaltBae.classList.remove('fade-out')
-    midgetSaltBae.classList.add('fade-out')
-    displaySocials(links, 'fadeIn')
+        giantSaltBae.classList.remove('fade-out')
+        midgetSaltBae.classList.add('fade-out')
+        displayCoordinates(links, 'fadeIn')
+    } else {
+        giantSaltBae.classList.remove('fade-out')
+        midgetSaltBae.classList.add('fade-out')
+        displaySocials(links, 'fadeIn')
+    }
 
     giantSaltBae.addEventListener('click', () => {
         giantSaltBae.classList.add('fade-out')
