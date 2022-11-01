@@ -361,20 +361,14 @@ midgetSaltBae.addEventListener('click', () => {
             if (window.innerWidth >= 1045) {
                 let positionX = (event.pageX > 1050 || event.pageX < 450)
                 let positionY = (event.pageY > 1250 || event.pageY < 650)
-                let shadowX = positionX ? 'var(--crimson-shadow)' : 'var(--turquoise-shadow)'
-                let shadowY = positionY ? 'var(--crimson-shadow)' : 'var(--turquoise-shadow)'
 
                 document.querySelector('.secret-links a:nth-child(3)').textContent = 'X'
-                document.querySelector('.secret-links a:nth-child(3)').style.textShadow = shadowX
                 document.querySelector('.secret-links a:nth-child(4)').textContent = event.pageX
                 document.querySelector('.secret-links a:nth-child(5)').textContent = positionX ? '❄️' : '🔥'
-                document.querySelector('.secret-links a:nth-child(5)').style.textShadow = shadowX
 
                 document.querySelector('.secret-links a:nth-child(6)').textContent = 'Y'
-                document.querySelector('.secret-links a:nth-child(6)').style.textShadow = shadowY
                 document.querySelector('.secret-links a:nth-child(7)').textContent = event.pageY
                 document.querySelector('.secret-links a:nth-child(8)').textContent = positionY ? '❄️' : '🔥'
-                document.querySelector('.secret-links a:nth-child(8)').style.textShadow = shadowY
             }
         }
         body.addEventListener('mouseover', displayPosition) 
