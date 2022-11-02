@@ -228,7 +228,7 @@
                 mobileDeviceControls.abort()
             }
 
-            (function setInvader() {
+            function setInvader(getEmoji) {
                 let number = Math.floor(Math.random() * 6)
                 let theChoosenOne
                 switch(number) {
@@ -252,6 +252,8 @@
                         break
                 }
 
+                if (getEmoji) return theChoosenOne
+
                 let invaderStyle = document.createElement('style')
                 invaderStyle.type = 'text/css'
                 invaderStyle.innerHTML = 
@@ -267,7 +269,8 @@
                     } 
                 `
                 document.getElementsByTagName('head')[0].appendChild(invaderStyle)
-            })()
+            }
+            setInvader()
 
             // define invaders
             const invaders = [
@@ -402,19 +405,23 @@
                 if (invadersShotDown.length === invaders.length) {
                     squares[currentShooterIndex].classList.add('pilot')
                     document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('victorious'))
-                    let emojis = document.querySelector('.shooter.pilot').getAttribute('emoji').repeat(invaders.length * 30)
+                    for (var emojis = '', i = 0; i < invaders.length * 30; i++) emojis += setPilot('victorious') + ' ' + setInvader(true) + ' '
 
                     console.log(
                         '%c' + emojis 
-                        + '\n ++++++++++ [ > + > +++ > +++++++ > ++++++++++ <<<< - ] >>> +++++++++++++ . >'
-                        + '--- . +++++++++++ . ++++++++ . << ++ . > +++++++++++++++ . - . ++++ . < . >>'
-                        + '------- . < ++++ . -- . + . > +++++++ . << . > . ------- . > ++ . < ++++ . <'
-                        + '. > -- . > ------- .. ---- . < ++ . - . < . >> ++++++++ . ---- . -- . < + . >'
-                        + '+++++++ . < +++ . + . +++++ . ------- . < . > - . > ----- . +++ . << . >>'
-                        + '+++++++ . < +++++++++ . > ---- . << ++++++++++++++ . \n' + emojis,
+                        + '\n++++++++++ [ > + > +++ > +++++++ > ++++++++++ <<<< - ] >>> ++ . > + . << ++ . >> ++++++++++++++++++ . --------------- .'
+                        + '+++++++ . << . >> ------- . ------- . ++++++++++++++++++ . << . >> + . ------------ . --- . << . >> ++++++++++++++ .'
+                        + '------------------ . +++++++++++ . ++++++++ . << . >> ------- . ---- . -- . + . ++++++++++++ . << . >> ------------------- .'
+                        + '+++++++++++ . +++++++ . ---- . << . >> ------- . ------- . +++++++++++++++++++++ . ----------------- . << . >> ++++++++++++++++++ .'
+                        + '--------------- . ------- . +++++++++++++++++++ . << . >> +++++ . ---------- . ++++++ . << +++++++ . >> --- . ------------- . << ------- .'
+                        + '>> +++++++ . +++ .. ---- . -- . +++++ . ------- . << . >> - . +++++++++ . +++ . << ++++++++++++++ . -------------- . > -- . > --------- .'
+                        + '+++++ . ---------- . << . >> ++++ . + . ++++ . << . >> ------------ . +++++++++++++ . ---------- . << . >> ++++++++++++++++ . ----------- .'
+                        + '------ . ++++++++ . + . ------- . << . >> +++ . + . ++++ . << . >> ++++++++ . ------- . ++++++ . ----------- . +++ . << . >> ---- . --- .'
+                        + '<< . >> ++++++++++++++ . --- . ------- . +++ .. +++++++ . << . >> + . ------------ . --- . << . >> ---- . +++++++++++++ . +++++ . ++++ .'
+                        + '------------------ . +++++++++++++ . + . << ++++++++++++++ .\n' + emojis,
                         ['font-size: x-large', 'text-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px crimson'].join(';')
                     )
-                    
+
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
                     scoreDisplay.textContent = '01000110 00110001 00110010'
                     scoreDisplay.style.userSelect = 'text' 

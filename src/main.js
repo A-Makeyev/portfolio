@@ -108,8 +108,8 @@ function displaySocials(links, action) {
     setTimeout(() => {
         for (let i = 0; i < links.length; i++) {
             setTimeout(() => {
-                if (action == 'fadeOut') links[i].classList.add('fade-out')
                 if (action == 'fadeIn') links[i].classList.remove('fade-out')
+                if (action == 'fadeOut') links[i].classList.add('fade-out')
             }, 250 * i)
         }
     }, 1250)
@@ -122,15 +122,24 @@ function displayCoordinates(links, action) {
                 links[i].style.width = '55px'
                 links[i].style.height = '55px'
                 links[i].style.border = 'none'
-                links[i].style.fontWeight = '500'
+                links[i].style.fontWeight = 'bold'
                 links[i].style.padding = '15px 5px'
                 links[i].style.color = 'var(--dark-blue)'
                 links[i].style.backgroundColor = 'transparent'
-                links[i].style.pointerEvents = i == 8 ? 'auto' : 'none'
-                links[i].textContent = i == 0 ? '1501' : i == 1 ? '1015' : i == 8 ? '😨' : '?'
-                if (i == 8) links[i].setAttribute('title', 'oh %#!$&')
-                if (action == 'fadeOut') links[i].classList.add('fade-out')
+
+                if (links[i].classList.contains('exposed')) {
+                    links[i].textContent = '😳'
+                    links[i].style.cursor = 'help'
+                    links[i].style.pointerEvents = 'auto'
+                    links[i].setAttribute('title', 'oh %#!$&')
+                } else {
+                    links[i].textContent = '?'
+                    links[i].style.pointerEvents = 'none'
+                }
+
+                if (links[i].classList.contains('link-to-remove')) links[i].remove()
                 if (action == 'fadeIn') links[i].classList.remove('fade-out')
+                if (action == 'fadeOut') links[i].classList.add('fade-out')
             }, 250 * i)
         }
     }, 1250)
@@ -359,16 +368,18 @@ midgetSaltBae.addEventListener('click', () => {
     if (saltBaeWasActivated) {
         const displayPosition = (event) => {
             if (window.innerWidth >= 1045) {
-                let positionX = (event.pageX > 1050 || event.pageX < 450)
-                let positionY = (event.pageY > 1250 || event.pageY < 650)
+                let rectX = Math.floor(classified.getBoundingClientRect().x)
+                let rectY = Math.floor(classified.getBoundingClientRect().y)
+                let positionX = (rectX + 200 < event.pageX || rectX - 200 > event.pageX)
+                let positionY = (rectY + 200 < event.pageY || rectY - 200 > event.pageY)
 
-                document.querySelector('.secret-links a:nth-child(3)').textContent = 'X'
-                document.querySelector('.secret-links a:nth-child(4)').textContent = event.pageX
-                document.querySelector('.secret-links a:nth-child(5)').textContent = positionX ? '❄️' : '🔥'
+                document.querySelector('.secret-links a:nth-child(1)').textContent = 'X'
+                document.querySelector('.secret-links a:nth-child(2)').textContent = event.pageX
+                document.querySelector('.secret-links a:nth-child(3)').textContent = positionX ? '❄️' : '🔥'
 
-                document.querySelector('.secret-links a:nth-child(6)').textContent = 'Y'
-                document.querySelector('.secret-links a:nth-child(7)').textContent = event.pageY
-                document.querySelector('.secret-links a:nth-child(8)').textContent = positionY ? '❄️' : '🔥'
+                document.querySelector('.secret-links a:nth-child(4)').textContent = 'Y'
+                document.querySelector('.secret-links a:nth-child(5)').textContent = event.pageY
+                document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
             }
         }
         body.addEventListener('mouseover', displayPosition) 
@@ -392,15 +403,26 @@ midgetSaltBae.addEventListener('click', () => {
         })
 
         const sendAstroid = () => {  
+            body.removeEventListener('mouseover', displayPosition) 
+
             let astroid = document.createElement('div')
             astroid.setAttribute('id', 'crash-site')
             body.appendChild(astroid)
             astroid.style.animation = 'crash 6s linear'
             body.style.animation = 'shake 6s ease-in-out forwards'
 
+            setTimeout(() => {
+                document.querySelector('.secret-links a:nth-child(1)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(2)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(3)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(4)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(5)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(6)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(7)').textContent = '😨'
+            }, 3000)
+
             // execute only once
             classified.removeEventListener('mouseover', sendAstroid)
-            document.removeEventListener('mouseover', displayPosition)
         }
         classified.addEventListener('mouseover', sendAstroid)
 
@@ -436,3 +458,13 @@ submit.addEventListener('click', (event) => {
         togglePopup('Why would you use this form? Just email/call me directly :)')
     }
 })
+
+
+
+// body.addEventListener('mouseover', (e) => {
+//     var target = Math.floor(document.getElementById('greeting').getBoundingClientRect().x)
+    
+//     console.log(target + 200 < e.pageX || target - 200 > e.pageX)
+//     console.log(e.pageX)
+    
+// }) 
