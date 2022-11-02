@@ -365,22 +365,20 @@ tabContainer.addEventListener('click', (event) => {
 midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
 
-    if (saltBaeWasActivated) {
+    if (saltBaeWasActivated && window.innerWidth >= 1045) {
         const displayPosition = (event) => {
-            if (window.innerWidth >= 1045) {
-                let rectX = Math.floor(classified.getBoundingClientRect().x)
-                let rectY = Math.floor(classified.getBoundingClientRect().y)
-                let positionX = (rectX + 200 < event.pageX || rectX - 200 > event.pageX)
-                let positionY = (rectY + 200 < event.pageY || rectY - 200 > event.pageY)
+            let rectX = Math.floor(classified.getBoundingClientRect().x)
+            let rectY = Math.floor(classified.getBoundingClientRect().y)
+            let positionX = (rectX + 200 < event.pageX || rectX - 200 > event.pageX)
+            let positionY = (rectY + 200 < event.pageY || rectY - 200 > event.pageY)
 
-                document.querySelector('.secret-links a:nth-child(1)').textContent = 'X'
-                document.querySelector('.secret-links a:nth-child(2)').textContent = event.pageX
-                document.querySelector('.secret-links a:nth-child(3)').textContent = positionX ? '❄️' : '🔥'
+            document.querySelector('.secret-links a:nth-child(1)').textContent = 'X'
+            document.querySelector('.secret-links a:nth-child(2)').textContent = event.pageX
+            document.querySelector('.secret-links a:nth-child(3)').textContent = positionX ? '❄️' : '🔥'
 
-                document.querySelector('.secret-links a:nth-child(4)').textContent = 'Y'
-                document.querySelector('.secret-links a:nth-child(5)').textContent = event.pageY
-                document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
-            }
+            document.querySelector('.secret-links a:nth-child(4)').textContent = 'Y'
+            document.querySelector('.secret-links a:nth-child(5)').textContent = event.pageY
+            document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
         }
         body.addEventListener('mouseover', displayPosition) 
 
