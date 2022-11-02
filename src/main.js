@@ -129,7 +129,7 @@ function displayCoordinates(links, action) {
 
                 if (links[i].classList.contains('exposed')) {
                     links[i].textContent = '😳'
-                    links[i].style.cursor = 'help'
+                    links[i].style.cursor = 'progress'
                     links[i].style.pointerEvents = 'auto'
                     links[i].setAttribute('title', 'oh %#!$&')
                 } else {
@@ -390,10 +390,11 @@ midgetSaltBae.addEventListener('click', () => {
             exposed.classList.remove('classified')
 
             window.addEventListener('resize', () => {
-                if (window.innerWidth == 1501 && window.innerHeight == 1015) { 
+                if (window.innerWidth == 1400 && window.innerHeight == 700) { 
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
                     exposed.onclick = () => {
+                        exposed.textContent = '🙃'
                         togglePopup('🚩')
                     }
                 } else {
@@ -412,12 +413,12 @@ midgetSaltBae.addEventListener('click', () => {
             body.style.animation = 'shake 6s ease-in-out forwards'
 
             setTimeout(() => {
-                document.querySelector('.secret-links a:nth-child(1)').textContent = '1'
-                document.querySelector('.secret-links a:nth-child(2)').textContent = '1'
-                document.querySelector('.secret-links a:nth-child(3)').textContent = '1'
-                document.querySelector('.secret-links a:nth-child(4)').textContent = '1'
-                document.querySelector('.secret-links a:nth-child(5)').textContent = '1'
-                document.querySelector('.secret-links a:nth-child(6)').textContent = '1'
+                document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ'
+                document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC'
+                document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I'
+                document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw'
+                document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA'
+                document.querySelector('.secret-links a:nth-child(6)').textContent = '=='
                 document.querySelector('.secret-links a:nth-child(7)').textContent = '😨'
             }, 3000)
 
@@ -458,13 +459,3 @@ submit.addEventListener('click', (event) => {
         togglePopup('Why would you use this form? Just email/call me directly :)')
     }
 })
-
-
-
-// body.addEventListener('mouseover', (e) => {
-//     var target = Math.floor(document.getElementById('greeting').getBoundingClientRect().x)
-    
-//     console.log(target + 200 < e.pageX || target - 200 > e.pageX)
-//     console.log(e.pageX)
-    
-// }) 
