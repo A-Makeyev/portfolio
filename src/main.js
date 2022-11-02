@@ -122,10 +122,12 @@ function displayCoordinates(links, action) {
                 links[i].style.width = '55px'
                 links[i].style.height = '55px'
                 links[i].style.border = 'none'
+                links[i].style.cursor = 'text'
                 links[i].style.fontWeight = 'bold'
                 links[i].style.padding = '15px 5px'
                 links[i].style.color = 'var(--dark-blue)'
                 links[i].style.backgroundColor = 'transparent'
+                links[i].style.textShadow = '0.5px 0.5px var(--white-alpha-40)'
 
                 if (links[i].classList.contains('exposed')) {
                     links[i].textContent = '😳'
@@ -393,6 +395,14 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.style.cursor = 'pointer'
                     exposed.onclick = () => {
                         exposed.textContent = '🙃'
+                        setTimeout(() => {
+                            document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
+                            document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
+                            document.querySelector('.secret-links a:nth-child(3)').textContent = '💘'
+                            document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
+                            document.querySelector('.secret-links a:nth-child(5)').textContent = '❤️‍🔥'
+                            document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
+                        }, 3000)
                         togglePopup('🚩')
                     }
                 } else {
@@ -402,6 +412,7 @@ midgetSaltBae.addEventListener('click', () => {
         })
 
         const sendAstroid = () => {  
+            giantSaltBae.style.pointerEvents = 'none'
             body.removeEventListener('mouseover', displayPosition) 
 
             let astroid = document.createElement('div')
@@ -418,6 +429,7 @@ midgetSaltBae.addEventListener('click', () => {
                 document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA'
                 document.querySelector('.secret-links a:nth-child(6)').textContent = '=='
                 document.querySelector('.secret-links a:nth-child(7)').textContent = '😨'
+                body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
             }, 3000)
 
             // execute only once

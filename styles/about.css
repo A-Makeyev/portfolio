@@ -190,6 +190,7 @@
 
 .timeline-item-link {
     color: var(--red);
+    text-transform: none;
     transition: color 0.25s;
 }
 

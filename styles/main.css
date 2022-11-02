@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --red: #C9163D;
+    --red: #A00023;
     --blue: #2A85bE;
     --cyan: #9EF5F0;
     --gray: #555555;
@@ -9,7 +9,7 @@
     --green: #40BD1A;
     --orange: #D19616;
     --dark-blue: #18293C;
-    --light-red: #DF316B;
+    --light-red: #B4060E;
     --light-blue: #A9D5F1;
     --light-purple: #939DED;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
@@ -341,7 +341,7 @@ button {
 }
 
 .bg-icons-box .bg-icon:nth-child(4) {
-    top: 75%;
+    top: 70%;
     left: 80%;
     opacity: 0.5;
     width: 150px;
@@ -778,7 +778,7 @@ button {
 
     .bg-icons-box .bg-icon:nth-child(1) {
         top: 10%;
-        left: 10%;
+        left: 20%;
         width: 100px;
         height: 100px;
     }
