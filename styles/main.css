@@ -475,6 +475,7 @@ button {
 .space-loader div {
     opacity: 1;
     position: absolute;
+    text-shadow: 0.5px 0.5px var(--dark-blue);
     animation: spin 1s linear infinite;
 }
 

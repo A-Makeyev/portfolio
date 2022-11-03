@@ -1,10 +1,14 @@
-/*
-
-    ADD PROJECT WEB COMPONENT
-
-*/
-
 'use strict'
+
+const icons = '/assets/icons'
+const images = '/assets/images'
+const imageList = [
+    `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`,
+    `${icons}/saltbae.png`, `${icons}/github-ninja.png`, `${icons}/M.png`, `${images}/about/anatoly.jpg`, `${images}/about/cloudbeat-conference.jpg`,
+    `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/Responsive-Web-Design.jpg`,
+    `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`, `${images}/about/Software-Quality-Assurance-Certificate.jpg`, `${images}/projects/Makeyev-Finance.jpg`,
+    `${images}/projects/ChatUp.jpg`, `${images}/projects/portfolio.jpg`, `${images}/projects/portfolio-secret.jpg`
+]
 
 const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
 const validName = /^[^0-9.,_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
@@ -43,6 +47,16 @@ const phoneInput = document.getElementById('phone')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 var currentSection = ''
+
+async function preloadImages() {
+    await Promise.all(imageList.map((img) =>
+        new Promise((res) => {
+            let image = new Image()
+            image.onload = res
+            image.src = img
+        }))
+    )
+}
 
 function toggleNavbar() {
     header.classList.toggle('active')
@@ -101,7 +115,7 @@ function togglePopup(message) {
 function displayImage(id) {
     id = id.replace('img-to-display-', '')
     if (id.includes('facepalm')) projectPopup.classList.toggle('open')
-    loadImage(`assets/images/${currentSection}/${id}.jpg`, 'popup')
+    loadImage(`${images}/${currentSection}/${id}.jpg`, 'popup')
 }
 
 function displaySocials(links, action) {
@@ -131,9 +145,9 @@ function displayCoordinates(links, action) {
 
                 if (links[i].classList.contains('exposed')) {
                     links[i].textContent = '😳'
-                    links[i].style.cursor = 'progress'
+                    links[i].style.cursor = 'help'
                     links[i].style.pointerEvents = 'auto'
-                    links[i].setAttribute('title', 'oh %#!$&')
+                    links[i].setAttribute('title', '👀')
                 } else {
                     links[i].textContent = '?'
                     links[i].style.pointerEvents = 'none'
@@ -256,6 +270,8 @@ window.addEventListener('load', () => {
         bgIconsBox.classList.remove('fade-out')
         spaceLoader.classList.remove('hidden')
     }, 500)
+
+    preloadImages()
 })
 
 /* MAIN NAV */
