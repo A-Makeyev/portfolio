@@ -410,16 +410,27 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
                     exposed.onclick = () => {
+
                         exposed.textContent = '🙃'
                         setTimeout(() => {
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
                             document.querySelector('.secret-links a:nth-child(3)').textContent = '💘'
                             document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
-                            document.querySelector('.secret-links a:nth-child(5)').textContent = '❤️‍🔥'
+                            document.querySelector('.secret-links a:nth-child(5)').textContent = '❤️'
                             document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                         }, 3000)
                         togglePopup('🚩')
+
+                        let bandage = document.createElement('div')
+                        bandage.setAttribute('id', 'bandage')
+                        bandage.classList.add('fade-out')
+                        body.appendChild(bandage)
+                        setTimeout(() => {
+                            body.style.animation = 'restore 6s ease-in-out forwards'
+                            body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
+                            setTimeout(() => { bandage.classList.remove('fade-out') }, 6000)
+                        }, 1000)
                     }
                 } else {
                     exposed.style.pointerEvents = 'none'
@@ -446,6 +457,11 @@ midgetSaltBae.addEventListener('click', () => {
                 document.querySelector('.secret-links a:nth-child(6)').textContent = '=='
                 document.querySelector('.secret-links a:nth-child(7)').textContent = '😨'
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
+
+                if (!bgIconsWereActivated) {
+                    logo.click()
+                    bgIconsWereActivated = true
+                }
             }, 3000)
 
             // execute only once
