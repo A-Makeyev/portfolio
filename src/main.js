@@ -6,8 +6,9 @@ const imageList = [
     `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`,
     `${icons}/saltbae.png`, `${icons}/github-ninja.png`, `${icons}/M.png`, `${images}/about/anatoly.jpg`, `${images}/about/cloudbeat-conference.jpg`,
     `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/Responsive-Web-Design.jpg`,
-    `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`, `${images}/about/Software-Quality-Assurance-Certificate.jpg`, `${images}/projects/Makeyev-Finance.jpg`,
-    `${images}/projects/ChatUp.jpg`, `${images}/projects/portfolio.jpg`, `${images}/projects/portfolio-secret.jpg`
+    `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`, `${images}/about/Software-Quality-Assurance-Certificate.jpg`, 
+    `${images}/projects/Makeyev-Finance.jpg`, `${images}/projects/ChatUp.jpg`, `${images}/projects/portfolio.jpg`, `${images}/projects/portfolio-secret.jpg`,
+    `${images}/hole.png`, `${images}/bandage.png`, `${images}/profile.png`, `${images}/avatar.png`, `${images}/astroid.gif`, `${images}/explosion.gif` 
 ]
 
 const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
