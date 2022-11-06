@@ -421,17 +421,14 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(5)').textContent = '❤️'
                             document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                         }, 3000)
-                        togglePopup('🚩')
 
-                        let bandage = document.createElement('div')
-                        bandage.setAttribute('id', 'bandage')
-                        bandage.classList.add('fade-out')
-                        body.appendChild(bandage)
-                        setTimeout(() => {
-                            body.style.animation = 'restore 6s ease-in-out forwards'
+                        togglePopup('🚩')
+                        
+                        body.style.animation = 'restore 3s ease-in-out forwards'
+                        setTimeout(() => { 
+                            document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                            setTimeout(() => { bandage.classList.remove('fade-out') }, 6000)
-                        }, 1000)
+                        }, 3000)
                     }
                 } else {
                     exposed.style.pointerEvents = 'none'
