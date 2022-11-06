@@ -462,7 +462,7 @@ midgetSaltBae.addEventListener('click', () => {
                     logo.click()
                     bgIconsWereActivated = true
                 }
-            }, 3000)
+            }, 6000)
 
             // execute only once
             classified.removeEventListener('mouseover', sendAstroid)
