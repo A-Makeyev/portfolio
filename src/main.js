@@ -437,6 +437,8 @@ midgetSaltBae.addEventListener('click', () => {
         })
 
         const sendAstroid = () => {  
+            new Audio('/assets/sounds/impact.mp3').play()
+
             giantSaltBae.style.pointerEvents = 'none'
             body.removeEventListener('mouseover', displayPosition) 
 
