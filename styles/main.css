@@ -778,8 +778,8 @@ button {
     }
 
     .bg-icons-box .bg-icon:nth-child(1) {
-        top: 10%;
-        left: 20%;
+        top: 5%;
+        left: 5%;
         width: 100px;
         height: 100px;
     }

@@ -254,17 +254,6 @@ window.addEventListener('load', () => {
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
 
-    console.log(
-        '%c asd asd ',
-        [ 
-            'padding: 10px',
-            'color: aliceblue',
-            'font-size: xx-large',
-            'text-shadow: 2px 2px 2px black',
-            'background: linear-gradient(0deg, aliceblue, darkblue)',
-        ].join(';')
-    )
-
     setTimeout(() => {
         main.classList.remove('hidden')
         homeSection.classList.add('active')
@@ -406,13 +395,24 @@ midgetSaltBae.addEventListener('click', () => {
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
 
-            window.addEventListener('resize', () => {
+            const captureTheFlag = () => {
+                console.log(
+                    `%c${window.innerWidth} x ${window.innerHeight}`,
+                    ['padding: 10px',
+                        'color: aliceblue',
+                        'font-size: xx-large',
+                        'text-shadow: 2px 2px 2px black',
+                        'background: linear-gradient(0deg, aliceblue, darkblue)',
+                    ].join(';')
+                )
+
                 if (window.innerWidth == 1400 && window.innerHeight == 700) { 
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
                     exposed.onclick = () => {
-
                         exposed.textContent = '🙃'
+                        body.style.animation = 'restore 3s ease-in forwards'
+
                         setTimeout(() => {
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
@@ -420,20 +420,18 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
                             document.querySelector('.secret-links a:nth-child(5)').textContent = '❤️'
                             document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
-                        }, 3000)
+                            body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
+                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 500)
+                        }, 3500)
 
                         togglePopup('🚩')
-                        
-                        body.style.animation = 'restore 3s ease-in-out forwards'
-                        setTimeout(() => { 
-                            document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)'
-                            body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                        }, 3000)
+                        window.removeEventListener('resize', captureTheFlag)
                     }
                 } else {
                     exposed.style.pointerEvents = 'none'
                 }
-            })
+            }
+            window.addEventListener('resize', captureTheFlag)
         })
 
         const sendAstroid = () => {  
@@ -449,14 +447,14 @@ midgetSaltBae.addEventListener('click', () => {
             body.style.animation = 'shake 6s ease-in-out forwards'
 
             setTimeout(() => {
-                document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ'
-                document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC'
-                document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I'
-                document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw'
-                document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA'
-                document.querySelector('.secret-links a:nth-child(6)').textContent = '=='
-                document.querySelector('.secret-links a:nth-child(7)').textContent = '😨'
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 1750)
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC' }, 1500)
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I' }, 1250)
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw' }, 1000)
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 750)
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 500)
+                setTimeout(() => { document.querySelector('.secret-links a:nth-child(7)').textContent = '😨' }, 250)
 
                 if (!bgIconsWereActivated) {
                     logo.click()
