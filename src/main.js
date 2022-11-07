@@ -421,7 +421,7 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(5)').textContent = '❤️'
                             document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 500)
+                            document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)'
                         }, 3500)
 
                         togglePopup('🚩')
