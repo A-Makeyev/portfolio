@@ -48,6 +48,7 @@ const phoneInput = document.getElementById('phone')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 var currentSection = ''
+var flagFound = false
 
 async function preloadImages() {
     await Promise.all(imageList.map((img) =>
@@ -131,6 +132,7 @@ function displaySocials(links, action) {
 }
 
 function displayCoordinates(links, action) {
+    disableScrolling()
     setTimeout(() => {
         for (let i = 0; i < links.length; i++) {
             setTimeout(() => {
@@ -157,6 +159,7 @@ function displayCoordinates(links, action) {
                 if (links[i].classList.contains('link-to-remove')) links[i].remove()
                 if (action == 'fadeIn') links[i].classList.remove('fade-out')
                 if (action == 'fadeOut') links[i].classList.add('fade-out')
+                if (i == links.length) disableScrolling()
             }, 250 * i)
         }
     }, 1250)
@@ -396,36 +399,41 @@ midgetSaltBae.addEventListener('click', () => {
             exposed.classList.remove('classified')
 
             const captureTheFlag = () => {
-                console.log(
-                    `%c${window.innerWidth} x ${window.innerHeight}`,
-                    ['padding: 10px',
-                        'color: aliceblue',
-                        'font-size: xx-large',
-                        'text-shadow: 2px 2px 2px black',
-                        'background: linear-gradient(0deg, aliceblue, darkblue)',
-                    ].join(';')
-                )
+                if (!flagFound) {
+                    console.log(
+                        `%c${window.innerWidth} x ${window.innerHeight}`,
+                        ['padding: 10px',
+                            'color: aliceblue',
+                            'font-size: xx-large',
+                            'text-shadow: 2px 2px 2px black',
+                            'background: linear-gradient(0deg, aliceblue, darkblue)',
+                        ].join(';')
+                    )
+                }
 
                 if (window.innerWidth == 1400 && window.innerHeight == 700) { 
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
                     exposed.onclick = () => {
+                        console.clear()
+                        flagFound = true
+                        console.log('🙂')
                         exposed.textContent = '🙃'
                         body.style.animation = 'restore 3s ease-in forwards'
 
                         setTimeout(() => {
-                            document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
-                            document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
-                            document.querySelector('.secret-links a:nth-child(3)').textContent = '💘'
-                            document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
-                            document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
+                            document.querySelector('.secret-links a:nth-child(7)').remove()
                             document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
+                            document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
+                            document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
+                            document.querySelector('.secret-links a:nth-child(3)').textContent = '💘'
+                            document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
+                            document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                             document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)'
-                        }, 3500)
+                        }, 4000)
 
                         togglePopup('🚩')
-                        window.removeEventListener('resize', captureTheFlag)
                     }
                 } else {
                     exposed.style.pointerEvents = 'none'
