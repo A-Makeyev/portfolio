@@ -452,7 +452,7 @@ midgetSaltBae.addEventListener('click', () => {
             astroid.setAttribute('id', 'crash-site')
             body.appendChild(astroid)
             astroid.style.animation = 'crash 6s linear'
-            setTimeout(() => { body.style.animation = 'shake 6s ease-in-out forwards' }, 250)
+            setTimeout(() => { body.style.animation = 'shake 6s ease-in-out forwards' }, 500)
 
             setTimeout(() => {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
