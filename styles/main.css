@@ -430,28 +430,28 @@ button {
     width: 80px;
     height: 80px;
     border-color: var(--dark-blue);
-    animation-duration: 1.25s;
+    animation-duration: 1s;
 }
 
 .loader div:nth-child(2) {
     width: 60px;
     height: 60px;
     border-color: var(--red);
-    animation-duration: 1.5s;
+    animation-duration: 1.25s;
 }
 
 .loader div:nth-child(3) {
     width: 40px;
     height: 40px;
     border-color: var(--dark-blue);
-    animation-duration: 1.75s;
+    animation-duration: 1.5s;
 }
 
 .loader div:nth-child(4) {
     width: 20px;
     height: 20px;
     border-color: var(--red);
-    animation-duration: 2s;
+    animation-duration: 1.75s;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ ALIEN LOADER ~~~~~~~~~~~~~~~~~~~~~~ */

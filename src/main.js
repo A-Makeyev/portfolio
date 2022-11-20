@@ -2,13 +2,22 @@
 
 const icons = '/assets/icons'
 const images = '/assets/images'
-const imageList = [
-    `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`,
-    `${icons}/saltbae.png`, `${icons}/github-ninja.png`, `${icons}/M.png`, `${images}/about/anatoly.jpg`, `${images}/about/cloudbeat-conference.jpg`,
-    `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/Responsive-Web-Design.jpg`,
-    `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`, `${images}/about/Software-Quality-Assurance-Certificate.jpg`, 
-    `${images}/projects/Makeyev-Finance.jpg`, `${images}/projects/ChatUp.jpg`, `${images}/projects/portfolio.jpg`, `${images}/projects/portfolio-secret.jpg`,
-    `${images}/hole.png`, `${images}/bandage.png`, `${images}/profile.png`, `${images}/avatar.png`, `${images}/astroid.gif`, `${images}/explosion.gif` 
+
+const secretImages = [`${images}/astroid.gif`, `${images}/explosion.gif`, `${images}/hole.png`]
+
+const projectsImages = [
+    `${images}/projects/already-inside.jpg`, `${images}/projects/picard-facepalm.jpg`, `${images}/projects/Makeyev-Finance.jpg`,
+    `${images}/projects/ChatUp.jpg`, `${images}/projects/portfolio.jpg`, `${images}/projects/portfolio-secret.jpg`
+]
+
+const aboutImages = [     
+    `${images}/about/anatoly.jpg`, `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/cloudbeat-conference.jpg`, 
+    `${images}/about/Quality-Assurance-Certificate.jpg`,  `${images}/about/Responsive-Web-Design.jpg`, `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`
+]
+
+const generalImages = [
+    `${images}/profile.png`, `${images}/avatar.png`, `${icons}/saltbae.png`, `${icons}/github-ninja.png`, `${icons}/M.png`,
+    `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`
 ]
 
 const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
@@ -50,14 +59,22 @@ var saltBaeWasActivated = false
 var currentSection = ''
 var flagFound = false
 
-async function preloadImages() {
-    await Promise.all(imageList.map((img) =>
-        new Promise((res) => {
+async function preloadImages(src) {
+    if (Array.isArray(src)) {
+        await Promise.all(src.map((img) =>
+            new Promise((res) => {
+                let image = new Image()
+                image.onload = res
+                image.src = img
+            }))
+        )
+    } else {
+        await new Promise((res) => {
             let image = new Image()
             image.onload = res
-            image.src = img
-        }))
-    )
+            image.src = src
+        })
+    }
 }
 
 function toggleNavbar() {
@@ -87,7 +104,10 @@ function displayProjectDetails(projectItem) {
     let projectImageSrc = projectItem.querySelector('.project-item-thumbnail img').src
     projectImageSrc = projectImageSrc.includes('portfolio') ? projectImageSrc.replace('portfolio', 'portfolio-secret') : projectImageSrc
     popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
-    loadImage(projectImageSrc, 'projects') 
+
+    toggleProjectPopup()
+    popupThumbnail.innerHTML = `<img src="${projectImageSrc}" alt="${projectItem.innerText.trim()}">`
+    // loadImage(projectImageSrc, 'projects') 
 }
 
 function togglePopup(message) {
@@ -117,7 +137,10 @@ function togglePopup(message) {
 function displayImage(id) {
     id = id.replace('img-to-display-', '')
     if (id.includes('facepalm')) projectPopup.classList.toggle('open')
-    loadImage(`${images}/${currentSection}/${id}.jpg`, 'popup')
+
+    togglePopup()
+    imageBody.innerHTML = `<img src="${`${images}/${currentSection}/${id}.jpg`}" alt="${id}">`           
+    // loadImage(`${images}/${currentSection}/${id}.jpg`, 'popup')
 }
 
 function displaySocials(links, action) {
@@ -253,6 +276,7 @@ function validate(input, regex) {
 
 /* LOADER */
 
+preloadImages(generalImages)
 window.addEventListener('load', () => {
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
@@ -263,8 +287,6 @@ window.addEventListener('load', () => {
         bgIconsBox.classList.remove('fade-out')
         spaceLoader.classList.remove('hidden')
     }, 500)
-
-    preloadImages()
 })
 
 /* MAIN NAV */
@@ -284,6 +306,9 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('link-item') && hash !== '') {
         event.preventDefault()
         currentSection = hash.split('#')[1]
+
+        if (hash.includes('about')) preloadImages(aboutImages)
+        if (hash.includes('projects')) preloadImages(projectsImages)
 
         scrollInto('top')
         overlay.classList.add('active')
@@ -306,6 +331,9 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.hasAttribute('href') && event.target.href.includes('#')) {
+        if (event.target.href.includes('about')) preloadImages(aboutImages)
+        if (event.target.href.includes('projects')) preloadImages(projectsImages)
+
         let title = hash.replace(/[^\w\s]/gi, '')
         title = title.charAt(0).toUpperCase() + title.slice(1)
         
@@ -419,6 +447,7 @@ midgetSaltBae.addEventListener('click', () => {
                         flagFound = true
                         console.log('🙂')
                         exposed.textContent = '🙃'
+                        preloadImages(`${images}/bandage.png`)
                         body.style.animation = 'restore 3s ease-in forwards'
 
                         setTimeout(() => {
@@ -430,7 +459,7 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                            document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)'
+                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                         }, 4000)
 
                         togglePopup('🚩')
@@ -443,35 +472,39 @@ midgetSaltBae.addEventListener('click', () => {
         })
 
         const sendAstroid = () => {  
-            new Audio('/assets/sounds/impact.mp3').play()
-
-            giantSaltBae.style.pointerEvents = 'none'
-            body.removeEventListener('mouseover', displayPosition) 
-
-            let astroid = document.createElement('div')
-            astroid.setAttribute('id', 'crash-site')
-            body.appendChild(astroid)
-            astroid.style.animation = 'crash 6s linear'
-            body.style.animation = 'shake 6s ease-in-out forwards'
-
-            setTimeout(() => {
-                body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 1750)
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC' }, 1500)
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I' }, 1250)
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw' }, 1000)
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 750)
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 500)
-                setTimeout(() => { document.querySelector('.secret-links a:nth-child(7)').textContent = '😨' }, 250)
-
-                if (!bgIconsWereActivated) {
-                    logo.click()
-                    bgIconsWereActivated = true
-                }
-            }, 6000)
-
             // execute only once
             classified.removeEventListener('mouseover', sendAstroid)
+            preloadImages(secretImages)
+
+            setTimeout(() => {
+                document.getElementById('impact').play()
+
+                giantSaltBae.style.pointerEvents = 'none'
+                body.removeEventListener('mouseover', displayPosition) 
+    
+                let astroid = document.createElement('div')
+                astroid.setAttribute('id', 'crash-site')
+                body.appendChild(astroid)
+                astroid.style.animation = 'crash 6s linear'
+                body.style.animation = 'shake 6s ease-in-out forwards'
+    
+                setTimeout(() => {
+                    body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 1750)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC' }, 1500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I' }, 1250)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw' }, 1000)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 750)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(7)').textContent = '😨' }, 250)
+    
+                    if (!bgIconsWereActivated) {
+                        logo.click()
+                        bgIconsWereActivated = true
+                    }
+                    
+                }, 6000)
+            }, 500)
         }
         classified.addEventListener('mouseover', sendAstroid)
 
