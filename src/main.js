@@ -443,7 +443,7 @@ midgetSaltBae.addEventListener('click', () => {
         })
 
         const sendAstroid = () => {  
-            // new Audio('/assets/sounds/impact.mp3').play()
+            new Audio('/assets/sounds/impact.mp3').play()
 
             giantSaltBae.style.pointerEvents = 'none'
             body.removeEventListener('mouseover', displayPosition) 
@@ -452,7 +452,7 @@ midgetSaltBae.addEventListener('click', () => {
             astroid.setAttribute('id', 'crash-site')
             body.appendChild(astroid)
             astroid.style.animation = 'crash 6s linear'
-            body.style.animation = 'shake 6s ease-in-out forwards'
+            setTimeout(() => { body.style.animation = 'shake 6s ease-in-out forwards' }, 100)
 
             setTimeout(() => {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
