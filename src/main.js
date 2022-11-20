@@ -104,10 +104,7 @@ function displayProjectDetails(projectItem) {
     let projectImageSrc = projectItem.querySelector('.project-item-thumbnail img').src
     projectImageSrc = projectImageSrc.includes('portfolio') ? projectImageSrc.replace('portfolio', 'portfolio-secret') : projectImageSrc
     popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
-
-    toggleProjectPopup()
-    popupThumbnail.innerHTML = `<img src="${projectImageSrc}" alt="${projectItem.innerText.trim()}">`
-    // loadImage(projectImageSrc, 'projects') 
+    loadImage(projectImageSrc, 'projects') 
 }
 
 function togglePopup(message) {
@@ -136,11 +133,8 @@ function togglePopup(message) {
 
 function displayImage(id) {
     id = id.replace('img-to-display-', '')
-    if (id.includes('facepalm')) projectPopup.classList.toggle('open')
-
-    togglePopup()
-    imageBody.innerHTML = `<img src="${`${images}/${currentSection}/${id}.jpg`}" alt="${id}">`           
-    // loadImage(`${images}/${currentSection}/${id}.jpg`, 'popup')
+    if (id.includes('facepalm')) projectPopup.classList.toggle('open')          
+    loadImage(`${images}/${currentSection}/${id}.jpg`, 'popup')
 }
 
 function displaySocials(links, action) {
@@ -331,9 +325,6 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.hasAttribute('href') && event.target.href.includes('#')) {
-        if (event.target.href.includes('about')) preloadImages(aboutImages)
-        if (event.target.href.includes('projects')) preloadImages(projectsImages)
-
         let title = hash.replace(/[^\w\s]/gi, '')
         title = title.charAt(0).toUpperCase() + title.slice(1)
         
