@@ -450,7 +450,7 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
+                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 500)
                         }, 4000)
 
                         togglePopup('🚩')
@@ -469,7 +469,6 @@ midgetSaltBae.addEventListener('click', () => {
 
             setTimeout(() => {
                 document.getElementById('impact').play()
-
                 giantSaltBae.style.pointerEvents = 'none'
                 body.removeEventListener('mouseover', displayPosition) 
     
@@ -495,7 +494,7 @@ midgetSaltBae.addEventListener('click', () => {
                     }
                     
                 }, 6000)
-            }, 500)
+            }, 250)
         }
         classified.addEventListener('mouseover', sendAstroid)
 
