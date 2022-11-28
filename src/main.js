@@ -304,9 +304,9 @@ document.addEventListener('click', (event) => {
         if (hash.includes('about')) preloadImages(aboutImages)
         if (hash.includes('projects')) preloadImages(projectsImages)
 
-        scrollInto('top')
         overlay.classList.add('active')
         navToggler.classList.add('hide')
+        if (isMobileDevice) scrollInto('top')
 
         if (event.target.classList.contains('nav-item')) {
             toggleNavbar()
