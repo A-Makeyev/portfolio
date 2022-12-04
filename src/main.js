@@ -121,14 +121,14 @@ function togglePopup(message) {
     `
 
     const close = () => {
+        imageBody.innerHTML = ''
         main.classList.remove('fade-out')
         imagePopup.classList.remove('open')
         body.classList.remove('disable-scrolling')
-        imageBody.innerHTML = ''
     }
 
     imagePopupClose.addEventListener('click', close)
-    imageInner.addEventListener('click', close)
+    // imageInner.addEventListener('click', close)
 }
 
 function displayImage(id) {
@@ -494,7 +494,7 @@ midgetSaltBae.addEventListener('click', () => {
                     }
                     
                 }, 6000)
-            }, 250)
+            }, 200)
         }
         classified.addEventListener('mouseover', sendAstroid)
 
