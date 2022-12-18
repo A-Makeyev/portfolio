@@ -135,7 +135,6 @@ section.fade-out {
     transition: all 0.5s ease-in-out;
 }
 
-
 .main.fade-out,
 .loader.fade-out,
 .space-loader.fade-out,
@@ -570,8 +569,8 @@ button {
     margin: auto;
     max-width: 360px;
     border-radius: 50%;
-    background-color: var(--white-alpha-25);
     border: 5px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
 }
 
 .home-img .img-box img {
@@ -680,8 +679,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--white-alpha-25);
     border: 1px solid var(--white-alpha-40);
+    background-color: var(--white-alpha-25);
     transition: all 0.25s ease;
     position: absolute;
     font-size: large;
@@ -744,10 +743,6 @@ button {
 @media (min-width: 767px) and (max-height: 900px) {
     .image-content {
         max-width: 650px;
-    }
-
-    .image-popup {
-        overflow: scroll !important;
     }
 }
 

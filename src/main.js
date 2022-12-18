@@ -5,19 +5,12 @@ const images = '/assets/images'
 
 const secretImages = [`${images}/astroid.gif`, `${images}/explosion.gif`, `${images}/hole.png`]
 
-const projectsImages = [
-    `${images}/projects/already-inside.jpg`, `${images}/projects/picard-facepalm.jpg`, `${images}/projects/Makeyev-Finance.jpg`,
-    `${images}/projects/ChatUp.jpg`, `${images}/projects/portfolio.jpg`, `${images}/projects/portfolio-secret.jpg`
-]
-
-const aboutImages = [     
-    `${images}/about/anatoly.jpg`, `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/cloudbeat-conference.jpg`, 
-    `${images}/about/Quality-Assurance-Certificate.jpg`,  `${images}/about/Responsive-Web-Design.jpg`, `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`
-]
-
 const generalImages = [
+    `${images}/already-inside.jpg`, `${images}/already-inside-facepalm.jpg`,
     `${images}/profile.png`, `${images}/avatar.png`, `${icons}/saltbae.png`, `${icons}/github-ninja.png`, `${icons}/M.png`,
-    `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`
+    `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`,
+    `${images}/about/Quality-Assurance-Certificate.jpg`,  `${images}/about/Responsive-Web-Design.jpg`, `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`,
+    `${images}/about/anatoly.jpg`, `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/cloudbeat-conference.jpg`
 ]
 
 const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
@@ -100,11 +93,28 @@ function toggleProjectPopup() {
     projectPopup.classList.toggle('open')
 }
 
-function displayProjectDetails(projectItem) {
-    let projectImageSrc = projectItem.querySelector('.project-item-thumbnail img').src
-    projectImageSrc = projectImageSrc.includes('portfolio') ? projectImageSrc.replace('portfolio', 'portfolio-secret') : projectImageSrc
-    popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
-    loadImage(projectImageSrc, 'projects') 
+async function displayProjectDetails(projectItem) {
+    loader.classList.remove('fade-out') 
+    let projectSrc = projectItem.querySelector('.project-thumbnail-scale iframe').src
+
+    await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
+    .then((res) => {
+        res.text()
+    })
+    .then(() => {
+        popupBody.innerHTML = projectItem.parentNode.parentNode.querySelector('.project-item-details').innerHTML
+        popupThumbnail.innerHTML = 
+        `
+            <div class="project-main-container">
+                <div class="project-main-scale">
+                    <iframe src="${projectSrc}" frameborder="0"></iframe>
+                </div>
+            </div> 
+        `
+
+        loader.classList.add('fade-out')
+        toggleProjectPopup()
+    })
 }
 
 function togglePopup(message) {
@@ -133,8 +143,8 @@ function togglePopup(message) {
 
 function displayImage(id) {
     id = id.replace('img-to-display-', '')
-    if (id.includes('facepalm')) projectPopup.classList.toggle('open')          
-    loadImage(`${images}/${currentSection}/${id}.jpg`, 'popup')
+    if (id.includes('facepalm')) projectPopup.classList.toggle('open') 
+    loadImage(currentSection == 'projects' ? `${images}/${id}.jpg` : `${images}/${currentSection}/${id}.jpg`, 'popup')
 }
 
 function displaySocials(links, action) {
@@ -183,7 +193,7 @@ function displayCoordinates(links, action) {
 }
 
 async function loadImage(url, location) {
-    loader.classList.remove('fade-out')
+    loader.classList.remove('fade-out') 
     let res = await fetch(url, { method: 'GET' })
     if (res.status === 200) {
         url = url.split('/')
@@ -272,6 +282,7 @@ function validate(input, regex) {
 
 preloadImages(generalImages)
 window.addEventListener('load', () => {
+    if (window.location.href.includes('.html')) window.location.href = '/'
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
 
@@ -300,9 +311,6 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('link-item') && hash !== '') {
         event.preventDefault()
         currentSection = hash.split('#')[1]
-
-        if (hash.includes('about')) preloadImages(aboutImages)
-        if (hash.includes('projects')) preloadImages(projectsImages)
 
         overlay.classList.add('active')
         navToggler.classList.add('hide')
