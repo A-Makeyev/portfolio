@@ -13,6 +13,8 @@ const generalImages = [
     `${images}/about/anatoly.jpg`, `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/cloudbeat-conference.jpg`
 ]
 
+const dev = 'http://127.0.0.1:5500/'
+const prod = 'https://makeyev.onrender.com/'
 const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
 const validName = /^[^0-9.,_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
 const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -27,6 +29,7 @@ const aboutSection = document.querySelector('.about-section')
 const main = document.querySelector('.main')
 const imagePopup = document.querySelector('.image-popup')
 const imageBody = document.querySelector('.image-body')
+const imageContent = document.querySelector('.image-content')
 const imagePopupClose = document.querySelector('.image-popup-close')
 const imageInner = document.querySelector('.image-inner')
 const projectPopup = document.querySelector('.project-popup')
@@ -43,10 +46,11 @@ const logo = document.querySelector('.m-logo')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
 const classified = document.querySelector('.classified')
-const submit = document.querySelector('#submit')
+const submitBtn = document.querySelector('#submit')
 const nameInput = document.getElementById('name')
 const emailInput = document.getElementById('email')
 const phoneInput = document.getElementById('phone')
+const messageInput = document.getElementById('message')
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 var currentSection = ''
@@ -112,20 +116,21 @@ async function displayProjectDetails(projectItem) {
             </div> 
         `
 
-        loader.classList.add('fade-out')
+        loader.classList.add('fade-out') 
         toggleProjectPopup()
     })
 }
 
-function togglePopup(message) {
+function togglePopup(message, status) {
     scrollInto(imageBody)
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
     body.classList.add('disable-scrolling')
 
+    imageContent.style.border = `2px solid ${status == 'success' ? '#40BD1A' : status == 'failure' ? '#A00023' : 'rgba(225, 255, 255, 0.40'}`
     if (message) imageBody.innerHTML = 
     `
-        <div style="max-width: 300px;">
+        <div style="min-height: 150px; max-width: 300px; padding: 40px 20px;">
             <h3>${message}</h3>
         </div>
     `
@@ -269,13 +274,129 @@ async function summonAliens() {
 }
 
 function validate(input, regex) {
+    submitBtn.style.pointerEvents = 'none'
     input.addEventListener('input', (event) => {
         if (event.target.value.match(regex)) {
             input.style.boxShadow = '4px 4px 4px var(--green)'
         } else {
             input.style.boxShadow = '4px 4px 4px var(--red)'
         }
+
+        if (!nameInput.value.match(validName) || !emailInput.value.match(validEmail) || !phoneInput.value.match(validPhone)) {
+            submitBtn.setAttribute('disabled', '')
+            submitBtn.style.pointerEvents = 'none'
+        } else {
+            submitBtn.removeAttribute('disabled')
+            submitBtn.style.pointerEvents = 'auto'
+        }
+        
+        if (!submitBtn.hasAttribute('disabled')) {
+            submitBtn.onclick = () => {
+                sendEmail()
+            }
+        }
     })
+}
+
+function sendEmail() {
+    loader.classList.remove('fade-out') 
+    
+    try {
+        Email.send({
+            // https://smtpjs.com
+            // https://elasticemail.com
+    
+            SecureToken: 'fc871103-a8aa-49f7-a38d-69d94e10a3ba',
+            To: 'anatoly.makeyev@gmail.com',
+            From: 'anatoly.makeyev@gmail.com',
+            Subject: 'New Client 🤩',
+            Body: createEmailBody()
+    
+        }).then(response => {
+            // handle communication buffer resources
+            if (response.includes('deadlock victim')) {
+                console.log(response)
+                console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
+                console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                sendEmail()
+            } else if (!response.includes('OK')) {
+                console.log(response)
+            } else {
+                loader.classList.add('fade-out') 
+                togglePopup('Your message was sent, thanks for reaching out!', 'success')
+            }
+        })
+    } catch(error) {
+        loader.classList.add('fade-out') 
+        togglePopup(`There was a problem with sending the email: < ${error} >`, 'failure')
+    }
+
+    document.querySelectorAll('.input-group input')
+    .forEach((i) => {
+        i.style.boxShadow = ''
+        i.value = ''
+    })
+}
+
+function createEmailBody() { 
+    return `
+        <div>
+            <h4>
+                <span>New submission from</span> 
+                <a href="${prod}" target="_blank" style="text-decoration: none;">
+                    <span style="color: #2A85BE;">Portfolio Website</span>
+                </a>
+            </h4>
+            <table style="border: 1px solid #555555; border-collapse: collapse; width: 100%;">
+                <tbody style="font-family: 'Fira Code', sans-serif; font-size: 15px; text-align: center; color: #18293C">
+                    <tr style="border: 1px solid #2A85BE; background: #2A85BE; color: #F4FAFD; padding: 15px 10px;">
+                        <td style="padding: 10px;"><strong>Details</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr style="border: 1px solid #555555;">
+                        <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+                            <strong>Name</strong>
+                        </td>
+                        <td style="padding:10px;">
+                            <pre style="margin: 0; white-space: pre-wrap;">${nameInput.value}</pre>
+                        </td>
+                    </tr>
+                    <tr style="border: 1px solid #555555;">
+                        <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+                            <strong>Phone</strong>
+                        </td>
+                        <td style="padding: 10px;">
+                            <a href="tel:${phoneInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${phoneInput.value}</a>
+                        </td>
+                    </tr>
+                    <tr style="border: 1px solid #555555;">
+                        <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+                            <strong>Email</strong>
+                        </td>
+                        <td style="padding: 10px;">
+                            <a href="mailto:${emailInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${emailInput.value}</a>
+                        </td>
+                    </tr>
+                    ${messageInput.value.trim() !== '' ? 
+                    `
+                        <tr style="border: 1px solid #555555;">
+                            <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+                                <strong>Message</strong>
+                            </td>
+                            <td style="padding: 10px;">
+                                <pre style="margin: 0; white-space: pre-wrap;">${messageInput.value}</pre>
+                            </td>
+                        </tr>
+                    `
+                    : ``}
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <img src="${prod}assets/icons/M.png" style="max-width: 250px; margin: 50px 0 -25px;">
+            </div>
+        </div>
+    `
 }
 
 /* LOADER */
@@ -530,11 +651,3 @@ midgetSaltBae.addEventListener('click', () => {
 validate(nameInput, validName)
 validate(emailInput, validEmail)
 validate(phoneInput, validPhone)
-
-submit.addEventListener('click', (event) => {
-    if (!nameInput.value.match(validName) || !emailInput.value.match(validEmail) || !phoneInput.value.match(validPhone)) {
-        event.preventDefault()
-    } else {
-        togglePopup('Why would you use this form? Just email/call me directly :)')
-    }
-})

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +13,6 @@
   <link rel="stylesheet" href="styles/secret.css">
   <title>Anatoly Makeyev</title>
 </head>
-
 <body>
 
   <!-- LOADER -->
@@ -395,9 +393,8 @@
             <div class="project-item-details">
               <div class="description">
                 <p>
-                  This is where I convey my personality and creativity, hopefully the animations won't slow down your
-                  device.
-                  May include some easter eggs.
+                  This is where I convey my personality and creativity, hopefully the animations won't slow down your device.
+                  May include some easter eggs which I hope you'll find.
                 </p>
               </div>
 
@@ -551,11 +548,11 @@
                   <input id="phone" type="tel" placeholder="Phone" class="input-control" maxlength="100" required>
                 </div>
                 <div class="input-group">
-                  <textarea placeholder="Message" class="input-control" maxlength="1000" required></textarea>
+                  <textarea id="message" placeholder="Message" class="input-control" maxlength="1000" required></textarea>
                 </div>
               </div>
               <div class="submit-btn accelerate remove-highlight">
-                <button type="submit" id="submit" class="btn accelerate remove-highlight">send</button>
+                <button type="submit" id="submit" class="btn accelerate remove-highlight" disabled>send</button>
               </div>
             </div>
           </div>
@@ -633,6 +630,6 @@
   </div>
 
   <script src="src/main.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
-
 </html>
