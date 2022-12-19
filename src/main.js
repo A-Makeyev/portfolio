@@ -126,7 +126,6 @@ function togglePopup(message, status) {
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
     body.classList.add('disable-scrolling')
-    imagePopup.style.overflow = isMobileDevice ? 'hidden' : 'scroll'
     imageContent.style.border = `2px solid ${status == 'success' ? '#40BD1A' : status == 'failure' ? '#A00023' : 'rgba(225, 255, 255, 0.40'}`
 
     if (message) imageBody.innerHTML = 

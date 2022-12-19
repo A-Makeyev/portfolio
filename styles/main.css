@@ -641,7 +641,7 @@ button {
 }
 
 .image-popup.open {
-    overflow: auto;
+    overflow: hidden;
     visibility: visible;
 }
 
@@ -739,6 +739,12 @@ button {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
+
+@media (min-width: 767px) and (max-height: 600px) {
+    .image-popup.open {
+        overflow: auto;
+    }
+}
 
 @media (min-width: 767px) and (max-height: 900px) {
     .image-content {
