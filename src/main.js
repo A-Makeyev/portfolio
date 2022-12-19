@@ -126,11 +126,12 @@ function togglePopup(message, status) {
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
     body.classList.add('disable-scrolling')
-
+    imagePopup.style.overflow = isMobileDevice ? 'hidden' : 'scroll'
     imageContent.style.border = `2px solid ${status == 'success' ? '#40BD1A' : status == 'failure' ? '#A00023' : 'rgba(225, 255, 255, 0.40'}`
+
     if (message) imageBody.innerHTML = 
     `
-        <div style="min-height: 150px; max-width: 300px; padding: 40px 20px;">
+        <div style="min-height: 150px; max-width: 300px; padding: 50px 25px;">
             <h3>${message}</h3>
         </div>
     `
@@ -197,7 +198,7 @@ function displayCoordinates(links, action) {
     }, 1250)
 }
 
-async function loadImage(url, location) {
+async function loadImage(url) {
     loader.classList.remove('fade-out') 
     let res = await fetch(url, { method: 'GET' })
     if (res.status === 200) {
@@ -212,13 +213,8 @@ async function loadImage(url, location) {
         image.alt = imageId
         
         loader.classList.add('fade-out')
-        if (location == 'popup') {
-            togglePopup()
-            imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`           
-        } else if (location == 'projects') {
-            toggleProjectPopup()
-            popupThumbnail.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
-        }
+        imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`   
+        togglePopup()        
     } else {
         alert(res.status)
     }
@@ -332,7 +328,7 @@ function sendEmail() {
         togglePopup(`There was a problem with sending the email: < ${error} >`, 'failure')
     }
 
-    document.querySelectorAll('.input-group input')
+    document.querySelectorAll('.input-control')
     .forEach((i) => {
         i.style.boxShadow = ''
         i.value = ''
@@ -392,8 +388,8 @@ function createEmailBody() {
                     : ``}
                 </tbody>
             </table>
-            <div style="text-align: center;">
-                <img src="${prod}assets/icons/M.png" style="max-width: 250px; margin: 50px 0 -25px;">
+            <div style="text-align: center; margin-top: 50px;">
+                <img src="${prod}assets/icons/M.png" style="max-width: 250px;">
             </div>
         </div>
     `
