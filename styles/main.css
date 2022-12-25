@@ -419,7 +419,7 @@ button {
     opacity: 0.5;
     position: absolute;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     border-top-color: transparent !important;
     border-bottom-color: transparent !important;
     animation: spin 1s linear infinite;
