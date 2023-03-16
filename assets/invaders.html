@@ -162,7 +162,7 @@
 </head>
 <body>
     <div class="menu">
-        <h3>Score: <span id="score">0</span> <i id="volume"></i></h3>
+        <h3>Score: <span id="score">0</span> <i id="volume" class="fa-solid fa-volume-xmark"></i></h3>
     </div>
     <div class="board">
         <div class="click-box">
@@ -170,7 +170,7 @@
             <div class="click-box-column right-side"></div>
         </div>
         <div class="result"></div>
-        <div class="grid"><!-- 225 --></div>
+        <div class="grid"> <!-- 225 --> </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -206,22 +206,29 @@
             let invaderId
 
             // toggle volume
-            volume.classList.add('fa-solid', 'fa-volume-high') 
+            toggleSound()
             volume.addEventListener('click', () => {
                 if (volume.classList.contains('fa-volume-high')) {
                     volume.classList.replace('fa-volume-high', 'fa-volume-xmark')
-                    laserGun.muted = true
-                    alienKill.muted = true
-                    explosion.muted = true
-                    victory.muted = true
                 } else {
                     volume.classList.replace('fa-volume-xmark', 'fa-volume-high')
+                }
+                toggleSound()
+            })
+
+            function toggleSound() {
+                if (volume.classList.contains('fa-volume-high')) {
                     laserGun.muted = false
                     alienKill.muted = false
                     explosion.muted = false
                     victory.muted = false
+                } else if (volume.classList.contains('fa-volume-xmark')) {
+                    laserGun.muted = true
+                    alienKill.muted = true
+                    explosion.muted = true
+                    victory.muted = true
                 }
-            })
+            }
 
             function endGame() {
                 document.removeEventListener('keydown', moveShooter)
