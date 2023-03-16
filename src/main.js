@@ -131,7 +131,9 @@ function togglePopup(message, status) {
     if (message) imageBody.innerHTML = 
     `
         <div style="min-height: 150px; max-width: 300px; padding: 50px 25px;">
-            <h3>${message}</h3>
+            <div style="margin: 10px 0;">
+                ${message === '🚩' ? `<h1>${message}</h1>` : `<h3>${message}</h3>`}  
+            </div>
         </div>
     `
 
@@ -173,10 +175,10 @@ function displayCoordinates(links, action) {
                 links[i].style.border = 'none'
                 links[i].style.cursor = 'text'
                 links[i].style.fontWeight = 'bold'
-                links[i].style.padding = '15px 5px'
                 links[i].style.color = 'var(--dark-blue)'
                 links[i].style.backgroundColor = 'transparent'
                 links[i].style.textShadow = '0.5px 0.5px var(--white-alpha-40)'
+                links[i].classList.add('coordinate')
 
                 if (links[i].classList.contains('exposed')) {
                     links[i].textContent = '😳'
@@ -253,9 +255,10 @@ async function summonAliens() {
                 imageBody.innerHTML = 
                 `
                     <div style="padding:30px;">
-                        <p style="padding:5px;">
-                            press <b style="font-size: x-large;">↔️</b> to move</p>
-                        <p>and <b>space</b> to shoot</p>
+                        <div style="margin-bottom:10px;">
+                            <p>press <b style="font-size: x-large;">↔️</b> to move</p>
+                            <p>and <b>space</b> to shoot</p>
+                        </div>
                     </div>
                 `
             }, 1500)
@@ -519,7 +522,7 @@ tabContainer.addEventListener('click', (event) => {
 midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
 
-    if (saltBaeWasActivated && window.innerWidth >= 1045) {
+    if (saltBaeWasActivated && !flagFound) {
         const displayPosition = (event) => {
             let rectX = Math.floor(classified.getBoundingClientRect().x)
             let rectY = Math.floor(classified.getBoundingClientRect().y)
@@ -557,6 +560,9 @@ midgetSaltBae.addEventListener('click', () => {
                 if (window.innerWidth == 1400 && window.innerHeight == 700) { 
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
+                    exposed.style.fontSize = 'x-large'
+                    exposed.removeAttribute('title')
+                    exposed.textContent = '😰'
                     exposed.onclick = () => {
                         console.clear()
                         flagFound = true
@@ -574,13 +580,19 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 500)
+                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 1000)
                         }, 4000)
 
+                        giantSaltBae.style.pointerEvents = 'auto'
+                        giantSaltBae.click()
                         togglePopup('🚩')
                     }
                 } else {
                     exposed.style.pointerEvents = 'none'
+                    exposed.style.cursor = 'help'
+                    exposed.style.fontSize = 'larger'
+                    exposed.setAttribute('title', '👀')
+                    exposed.textContent = '😨'
                 }
             }
             window.addEventListener('resize', captureTheFlag)
@@ -616,12 +628,10 @@ midgetSaltBae.addEventListener('click', () => {
                         logo.click()
                         bgIconsWereActivated = true
                     }
-                    
                 }, 6000)
             }, 200)
         }
         classified.addEventListener('mouseover', sendAstroid)
-
         giantSaltBae.classList.remove('fade-out')
         midgetSaltBae.classList.add('fade-out')
         displayCoordinates(links, 'fadeIn')
