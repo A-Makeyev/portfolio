@@ -754,6 +754,10 @@ button {
 }
 
 @media (max-width: 1045px) {
+    .loader div {
+        border: 2px solid transparent;
+    }
+
     .container {
         padding: 0;
     }
