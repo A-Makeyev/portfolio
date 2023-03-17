@@ -9,7 +9,7 @@ const generalImages = [
     `${images}/already-inside.jpg`, `${images}/already-inside-facepalm.jpg`,
     `${images}/profile.png`, `${images}/avatar.png`, `${icons}/saltbae.png`, `${icons}/github-ninja.png`, `${icons}/M.png`,
     `${icons}/redux.png`, `${icons}/react.png`, `${icons}/python.png`, `${icons}/node.png`, `${icons}/html.png`, `${icons}/css.png`, `${icons}/js.png`,
-    `${images}/about/Quality-Assurance-Certificate.jpg`,  `${images}/about/Responsive-Web-Design.jpg`, `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`,
+    `${images}/about/Quality-Assurance-Certificate.jpg`, `${images}/about/Responsive-Web-Design.jpg`, `${images}/about/JavaScript-Algorithms-and-Data-Structures.jpg`,
     `${images}/about/anatoly.jpg`, `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/cloudbeat-conference.jpg`
 ]
 
@@ -83,9 +83,9 @@ function disableScrolling() {
 }
 
 function scrollInto(selector) {
-    if (selector == 'top') window.scrollTo({top: 0, behavior: 'smooth'})
+    if (selector == 'top') window.scrollTo({ top: 0, behavior: 'smooth' })
     if (selector == 'bottom') window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-    if (selector != null && typeof selector == 'object') selector.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'})
+    if (selector != null && typeof selector == 'object') selector.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
 }
 
 function hideSection() {
@@ -97,28 +97,39 @@ function toggleProjectPopup() {
     projectPopup.classList.toggle('open')
 }
 
+function getParent(initialElement, targetElementSelector, tries) {
+    let target = initialElement.querySelector(targetElementSelector)
+    if (tries === 0) return
+    return (target !== null && target !== undefined) ? target : getParent(initialElement.parentNode, targetElementSelector, tries - 1)
+}
+
 async function displayProjectDetails(projectItem) {
-    loader.classList.remove('fade-out') 
-    let projectSrc = projectItem.querySelector('.project-thumbnail-scale iframe').src
+    loader.classList.remove('fade-out')
+
+    let projectSrc = getParent(projectItem, '.project-thumbnail-scale iframe', 10).src
+    // let projectSrc = projectItem.querySelector('.project-thumbnail-scale iframe').src
 
     await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
-    .then((res) => {
-        res.text()
-    })
-    .then(() => {
-        popupBody.innerHTML = projectItem.parentNode.parentNode.querySelector('.project-item-details').innerHTML
-        popupThumbnail.innerHTML = 
-        `
-            <div class="project-main-container">
-                <div class="project-main-scale">
-                    <iframe src="${projectSrc}" frameborder="0"></iframe>
-                </div>
-            </div> 
-        `
+        .then((res) => {
+            res.text()
+        })
+        .then(() => {
+            let projectDetails = getParent(projectItem, '.project-item-details', 10).innerHTML
+            // popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
 
-        loader.classList.add('fade-out') 
-        toggleProjectPopup()
-    })
+            popupBody.innerHTML = projectDetails
+            popupThumbnail.innerHTML =
+            `
+                <div class="project-main-container">
+                    <div class="project-main-scale">
+                        <iframe src="${projectSrc}" frameborder="0"></iframe>
+                    </div>
+                </div> 
+            `
+
+            loader.classList.add('fade-out')
+            toggleProjectPopup()
+        })
 }
 
 function togglePopup(message, status) {
@@ -128,8 +139,8 @@ function togglePopup(message, status) {
     body.classList.add('disable-scrolling')
     imageContent.style.border = `2px solid ${status == 'success' ? '#40BD1A' : status == 'failure' ? '#A00023' : 'rgba(225, 255, 255, 0.40'}`
 
-    if (message) imageBody.innerHTML = 
-    `
+    if (message) imageBody.innerHTML =
+        `
         <div style="min-height: 150px; max-width: 300px; padding: 50px 25px;">
             <div style="margin: 10px 0;">
                 ${message === '🚩' ? `<h1>${message}</h1>` : `<h3>${message}</h3>`}  
@@ -150,7 +161,7 @@ function togglePopup(message, status) {
 
 function displayImage(id) {
     id = id.replace('img-to-display-', '')
-    if (id.includes('facepalm')) projectPopup.classList.toggle('open') 
+    if (id.includes('facepalm')) projectPopup.classList.toggle('open')
     loadImage(currentSection == 'projects' ? `${images}/${id}.jpg` : `${images}/${currentSection}/${id}.jpg`, 'popup')
 }
 
@@ -200,7 +211,7 @@ function displayCoordinates(links, action) {
 }
 
 async function loadImage(url) {
-    loader.classList.remove('fade-out') 
+    loader.classList.remove('fade-out')
     let res = await fetch(url, { method: 'GET' })
     if (res.status === 200) {
         url = url.split('/')
@@ -212,10 +223,10 @@ async function loadImage(url) {
 
         image.src = imageObjectURL
         image.alt = imageId
-        
+
         loader.classList.add('fade-out')
-        imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`   
-        togglePopup()        
+        imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
+        togglePopup()
     } else {
         alert(res.status)
     }
@@ -226,34 +237,34 @@ async function summonAliens() {
     spaceLoader.classList.remove('fade-out')
     let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
     await fetch(invaders, { method: 'GET' })
-    .then((res) => {
-        return res.text()
-    })
-    .then((html) => {
-        const displayBoard = () => {
-            imagePopup.style.display = 'block'
-            imageBody.innerHTML = `<iframe class="invaders"></iframe>`
-            let invadersFrame = document.querySelector('.invaders').contentWindow.document
-            invadersFrame.open()
-            invadersFrame.write(html)
-            invadersFrame.close()
-            document.querySelector('.invaders').contentWindow.focus()
-            scrollInto(imageBody)
-        }
+        .then((res) => {
+            return res.text()
+        })
+        .then((html) => {
+            const displayBoard = () => {
+                imagePopup.style.display = 'block'
+                imageBody.innerHTML = `<iframe class="invaders"></iframe>`
+                let invadersFrame = document.querySelector('.invaders').contentWindow.document
+                invadersFrame.open()
+                invadersFrame.write(html)
+                invadersFrame.close()
+                document.querySelector('.invaders').contentWindow.focus()
+                scrollInto(imageBody)
+            }
 
-        if (isMobileDevice) {
-            setTimeout(() => {
-                togglePopup()
-                spaceLoader.classList.add('fade-out')
-                imagePopup.style.display = 'none'
-                displayBoard()
-            }, 2000)
-        } else {
-            setTimeout(() => {
-                togglePopup()
-                spaceLoader.classList.add('fade-out')
-                imageBody.innerHTML = 
-                `
+            if (isMobileDevice) {
+                setTimeout(() => {
+                    togglePopup()
+                    spaceLoader.classList.add('fade-out')
+                    imagePopup.style.display = 'none'
+                    displayBoard()
+                }, 2000)
+            } else {
+                setTimeout(() => {
+                    togglePopup()
+                    spaceLoader.classList.add('fade-out')
+                    imageBody.innerHTML =
+                        `
                     <div style="padding:30px;">
                         <div style="margin-bottom:10px;">
                             <p>press <b style="font-size: x-large;">↔️</b> to move</p>
@@ -261,14 +272,14 @@ async function summonAliens() {
                         </div>
                     </div>
                 `
-            }, 1500)
-            setTimeout(() => { 
-                displayBoard()  
-            }, 3500)
-        }
-    }).catch((err) => {
-        alert(`Failed to fetch ${url}`, err)
-    })
+                }, 1500)
+                setTimeout(() => {
+                    displayBoard()
+                }, 3500)
+            }
+        }).catch((err) => {
+            alert(`Failed to fetch ${url}`, err)
+        })
 }
 
 function validate(input, regex) {
@@ -287,7 +298,7 @@ function validate(input, regex) {
             submitBtn.removeAttribute('disabled')
             submitBtn.style.pointerEvents = 'auto'
         }
-        
+
         if (!submitBtn.hasAttribute('disabled')) {
             submitBtn.onclick = () => {
                 sendEmail()
@@ -297,47 +308,47 @@ function validate(input, regex) {
 }
 
 function sendEmail() {
-    loader.classList.remove('fade-out') 
-    
+    loader.classList.remove('fade-out')
+
     try {
         Email.send({
             // https://smtpjs.com
             // https://elasticemail.com
-    
+
             SecureToken: 'fc871103-a8aa-49f7-a38d-69d94e10a3ba',
             To: 'anatoly.makeyev@gmail.com',
             From: 'anatoly.makeyev@gmail.com',
             Subject: 'New Client 🤩',
             Body: createEmailBody()
-    
-        }).then(response => {
-            // handle communication buffer resources
-            if (response.includes('deadlock victim')) {
-                console.log(response)
-                console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
-                console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                sendEmail()
-            } else if (!response.includes('OK')) {
-                console.log(response)
-            } else {
-                loader.classList.add('fade-out') 
-                togglePopup('Your message was sent, thanks for reaching out!', 'success')
-            }
         })
-    } catch(error) {
-        loader.classList.add('fade-out') 
+            .then(response => {
+                // handle communication buffer resources
+                if (response.includes('deadlock victim')) {
+                    console.log(response)
+                    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                    console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
+                    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                    sendEmail()
+                } else if (!response.includes('OK')) {
+                    console.log(response)
+                } else {
+                    loader.classList.add('fade-out')
+                    togglePopup('Your message was sent, thanks for reaching out!', 'success')
+                }
+            })
+    } catch (error) {
+        loader.classList.add('fade-out')
         togglePopup(`There was a problem with sending the email: < ${error} >`, 'failure')
     }
 
     document.querySelectorAll('.input-control')
-    .forEach((i) => {
-        i.style.boxShadow = ''
-        i.value = ''
-    })
+        .forEach((i) => {
+            i.style.boxShadow = ''
+            i.value = ''
+        })
 }
 
-function createEmailBody() { 
+function createEmailBody() {
     return `
         <div>
             <h4>
@@ -376,8 +387,8 @@ function createEmailBody() {
                             <a href="mailto:${emailInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${emailInput.value}</a>
                         </td>
                     </tr>
-                    ${messageInput.value.trim() !== '' ? 
-                    `
+                    ${messageInput.value.trim() !== '' ?
+            `
                         <tr style="border: 1px solid #555555;">
                             <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
                                 <strong>Message</strong>
@@ -387,7 +398,7 @@ function createEmailBody() {
                             </td>
                         </tr>
                     `
-                    : ``}
+            : ``}
                 </tbody>
             </table>
             <div style="text-align: center; margin-top: 50px;">
@@ -419,7 +430,7 @@ navToggler.addEventListener('click', () => {
     disableScrolling()
     scrollInto('top')
     toggleNavbar()
-    hideSection()  
+    hideSection()
 })
 
 /* CLICK EVENTS */
@@ -454,7 +465,7 @@ document.addEventListener('click', (event) => {
     if (event.target.hasAttribute('href') && event.target.href.includes('#')) {
         let title = hash.replace(/[^\w\s]/gi, '')
         title = title.charAt(0).toUpperCase() + title.slice(1)
-        
+
         if (title.includes('Home')) {
             document.title = `Anatoly Makeyev`
         } else {
@@ -463,8 +474,13 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.classList.contains('view-project-btn')) {
-        displayProjectDetails(event.target.parentNode.parentNode)
+        displayProjectDetails(event.target)
         scrollInto(projectPopup)
+        // if (event.target.classList.contains('project-frame-cover')) {
+        //     displayProjectDetails(event.target.parentNode.parentNode.parentNode.parentNode)
+        // } else {
+        //     displayProjectDetails(event.target.parentNode.parentNode)
+        // }
     }
 
     if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
@@ -484,7 +500,7 @@ document.addEventListener('click', (event) => {
                 midgetSaltBae.click()
                 saltBaeWasActivated = true
             }, 1500)
-        } 
+        }
 
         if (!bgIconsWereActivated) {
             setTimeout(() => {
@@ -537,7 +553,7 @@ midgetSaltBae.addEventListener('click', () => {
             document.querySelector('.secret-links a:nth-child(5)').textContent = event.pageY
             document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
         }
-        body.addEventListener('mouseover', displayPosition) 
+        body.addEventListener('mouseover', displayPosition)
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
@@ -557,7 +573,7 @@ midgetSaltBae.addEventListener('click', () => {
                     )
                 }
 
-                if (window.innerWidth == 1400 && window.innerHeight == 700) { 
+                if (window.innerWidth == 1400 && window.innerHeight == 700) {
                     exposed.style.pointerEvents = 'auto'
                     exposed.style.cursor = 'pointer'
                     exposed.style.fontSize = 'x-large'
@@ -598,7 +614,7 @@ midgetSaltBae.addEventListener('click', () => {
             window.addEventListener('resize', captureTheFlag)
         })
 
-        const sendAstroid = () => {  
+        const sendAstroid = () => {
             // execute only once
             classified.removeEventListener('mouseover', sendAstroid)
             preloadImages(secretImages)
@@ -606,14 +622,14 @@ midgetSaltBae.addEventListener('click', () => {
             setTimeout(() => {
                 document.getElementById('impact').play()
                 giantSaltBae.style.pointerEvents = 'none'
-                body.removeEventListener('mouseover', displayPosition) 
-    
+                body.removeEventListener('mouseover', displayPosition)
+
                 let astroid = document.createElement('div')
                 astroid.setAttribute('id', 'crash-site')
                 body.appendChild(astroid)
                 astroid.style.animation = 'crash 6s linear'
                 body.style.animation = 'shake 6s ease-in-out forwards'
-    
+
                 setTimeout(() => {
                     body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
                     setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 1750)
@@ -623,7 +639,7 @@ midgetSaltBae.addEventListener('click', () => {
                     setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 750)
                     setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 500)
                     setTimeout(() => { document.querySelector('.secret-links a:nth-child(7)').textContent = '😨' }, 250)
-    
+
                     if (!bgIconsWereActivated) {
                         logo.click()
                         bgIconsWereActivated = true
