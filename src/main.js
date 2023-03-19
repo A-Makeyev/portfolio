@@ -74,6 +74,10 @@ async function preloadImages(src) {
     }
 }
 
+function randomNumber(min, max) {
+    return ~~(Math.random() * (max - min + 1)) + min
+  }
+
 function toggleNavbar() {
     header.classList.toggle('active')
 }
@@ -105,9 +109,7 @@ function getParent(initialElement, targetElementSelector, tries) {
 
 async function displayProjectDetails(projectItem) {
     loader.classList.remove('fade-out')
-
     let projectSrc = getParent(projectItem, '.project-thumbnail-scale iframe', 10).src
-    // let projectSrc = projectItem.querySelector('.project-thumbnail-scale iframe').src
 
     await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
         .then((res) => {
@@ -115,7 +117,6 @@ async function displayProjectDetails(projectItem) {
         })
         .then(() => {
             let projectDetails = getParent(projectItem, '.project-item-details', 10).innerHTML
-            // popupBody.innerHTML = projectItem.querySelector('.project-item-details').innerHTML
 
             popupBody.innerHTML = projectDetails
             popupThumbnail.innerHTML =
@@ -476,11 +477,6 @@ document.addEventListener('click', (event) => {
     if (event.target.classList.contains('view-project-btn')) {
         displayProjectDetails(event.target)
         scrollInto(projectPopup)
-        // if (event.target.classList.contains('project-frame-cover')) {
-        //     displayProjectDetails(event.target.parentNode.parentNode.parentNode.parentNode)
-        // } else {
-        //     displayProjectDetails(event.target.parentNode.parentNode)
-        // }
     }
 
     if (event.target.classList.contains('popup-close') || event.target.classList.contains('popup-inner')) {
@@ -575,9 +571,10 @@ midgetSaltBae.addEventListener('click', () => {
 
                 if (window.innerWidth == 1400 && window.innerHeight == 700) {
                     exposed.style.pointerEvents = 'auto'
-                    exposed.style.cursor = 'pointer'
                     exposed.style.fontSize = 'x-large'
+                    exposed.style.cursor = 'pointer'
                     exposed.removeAttribute('title')
+                    exposed.classList.add('😱')
                     exposed.textContent = '😰'
                     exposed.onclick = () => {
                         console.clear()
@@ -629,6 +626,8 @@ midgetSaltBae.addEventListener('click', () => {
                 body.appendChild(astroid)
                 astroid.style.animation = 'crash 6s linear'
                 body.style.animation = 'shake 6s ease-in-out forwards'
+                // astroid.style.top = randomNumber(5, 70) + 'vh'
+                // astroid.style.right = randomNumber(window.innerWidth >= 1045 ? 20 : 5, window.innerWidth >= 1045 ? 70 : 55) + 'vw'
 
                 setTimeout(() => {
                     body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
