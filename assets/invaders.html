@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,11 +19,11 @@
             cursor: default;
             user-select: none;
             touch-action: none;
-            font-family: Roboto  Mono, sans-serif;
+            font-family: Roboto Mono, sans-serif;
         }
 
         .grid {
-            width: 300px; 
+            width: 300px;
             height: 300px;
             display: flex;
             flex-wrap: wrap;
@@ -46,9 +47,9 @@
 
         .menu h3 {
             font-size: large;
-            margin: 25px 0 0 -5px;
+            margin-left: -5px;
         }
-        
+
         .board {
             top: 55%;
             left: 50%;
@@ -58,7 +59,7 @@
             text-align: center;
             transition: opacity 1s ease-in;
             transform: translate(-50%, -50%);
-        } 
+        }
 
         .result {
             top: 5%;
@@ -138,9 +139,13 @@
                 font-size: small;
             }
 
+            #volume {
+                margin-top: 3px;
+            }
+
             .board {
                 top: 50%;
-            } 
+            }
 
             .result {
                 top: 20%;
@@ -153,9 +158,10 @@
             .boom::before {
                 font-size: medium;
             }
-        } 
+        }
     </style>
 </head>
+
 <body>
     <div class="menu">
         <h3>Score: <span id="score">0</span> <i id="volume" class="fa-solid fa-volume-xmark"></i></h3>
@@ -175,7 +181,7 @@
                 setTimeout(() => {
                     document.querySelector('.menu').classList.add('open')
                 }, 1250)
-            }, 250) 
+            }, 250)
 
             for (let i = 0; i < 225; i++) {
                 let div = document.createElement('div')
@@ -235,7 +241,7 @@
             function setInvader(getEmoji) {
                 let number = Math.floor(Math.random() * 6)
                 let theChoosenOne
-                switch(number) {
+                switch (number) {
                     case 0:
                         theChoosenOne = '👾'
                         break
@@ -260,8 +266,8 @@
 
                 let invaderStyle = document.createElement('style')
                 invaderStyle.type = 'text/css'
-                invaderStyle.innerHTML = 
-                `
+                invaderStyle.innerHTML =
+                    `
                     .invader::before {
                         content: '${theChoosenOne}';
                         font-size: larger;
@@ -288,7 +294,7 @@
 
             // draw shooter
             squares[currentShooterIndex].classList.add('shooter')
-            
+
             function setPilot(status) {
                 let number = Math.floor(Math.random() * 6)
 
@@ -314,7 +320,7 @@
                             break
                     }
                 } else if (status == 'victorious') {
-                    switch(number) {
+                    switch (number) {
                         case 0:
                             return '😎'
                             break
@@ -329,7 +335,7 @@
                             break
                         case 4:
                             return '🤪'
-                            break  
+                            break
                         case 5:
                             return '😏'
                             break
@@ -366,33 +372,34 @@
                     direction = leftEdge ? 1 : -1
                 }
 
-                for (let x = 0; x <= invaders.length -1; x++) {
+                for (let x = 0; x <= invaders.length - 1; x++) {
                     squares[invaders[x]].classList.remove('invader')
                 }
 
-                for (let x = 0; x <= invaders.length -1; x++) {
+                for (let x = 0; x <= invaders.length - 1; x++) {
                     invaders[x] += direction
                 }
 
-                for (let x = 0; x <= invaders.length -1; x++) {
+                for (let x = 0; x <= invaders.length - 1; x++) {
                     if (!invadersShotDown.includes(x)) {
                         squares[invaders[x]].classList.add('invader')
                     }
                 }
 
                 // lose
-                if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {        
+                if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
                     squares[currentShooterIndex].classList.add('pilot')
-                    document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('captured'))
+                    document.querySelector('.shooter.pilot').setAttribute('emoji', '💥')
+                    setTimeout(() => { document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('captured')) }, 1500)
                     resultDisplay.style.textShadow = 'var(--crimson-shadow)'
                     resultDisplay.textContent = 'GAME OVER'
                     resultDisplay.classList.add('open')
                     clearInterval(invaderId)
                     explosion.play()
-                    endGame()
+                    endGame() 
                 }
 
-                for (let x = 0; x <= invaders.length -1; x++) {
+                for (let x = 0; x <= invaders.length - 1; x++) {
                     if (invaders[x] > (squares.length - (width - 1))) {
                         squares[currentShooterIndex].classList.add('pilot')
                         document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('captured'))
@@ -412,7 +419,7 @@
                     for (var emojis = '', i = 0; i < invaders.length * 30; i++) emojis += setPilot('victorious') + ' ' + setInvader(true) + ' '
 
                     console.log(
-                        '%c' + emojis 
+                        '%c' + emojis
                         + '\n++++++++++ [ > + > +++ > +++++++ > ++++++++++ <<<< - ] >>> ++ . > + . << ++ . >> ++++++++++++++++++ . --------------- .'
                         + '+++++++ . << . >> ------- . ------- . ++++++++++++++++++ . << . >> + . ------------ . --- . << . >> ++++++++++++++ .'
                         + '------------------ . +++++++++++ . ++++++++ . << . >> ------- . ---- . -- . + . ++++++++++++ . << . >> ------------------- .'
@@ -428,9 +435,9 @@
 
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
                     scoreDisplay.textContent = '010001100011000100110010'
-                    scoreDisplay.style.userSelect = 'text' 
+                    scoreDisplay.style.userSelect = 'text'
                     scoreDisplay.style.cursor = 'help'
-                    resultDisplay.textContent = 'VICTORY'  
+                    resultDisplay.textContent = 'VICTORY'
                     resultDisplay.classList.add('open')
                     clearInterval(invaderId)
                     victory.play()
@@ -463,7 +470,7 @@
                         const killedInvaders = invaders.indexOf(currentLaserIndex)
                         invadersShotDown.push(killedInvaders)
                         score++
-                        scoreDisplay.textContent = score >= 20 ? `${score} 🌟` : score
+                        scoreDisplay.textContent = score >= 20 ? `${score} 🔥` : score
                     }
 
                     if (currentLaserIndex < width) {
@@ -499,4 +506,5 @@
         })
     </script>
 </body>
+
 </html>
