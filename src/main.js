@@ -315,23 +315,24 @@ function sendEmail() {
         Email.send({
             // https://smtpjs.com
             // https://elasticemail.com
-
-            SecureToken: 'fc871103-a8aa-49f7-a38d-69d94e10a3ba',
+            // SMTP Host & Domain -> smtp.elasticemail.com
+            SecureToken: 'b52b8a29-d8bb-4e74-bff5-3c1dbf06d967',
             To: 'anatoly.makeyev@gmail.com',
             From: 'anatoly.makeyev@gmail.com',
             Subject: 'New Client 🤩',
             Body: createEmailBody()
         })
             .then(response => {
+                console.log(response)
                 // handle communication buffer resources
                 if (response.includes('deadlock victim')) {
-                    console.log(response)
                     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
                     console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
                     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
                     sendEmail()
                 } else if (!response.includes('OK')) {
-                    console.log(response)
+                    loader.classList.add('fade-out')
+                    togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
                 } else {
                     loader.classList.add('fade-out')
                     togglePopup('Your message was sent, thanks for reaching out!', 'success')
@@ -339,7 +340,7 @@ function sendEmail() {
             })
     } catch (error) {
         loader.classList.add('fade-out')
-        togglePopup(`There was a problem with sending the email: < ${error} >`, 'failure')
+        console.log(error)
     }
 
     document.querySelectorAll('.input-control')
