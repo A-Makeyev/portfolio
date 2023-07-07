@@ -312,16 +312,20 @@ function sendEmail() {
     loader.classList.remove('fade-out')
 
     try {
-        Email.send({
-            // https://smtpjs.com
-            // https://elasticemail.com
-            // SMTP Host & Domain -> smtp.elasticemail.com
-            SecureToken: 'b52b8a29-d8bb-4e74-bff5-3c1dbf06d967',
-            To: 'anatoly.makeyev@gmail.com',
-            From: 'anatoly.makeyev@gmail.com',
-            Subject: 'New Client 🤩',
-            Body: createEmailBody()
-        })
+        if (typeof Email == 'undefined') {
+            loader.classList.add('fade-out')
+            togglePopup('Something is blocking me from sending emails on this device', 'failure')
+        } else {
+            Email.send({
+                // https://smtpjs.com
+                // https://elasticemail.com
+                // SMTP Host & Domain -> smtp.elasticemail.com
+                SecureToken: 'b52b8a29-d8bb-4e74-bff5-3c1dbf06d967',
+                To: 'anatoly.makeyev@gmail.com',
+                From: 'anatoly.makeyev@gmail.com',
+                Subject: 'New Client 🤩',
+                Body: createEmailBody()
+            })
             .then(response => {
                 console.log(response)
                 // handle communication buffer resources
@@ -338,16 +342,16 @@ function sendEmail() {
                     togglePopup('Your message was sent, thanks for reaching out!', 'success')
                 }
             })
+        }
     } catch (error) {
         loader.classList.add('fade-out')
         console.log(error)
     }
 
-    document.querySelectorAll('.input-control')
-        .forEach((i) => {
-            i.style.boxShadow = ''
-            i.value = ''
-        })
+    document.querySelectorAll('.input-control').forEach((i) => {
+        i.style.boxShadow = ''
+        i.value = ''
+    })
 }
 
 function createEmailBody() {
