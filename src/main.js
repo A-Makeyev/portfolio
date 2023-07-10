@@ -420,7 +420,7 @@ preloadImages(generalImages)
 window.addEventListener('load', () => {
     let url = window.location.href
     if (url.includes('.html')) url = '/'
-    if (url.includes('/?fbclid=')) window.location.replace(url.split('.com/')[0])
+    if (url.includes('/?fbclid=')) window.location.replace(url.split('.com/')[0] + '.com')
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
 
