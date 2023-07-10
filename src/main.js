@@ -418,7 +418,9 @@ function createEmailBody() {
 
 preloadImages(generalImages)
 window.addEventListener('load', () => {
-    if (window.location.href.includes('.html')) window.location.href = '/'
+    let url = window.location.href
+    if (url.includes('.html')) url = '/'
+    if (url.includes('/?fbclid=')) window.location.replace(url.split('.com/')[0])
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
     loader.classList.add('fade-out')
 
