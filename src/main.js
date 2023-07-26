@@ -562,7 +562,8 @@ midgetSaltBae.addEventListener('click', () => {
         classified.addEventListener('mouseover', () => {
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
-
+            console.clear()
+            
             const captureTheFlag = () => {
                 if (!flagFound) {
                     console.log(
