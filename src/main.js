@@ -586,7 +586,6 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.textContent = '😰'
                     exposed.onclick = () => {
                         console.clear()
-                        flagFound = true
                         console.log('🙂')
                         exposed.textContent = '🙃'
                         preloadImages(`${images}/bandage.png`)
@@ -607,12 +606,12 @@ midgetSaltBae.addEventListener('click', () => {
                         giantSaltBae.style.pointerEvents = 'auto'
                         giantSaltBae.click()
                         togglePopup('🚩')
+                        flagFound = true
                     }
                 } else {
                     exposed.style.pointerEvents = 'none'
-                    exposed.style.cursor = 'help'
                     exposed.style.fontSize = 'larger'
-                    exposed.setAttribute('title', '👀')
+                    exposed.style.cursor = 'help'
                     exposed.textContent = '😨'
                 }
             }
@@ -639,14 +638,17 @@ midgetSaltBae.addEventListener('click', () => {
 
                 setTimeout(() => {
                     body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 1750)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC' }, 1500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I' }, 1250)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw' }, 1000)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 750)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(7)').textContent = '😨' }, 250)
-
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC' }, 1000)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I' }, 1500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw' }, 2000)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 2500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 3000)
+                    setTimeout(() => { 
+                        document.querySelector('.secret-links a:nth-child(7)').textContent = '🤔' 
+                        document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
+                    }, 3500)
+                    
                     if (!bgIconsWereActivated) {
                         logo.click()
                         bgIconsWereActivated = true
