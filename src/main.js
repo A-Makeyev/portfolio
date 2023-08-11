@@ -45,6 +45,7 @@ const overlay = document.querySelector('.overlay')
 const logo = document.querySelector('.m-logo')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
+const secretLinks = document.querySelector('.secret-links')
 const classified = document.querySelector('.classified')
 const submitBtn = document.querySelector('#submit')
 const nameInput = document.getElementById('name')
@@ -540,6 +541,12 @@ tabContainer.addEventListener('click', (event) => {
 
 midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
+    
+    if (isMobileDevice) {
+        secretLinks.style.fontFamily = 'Poppins, sans-serif !important;'
+    } else {
+        secretLinks.style.fontFamily = 'cursive, sans-serif !important;' 
+    }
 
     if (saltBaeWasActivated && !flagFound) {
         const displayPosition = (event) => {
