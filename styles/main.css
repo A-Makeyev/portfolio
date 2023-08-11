@@ -622,6 +622,21 @@ button {
     transform: translate(65%, -350%) scale(1.1);
 }
 
+.pikachu {
+    z-index: 100;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(50%, -262%);
+    transition: all 0.25s ease;
+    height: 60px;
+    width: 60px;
+}
+
+.pikachu:hover {
+    transform: translate(50%, -262%) scale(1.1);
+}
+
 .invaders {
     border: none;
     width: 600px;
@@ -862,6 +877,16 @@ button {
         transform: translate(64%, -350%) scale(1.1);
     }
 
+    .pikachu {
+        transform: translate(50%, -262%);
+        height: 50px;
+        width: 50px;
+    }
+    
+    .pikachu:hover {
+        transform: translate(50%, -262%) scale(1.1);
+    }
+
     .invaders {
         width: 500px;
         height: 500px;
@@ -951,6 +976,16 @@ button {
 
     .github-ninja:hover {
         transform: translate(68%, -360%) scale(1.1);
+    }
+
+    .pikachu {
+        transform: translate(55%, -270%);
+        height: 40px;
+        width: 40px;
+    }
+    
+    .pikachu:hover {
+        transform: translate(55%, -270%) scale(1.1);
     }
 
     .invaders {

@@ -51,6 +51,7 @@ const nameInput = document.getElementById('name')
 const emailInput = document.getElementById('email')
 const phoneInput = document.getElementById('phone')
 const messageInput = document.getElementById('message')
+const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 var currentSection = ''
@@ -177,6 +178,36 @@ function displaySocials(links, action) {
     }, 1250)
 }
 
+function sendAstroid() {
+    preloadImages(secretImages)
+
+    setTimeout(() => {
+        document.getElementById('impact').play()
+        giantSaltBae.style.pointerEvents = 'none'
+        body.removeEventListener('mouseover', displayPosition)
+
+        let astroid = document.createElement('div')
+        astroid.setAttribute('id', 'crash-site')
+        body.appendChild(astroid)
+        astroid.style.animation = 'crash 6s linear'
+        body.style.animation = 'shake 6s ease-in-out forwards'
+        // astroid.style.top = randomNumber(5, 70) + 'vh'
+        // astroid.style.right = randomNumber(window.innerWidth >= 1045 ? 20 : 5, window.innerWidth >= 1045 ? 70 : 55) + 'vw'
+
+        setTimeout(() => {
+            setHint()
+            body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
+            localStorage.setItem('background', 'linear-gradient(to bottom right, var(--red), var(--dark-blue))')
+            localStorage.setItem('rotate', 'rotate(16deg)')
+
+            if (!bgIconsWereActivated) {
+                logo.click()
+                bgIconsWereActivated = true
+            }
+        }, 6000)
+    }, 250)
+}
+
 function displayCoordinates(links, action) {
     disableScrolling()
     setTimeout(() => {
@@ -209,6 +240,34 @@ function displayCoordinates(links, action) {
             }, 250 * i)
         }
     }, 1250)
+}
+
+function displayPosition(event) {
+    let rectX = Math.floor(classified.getBoundingClientRect().x)
+    let rectY = Math.floor(classified.getBoundingClientRect().y)
+    let positionX = (rectX + 200 < event.pageX || rectX - 200 > event.pageX)
+    let positionY = (rectY + 200 < event.pageY || rectY - 200 > event.pageY)
+
+    document.querySelector('.secret-links a:nth-child(1)').textContent = 'X'
+    document.querySelector('.secret-links a:nth-child(2)').textContent = event.pageX
+    document.querySelector('.secret-links a:nth-child(3)').textContent = positionX ? '❄️' : '🔥'
+
+    document.querySelector('.secret-links a:nth-child(4)').textContent = 'Y'
+    document.querySelector('.secret-links a:nth-child(5)').textContent = event.pageY
+    document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
+}
+
+function setHint() {
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500)
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = !isMobileDevice ? 'wMC' : '100' }, 1000)
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = !isMobileDevice ? 'B4I' : '00 ' }, 1500)
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = !isMobileDevice ? 'Dcw' : '🌌' }, 2000)
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '010' }, 2500)
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = !isMobileDevice ? '==' : '000' }, 3000)
+    setTimeout(() => { 
+        document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '11'
+        !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
+    }, 3500)
 }
 
 async function loadImage(url) {
@@ -430,6 +489,35 @@ window.addEventListener('load', () => {
         bgIconsBox.classList.remove('fade-out')
         spaceLoader.classList.remove('hidden')
     }, 500)
+
+    if ('exposed' in localStorage) {
+        let astroid = document.createElement('div')
+        astroid.setAttribute('id', 'crash-site')
+        body.appendChild(astroid)
+
+        saltBaeWasActivated = true
+        bgIconsWereActivated = true
+        body.style.transform =  localStorage.getItem('rotate')
+        body.style.backgroundImage =  localStorage.getItem('background')
+
+        areaListener.abort()
+        midgetSaltBae.click()
+
+        setTimeout(() => { setHint() }, 3500)
+        setTimeout(() => {
+            let exposed = document.querySelector('.exposed')
+            exposed.classList.remove('classified')
+            classified.removeEventListener('mouseover', sendAstroid)
+        }, 7500)
+    }
+
+    if ('flagFound' in localStorage) {
+        let pikachu = document.querySelector('.pikachu')
+        pikachu.style.display = 'inline-block'
+        pikachu.onclick = () => {
+            // ??
+        }
+    }
 })
 
 /* MAIN NAV */
@@ -542,26 +630,13 @@ midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
 
     if (saltBaeWasActivated && !flagFound) {
-        const displayPosition = (event) => {
-            let rectX = Math.floor(classified.getBoundingClientRect().x)
-            let rectY = Math.floor(classified.getBoundingClientRect().y)
-            let positionX = (rectX + 200 < event.pageX || rectX - 200 > event.pageX)
-            let positionY = (rectY + 200 < event.pageY || rectY - 200 > event.pageY)
-
-            document.querySelector('.secret-links a:nth-child(1)').textContent = 'X'
-            document.querySelector('.secret-links a:nth-child(2)').textContent = event.pageX
-            document.querySelector('.secret-links a:nth-child(3)').textContent = positionX ? '❄️' : '🔥'
-
-            document.querySelector('.secret-links a:nth-child(4)').textContent = 'Y'
-            document.querySelector('.secret-links a:nth-child(5)').textContent = event.pageY
-            document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
-        }
-        body.addEventListener('mouseover', displayPosition)
+        body.addEventListener('mouseover', displayPosition, { signal: areaListener.signal })
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
+            localStorage.setItem('exposed', true)
             console.clear()
             
             const captureTheFlag = () => {
@@ -592,6 +667,9 @@ midgetSaltBae.addEventListener('click', () => {
                         body.style.animation = 'restore 3s ease-in forwards'
 
                         setTimeout(() => {
+                            giantSaltBae.style.pointerEvents = 'auto'
+                            giantSaltBae.click()
+
                             document.querySelector('.secret-links a:nth-child(7)').remove()
                             document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                             document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
@@ -601,65 +679,28 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                             setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 1000)
+                            setTimeout(() => { midgetSaltBae.click() }, 12000)
                         }, 4000)
-
-                        giantSaltBae.style.pointerEvents = 'auto'
-                        giantSaltBae.click()
+                        
                         togglePopup('🚩')
                         flagFound = true
+                        
+                        localStorage.setItem('flagFound', true)
+                        localStorage.removeItem('background')
+                        localStorage.removeItem('exposed')
+                        localStorage.removeItem('rotate')
                     }
                 } else {
+                    exposed.textContent = !isMobileDevice ? '😨' : '11'
                     exposed.style.pointerEvents = 'none'
                     exposed.style.fontSize = 'larger'
                     exposed.style.cursor = 'help'
-                    exposed.textContent = '😨'
                 }
             }
             window.addEventListener('resize', captureTheFlag)
         })
 
-        const sendAstroid = () => {
-            // execute only once
-            classified.removeEventListener('mouseover', sendAstroid)
-            preloadImages(secretImages)
-
-            setTimeout(() => {
-                document.getElementById('impact').play()
-                giantSaltBae.style.pointerEvents = 'none'
-                body.removeEventListener('mouseover', displayPosition)
-
-                let astroid = document.createElement('div')
-                astroid.setAttribute('id', 'crash-site')
-                body.appendChild(astroid)
-                astroid.style.animation = 'crash 6s linear'
-                body.style.animation = 'shake 6s ease-in-out forwards'
-                // astroid.style.top = randomNumber(5, 70) + 'vh'
-                // astroid.style.right = randomNumber(window.innerWidth >= 1045 ? 20 : 5, window.innerWidth >= 1045 ? 70 : 55) + 'vw'
-
-                setTimeout(() => {
-                    let pc = window.innerWidth > 1024
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = !isMobileDevice ? 'wMC' : '100' }, 1000)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = !isMobileDevice ? 'B4I' : '00 ' }, 1500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = !isMobileDevice ? 'Dcw' : '🌌' }, 2000)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '010' }, 2500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = !isMobileDevice ? '==' : '000' }, 3000)
-                    setTimeout(() => { 
-                        document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '11'
-                        !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
-                    }, 3500)
-
-                    body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
-
-                    if (!bgIconsWereActivated) {
-                        logo.click()
-                        bgIconsWereActivated = true
-                    }
-                }, 6000)
-            }, 250)
-        }
-
-        classified.addEventListener('mouseover', sendAstroid)
+        classified.addEventListener('mouseover', sendAstroid, { once: true })
         giantSaltBae.classList.remove('fade-out')
         midgetSaltBae.classList.add('fade-out')
         displayCoordinates(links, 'fadeIn')
