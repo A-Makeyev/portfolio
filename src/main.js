@@ -83,7 +83,7 @@ function toggleNavbar() {
     header.classList.toggle('active')
 }
 
-function disableScrolling() {
+function toggleScrolling() {
     body.classList.toggle('disable-scrolling')
 }
 
@@ -178,6 +178,14 @@ function displaySocials(links, action) {
     }, 1250)
 }
 
+function changeLoaderColor() {
+    let exposed = 'exposed' in localStorage
+    document.querySelector('.loader div:nth-child(1)').style.borderColor = exposed ? 'var(--cyan)' : 'var(--dark-blue)'
+    document.querySelector('.loader div:nth-child(2)').style.borderColor = exposed ? 'var(--orange)' : 'var(--red)'
+    document.querySelector('.loader div:nth-child(3)').style.borderColor = exposed ? 'var(--cyan)' : 'var(--dark-blue)'
+    document.querySelector('.loader div:nth-child(4)').style.borderColor = exposed ? 'var(--orange)' : 'var(--red)'
+}
+
 function sendAstroid() {
     preloadImages(secretImages)
 
@@ -196,6 +204,8 @@ function sendAstroid() {
 
         setTimeout(() => {
             setHint()
+            changeLoaderColor()
+
             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
             localStorage.setItem('background', 'linear-gradient(to bottom right, var(--red), var(--dark-blue))')
             localStorage.setItem('rotate', 'rotate(16deg)')
@@ -209,7 +219,7 @@ function sendAstroid() {
 }
 
 function displayCoordinates(links, action) {
-    disableScrolling()
+    toggleScrolling()
     setTimeout(() => {
         for (let i = 0; i < links.length; i++) {
             setTimeout(() => {
@@ -236,7 +246,7 @@ function displayCoordinates(links, action) {
                 if (links[i].classList.contains('link-to-remove')) links[i].remove()
                 if (action == 'fadeIn') links[i].classList.remove('fade-out')
                 if (action == 'fadeOut') links[i].classList.add('fade-out')
-                if (i == links.length) disableScrolling()
+                if (i == links.length) toggleScrolling()
             }, 250 * i)
         }
     }, 1250)
@@ -475,7 +485,12 @@ function createEmailBody() {
 
 /* LOADER */
 
-preloadImages(generalImages)
+if ('exposed' in localStorage) {
+    changeLoaderColor()
+    body.style.transform =  localStorage.getItem('rotate')
+    body.style.backgroundImage =  localStorage.getItem('background')
+}
+
 window.addEventListener('load', () => {
     let url = window.location.href
     if (url.includes('.html')) url = '/'
@@ -494,14 +509,14 @@ window.addEventListener('load', () => {
         let astroid = document.createElement('div')
         astroid.setAttribute('id', 'crash-site')
         body.appendChild(astroid)
+        toggleScrolling()
 
         saltBaeWasActivated = true
         bgIconsWereActivated = true
-        body.style.transform =  localStorage.getItem('rotate')
-        body.style.backgroundImage =  localStorage.getItem('background')
 
-        areaListener.abort()
+        logo.click()
         midgetSaltBae.click()
+        areaListener.abort()
 
         setTimeout(() => { setHint() }, 3500)
         setTimeout(() => {
@@ -520,10 +535,12 @@ window.addEventListener('load', () => {
     }
 })
 
+preloadImages(generalImages)
+
 /* MAIN NAV */
 
 navToggler.addEventListener('click', () => {
-    disableScrolling()
+    toggleScrolling()
     scrollInto('top')
     toggleNavbar()
     hideSection()
@@ -545,7 +562,7 @@ document.addEventListener('click', (event) => {
         if (event.target.classList.contains('nav-item')) {
             toggleNavbar()
         } else {
-            disableScrolling()
+            toggleScrolling()
             hideSection()
         }
 
@@ -679,7 +696,7 @@ midgetSaltBae.addEventListener('click', () => {
                             document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                             body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                             setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 1000)
-                            setTimeout(() => { midgetSaltBae.click() }, 12000)
+                            setTimeout(() => { midgetSaltBae.click() }, 8000)
                         }, 4000)
                         
                         togglePopup('🚩')
