@@ -45,7 +45,6 @@ const overlay = document.querySelector('.overlay')
 const logo = document.querySelector('.m-logo')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
-const secretLinks = document.querySelector('.secret-links')
 const classified = document.querySelector('.classified')
 const submitBtn = document.querySelector('#submit')
 const nameInput = document.getElementById('name')
@@ -541,12 +540,6 @@ tabContainer.addEventListener('click', (event) => {
 
 midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
-    
-    if (isMobileDevice) {
-        secretLinks.style.fontFamily = 'Poppins, sans-serif !important;'
-    } else {
-        secretLinks.style.fontFamily = 'cursive, sans-serif !important;' 
-    }
 
     if (saltBaeWasActivated && !flagFound) {
         const displayPosition = (event) => {
@@ -644,25 +637,28 @@ midgetSaltBae.addEventListener('click', () => {
                 // astroid.style.right = randomNumber(window.innerWidth >= 1045 ? 20 : 5, window.innerWidth >= 1045 ? 70 : 55) + 'vw'
 
                 setTimeout(() => {
-                    body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = 'MTQ' }, 500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = 'wMC' }, 1000)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = 'B4I' }, 1500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = 'Dcw' }, 2000)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = 'MA' }, 2500)
-                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = '==' }, 3000)
+                    let pc = window.innerWidth > 1024
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = !isMobileDevice ? 'wMC' : '100' }, 1000)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = !isMobileDevice ? 'B4I' : '00 ' }, 1500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = !isMobileDevice ? 'Dcw' : '🌌' }, 2000)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '010' }, 2500)
+                    setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = !isMobileDevice ? '==' : '000' }, 3000)
                     setTimeout(() => { 
-                        document.querySelector('.secret-links a:nth-child(7)').textContent = '🤔' 
-                        document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
+                        document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '11'
+                        !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
                     }, 3500)
-                    
+
+                    body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
+
                     if (!bgIconsWereActivated) {
                         logo.click()
                         bgIconsWereActivated = true
                     }
                 }, 6000)
-            }, 200)
+            }, 250)
         }
+
         classified.addEventListener('mouseover', sendAstroid)
         giantSaltBae.classList.remove('fade-out')
         midgetSaltBae.classList.add('fade-out')
