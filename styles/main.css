@@ -14,6 +14,9 @@
     --light-purple: #939DED;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
     --white-alpha-25: rgba(225, 255, 255, 0.25);
+    --red-background: linear-gradient(to bottom right, var(--red), var(--dark-blue));
+    --blue-background: linear-gradient(to bottom right, var(--light-blue), var(--light-purple));
+
 }
 
 * {
@@ -65,7 +68,7 @@ body {
     overflow-x: hidden;
     background-attachment: fixed;
     font-family: 'Poppins', sans-serif;
-    background-image: linear-gradient(to bottom right, var(--light-blue), var(--light-purple));
+    background-image: var(--blue-background);
 }
 
 body::before {

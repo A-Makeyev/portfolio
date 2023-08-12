@@ -206,9 +206,11 @@ function sendAstroid() {
             setHint()
             changeLoaderColor()
 
-            body.style.backgroundImage = 'linear-gradient(to bottom right, var(--red), var(--dark-blue))'
-            localStorage.setItem('background', 'linear-gradient(to bottom right, var(--red), var(--dark-blue))')
-            localStorage.setItem('rotate', 'rotate(16deg)')
+            body.style.backgroundImage = 'var(--red-background)'
+            if (!isMobileDevice) {
+                localStorage.setItem('background', 'var(--red-background)')
+                localStorage.setItem('rotate', 'rotate(16deg)')
+            }
 
             if (!bgIconsWereActivated) {
                 logo.click()
@@ -267,15 +269,15 @@ function displayPosition(event) {
     document.querySelector('.secret-links a:nth-child(6)').textContent = positionY ? '❄️' : '🔥'
 }
 
-function setHint() {
-    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500)
+function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500) 
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = !isMobileDevice ? 'wMC' : '100' }, 1000)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = !isMobileDevice ? 'B4I' : '00 ' }, 1500)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = !isMobileDevice ? 'Dcw' : '🌌' }, 2000)
-    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '010' }, 2500)
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '01' }, 2500)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = !isMobileDevice ? '==' : '000' }, 3000)
     setTimeout(() => { 
-        document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '11'
+        document.querySelector('.secret-links a:nth-child(7)').textContent = isMobileDevice ? '🤔' : '011'
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
     }, 3500)
 }
@@ -650,9 +652,9 @@ midgetSaltBae.addEventListener('click', () => {
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
+            if (!isMobileDevice) localStorage.setItem('exposed', true)
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
-            localStorage.setItem('exposed', true)
             console.clear()
             
             const captureTheFlag = () => {
@@ -701,10 +703,12 @@ midgetSaltBae.addEventListener('click', () => {
                         togglePopup('🚩')
                         flagFound = true
                         
-                        localStorage.setItem('flagFound', true)
-                        localStorage.removeItem('background')
-                        localStorage.removeItem('exposed')
-                        localStorage.removeItem('rotate')
+                        if (!isMobileDevice) {
+                            localStorage.setItem('flagFound', true)
+                            localStorage.removeItem('background')
+                            localStorage.removeItem('exposed')
+                            localStorage.removeItem('rotate')
+                        }
                     }
                 } else {
                     exposed.textContent = !isMobileDevice ? '😨' : '11'
