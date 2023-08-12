@@ -199,6 +199,7 @@ function sendAstroid() {
         body.appendChild(astroid)
         astroid.style.animation = 'crash 6s linear'
         body.style.animation = 'shake 6s ease-in-out forwards'
+        if (isMobileDevice) body.style.width = '1000px'
         // astroid.style.top = randomNumber(5, 70) + 'vh'
         // astroid.style.right = randomNumber(window.innerWidth >= 1045 ? 20 : 5, window.innerWidth >= 1045 ? 70 : 55) + 'vw'
 
