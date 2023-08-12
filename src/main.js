@@ -179,7 +179,7 @@ function displaySocials(links, action) {
 }
 
 function changeLoaderColor() {
-    let exposed = 'exposed' in localStorage
+    let exposed = 'exposed' in localStorage || 'exposedInMobile' in localStorage
     document.querySelector('.loader div:nth-child(1)').style.borderColor = exposed ? 'var(--cyan)' : 'var(--dark-blue)'
     document.querySelector('.loader div:nth-child(2)').style.borderColor = exposed ? 'var(--orange)' : 'var(--red)'
     document.querySelector('.loader div:nth-child(3)').style.borderColor = exposed ? 'var(--cyan)' : 'var(--dark-blue)'
@@ -652,7 +652,12 @@ midgetSaltBae.addEventListener('click', () => {
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
-            if (!isMobileDevice) localStorage.setItem('exposed', true)
+            if (!isMobileDevice) {
+                localStorage.setItem('exposed', true)
+            } else {
+                localStorage.setItem('exposedInMobile', true)
+            }
+
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
             console.clear()
@@ -706,8 +711,10 @@ midgetSaltBae.addEventListener('click', () => {
                         if (!isMobileDevice) {
                             localStorage.setItem('flagFound', true)
                             localStorage.removeItem('background')
+                            localStorage.removeItem('exposedInMobile')
                             localStorage.removeItem('exposed')
                             localStorage.removeItem('rotate')
+                            changeLoaderColor()
                         }
                     }
                 } else {
