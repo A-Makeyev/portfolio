@@ -687,9 +687,9 @@ midgetSaltBae.addEventListener('click', () => {
                         exposed.textContent = '🙃'
                         preloadImages(`${images}/bandage.png`)
                         body.style.animation = 'restore 3s ease-in forwards'
+                        body.style.cursor = 'auto'
 
                         setTimeout(() => {
-                            body.style.cursor = 'default'
                             giantSaltBae.style.pointerEvents = 'auto'
                             giantSaltBae.click()
 
@@ -723,7 +723,7 @@ midgetSaltBae.addEventListener('click', () => {
                     body.style.cursor = 'progress'
                 }
             }
-            window.addEventListener('resize', captureTheFlag)
+            window.addEventListener('resize', captureTheFlag, { once: true })
         })
 
         classified.addEventListener('mouseover', sendAstroid, { once: true })
