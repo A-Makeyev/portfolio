@@ -679,7 +679,7 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.removeAttribute('title')
                     exposed.classList.add('😱')
                     exposed.textContent = '😰'
-                    body.style.cursor = 'busy'
+                    body.style.cursor = 'wait'
                     exposed.onclick = () => {
                         console.clear()
                         console.log('🙂')
