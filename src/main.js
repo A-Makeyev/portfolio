@@ -687,9 +687,9 @@ midgetSaltBae.addEventListener('click', () => {
                         exposed.textContent = '🙃'
                         preloadImages(`${images}/bandage.png`)
                         body.style.animation = 'restore 3s ease-in forwards'
-                        body.style.cursor = 'default'
 
                         setTimeout(() => {
+                            body.style.cursor = 'default'
                             giantSaltBae.style.pointerEvents = 'auto'
                             giantSaltBae.click()
 
@@ -707,7 +707,6 @@ midgetSaltBae.addEventListener('click', () => {
                         
                         togglePopup('🚩')
                         flagFound = true
-                        window.removeEventListener('resize', captureTheFlag)
                         
                         if (!isMobileDevice) {
                             localStorage.setItem('flagFound', true)
