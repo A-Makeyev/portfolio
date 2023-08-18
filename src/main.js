@@ -680,6 +680,7 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.classList.add('😱')
                     exposed.textContent = '😰'
                     body.style.cursor = 'wait'
+                    
                     exposed.onclick = () => {
                         console.clear()
                         console.log('🙂')
@@ -706,6 +707,7 @@ midgetSaltBae.addEventListener('click', () => {
                         
                         togglePopup('🚩')
                         flagFound = true
+                        window.removeEventListener('resize', captureTheFlag)
                         
                         if (!isMobileDevice) {
                             localStorage.setItem('flagFound', true)
