@@ -272,6 +272,7 @@ function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '01' }, 2500)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = !isMobileDevice ? '==' : '000' }, 3000)
     setTimeout(() => { 
+        body.style.cursor = 'progress'
         document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '011'
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
     }, 3500)
@@ -484,6 +485,7 @@ function createEmailBody() {
 
 if ('exposed' in localStorage) {
     changeLoaderColor()
+    body.style.cursor = 'progress'
     body.style.transform = 'rotate(16deg)'
     body.style.backgroundImage = 'var(--red-background)' 
 }
@@ -677,12 +679,14 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.removeAttribute('title')
                     exposed.classList.add('😱')
                     exposed.textContent = '😰'
+                    body.style.cursor = 'busy'
                     exposed.onclick = () => {
                         console.clear()
                         console.log('🙂')
                         exposed.textContent = '🙃'
                         preloadImages(`${images}/bandage.png`)
                         body.style.animation = 'restore 3s ease-in forwards'
+                        body.style.cursor = 'default'
 
                         setTimeout(() => {
                             giantSaltBae.style.pointerEvents = 'auto'
@@ -705,10 +709,8 @@ midgetSaltBae.addEventListener('click', () => {
                         
                         if (!isMobileDevice) {
                             localStorage.setItem('flagFound', true)
-                            localStorage.removeItem('background')
                             localStorage.removeItem('exposedInMobile')
                             localStorage.removeItem('exposed')
-                            localStorage.removeItem('rotate')
                             changeLoaderColor()
                         }
                     }
