@@ -188,6 +188,10 @@ function changeLoaderColor() {
 
 function sendAstroid() {
     preloadImages(secretImages)
+    if (!isMobileDevice) {
+        localStorage.setItem('rotate', 'rotate(16deg)')
+        localStorage.setItem('background', 'var(--red-background)')
+    }
 
     setTimeout(() => {
         document.getElementById('impact').play()
@@ -205,12 +209,7 @@ function sendAstroid() {
         setTimeout(() => {
             setHint()
             changeLoaderColor()
-
             body.style.backgroundImage = 'var(--red-background)'
-            if (!isMobileDevice) {
-                localStorage.setItem('background', 'var(--red-background)')
-                localStorage.setItem('rotate', 'rotate(16deg)')
-            }
 
             if (!bgIconsWereActivated) {
                 logo.click()
