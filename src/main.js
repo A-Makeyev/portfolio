@@ -719,6 +719,7 @@ midgetSaltBae.addEventListener('click', () => {
                     exposed.style.pointerEvents = 'none'
                     exposed.style.fontSize = 'larger'
                     exposed.style.cursor = 'help'
+                    body.style.cursor = 'progress'
                 }
             }
             window.addEventListener('resize', captureTheFlag)
