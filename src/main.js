@@ -188,10 +188,6 @@ function changeLoaderColor() {
 
 function sendAstroid() {
     preloadImages(secretImages)
-    if (!isMobileDevice) {
-        localStorage.setItem('rotate', 'rotate(16deg)')
-        localStorage.setItem('background', 'var(--red-background)')
-    }
 
     setTimeout(() => {
         document.getElementById('impact').play()
@@ -488,8 +484,8 @@ function createEmailBody() {
 
 if ('exposed' in localStorage) {
     changeLoaderColor()
-    body.style.transform =  localStorage.getItem('rotate')
-    body.style.backgroundImage =  localStorage.getItem('background')
+    body.style.transform = 'rotate(16deg)'
+    body.style.backgroundImage = 'var(--red-background)' 
 }
 
 window.addEventListener('load', () => {
