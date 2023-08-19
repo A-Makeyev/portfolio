@@ -350,6 +350,74 @@ async function summonAliens() {
         })
 }
 
+function captureTheFlag() {
+    let exposed = document.querySelector('.exposed')
+
+    if (!flagFound) {
+        console.log(
+            `%c${window.innerWidth} x ${window.innerHeight}`,
+            ['padding: 10px',
+                'color: aliceblue',
+                'font-size: xx-large',
+                'text-shadow: 2px 2px 2px black',
+                'background: linear-gradient(0deg, aliceblue, darkblue)',
+            ].join(';')
+        )
+    }
+
+    if (window.innerWidth == 1400 && window.innerHeight == 700) {
+        exposed.style.pointerEvents = 'auto'
+        exposed.style.fontSize = 'x-large'
+        exposed.style.cursor = 'pointer'
+        exposed.removeAttribute('title')
+        exposed.classList.add('😱')
+        exposed.textContent = '😰'
+        body.style.cursor = 'wait'
+        
+        exposed.onclick = () => {
+            window.removeEventListener('resize', captureTheFlag)
+            togglePopup('🚩')
+            flagFound = true
+            
+            if (!isMobileDevice) {
+                localStorage.setItem('flagFound', true)
+                localStorage.removeItem('exposedInMobile')
+                localStorage.removeItem('exposed')
+                changeLoaderColor()
+            }
+
+            console.clear()
+            console.log('🙂')
+            exposed.textContent = '🙃'
+            preloadImages(`${images}/bandage.png`)
+            body.style.animation = 'restore 3s ease-in forwards'
+            body.style.cursor = 'auto'
+
+            setTimeout(() => {
+                giantSaltBae.style.pointerEvents = 'auto'
+                giantSaltBae.click()
+
+                document.querySelector('.secret-links a:nth-child(7)').remove()
+                document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
+                document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
+                document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
+                document.querySelector('.secret-links a:nth-child(3)').textContent = '💘'
+                document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
+                document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
+                body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
+                setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 1500)
+                setTimeout(() => { midgetSaltBae.click() }, 9000)
+            }, 3000)
+        }
+    } else {
+        exposed.textContent = !isMobileDevice ? '😨' : '11'
+        exposed.style.pointerEvents = 'none'
+        exposed.style.fontSize = 'larger'
+        exposed.style.cursor = 'help'
+        body.style.cursor = 'progress'
+    }
+}
+
 function validate(input, regex) {
     submitBtn.style.pointerEvents = 'none'
     input.addEventListener('input', (event) => {
@@ -504,9 +572,11 @@ window.addEventListener('load', () => {
     }, 500)
 
     if ('exposed' in localStorage) {
-        let astroid = document.createElement('div')
-        astroid.setAttribute('id', 'crash-site')
-        body.appendChild(astroid)
+        setTimeout(() => { 
+            let astroid = document.createElement('div')
+            astroid.setAttribute('id', 'crash-site')
+            body.appendChild(astroid)
+         }, 600)
         toggleScrolling()
 
         saltBaeWasActivated = true
@@ -649,6 +719,8 @@ midgetSaltBae.addEventListener('click', () => {
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
+            console.clear()
+
             if (!isMobileDevice) {
                 localStorage.setItem('exposed', true)
             } else {
@@ -657,73 +729,7 @@ midgetSaltBae.addEventListener('click', () => {
 
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
-            console.clear()
-            
-            const captureTheFlag = () => {
-                if (!flagFound) {
-                    console.log(
-                        `%c${window.innerWidth} x ${window.innerHeight}`,
-                        ['padding: 10px',
-                            'color: aliceblue',
-                            'font-size: xx-large',
-                            'text-shadow: 2px 2px 2px black',
-                            'background: linear-gradient(0deg, aliceblue, darkblue)',
-                        ].join(';')
-                    )
-                }
-
-                if (window.innerWidth == 1400 && window.innerHeight == 700) {
-                    exposed.style.pointerEvents = 'auto'
-                    exposed.style.fontSize = 'x-large'
-                    exposed.style.cursor = 'pointer'
-                    exposed.removeAttribute('title')
-                    exposed.classList.add('😱')
-                    exposed.textContent = '😰'
-                    body.style.cursor = 'wait'
-                    
-                    exposed.onclick = () => {
-                        console.clear()
-                        console.log('🙂')
-                        exposed.textContent = '🙃'
-                        preloadImages(`${images}/bandage.png`)
-                        body.style.animation = 'restore 3s ease-in forwards'
-                        body.style.cursor = 'auto'
-
-                        setTimeout(() => {
-                            giantSaltBae.style.pointerEvents = 'auto'
-                            giantSaltBae.click()
-
-                            document.querySelector('.secret-links a:nth-child(7)').remove()
-                            document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
-                            document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
-                            document.querySelector('.secret-links a:nth-child(4)').textContent = '🖤'
-                            document.querySelector('.secret-links a:nth-child(3)').textContent = '💘'
-                            document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
-                            document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
-                            body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                            setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 1000)
-                            setTimeout(() => { midgetSaltBae.click() }, 8000)
-                        }, 4000)
-                        
-                        togglePopup('🚩')
-                        flagFound = true
-                        
-                        if (!isMobileDevice) {
-                            localStorage.setItem('flagFound', true)
-                            localStorage.removeItem('exposedInMobile')
-                            localStorage.removeItem('exposed')
-                            changeLoaderColor()
-                        }
-                    }
-                } else {
-                    exposed.textContent = !isMobileDevice ? '😨' : '11'
-                    exposed.style.pointerEvents = 'none'
-                    exposed.style.fontSize = 'larger'
-                    exposed.style.cursor = 'help'
-                    body.style.cursor = 'progress'
-                }
-            }
-            window.addEventListener('resize', captureTheFlag, { once: true })
+            window.addEventListener('resize', captureTheFlag)
         })
 
         classified.addEventListener('mouseover', sendAstroid, { once: true })
