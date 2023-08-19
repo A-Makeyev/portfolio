@@ -579,7 +579,6 @@ window.addEventListener('load', () => {
             astroid.setAttribute('id', 'crash-site')
             body.appendChild(astroid)
          }, 600)
-        toggleScrolling()
 
         saltBaeWasActivated = true
         bgIconsWereActivated = true
