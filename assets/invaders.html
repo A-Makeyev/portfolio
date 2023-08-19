@@ -11,6 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
 
         :root {
+            --mixed-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px crimson, -4px 4px black;
             --crimson-shadow: -1px 1px crimson, -2px 2px black, -3px 3px crimson, -4px 4px black, -5px 5px crimson, -6px 6px black, -7px 7px crimson, -8px 8px black;
             --turquoise-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px turquoise, -4px 4px black, -5px 5px turquoise, -6px 6px black, -7px 7px turquoise, -8px 8px black;
         }
@@ -414,6 +415,7 @@
 
                 // win
                 if (invadersShotDown.length === invaders.length) {
+                    var style = getComputedStyle(document.body)
                     squares[currentShooterIndex].classList.add('pilot')
                     document.querySelector('.shooter.pilot').setAttribute('emoji', setPilot('victorious'))
                     for (var emojis = '', i = 0; i < invaders.length * 30; i++) emojis += setPilot('victorious') + ' ' + setInvader(true) + ' '
@@ -430,15 +432,15 @@
                         + '------ . ++++++++ . + . ------- . << . >> +++ . + . ++++ . << . >> ++++++++ . ------- . ++++++ . ----------- . +++ . << . >> ---- . --- .'
                         + '<< . >> ++++++++++++++ . --- . ------- . +++ .. +++++++ . << . >> + . ------------ . --- . << . >> ---- . +++++++++++++ . +++++ . ++++ .'
                         + '------------------ . +++++++++++++ . + . << ++++++++++++++ .\n' + emojis,
-                        ['font-size: xx-large', 'text-shadow: -1px 1px turquoise, -2px 2px black, -3px 3px crimson'].join(';')
+                        ['font-size: xx-large', `text-shadow: ${style.getPropertyValue('--mixed-shadow')}`].join(';')
                     )
 
+                    resultDisplay.classList.add('open')
+                    resultDisplay.textContent = 'VICTORY'
                     resultDisplay.style.textShadow = 'var(--turquoise-shadow)'
                     scoreDisplay.textContent = '01000110 00110001 00110010'
                     scoreDisplay.style.userSelect = 'text'
                     scoreDisplay.style.cursor = 'help'
-                    resultDisplay.textContent = 'VICTORY'
-                    resultDisplay.classList.add('open')
                     clearInterval(invaderId)
                     victory.play()
                     endGame()
