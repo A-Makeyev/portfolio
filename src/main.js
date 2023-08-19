@@ -396,7 +396,9 @@ function captureTheFlag() {
             setTimeout(() => {
                 giantSaltBae.style.pointerEvents = 'auto'
                 giantSaltBae.click()
+            }, 1000)
 
+            setTimeout(() => {
                 document.querySelector('.secret-links a:nth-child(7)').remove()
                 document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                 document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
@@ -405,9 +407,9 @@ function captureTheFlag() {
                 document.querySelector('.secret-links a:nth-child(2)').textContent = '🤍'
                 document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
-                setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 1500)
-                setTimeout(() => { midgetSaltBae.click() }, 9000)
-            }, 3000)
+                setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
+                setTimeout(() => { midgetSaltBae.click() }, 10000)
+            }, 4000)
         }
     } else {
         exposed.textContent = !isMobileDevice ? '😨' : '11'
