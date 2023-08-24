@@ -399,6 +399,7 @@ function captureTheFlag() {
             }, 1000)
 
             setTimeout(() => {
+                toggleScrolling()
                 document.querySelector('.secret-links a:nth-child(7)').remove()
                 document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                 document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
@@ -599,7 +600,15 @@ window.addEventListener('load', () => {
         let pikachu = document.querySelector('.pikachu')
         pikachu.style.display = 'inline-block'
         pikachu.onclick = () => {
+            toggleScrolling()
             localStorage.clear()
+            navToggler.style.display = 'none'
+            pikachu.style.transform = 'translate(50%, -350%) scale(5)'
+            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(15) rotate(-50deg)' }, 500)
+            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(25) rotate(50deg)' }, 1000)
+            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(50) rotate(750deg)' }, 1500)
+            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(55) rotate(700deg)' }, 2500)
+            setTimeout(() => { location.reload(true) }, 4000)
         }
     }
 })
