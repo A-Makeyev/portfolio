@@ -638,6 +638,28 @@ button {
     transform: translate(50%, -262%) scale(1.1);
 }
 
+.instagram {
+    z-index: 100;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.25s ease;
+    transform: translate(50%, -262%);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    transform: translate(-50%, -390%) scale(1);
+    -webkit-text-fill-color: transparent;   
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.instagram i {
+    font-size: 30px !important;
+}
+
+.instagram:hover {
+    transform: translate(-50%, -390%) scale(1.1);
+}
+
 .invaders {
     border: none;
     width: 600px;
@@ -888,6 +910,18 @@ button {
         transform: translate(50%, -262%) scale(1.1);
     }
 
+    .instagram {
+        transform: translate(-50%, -370%) scale(1);
+    }
+    
+    .instagram i {
+        font-size: 25px !important;
+    }
+    
+    .instagram:hover {
+        transform: translate(-50%, -370%) scale(1.1);
+    }
+
     .invaders {
         width: 500px;
         height: 500px;
@@ -987,6 +1021,10 @@ button {
     
     .pikachu:hover {
         transform: translate(55%, -270%) scale(1.1);
+    }
+    
+    .instagram i {
+        font-size: 20px !important;
     }
 
     .invaders {

@@ -351,11 +351,7 @@ async function summonAliens() {
 }
 
 function summonPikachu() {
-    let pikachu = document.querySelector('.pikachu')
-    pikachu.style.display = 'inline-block'
-    pikachu.style.opacity = '0'
-    setTimeout(() => { pikachu.style.opacity = '1' }, 1000)
-
+    let pikachu = addIcon('.pikachu')
     pikachu.onclick = () => {
         toggleScrolling()
         localStorage.clear()
@@ -367,6 +363,14 @@ function summonPikachu() {
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '55'}) rotate(700deg)` }, 2500)
         setTimeout(() => { location.reload(true) }, 4000)
     }
+}
+
+function addIcon(query) {
+    let element = document.querySelector(query)
+    element.style.display = 'inline-block'
+    element.style.opacity = '0'
+    setTimeout(() => { element.style.opacity = '1' }, 1000)
+    return element
 }
 
 function captureTheFlag() {
@@ -426,6 +430,7 @@ function captureTheFlag() {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                 setTimeout(() => { midgetSaltBae.click() }, 10000)
+                setTimeout(() => { addIcon('.instagram') }, 7000)
             }, 4000)
         }
     } else {
