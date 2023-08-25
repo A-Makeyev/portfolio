@@ -353,15 +353,18 @@ async function summonAliens() {
 function summonPikachu() {
     let pikachu = document.querySelector('.pikachu')
     pikachu.style.display = 'inline-block'
+    pikachu.style.opacity = '0'
+    setTimeout(() => { pikachu.style.opacity = '1' }, 1000)
+
     pikachu.onclick = () => {
         toggleScrolling()
         localStorage.clear()
         navToggler.style.display = 'none'
-        pikachu.style.transform = 'translate(50%, -350%) scale(5)'
-        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(15) rotate(-50deg)' }, 500)
-        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(25) rotate(50deg)' }, 1000)
-        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(50) rotate(750deg)' }, 1500)
-        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(55) rotate(700deg)' }, 2500)
+        pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '20' : '25'}) rotate(50deg)` }, 1000)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '50'}) rotate(750deg)` }, 1500)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '55'}) rotate(700deg)` }, 2500)
         setTimeout(() => { location.reload(true) }, 4000)
     }
 }
@@ -568,11 +571,11 @@ function createEmailBody() {
 /* LOADER */
 
 if ('exposed' in localStorage) {
-    summonPikachu()
-    changeLoaderColor()
-    body.style.cursor = 'progress'
-    body.style.transform = 'rotate(16deg)'
     body.style.backgroundImage = 'var(--red-background)' 
+    body.style.transform = 'rotate(16deg)'
+    body.style.cursor = 'progress'
+    changeLoaderColor()
+    toggleScrolling()
 }
 
 window.addEventListener('load', () => {
@@ -603,6 +606,8 @@ window.addEventListener('load', () => {
         areaListener.abort()
 
         setTimeout(() => { setHint() }, 3500)
+        setTimeout(() => { summonPikachu() }, 9000)
+
         setTimeout(() => {
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
