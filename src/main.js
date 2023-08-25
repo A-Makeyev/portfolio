@@ -358,9 +358,9 @@ function summonPikachu() {
         navToggler.style.display = 'none'
         pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '20' : '25'}) rotate(50deg)` }, 1000)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '50'}) rotate(750deg)` }, 1500)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '55'}) rotate(700deg)` }, 2500)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '15' : '25'}) rotate(50deg)` }, 1000)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '20' : '50'}) rotate(750deg)` }, 1500)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '25' : '55'}) rotate(700deg)` }, 2500)
         setTimeout(() => { location.reload(true) }, 4000)
     }
 }
@@ -430,7 +430,7 @@ function captureTheFlag() {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                 setTimeout(() => { midgetSaltBae.click() }, 10000)
-                setTimeout(() => { addIcon('.instagram') }, 7000)
+                setTimeout(() => { addIcon('.instagram') }, 6000)
             }, 4000)
         }
     } else {
@@ -608,6 +608,7 @@ window.addEventListener('load', () => {
 
         logo.click()
         midgetSaltBae.click()
+        giantSaltBae.style.pointerEvents = 'none'
         areaListener.abort()
 
         setTimeout(() => { setHint() }, 3500)
@@ -621,7 +622,7 @@ window.addEventListener('load', () => {
     }
 
     if ('flagFound' in localStorage) {
-        summonPikachu()
+        setTimeout(() => { summonPikachu() }, 1000)
     }
 })
 
