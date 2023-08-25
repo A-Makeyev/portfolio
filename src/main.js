@@ -179,7 +179,7 @@ function displaySocials(links, action) {
 }
 
 function changeLoaderColor() {
-    let exposed = 'exposed' in localStorage || 'exposedInMobile' in localStorage
+    let exposed = 'exposed' in localStorage
     document.querySelector('.loader div:nth-child(1)').style.borderColor = exposed ? 'var(--cyan)' : 'var(--dark-blue)'
     document.querySelector('.loader div:nth-child(2)').style.borderColor = exposed ? 'var(--orange)' : 'var(--red)'
     document.querySelector('.loader div:nth-child(3)').style.borderColor = exposed ? 'var(--cyan)' : 'var(--dark-blue)'
@@ -350,6 +350,22 @@ async function summonAliens() {
         })
 }
 
+function summonPikachu() {
+    let pikachu = document.querySelector('.pikachu')
+    pikachu.style.display = 'inline-block'
+    pikachu.onclick = () => {
+        toggleScrolling()
+        localStorage.clear()
+        navToggler.style.display = 'none'
+        pikachu.style.transform = 'translate(50%, -350%) scale(5)'
+        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(15) rotate(-50deg)' }, 500)
+        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(25) rotate(50deg)' }, 1000)
+        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(50) rotate(750deg)' }, 1500)
+        setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(55) rotate(700deg)' }, 2500)
+        setTimeout(() => { location.reload(true) }, 4000)
+    }
+}
+
 function captureTheFlag() {
     let exposed = document.querySelector('.exposed')
 
@@ -379,12 +395,9 @@ function captureTheFlag() {
             togglePopup('🚩')
             flagFound = true
             
-            if (!isMobileDevice) {
-                localStorage.setItem('flagFound', true)
-                localStorage.removeItem('exposedInMobile')
-                localStorage.removeItem('exposed')
-                changeLoaderColor()
-            }
+            localStorage.setItem('flagFound', true)
+            localStorage.removeItem('exposed')
+            changeLoaderColor()
 
             console.clear()
             console.log('🙂')
@@ -532,7 +545,7 @@ function createEmailBody() {
                         </td>
                     </tr>
                     ${messageInput.value.trim() !== '' ?
-            `
+                    `
                         <tr style="border: 1px solid #555555;">
                             <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
                                 <strong>Message</strong>
@@ -555,6 +568,7 @@ function createEmailBody() {
 /* LOADER */
 
 if ('exposed' in localStorage) {
+    summonPikachu()
     changeLoaderColor()
     body.style.cursor = 'progress'
     body.style.transform = 'rotate(16deg)'
@@ -597,19 +611,7 @@ window.addEventListener('load', () => {
     }
 
     if ('flagFound' in localStorage) {
-        let pikachu = document.querySelector('.pikachu')
-        pikachu.style.display = 'inline-block'
-        pikachu.onclick = () => {
-            toggleScrolling()
-            localStorage.clear()
-            navToggler.style.display = 'none'
-            pikachu.style.transform = 'translate(50%, -350%) scale(5)'
-            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(15) rotate(-50deg)' }, 500)
-            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(25) rotate(50deg)' }, 1000)
-            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(50) rotate(750deg)' }, 1500)
-            setTimeout(() => { pikachu.style.transform = 'translate(50%, -350%) scale(55) rotate(700deg)' }, 2500)
-            setTimeout(() => { location.reload(true) }, 4000)
-        }
+        summonPikachu()
     }
 })
 
@@ -730,13 +732,8 @@ midgetSaltBae.addEventListener('click', () => {
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
             console.clear()
-
-            if (!isMobileDevice) {
-                localStorage.setItem('exposed', true)
-            } else {
-                localStorage.setItem('exposedInMobile', true)
-            }
-
+            localStorage.setItem('exposed', true)
+            
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
             window.addEventListener('resize', captureTheFlag)
