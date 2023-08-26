@@ -358,9 +358,9 @@ function summonPikachu() {
         navToggler.style.display = 'none'
         pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '15' : '25'}) rotate(50deg)` }, 1000)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '20' : '50'}) rotate(750deg)` }, 1500)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '25' : '55'}) rotate(700deg)` }, 2500)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '20' : '25'}) rotate(50deg)` }, 1000)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '50'}) rotate(750deg)` }, 1500)
+        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '35' : '55'}) rotate(700deg)` }, 2500)
         setTimeout(() => { location.reload(true) }, 4000)
     }
 }
