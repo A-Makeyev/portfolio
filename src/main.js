@@ -430,7 +430,8 @@ function captureTheFlag() {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                 setTimeout(() => { midgetSaltBae.click() }, 10000)
-                setTimeout(() => { addIcon('.instagram') }, 6000)
+                setTimeout(() => { addIcon('.instagram') }, 8000)
+                setTimeout(() => { summonPikachu() }, 6000)
             }, 4000)
         }
     } else {
