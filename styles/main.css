@@ -624,7 +624,7 @@ button {
 }
 
 .pikachu {
-    z-index: 100;
+    z-index: 999;
     display: none;
     cursor: pointer;
     position: absolute;
