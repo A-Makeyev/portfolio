@@ -361,7 +361,7 @@ function summonPikachu() {
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` }, 1000)
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` }, 2000)
         setTimeout(() => { new Audio('../assets/sounds/meow.mp3').play() }, 3000)
-        setTimeout(() => { location.reload(true) }, 4000)
+        setTimeout(() => { location.reload(true) }, 5000)
     }
 }
 
