@@ -624,6 +624,10 @@ window.addEventListener('load', () => {
     if ('flagFound' in localStorage) {
         setTimeout(() => { summonPikachu() }, 1000)
     }
+
+    setTimeout(() => { addIcon('.html') }, 1000)
+    setTimeout(() => { addIcon('.css') }, 1500)
+    setTimeout(() => { addIcon('.js') }, 2000)
 })
 
 preloadImages(generalImages)

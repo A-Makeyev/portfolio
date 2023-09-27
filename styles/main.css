@@ -595,6 +595,51 @@ button {
     transform: translate(-100.5%, -370.5%) rotate(-35deg);
 }
 
+.html {
+    z-index: 100;
+    display: none;
+    cursor: default;
+    position: absolute;
+    transform: translate(-450%, -1100%) rotate(-40deg);
+    transition: all 0.25s ease;
+    height: 15px;
+    width: 15px;
+}
+
+.html:hover {
+    transform: translate(-450%, -1100%) rotate(-40deg) scale(1.1);
+}
+
+.css {
+    z-index: 100;
+    display: none;
+    cursor: default;
+    position: absolute;
+    transform: translate(-400%, -950%) rotate(40deg);
+    transition: all 0.25s ease;
+    height: 15px;
+    width: 15px;
+}
+
+.css:hover {
+    transform: translate(-400%, -950%) rotate(40deg) scale(1.1);
+} 
+
+.js {
+    z-index: 100;
+    display: none;
+    cursor: default;
+    position: absolute;
+    transform: translate(-450%, -800%) rotate(-40deg);
+    transition: all 0.25s ease;
+    height: 15px;
+    width: 15px;
+}
+
+.js:hover {
+    transform: translate(-450%, -800%) rotate(-40deg) scale(1.1);
+} 
+
 .m-logo {
     z-index: 100;
     cursor: pointer;
@@ -880,6 +925,36 @@ button {
         transform: translate(-100.5%, -370.5%) rotate(-35deg);
     }
 
+    .html {
+        transform: translate(-550%, -1350%) rotate(-40deg);
+        height: 10px;
+        width: 10px;
+    }
+    
+    .html:hover {
+        transform: translate(-550%, -1350%) rotate(-40deg) scale(1.1);
+    }
+    
+    .css {
+        transform: translate(-500%, -1200%) rotate(40deg);
+        height: 10px;
+        width: 10px;
+    }
+    
+    .css:hover {
+        transform: translate(-500%, -1200%) rotate(40deg) scale(1.1);
+    } 
+    
+    .js {
+        transform: translate(-550%, -1050%) rotate(-40deg);
+        height: 10px;
+        width: 10px;
+    }
+    
+    .js:hover {
+        transform: translate(-550%, -1050%) rotate(-40deg) scale(1.1);
+    } 
+
     .m-logo {
         transform: translate(-52%, -486%);
         height: 30px;
@@ -992,6 +1067,31 @@ button {
     .midget-salt-bae:hover {
         transform: translate(-105.5%, -380%) rotate(-35deg);
     }
+
+    
+    .html {
+        transform: translate(-450%, -1150%) rotate(-40deg);
+    }
+    
+    .html:hover {
+        transform: translate(-450%, -1150%) rotate(-40deg) scale(1.1);
+    }
+    
+    .css {
+        transform: translate(-400%, -1000%) rotate(40deg);
+    }
+    
+    .css:hover {
+        transform: translate(-400%, -1000%) rotate(40deg) scale(1.1);
+    } 
+    
+    .js {
+        transform: translate(-450%, -850%) rotate(-40deg);
+    }
+    
+    .js:hover {
+        transform: translate(-450%, -850%) rotate(-40deg) scale(1.1);
+    } 
 
     .m-logo {
         transform: translate(-53%, -486%);
