@@ -351,25 +351,41 @@ async function summonAliens() {
 }
 
 function summonPikachu() {
-    let pikachu = addIcon('.pikachu')
+    let pikachu = addIcon('.pikachu', 1000)
     pikachu.onclick = () => {
         toggleScrolling()
         localStorage.clear()
         navToggler.style.display = 'none'
         pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` }, 1000)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` }, 2000)
+        setTimeout(() => { 
+            new Audio('../assets/sounds/error.mp3').play()
+            pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` 
+        }, 500)
+        setTimeout(() => { 
+            new Audio('../assets/sounds/error.mp3').play()
+            pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` 
+        }, 1000)
+        setTimeout(() => { 
+            new Audio('../assets/sounds/error.mp3').play()
+            pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` 
+        }, 2000)
         setTimeout(() => { new Audio('../assets/sounds/meow.mp3').play() }, 3000)
         setTimeout(() => { location.reload(true) }, 5000)
     }
 }
 
-function addIcon(query) {
+function addIcon(query, delay) {
     let element = document.querySelector(query)
     element.style.display = 'inline-block'
     element.style.opacity = '0'
-    setTimeout(() => { element.style.opacity = '1' }, 1000)
+    setTimeout(() => { element.style.opacity = '1' }, delay)
+    return element
+}
+
+function removeIcon(query, delay) {
+    let element = document.querySelector(query)
+    setTimeout(() => { element.style.opacity = '0' }, delay)
+    setTimeout(() => { element.style.display = 'none' }, delay + 1000)
     return element
 }
 
@@ -429,8 +445,14 @@ function captureTheFlag() {
                 document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
-                setTimeout(() => { midgetSaltBae.click() }, 10000)
-                setTimeout(() => { addIcon('.instagram') }, 6000)
+                setTimeout(() => { addIcon('.instagram', 1000) }, 6000)
+                setTimeout(() => { summonPikachu() }, 8000)
+                setTimeout(() => { 
+                    setTimeout(() => { midgetSaltBae.click() }, 1000)
+                    setTimeout(() => { removeIcon('.html') }, 700)
+                    setTimeout(() => { removeIcon('.css') }, 500)
+                    setTimeout(() => { removeIcon('.js') }, 300)
+                }, 10000)
             }, 4000)
         }
     } else {
@@ -583,6 +605,8 @@ if ('exposed' in localStorage) {
     toggleScrolling()
 }
 
+preloadImages(generalImages)
+
 window.addEventListener('load', () => {
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
@@ -595,6 +619,20 @@ window.addEventListener('load', () => {
         bgIconsBox.classList.remove('fade-out')
         spaceLoader.classList.remove('hidden')
     }, 500)
+
+    midgetSaltBae.addEventListener('mouseenter', () => {
+        setTimeout(() => { removeIcon('.html') }, 100)
+        setTimeout(() => { removeIcon('.css') }, 200)
+        setTimeout(() => { removeIcon('.js') }, 300)
+    })
+    
+    midgetSaltBae.addEventListener('mouseleave', () => {
+        if (giantSaltBae.classList.contains('fade-out')) {
+            setTimeout(() => { addIcon('.html') }, 100)
+            setTimeout(() => { addIcon('.css') }, 200)
+            setTimeout(() => { addIcon('.js') }, 300)
+        }
+    })
 
     if ('exposed' in localStorage) {
         setTimeout(() => { 
@@ -619,18 +657,18 @@ window.addEventListener('load', () => {
             exposed.classList.remove('classified')
             classified.removeEventListener('mouseover', sendAstroid)
         }, 7500)
+    } else {
+        midgetSaltBae.style.pointerEvents = 'none'
+        setTimeout(() => { addIcon('.html', 1000) }, 300)
+        setTimeout(() => { addIcon('.css', 1000) }, 600)
+        setTimeout(() => { addIcon('.js', 1000) }, 900)
+        setTimeout(() => { midgetSaltBae.style.pointerEvents = 'auto' }, 2000)
     }
 
     if ('flagFound' in localStorage) {
-        setTimeout(() => { summonPikachu() }, 1000)
+        setTimeout(() => { summonPikachu() }, 4000)
     }
-
-    setTimeout(() => { addIcon('.html') }, 1000)
-    setTimeout(() => { addIcon('.css') }, 1500)
-    setTimeout(() => { addIcon('.js') }, 2000)
 })
-
-preloadImages(generalImages)
 
 /* MAIN NAV */
 
@@ -703,6 +741,9 @@ document.addEventListener('click', (event) => {
                 midgetSaltBae.click()
                 saltBaeWasActivated = true
             }, 1500)
+            setTimeout(() => { removeIcon('.html') }, 700)
+            setTimeout(() => { removeIcon('.css') }, 800)
+            setTimeout(() => { removeIcon('.js') }, 900)
         }
 
         if (!bgIconsWereActivated) {
@@ -765,11 +806,16 @@ midgetSaltBae.addEventListener('click', () => {
     }
 
     giantSaltBae.addEventListener('click', () => {
+        midgetSaltBae.style.pointerEvents = 'none'
         giantSaltBae.classList.add('fade-out')
         displaySocials(links, 'fadeOut')
         setTimeout(() => {
             midgetSaltBae.classList.remove('fade-out')
         }, 500 * links.length)
+        setTimeout(() => { addIcon('.html') }, 550 * links.length)
+        setTimeout(() => { addIcon('.css') }, 600 * links.length)
+        setTimeout(() => { addIcon('.js') }, 650 * links.length)
+        setTimeout(() => { midgetSaltBae.style.pointerEvents = 'auto' }, 700 * links.length)
     })
     saltBaeWasActivated = true
 })
