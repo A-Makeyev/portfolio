@@ -250,7 +250,9 @@
     width: 35%;
 }
 
-.popup-body .general-info h5 {
+.popup-body .general-info h5,
+.project-links h5 {
+    white-space: pre;
     font-size: medium;
     padding-bottom: 20px;
     text-transform: capitalize;

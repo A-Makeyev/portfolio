@@ -358,15 +358,12 @@ function summonPikachu() {
         navToggler.style.display = 'none'
         pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
         setTimeout(() => { 
-            new Audio('../assets/sounds/error.mp3').play()
             pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` 
         }, 500)
         setTimeout(() => { 
-            new Audio('../assets/sounds/error.mp3').play()
             pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` 
         }, 1000)
         setTimeout(() => { 
-            new Audio('../assets/sounds/error.mp3').play()
             pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` 
         }, 2000)
         setTimeout(() => { new Audio('../assets/sounds/meow.mp3').play() }, 3000)
@@ -666,7 +663,7 @@ window.addEventListener('load', () => {
     }
 
     if ('flagFound' in localStorage) {
-        setTimeout(() => { summonPikachu() }, 4000)
+        setTimeout(() => { summonPikachu() }, 3000)
     }
 })
 
