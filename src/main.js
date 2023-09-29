@@ -446,9 +446,9 @@ function captureTheFlag() {
                 setTimeout(() => { summonPikachu() }, 8000)
                 setTimeout(() => { 
                     setTimeout(() => { midgetSaltBae.click() }, 1000)
-                    setTimeout(() => { removeIcon('.html') }, 700)
+                    setTimeout(() => { removeIcon('.js') }, 700)
                     setTimeout(() => { removeIcon('.css') }, 500)
-                    setTimeout(() => { removeIcon('.js') }, 300)
+                    setTimeout(() => { removeIcon('.html') }, 300)
                 }, 10000)
             }, 4000)
         }
@@ -618,9 +618,9 @@ window.addEventListener('load', () => {
     }, 500)
 
     midgetSaltBae.addEventListener('mouseenter', () => {
-        setTimeout(() => { removeIcon('.html') }, 100)
+        setTimeout(() => { removeIcon('.js') }, 100)
         setTimeout(() => { removeIcon('.css') }, 200)
-        setTimeout(() => { removeIcon('.js') }, 300)
+        setTimeout(() => { removeIcon('.html') }, 300)
     })
     
     midgetSaltBae.addEventListener('mouseleave', () => {
@@ -738,9 +738,9 @@ document.addEventListener('click', (event) => {
                 midgetSaltBae.click()
                 saltBaeWasActivated = true
             }, 1500)
-            setTimeout(() => { removeIcon('.html') }, 700)
-            setTimeout(() => { removeIcon('.css') }, 800)
-            setTimeout(() => { removeIcon('.js') }, 900)
+            setTimeout(() => { removeIcon('.js') }, 1000)
+            setTimeout(() => { removeIcon('.css') }, 1100)
+            setTimeout(() => { removeIcon('.html') }, 1200)
         }
 
         if (!bgIconsWereActivated) {
