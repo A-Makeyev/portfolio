@@ -615,6 +615,12 @@ window.addEventListener('load', () => {
         setTimeout(() => { removeIcon('.js') }, 100)
         setTimeout(() => { removeIcon('.css') }, 200)
         setTimeout(() => { removeIcon('.html') }, 300)
+
+        setTimeout(() => {
+            if (document.querySelector('.js') !== null) removeIcon('.js')
+            if (document.querySelector('.css') !== null) removeIcon('.css')
+            if (document.querySelector('.html') !== null) removeIcon('.html')
+        }, 400)
     })
     
     midgetSaltBae.addEventListener('mouseleave', () => {
@@ -622,6 +628,12 @@ window.addEventListener('load', () => {
             setTimeout(() => { addIcon('.html') }, 100)
             setTimeout(() => { addIcon('.css') }, 200)
             setTimeout(() => { addIcon('.js') }, 300)
+
+            setTimeout(() => {
+                if (document.querySelector('.html') !== null) addIcon('.html')
+                if (document.querySelector('.css') !== null) addIcon('.css')
+                if (document.querySelector('.js') !== null) addIcon('.js')
+            }, 400)
         }
     })
 
@@ -772,6 +784,10 @@ tabContainer.addEventListener('click', (event) => {
 
 midgetSaltBae.addEventListener('click', () => {
     const links = document.querySelectorAll('.secret-links a')
+
+    setTimeout(() => { removeIcon('.js') }, 100)
+    setTimeout(() => { removeIcon('.css') }, 200)
+    setTimeout(() => { removeIcon('.html') }, 300)
 
     if (saltBaeWasActivated && !flagFound) {
         body.addEventListener('mouseover', displayPosition, { signal: areaListener.signal })
