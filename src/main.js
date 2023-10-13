@@ -612,28 +612,28 @@ window.addEventListener('load', () => {
     }, 500)
 
     midgetSaltBae.addEventListener('mouseenter', () => {
-        setTimeout(() => { removeIcon('.js') }, 100)
-        setTimeout(() => { removeIcon('.css') }, 200)
-        setTimeout(() => { removeIcon('.html') }, 300)
+        setTimeout(() => { removeIcon('.js') }, 150)
+        setTimeout(() => { removeIcon('.css') }, 250)
+        setTimeout(() => { removeIcon('.html') }, 350)
 
         setTimeout(() => {
             if (document.querySelector('.js') !== null) removeIcon('.js')
             if (document.querySelector('.css') !== null) removeIcon('.css')
             if (document.querySelector('.html') !== null) removeIcon('.html')
-        }, 400)
+        }, 550)
     })
     
     midgetSaltBae.addEventListener('mouseleave', () => {
         if (giantSaltBae.classList.contains('fade-out')) {
-            setTimeout(() => { addIcon('.html') }, 100)
-            setTimeout(() => { addIcon('.css') }, 200)
-            setTimeout(() => { addIcon('.js') }, 300)
+            setTimeout(() => { addIcon('.html') }, 150)
+            setTimeout(() => { addIcon('.css') }, 250)
+            setTimeout(() => { addIcon('.js') }, 350)
 
             setTimeout(() => {
                 if (document.querySelector('.html') !== null) addIcon('.html')
                 if (document.querySelector('.css') !== null) addIcon('.css')
                 if (document.querySelector('.js') !== null) addIcon('.js')
-            }, 400)
+            }, 550)
         }
     })
 
