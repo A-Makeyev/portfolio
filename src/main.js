@@ -620,7 +620,7 @@ window.addEventListener('load', () => {
             if (document.querySelector('.js') !== null) removeIcon('.js')
             if (document.querySelector('.css') !== null) removeIcon('.css')
             if (document.querySelector('.html') !== null) removeIcon('.html')
-        }, 550)
+        }, 650)
     })
     
     midgetSaltBae.addEventListener('mouseleave', () => {
@@ -633,7 +633,7 @@ window.addEventListener('load', () => {
                 if (document.querySelector('.html') !== null) addIcon('.html')
                 if (document.querySelector('.css') !== null) addIcon('.css')
                 if (document.querySelector('.js') !== null) addIcon('.js')
-            }, 550)
+            }, 650)
         }
     })
 
