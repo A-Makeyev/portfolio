@@ -51,6 +51,7 @@ const nameInput = document.getElementById('name')
 const emailInput = document.getElementById('email')
 const phoneInput = document.getElementById('phone')
 const messageInput = document.getElementById('message')
+const offline = document.getElementById('offline')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
@@ -109,10 +110,11 @@ function getParent(initialElement, targetElementSelector, tries) {
 }
 
 async function displayProjectDetails(projectItem) {
-    loader.classList.remove('fade-out')
-    let projectSrc = getParent(projectItem, '.project-thumbnail-scale iframe', 10).src
+    if (window.navigator.onLine) {
+        loader.classList.remove('fade-out')
+        let projectSrc = getParent(projectItem, '.project-thumbnail-scale iframe', 10).src
 
-    await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
+        await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
         .then((res) => {
             res.text()
         })
@@ -132,6 +134,9 @@ async function displayProjectDetails(projectItem) {
             loader.classList.add('fade-out')
             toggleProjectPopup()
         })
+    } else {
+        togglePopup('Can\'t open project because you are offline ¯\\_(ツ)_/¯')
+    }
 }
 
 function togglePopup(message, status) {
@@ -279,32 +284,37 @@ function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
 }
 
 async function loadImage(url) {
-    loader.classList.remove('fade-out')
-    let res = await fetch(url, { method: 'GET' })
-    if (res.status === 200) {
-        url = url.split('/')
-
-        let imageBlob = await res.blob()
-        let imageObjectURL = URL.createObjectURL(imageBlob);
-        let image = document.createElement('img')
-        let imageId = url[url.length - 1]
-
-        image.src = imageObjectURL
-        image.alt = imageId
-
-        loader.classList.add('fade-out')
-        imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
-        togglePopup()
+    if (window.navigator.onLine) {
+        loader.classList.remove('fade-out')
+        let res = await fetch(url, { method: 'GET' })
+        if (res.status === 200) {
+            url = url.split('/')
+    
+            let imageBlob = await res.blob()
+            let imageObjectURL = URL.createObjectURL(imageBlob);
+            let image = document.createElement('img')
+            let imageId = url[url.length - 1]
+    
+            image.src = imageObjectURL
+            image.alt = imageId
+    
+            loader.classList.add('fade-out')
+            imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
+            togglePopup()
+        } else {
+            alert(res.status)
+        }
     } else {
-        alert(res.status)
+        togglePopup('Can\'t open image because you are offline ¯\\_(ツ)_/¯')
     }
 }
 
 async function summonAliens() {
-    main.classList.add('fade-out')
-    spaceLoader.classList.remove('fade-out')
-    let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
-    await fetch(invaders, { method: 'GET' })
+    if (window.navigator.onLine) {
+        main.classList.add('fade-out')
+        spaceLoader.classList.remove('fade-out')
+        let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
+        await fetch(invaders, { method: 'GET' })
         .then((res) => {
             return res.text()
         })
@@ -348,6 +358,9 @@ async function summonAliens() {
         }).catch((err) => {
             alert(`Failed to fetch ${url}`, err)
         })
+    } else {
+        togglePopup('Can\'t summon aliens because you are offline ¯\\_(ツ)_/¯')
+    }
 }
 
 function summonPikachu() {
@@ -481,49 +494,53 @@ function validate(input, regex) {
 }
 
 function sendEmail() {
-    loader.classList.remove('fade-out')
+    if (window.navigator.onLine) {
+        loader.classList.remove('fade-out')
 
-    try {
-        if (typeof Email == 'undefined') {
+        try {
+            if (typeof Email == 'undefined') {
+                loader.classList.add('fade-out')
+                togglePopup('Something is blocking me from sending emails on this device', 'failure')
+            } else {
+                Email.send({
+                    // https://smtpjs.com
+                    // https://elasticemail.com
+                    // SMTP Host & Domain -> smtp.elasticemail.com
+                    SecureToken: 'b52b8a29-d8bb-4e74-bff5-3c1dbf06d967',
+                    To: 'anatoly.makeyev@gmail.com',
+                    From: 'anatoly.makeyev@gmail.com',
+                    Subject: 'New Client 🤩',
+                    Body: createEmailBody()
+                })
+                .then(response => {
+                    console.log(response)
+                    // handle communication buffer resources
+                    if (response.includes('deadlock victim')) {
+                        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                        console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
+                        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                        sendEmail()
+                    } else if (!response.includes('OK')) {
+                        loader.classList.add('fade-out')
+                        togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
+                    } else {
+                        loader.classList.add('fade-out')
+                        togglePopup('Your message was sent, thanks for reaching out!', 'success')
+                    }
+                })
+            }
+        } catch (error) {
             loader.classList.add('fade-out')
-            togglePopup('Something is blocking me from sending emails on this device', 'failure')
-        } else {
-            Email.send({
-                // https://smtpjs.com
-                // https://elasticemail.com
-                // SMTP Host & Domain -> smtp.elasticemail.com
-                SecureToken: 'b52b8a29-d8bb-4e74-bff5-3c1dbf06d967',
-                To: 'anatoly.makeyev@gmail.com',
-                From: 'anatoly.makeyev@gmail.com',
-                Subject: 'New Client 🤩',
-                Body: createEmailBody()
-            })
-            .then(response => {
-                console.log(response)
-                // handle communication buffer resources
-                if (response.includes('deadlock victim')) {
-                    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                    console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
-                    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                    sendEmail()
-                } else if (!response.includes('OK')) {
-                    loader.classList.add('fade-out')
-                    togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
-                } else {
-                    loader.classList.add('fade-out')
-                    togglePopup('Your message was sent, thanks for reaching out!', 'success')
-                }
-            })
+            console.log(error)
         }
-    } catch (error) {
-        loader.classList.add('fade-out')
-        console.log(error)
+    
+        document.querySelectorAll('.input-control').forEach((i) => {
+            i.style.boxShadow = ''
+            i.value = ''
+        })
+    } else {
+        togglePopup('Can\'t send your message because you are offline ¯\\_(ツ)_/¯')
     }
-
-    document.querySelectorAll('.input-control').forEach((i) => {
-        i.style.boxShadow = ''
-        i.value = ''
-    })
 }
 
 function createEmailBody() {
@@ -588,6 +605,8 @@ function createEmailBody() {
 
 /* LOADER */
 
+preloadImages(generalImages)
+
 if ('exposed' in localStorage) {
     body.style.backgroundImage = 'var(--red-background)' 
     body.style.transform = 'rotate(16deg)'
@@ -596,7 +615,8 @@ if ('exposed' in localStorage) {
     toggleScrolling()
 }
 
-preloadImages(generalImages)
+window.addEventListener('online', () => { offline.style.opacity = '0' })
+window.addEventListener('offline', () => { offline.style.opacity = '1' })
 
 window.addEventListener('load', () => {
     let url = window.location.href

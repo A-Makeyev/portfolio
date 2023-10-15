@@ -171,6 +171,25 @@ section.fade-out {
     justify-content: flex-end;
 }
 
+#offline {
+    top: 10vh;
+    opacity: 0;
+    right: 70vw;
+    width: 250px;
+    height: 100px;
+    z-index: 1000;
+    font-size: large;
+    font-weight: bold;
+    color: var(--red);
+    position: absolute;
+    text-align: center;
+    pointer-events: none;
+    background-size: cover;
+    transform: rotate(-30deg);
+    background-position: 50% 0;
+    transition: all 0.5s ease-in;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~ SCROLL BAR ~~~~~~~~~~~~~~~~~~~~~ */
 
 ::-webkit-scrollbar {
@@ -837,6 +856,15 @@ button {
 }
 
 @media (max-width: 1045px) {
+    #offline {
+        top: 10vh;
+        right: 10vw;
+        width: 150px;
+        height: 150px;
+        font-size: small;
+        transform: rotate(30deg);
+    }
+
     .loader div {
         border: 2px solid transparent;
     }
