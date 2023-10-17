@@ -449,8 +449,8 @@ function captureTheFlag() {
                 document.querySelector('.secret-links a:nth-child(1)').textContent = '❤️'
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
-                setTimeout(() => { if (!flagFound) summonPikachu() }, 8000)
-                setTimeout(() => { addIcon('.instagram', 1000) }, 6000)
+                setTimeout(() => { addIcon('.instagram', 1000) }, 4000)
+                setTimeout(() => { summonPikachu() }, 6000)
                 setTimeout(() => { 
                     setTimeout(() => { midgetSaltBae.click() }, 1000)
                     setTimeout(() => { removeIcon('.js') }, 700)
