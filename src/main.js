@@ -192,8 +192,6 @@ function changeLoaderColor() {
 }
 
 function sendAstroid() {
-    preloadImages(secretImages)
-
     setTimeout(() => {
         document.getElementById('impact').play()
         giantSaltBae.style.pointerEvents = 'none'
@@ -605,8 +603,6 @@ function createEmailBody() {
 
 /* LOADER */
 
-preloadImages(generalImages)
-
 if ('exposed' in localStorage) {
     body.style.backgroundImage = 'var(--red-background)' 
     body.style.transform = 'rotate(16deg)'
@@ -619,6 +615,9 @@ window.addEventListener('online', () => { offline.style.opacity = '0' })
 window.addEventListener('offline', () => { offline.style.opacity = '1' })
 
 window.addEventListener('load', () => {
+    preloadImages(generalImages)
+    preloadImages(secretImages)
+    
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
     greeting.innerText = new Date().getHours() < 18 ? 'bonjour' : 'bonsoir'
@@ -814,8 +813,8 @@ midgetSaltBae.addEventListener('click', () => {
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
-            console.clear()
             localStorage.setItem('exposed', true)
+            console.clear()
             
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
