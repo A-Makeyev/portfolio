@@ -208,6 +208,7 @@ function sendAstroid() {
         setTimeout(() => {
             setHint()
             changeLoaderColor()
+            body.style.overflowX = 'visible'
             body.style.backgroundImage = 'var(--red-background)'
 
             if (!bgIconsWereActivated) {
@@ -438,6 +439,7 @@ function captureTheFlag() {
 
             setTimeout(() => {
                 toggleScrolling()
+                body.style.overflowX = 'none'
                 document.querySelector('.secret-links a:nth-child(7)').remove()
                 document.querySelector('.secret-links a:nth-child(6)').textContent = '💜'
                 document.querySelector('.secret-links a:nth-child(5)').textContent = '💖'
@@ -606,6 +608,7 @@ function createEmailBody() {
 if ('exposed' in localStorage) {
     body.style.backgroundImage = 'var(--red-background)' 
     body.style.transform = 'rotate(16deg)'
+    body.style.overflowX = 'visible'
     body.style.cursor = 'progress'
     changeLoaderColor()
     toggleScrolling()
