@@ -320,12 +320,12 @@ async function summonAliens() {
         .then((html) => {
             const displayBoard = () => {
                 imagePopup.style.display = 'block'
-                imageBody.innerHTML = `<iframe class="invaders"></iframe>`
-                let invadersFrame = document.querySelector('.invaders').contentWindow.document
+                imageBody.innerHTML = `<iframe class="window-frame"></iframe>`
+                let invadersFrame = document.querySelector('.window-frame').contentWindow.document
                 invadersFrame.open()
                 invadersFrame.write(html)
                 invadersFrame.close()
-                document.querySelector('.invaders').contentWindow.focus()
+                document.querySelector('.window-frame').contentWindow.focus()
                 scrollInto(imageBody)
             }
 
@@ -362,11 +362,42 @@ async function summonAliens() {
     }
 }
 
+async function openTaskList() {
+    if (window.navigator.onLine) {
+        main.classList.add('fade-out')
+        loader.classList.remove('fade-out')
+        let tasks = `${window.location.href.split('#')[0]}assets/tasks.html`
+        await fetch(tasks, { method: 'GET' })
+        .then((res) => {
+            return res.text()
+        })
+        .then((html) => {
+            const displayBoard = () => {
+                imagePopup.style.display = 'block'
+                imageBody.innerHTML = `<iframe class="window-frame"></iframe>`
+                let tasksFrame = document.querySelector('.window-frame').contentWindow.document
+                tasksFrame.open()
+                tasksFrame.write(html)
+                tasksFrame.close()
+                document.querySelector('.window-frame').contentWindow.focus()
+                scrollInto(imageBody)
+            }
+            togglePopup()
+            loader.classList.add('fade-out')
+            imagePopup.style.display = 'none'
+            displayBoard()
+        }).catch((err) => {
+            alert(`Failed to fetch ${url}`, err)
+        })
+    } else {
+        togglePopup('You are offline ¯\\_(ツ)_/¯')
+    }
+}
+
 function summonPikachu() {
     let pikachu = addIcon('.pikachu', 1000)
     pikachu.onclick = () => {
         toggleScrolling()
-        localStorage.clear()
         navToggler.style.display = 'none'
         pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
@@ -374,6 +405,8 @@ function summonPikachu() {
         setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` }, 2000)
         setTimeout(() => { new Audio('../assets/sounds/meow.mp3').play() }, 3000)
         setTimeout(() => { location.reload(true) }, 5000)
+        localStorage.removeItem('flagFound')
+        localStorage.removeItem('exposed')
     }
 }
 
@@ -786,6 +819,10 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('github-ninja')) {
         summonAliens()
+    }
+
+    if (event.target.classList.contains('profile')) {
+        openTaskList()
     }
 })
 

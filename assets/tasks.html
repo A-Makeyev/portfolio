@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        *::selection {
+            text-shadow: 1px 1px 1px #2A85BE;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--white-alpha-40);
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--white-alpha-25);
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #153677, #4E085F);
+        }
+
+        .tasks {
+            margin: auto;
+            height: 580px;
+            max-width: 700px;
+            background: #F4FAFD;
+            padding: 35px 10px 70px;
+        }
+
+        .tasks h2 {
+            display: flex;
+            color: #18293C;
+            align-items: center;
+            margin: -20px 0 20px 15px;
+        }
+
+        .row {
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #D3D3D3;
+            margin: 0 0 25px 10px;
+            border-radius: 30px;
+            padding-left: 20px;
+        }
+
+        #task-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            background: transparent;
+        }
+
+        #add-task {
+            border: none;
+            outline: none;
+            color: #F4FAFD;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 40px;
+            background: #2A85BE;
+            transition: all ease 0.25s;
+        }
+
+        #add-task:hover {
+            background: #153677;
+            word-wrap: break-word;
+        }
+
+        .list {
+            height: 400px;
+            position: relative;
+            overflow-y: scroll;
+        }
+        
+        #list-container li {
+            font-size: 20px;
+            list-style: none;
+            max-width: 600px;
+            max-height: 100px;
+            position: relative;
+            word-wrap: break-word;
+            padding: 12px 8px 12px 50px;
+        }
+
+        #list-container li::before {
+            content: '⚪';
+            cursor: pointer;
+            border-radius: 50%;
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            top: 14px;
+            left: 8px;
+        } 
+
+        #list-container li.checked {
+            color: #555555;
+            text-decoration: line-through;
+        }
+
+        #list-container li.checked::before {
+            content: '✔️';
+            margin-top: 1px;
+        } 
+
+        .close {
+            right: 0;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            height: 40px;
+            color: #555555;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 40px;
+            text-align: center;
+            position: absolute;
+            transition: all ease 0.5s;
+        }
+
+        .close:hover {
+            color: #A00023;
+            word-wrap: break-word;
+        }
+
+        .task {
+            color: #18293C;
+            max-width:  90%;
+            max-height: 100px;
+        }
+
+        @media (max-width: 500px) {
+            .list {
+                height: 320px;
+            }
+            .tasks {
+                height: 480px;
+            }
+
+        }
+
+        @media (max-width: 310px) {
+            .tasks {
+                height: 430px;
+            }
+            .tasks h2 {
+                margin: -20px 0 20px 85px;
+            }
+            .row {
+                margin: 0 0 15px 10px;
+            }
+            #task-input {
+                font-size: 12px;
+            }
+            #add-task {
+                font-size: 12px;
+                padding: 10px 30px;
+                transition: all ease 0.25s;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tasks">
+            <h2>Task List</h2>
+            <div class="row">
+                <input type="text" id="task-input" placeholder="Add New Task" maxlength="200">
+                <button id="add-task">Add</button>
+            </div>
+            <div class="list">
+                <ul id="list-container"></ul>
+            </div>      
+        </div>
+
+        <script>
+            const addTask = document.getElementById('add-task')
+            const taskInput = document.getElementById('task-input')
+            const listContainer = document.getElementById('list-container')
+
+            document.addEventListener('DOMContentLoaded', () => {
+                loadData()
+
+                var counter = Number(localStorage.getItem('counter')) ? Number(localStorage.getItem('counter')) : 0
+                addTask.addEventListener('click', () => {
+                    if (taskInput.value === '') {
+                        taskInput.placeholder = 'Why would you add an empty task?'
+                        setTimeout(() => {
+                            taskInput.placeholder = 'Add New Task...'
+                        }, 2000)
+                    } else {
+                        listContainer.innerHTML += 
+                        `
+                            <li>
+                                <p id="task-${counter += 1}" class="task">${taskInput.value}</p> 
+                                <span class="close">\u00D7</span>
+                            </li>
+                        `
+                        taskInput.value = ''
+                        saveData()
+                    }
+                })
+
+                taskInput.addEventListener('keyup', (event) => {
+                    event.preventDefault()
+                    if (event.keyCode === 13) {
+                        addTask.click()
+                    }
+                })
+
+                taskInput.addEventListener('focus', () => {
+                    taskInput.placeholder = ''
+                })
+
+                taskInput.addEventListener('blur', () => {
+                    taskInput.placeholder = 'Add New Task'
+                })
+
+                listContainer.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'LI') {
+                        event.target.classList.toggle('checked')
+                        saveData()
+                    } else if (event.target.tagName === 'SPAN') {
+                        event.target.parentElement.remove()
+                        saveData()
+                    }
+                }, false)
+
+                function saveData() {
+                    localStorage.setItem('counter', counter)
+                    localStorage.setItem('data', listContainer.innerHTML)
+                }
+
+                function loadData() {
+                    listContainer.innerHTML = localStorage.getItem('data')
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

@@ -10,13 +10,13 @@
     --orange: #D19616;
     --dark-blue: #18293C;
     --light-red: #B4060E;
+    --light-grey: #D3D3D3;
     --light-blue: #A9D5F1;
     --light-purple: #939DED;
     --white-alpha-40: rgba(225, 255, 255, 0.40);
     --white-alpha-25: rgba(225, 255, 255, 0.25);
     --red-background: linear-gradient(to bottom right, var(--red), var(--dark-blue));
     --blue-background: linear-gradient(to bottom right, var(--light-blue), var(--light-purple));
-
 }
 
 * {
@@ -724,7 +724,7 @@ button {
     transform: translate(-50%, -390%) scale(1.1);
 }
 
-.invaders {
+.window-frame {
     border: none;
     width: 600px;
     height: 600px;
@@ -1025,7 +1025,7 @@ button {
         transform: translate(-50%, -370%) scale(1.1);
     }
 
-    .invaders {
+    .window-frame {
         width: 500px;
         height: 500px;
     }
@@ -1155,7 +1155,7 @@ button {
         font-size: 20px !important;
     }
 
-    .invaders {
+    .window-frame {
         width: 310px;
         height: 450px;
     }
