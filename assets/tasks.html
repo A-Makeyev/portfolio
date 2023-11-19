@@ -257,6 +257,7 @@
                         saveData()
                     } else if (event.target.tagName === 'SPAN') {
                         event.target.parentElement.remove()
+                        counter -= 1
                         saveData()
                     }
                 }, false)
