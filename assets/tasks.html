@@ -93,7 +93,7 @@
         }
 
         .list {
-            height: 400px;
+            height: 420px;
             position: relative;
             overflow-y: scroll;
         }
@@ -155,7 +155,7 @@
 
         @media (max-width: 500px) {
             .list {
-                height: 320px;
+                height: 330px;
             }
             .tasks {
                 height: 480px;
@@ -165,16 +165,18 @@
                 margin-left: -10px;
             }
             #list-container li::before {
-                top: 13px;
                 font-size: 12px;
             }
             .close {
-                top: 3px;
+                top: 0;
                 font-size: 25px;
             }
         }
 
         @media (max-width: 310px) {
+            .list {
+                height: 295px;
+            }
             .tasks {
                 height: 430px;
             }
