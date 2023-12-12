@@ -220,7 +220,9 @@
 
                 var counter = Number(localStorage.getItem('counter')) ? Number(localStorage.getItem('counter')) : 0
                 addTask.addEventListener('click', () => {
-                    if (taskInput.value === '') {
+                    let value = sanitize(taskInput.value)
+
+                    if (value === '') {
                         taskInput.placeholder = 'Why would you add an empty task?'
                         setTimeout(() => {
                             taskInput.placeholder = 'Add New Task...'
@@ -229,11 +231,11 @@
                         listContainer.innerHTML += 
                         `
                             <li>
-                                <p id="task-${counter += 1}" class="task">${taskInput.value}</p> 
+                                <p id="task-${counter += 1}" class="task">${value}</p> 
                                 <span class="close">\u00D7</span>
                             </li>
                         `
-                        taskInput.value = ''
+                        value = ''
                         saveData()
                     }
                 })
@@ -271,6 +273,18 @@
 
                 function loadData() {
                     listContainer.innerHTML = localStorage.getItem('data')
+                }
+
+                function sanitize(string) {
+                    let map = {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#x27;',
+                        "/": '&#x2F;',
+                    }
+                    return string.replace(/[&<>"'/]/ig, (match) => (map[match]))
                 }
             })
         </script>
