@@ -177,6 +177,10 @@
     margin: 0;
 }
 
+.timeline-box .timeline-item p {
+    text-transform: lowercase;
+}
+
 .timeline-box .timeline-item h5 {
     margin: 0 0 10px;
     font-size: medium;
