@@ -163,7 +163,6 @@ function togglePopup(message, status) {
     }
 
     imagePopupClose.addEventListener('click', close)
-    // imageInner.addEventListener('click', close)
 }
 
 function displayImage(id) {
@@ -486,9 +485,9 @@ function captureTheFlag() {
                 setTimeout(() => { summonPikachu() }, 6000)
                 setTimeout(() => { 
                     setTimeout(() => { midgetSaltBae.click() }, 1000)
-                    setTimeout(() => { removeIcon('.js') }, 700)
+                    setTimeout(() => { removeIcon('.html') }, 700)
                     setTimeout(() => { removeIcon('.css') }, 500)
-                    setTimeout(() => { removeIcon('.html') }, 300)
+                    setTimeout(() => { removeIcon('.js') }, 300)
                 }, 10000)
             }, 4000)
         }
@@ -520,13 +519,13 @@ function validate(input, regex) {
 
         if (!submitBtn.hasAttribute('disabled')) {
             submitBtn.onclick = () => {
-                sendEmail()
+                sendEmail(nameInput.value)
             }
         }
     })
 }
 
-function sendEmail() {
+function sendEmail(contactName) {
     if (window.navigator.onLine) {
         loader.classList.remove('fade-out')
 
@@ -552,13 +551,13 @@ function sendEmail() {
                         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
                         console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
                         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                        sendEmail()
+                        sendEmail(contactName)
                     } else if (!response.includes('OK')) {
                         loader.classList.add('fade-out')
                         togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
                     } else {
                         loader.classList.add('fade-out')
-                        togglePopup('Your message was sent, thanks for reaching out!', 'success')
+                        togglePopup(`Your message was sent, thanks for reaching out ${contactName}!`, 'success')
                     }
                 })
             }
