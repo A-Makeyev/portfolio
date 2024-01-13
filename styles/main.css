@@ -758,7 +758,7 @@ button {
 .image-content {
     opacity: 0;
     padding: 15px;
-    max-width: 45%;
+    max-width: 900px;
     border-radius: 5px;
     backdrop-filter: blur(5px);
     border: 1px solid var(--white-alpha-40);
