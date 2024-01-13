@@ -584,7 +584,7 @@ function createEmailBody() {
                     <span style="color: #2A85BE;">Portfolio Website</span>
                 </a>
             </h4>
-            <table style="border: 1px solid #555555; border-collapse: collapse; width: 85%;">
+            <table style="border: 1px solid #555555; border-collapse: collapse; width: 100%;">
                 <tbody style="font-family: 'Fira Code', sans-serif; font-size: 15px; text-align: center; color: #18293C">
                     <tr style="border: 1px solid #2A85BE; background: #2A85BE; color: #F4FAFD; padding: 15px 10px;">
                         <td style="padding: 10px;"><strong>Details</strong></td>
