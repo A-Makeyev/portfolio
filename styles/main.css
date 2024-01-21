@@ -275,7 +275,6 @@ button {
 }
 
 @keyframes zoomAndSpin {
-
     0%,
     100% {
         transform: scale(0.75) rotate(360deg);
@@ -297,7 +296,6 @@ button {
 }
 
 @keyframes bounceAndSpin {
-
     0%,
     100% {
         transform: translateY(200px) rotate(-360deg);
@@ -305,6 +303,46 @@ button {
 
     50% {
         transform: translateY(220px) rotate(360deg);
+    }
+}
+
+@keyframes floating-right {
+    from {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-30px) translateY(-30px) rotate(30deg); 
+    }
+}
+
+@keyframes reset-floating-right {
+    from {
+        transform: translateX(-30px) translateY(-30px) rotate(30deg);
+    }
+
+    to {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes floating-left {
+    from {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-10px) translateY(-10px) rotate(-10deg);
+    }
+}
+
+@keyframes reset-floating-left {
+    from {
+        transform: translateX(-10px) translateY(-10px) rotate(-10deg);
+    }
+
+    to {
+        transform: translateY(0px) rotate(0deg);
     }
 }
 

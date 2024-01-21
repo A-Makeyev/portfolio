@@ -52,6 +52,8 @@ const emailInput = document.getElementById('email')
 const phoneInput = document.getElementById('phone')
 const messageInput = document.getElementById('message')
 const offline = document.getElementById('offline')
+const floatRight = document.getElementsByClassName('soon-to-float-right')
+const floatLeft = document.getElementsByClassName('soon-to-float-left')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
@@ -190,6 +192,16 @@ function changeLoaderColor() {
     document.querySelector('.loader div:nth-child(4)').style.borderColor = exposed ? 'var(--orange)' : 'var(--red)'
 }
 
+function makeThemFloat() {
+    for (let x = 0; x < floatRight.length; x++) floatRight[x].style.animation = 'floating-right 2.5s normal forwards ease-in-out'
+    for (let x = 0; x < floatLeft.length; x++) floatLeft[x].style.animation = 'floating-left 2.5s normal forwards ease-in-out' 
+}
+
+function backToNormal() {
+    for (let x = 0; x < floatRight.length; x++) floatRight[x].style.animation = 'reset-floating-right 2.5s normal forwards ease-in-out'
+    for (let x = 0; x < floatLeft.length; x++) floatLeft[x].style.animation = 'reset-floating-right 2.5s normal forwards ease-in-out' 
+}
+
 function sendAstroid() {
     setTimeout(() => {
         document.getElementById('impact').play()
@@ -215,8 +227,14 @@ function sendAstroid() {
                 bgIconsWereActivated = true
             }
         }, 6000)
+
+        setTimeout(() => {
+            makeThemFloat()
+        }, 4000)
     }, 250)
 }
+
+// makeThemFloat()
 
 function displayCoordinates(links, action) {
     toggleScrolling()
@@ -456,6 +474,7 @@ function captureTheFlag() {
             localStorage.setItem('flagFound', true)
             localStorage.removeItem('exposed')
             changeLoaderColor()
+            backToNormal()
 
             console.clear()
             console.log('🙂')
@@ -467,7 +486,7 @@ function captureTheFlag() {
             setTimeout(() => {
                 giantSaltBae.style.pointerEvents = 'auto'
                 giantSaltBae.click()
-            }, 1000)
+            }, 1500)
 
             setTimeout(() => {
                 toggleScrolling()
@@ -482,12 +501,16 @@ function captureTheFlag() {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                 setTimeout(() => { addIcon('.instagram', 1000) }, 4000)
-                setTimeout(() => { summonPikachu() }, 6000)
+
+                if (document.querySelector('.pikachu').style.display == '') {
+                    setTimeout(() => { summonPikachu() }, 6000)
+                }
+                
                 setTimeout(() => { 
-                    setTimeout(() => { midgetSaltBae.click() }, 1000)
-                    setTimeout(() => { removeIcon('.html') }, 700)
-                    setTimeout(() => { removeIcon('.css') }, 500)
-                    setTimeout(() => { removeIcon('.js') }, 300)
+                    setTimeout(() => { midgetSaltBae.click() }, 1500)
+                    setTimeout(() => { removeIcon('.html') }, 1200)
+                    setTimeout(() => { removeIcon('.css') }, 1100)
+                    setTimeout(() => { removeIcon('.js') }, 1000)
                 }, 10000)
             }, 4000)
         }
@@ -644,6 +667,7 @@ if ('exposed' in localStorage) {
     body.style.cursor = 'progress'
     changeLoaderColor()
     toggleScrolling()
+    makeThemFloat()
 }
 
 window.addEventListener('online', () => { offline.style.opacity = '0' })
