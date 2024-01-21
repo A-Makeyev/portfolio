@@ -84,7 +84,7 @@ body::before {
 }
 
 body.disable-scrolling {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 ul {
@@ -881,7 +881,7 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
 
-@media (min-width: 767px) and (max-height: 900px) {
+@media (max-height: 900px) {
     .image-popup.open {
         overflow: auto;
     }
