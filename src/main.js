@@ -42,6 +42,7 @@ const homeSection = document.querySelector('.home-section')
 const bgIconsBox = document.querySelector('.bg-icons-box')
 const navToggler = document.querySelector('.nav-toggler')
 const overlay = document.querySelector('.overlay')
+const profile = document.querySelector('.profile')
 const logo = document.querySelector('.m-logo')
 const midgetSaltBae = document.querySelector('.midget-salt-bae')
 const giantSaltBae = document.querySelector('.giant-salt-bae')
@@ -223,7 +224,7 @@ function sendAstroid() {
             body.style.backgroundImage = 'var(--red-background)'
 
             if (!bgIconsWereActivated) {
-                logo.click()
+                profile.click()
                 bgIconsWereActivated = true
             }
         }, 6000)
@@ -412,18 +413,20 @@ async function openTaskList() {
 }
 
 function summonPikachu() {
-    let pikachu = addIcon('.pikachu', 1000)
-    pikachu.onclick = () => {
-        toggleScrolling()
-        navToggler.style.display = 'none'
-        pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` }, 1000)
-        setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` }, 2000)
-        setTimeout(() => { new Audio('../assets/sounds/meow.mp3').play() }, 3000)
-        setTimeout(() => { location.reload(true) }, 5000)
-        localStorage.removeItem('flagFound')
-        localStorage.removeItem('exposed')
+    if (document.querySelector('.pikachu').style.display == '') {
+        let pikachu = addIcon('.pikachu', 1000)
+        pikachu.onclick = () => {
+            toggleScrolling()
+            navToggler.style.display = 'none'
+            pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
+            setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
+            setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` }, 1000)
+            setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` }, 2000)
+            setTimeout(() => { new Audio('../assets/sounds/meow.mp3').play() }, 3000)
+            setTimeout(() => { location.reload(true) }, 5000)
+            localStorage.removeItem('flagFound')
+            localStorage.removeItem('exposed')
+        }
     }
 }
 
@@ -474,7 +477,6 @@ function captureTheFlag() {
             localStorage.setItem('flagFound', true)
             localStorage.removeItem('exposed')
             changeLoaderColor()
-            backToNormal()
 
             console.clear()
             console.log('🙂')
@@ -486,9 +488,10 @@ function captureTheFlag() {
             setTimeout(() => {
                 giantSaltBae.style.pointerEvents = 'auto'
                 giantSaltBae.click()
-            }, 1500)
+                backToNormal()
+            }, 2000)
 
-            setTimeout(() => {
+            setTimeout(() => {    
                 toggleScrolling()
                 body.style.overflowX = 'none'
                 document.querySelector('.secret-links a:nth-child(7)').remove()
@@ -501,11 +504,7 @@ function captureTheFlag() {
                 body.style.backgroundImage = 'linear-gradient(to bottom right, var(--light-blue), var(--light-purple))'
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                 setTimeout(() => { addIcon('.instagram', 1000) }, 4000)
-
-                if (document.querySelector('.pikachu').style.display == '') {
-                    setTimeout(() => { summonPikachu() }, 6000)
-                }
-                
+                setTimeout(() => { summonPikachu() }, 6000)
                 setTimeout(() => { 
                     setTimeout(() => { midgetSaltBae.click() }, 1500)
                     setTimeout(() => { removeIcon('.html') }, 1200)
@@ -725,14 +724,13 @@ window.addEventListener('load', () => {
         saltBaeWasActivated = true
         bgIconsWereActivated = true
 
-        logo.click()
+        profile.click()
         midgetSaltBae.click()
         giantSaltBae.style.pointerEvents = 'none'
         areaListener.abort()
 
-        setTimeout(() => { setHint() }, 3500)
         setTimeout(() => { summonPikachu() }, 9000)
-
+        setTimeout(() => { setHint() }, 3500)
         setTimeout(() => {
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
@@ -829,23 +827,24 @@ document.addEventListener('click', (event) => {
 
         if (!bgIconsWereActivated) {
             setTimeout(() => {
-                logo.click()
+                profile.click()
                 bgIconsWereActivated = true
             }, 1750)
         }
     }
 
-    if (event.target.classList.contains('m-logo')) {
+    if (event.target.classList.contains('profile')) {
         bgIconsBox.classList.toggle('active')
         bgIconsWereActivated = true
     }
 
-    if (event.target.classList.contains('github-ninja')) {
-        summonAliens()
+    if (event.target.classList.contains('m-logo')) {
+        openTaskList()
+
     }
 
-    if (event.target.classList.contains('profile')) {
-        openTaskList()
+    if (event.target.classList.contains('github-ninja')) {
+        summonAliens()
     }
 })
 
