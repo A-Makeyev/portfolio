@@ -146,7 +146,7 @@ function togglePopup(message, status) {
     scrollInto(imageBody)
     main.classList.add('fade-out')
     imagePopup.classList.add('open')
-    body.classList.add('disable-scrolling')
+    if (!('exposed' in localStorage)) body.classList.add('disable-scrolling')
     imageContent.style.border = `2px solid ${status == 'success' ? '#40BD1A' : status == 'failure' ? '#A00023' : 'rgba(225, 255, 255, 0.40'}`
 
     if (message) imageBody.innerHTML =
