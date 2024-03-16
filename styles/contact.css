@@ -50,6 +50,11 @@
     padding-top: 20px;
 }
 
+.contact-form .submit-btn {
+    float: left;
+}
+
+
 .submit-btn .btn:hover {
     color: var(--white);
     background-color: var(--dark-blue);
