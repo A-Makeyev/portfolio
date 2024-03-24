@@ -229,6 +229,16 @@
     padding: 20px 25px;
 }
 
+.popup-body .description a {
+    color: var(--blue);
+    text-decoration: none;
+    transition: all 0.25s;
+}
+
+.popup-body .description a:hover {
+    color: var(--dark-blue);
+}
+
 .popup-body .project-links {
     height: auto;
     margin: 20px auto;
