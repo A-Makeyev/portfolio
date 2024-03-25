@@ -798,6 +798,13 @@ document.addEventListener('click', (event) => {
         }
     }
 
+    if (event.target.href.includes('#projects')) {
+        document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
+        document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
+        document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
+        document.getElementById('chatup').src = 'https://chatup.onrender.com'
+    }
+
     if (event.target.classList.contains('view-project-btn')) {
         displayProjectDetails(event.target)
         scrollInto(projectPopup)
