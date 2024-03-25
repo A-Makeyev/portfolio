@@ -151,12 +151,12 @@ function togglePopup(message, status) {
 
     if (message) imageBody.innerHTML =
         `
-        <div style="min-height: 150px; max-width: 300px; padding: 50px 25px;">
-            <div style="margin: 10px 0;">
-                ${message === '🚩' ? `<h1>${message}</h1>` : `<h3>${message}</h3>`}  
+            <div style="min-height: 150px; max-width: 300px; padding: 50px 25px;">
+                <div style="margin: 10px 0;">
+                    ${message === '🚩' ? `<h1>${message}</h1>` : `<h3>${message}</h3>`}  
+                </div>
             </div>
-        </div>
-    `
+        `
 
     const close = () => {
         imageBody.innerHTML = ''
