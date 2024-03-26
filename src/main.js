@@ -58,6 +58,7 @@ const floatLeft = document.getElementsByClassName('soon-to-float-left')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
+var projectsWereLoaded = false
 var currentSection = ''
 var flagFound = false
 
@@ -799,10 +800,13 @@ document.addEventListener('click', (event) => {
     }
 
     if (event.target.href.includes('#projects')) {
-        document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
-        document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
-        document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
-        document.getElementById('chatup').src = 'https://chatup.onrender.com'
+        if (!projectsWereLoaded) {
+            document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
+            document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
+            document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
+            document.getElementById('chatup').src = 'https://chatup.onrender.com'
+            projectsWereLoaded = true
+        }
     }
 
     if (event.target.classList.contains('view-project-btn')) {
