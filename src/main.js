@@ -799,7 +799,7 @@ document.addEventListener('click', (event) => {
         }
     }
 
-    if (event.target.href.includes('#projects')) {
+    if (event.target.hasAttribute('href') && event.target.href.includes('#projects')) {
         if (!projectsWereLoaded) {
             document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
             document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
