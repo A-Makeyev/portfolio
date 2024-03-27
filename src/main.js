@@ -58,7 +58,6 @@ const floatLeft = document.getElementsByClassName('soon-to-float-left')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
-var projectsWereLoaded = false
 var currentSection = ''
 var flagFound = false
 
@@ -78,6 +77,13 @@ async function preloadImages(src) {
             image.src = src
         })
     }
+}
+
+function loadProjects() {
+    document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
+    document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
+    document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
+    document.getElementById('chatup').src = 'https://chatup.onrender.com'
 }
 
 function randomNumber(min, max) {
@@ -681,6 +687,7 @@ window.addEventListener('offline', () => { offline.style.opacity = '1' })
 window.addEventListener('load', () => {
     preloadImages(generalImages)
     preloadImages(secretImages)
+    loadProjects()
 
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
@@ -801,16 +808,6 @@ document.addEventListener('click', (event) => {
             document.title = `Anatoly Makeyev`
         } else {
             document.title = `AM | ${title}`
-        }
-    }
-
-    if (event.target.hasAttribute('href') && event.target.href.includes('#projects')) {
-        if (!projectsWereLoaded) {
-            document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
-            document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
-            document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
-            document.getElementById('chatup').src = 'https://chatup.onrender.com'
-            projectsWereLoaded = true
         }
     }
 
