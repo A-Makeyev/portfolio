@@ -230,6 +230,7 @@
 }
 
 .popup-body .description a {
+    cursor: pointer;
     color: var(--blue);
     text-decoration: none;
     transition: all 0.25s;

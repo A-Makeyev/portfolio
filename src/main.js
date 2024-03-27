@@ -236,8 +236,6 @@ function sendAstroid() {
     }, 250)
 }
 
-// makeThemFloat()
-
 function displayCoordinates(links, action) {
     toggleScrolling()
     setTimeout(() => {
@@ -521,6 +519,13 @@ function captureTheFlag() {
         exposed.style.cursor = 'help'
         body.style.cursor = 'progress'
     }
+}
+
+function openEasterEggs() {
+    setTimeout(() => { document.querySelector('.popup-close').click() }, 500)
+    setTimeout(() => { document.querySelector('.nav-toggler').click() }, 1000)
+    setTimeout(() => { document.querySelector('[href="#home"]').click() }, 1500)
+    setTimeout(() => { document.querySelector('.github-ninja').click() }, 2500)
 }
 
 function validate(input, regex) {
