@@ -80,10 +80,12 @@ async function preloadImages(src) {
 }
 
 function loadProjects() {
-    document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
-    document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
-    document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
-    document.getElementById('chatup').src = 'https://chatup.onrender.com'
+    setTimeout(() => {
+        document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
+        document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
+        document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
+        document.getElementById('chatup').src = 'https://chatup.onrender.com'
+    }, 2000)
 }
 
 function randomNumber(min, max) {
