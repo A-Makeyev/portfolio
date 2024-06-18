@@ -19,6 +19,8 @@ const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
 const validName = /^[^0-9.,_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
 const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+const userPlatform = window.navigator.userAgentData.platform
+const userDevice = document.getElementById('userDevice')
 const body = document.querySelector('body')
 const home = document.querySelector('#home')
 const activeSection = document.querySelector('section.active')
@@ -60,6 +62,27 @@ var bgIconsWereActivated = false
 var saltBaeWasActivated = false
 var currentSection = ''
 var flagFound = false
+
+function getUserDevice() {
+    let device = 'Unknown'
+    const agent = {
+        'Generic Linux': /Linux/i,
+        'Android': /Android/i,
+        'BlackBerry': /BlackBerry/i,
+        'Bluebird': /EF500/i,
+        'Chrome OS': /CrOS/i,
+        'Datalogic': /DL-AXIS/i,
+        'Honeywell': /CT50/i,
+        'iPad': /iPad/i,
+        'iPhone': /iPhone/i,
+        'iPod': /iPod/i,
+        'macOS': /Macintosh/i,
+        'Windows': /IEMobile|Windows/i,
+        'Zebra': /TC70|TC55/i,
+    }
+    Object.keys(agent).map(v => navigator.userAgent.match(agent[v]) && (device = v))
+    return device.toLowerCase()
+}
 
 async function preloadImages(src) {
     if (Array.isArray(src)) {
@@ -533,7 +556,9 @@ function openEasterEggs() {
     setTimeout(() => { document.querySelector('.popup-close').click() }, 500)
     setTimeout(() => { document.querySelector('.nav-toggler').click() }, 1000)
     setTimeout(() => { document.querySelector('[href="#home"]').click() }, 1500)
-    setTimeout(() => { document.querySelector('.github-ninja').click() }, 2500)
+
+    if ('exposed' in localStorage) setTimeout(() => { document.querySelector('.pikachu').click() }, 2500)
+    else setTimeout(() => { document.querySelector('.github-ninja').click() }, 2500)
 }
 
 function validate(input, regex) {
@@ -690,6 +715,8 @@ window.addEventListener('load', () => {
     preloadImages(generalImages)
     preloadImages(secretImages)
     loadProjects()
+
+    userDevice.textContent = `${getUserDevice()} ${getUserDevice() == 'windows' && 'pc'}`
 
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
