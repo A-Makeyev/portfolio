@@ -113,7 +113,7 @@ function loadProjects() {
 
 function randomNumber(min, max) {
     return ~~(Math.random() * (max - min + 1)) + min
-  }
+}
 
 function toggleNavbar() {
     header.classList.toggle('active')
@@ -150,15 +150,15 @@ async function displayProjectDetails(projectItem) {
         let projectSrc = getParent(projectItem, '.project-thumbnail-scale iframe', 10).src
 
         await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
-        .then((res) => {
-            res.text()
-        })
-        .then(() => {
-            let projectDetails = getParent(projectItem, '.project-item-details', 10).innerHTML
+            .then((res) => {
+                res.text()
+            })
+            .then(() => {
+                let projectDetails = getParent(projectItem, '.project-item-details', 10).innerHTML
 
-            popupBody.innerHTML = projectDetails
-            popupThumbnail.innerHTML =
-            `
+                popupBody.innerHTML = projectDetails
+                popupThumbnail.innerHTML =
+                    `
                 <div class="project-main-container">
                     <div class="project-main-scale">
                         <iframe src="${projectSrc}" frameborder="0"></iframe>
@@ -166,9 +166,9 @@ async function displayProjectDetails(projectItem) {
                 </div> 
             `
 
-            loader.classList.add('fade-out')
-            toggleProjectPopup()
-        })
+                loader.classList.add('fade-out')
+                toggleProjectPopup()
+            })
     } else {
         togglePopup('Can\'t open project because you are offline ¯\\_(ツ)_/¯')
     }
@@ -227,12 +227,12 @@ function changeLoaderColor() {
 
 function makeThemFloat() {
     for (let x = 0; x < floatRight.length; x++) floatRight[x].style.animation = 'floating-right 2.5s normal forwards ease-in-out'
-    for (let x = 0; x < floatLeft.length; x++) floatLeft[x].style.animation = 'floating-left 2.5s normal forwards ease-in-out' 
+    for (let x = 0; x < floatLeft.length; x++) floatLeft[x].style.animation = 'floating-left 2.5s normal forwards ease-in-out'
 }
 
 function backToNormal() {
     for (let x = 0; x < floatRight.length; x++) floatRight[x].style.animation = 'reset-floating-right 2.5s normal forwards ease-in-out'
-    for (let x = 0; x < floatLeft.length; x++) floatLeft[x].style.animation = 'reset-floating-right 2.5s normal forwards ease-in-out' 
+    for (let x = 0; x < floatLeft.length; x++) floatLeft[x].style.animation = 'reset-floating-right 2.5s normal forwards ease-in-out'
 }
 
 function sendAstroid() {
@@ -317,13 +317,13 @@ function displayPosition(event) {
 }
 
 function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
-    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500) 
+    setTimeout(() => { document.querySelector('.secret-links a:nth-child(1)').textContent = !isMobileDevice ? 'MTQ' : '010' }, 500)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(2)').textContent = !isMobileDevice ? 'wMC' : '100' }, 1000)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(3)').textContent = !isMobileDevice ? 'B4I' : '00 ' }, 1500)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(4)').textContent = !isMobileDevice ? 'Dcw' : '🌌' }, 2000)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(5)').textContent = !isMobileDevice ? 'MA' : '01' }, 2500)
     setTimeout(() => { document.querySelector('.secret-links a:nth-child(6)').textContent = !isMobileDevice ? '==' : '000' }, 3000)
-    setTimeout(() => { 
+    setTimeout(() => {
         body.style.cursor = 'progress'
         document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '011'
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
@@ -336,15 +336,15 @@ async function loadImage(url) {
         let res = await fetch(url, { method: 'GET' })
         if (res.status === 200) {
             url = url.split('/')
-    
+
             let imageBlob = await res.blob()
             let imageObjectURL = URL.createObjectURL(imageBlob);
             let image = document.createElement('img')
             let imageId = url[url.length - 1]
-    
+
             image.src = imageObjectURL
             image.alt = imageId
-    
+
             loader.classList.add('fade-out')
             imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
             togglePopup()
@@ -362,34 +362,34 @@ async function summonAliens() {
         spaceLoader.classList.remove('fade-out')
         let invaders = `${window.location.href.split('#')[0]}assets/invaders.html`
         await fetch(invaders, { method: 'GET' })
-        .then((res) => {
-            return res.text()
-        })
-        .then((html) => {
-            const displayBoard = () => {
-                imagePopup.style.display = 'block'
-                imageBody.innerHTML = `<iframe class="window-frame"></iframe>`
-                let invadersFrame = document.querySelector('.window-frame').contentWindow.document
-                invadersFrame.open()
-                invadersFrame.write(html)
-                invadersFrame.close()
-                document.querySelector('.window-frame').contentWindow.focus()
-                scrollInto(imageBody)
-            }
+            .then((res) => {
+                return res.text()
+            })
+            .then((html) => {
+                const displayBoard = () => {
+                    imagePopup.style.display = 'block'
+                    imageBody.innerHTML = `<iframe class="window-frame"></iframe>`
+                    let invadersFrame = document.querySelector('.window-frame').contentWindow.document
+                    invadersFrame.open()
+                    invadersFrame.write(html)
+                    invadersFrame.close()
+                    document.querySelector('.window-frame').contentWindow.focus()
+                    scrollInto(imageBody)
+                }
 
-            if (isMobileDevice) {
-                setTimeout(() => {
-                    togglePopup()
-                    spaceLoader.classList.add('fade-out')
-                    imagePopup.style.display = 'none'
-                    displayBoard()
-                }, 2000)
-            } else {
-                setTimeout(() => {
-                    togglePopup()
-                    spaceLoader.classList.add('fade-out')
-                    imageBody.innerHTML =
-                    `
+                if (isMobileDevice) {
+                    setTimeout(() => {
+                        togglePopup()
+                        spaceLoader.classList.add('fade-out')
+                        imagePopup.style.display = 'none'
+                        displayBoard()
+                    }, 2000)
+                } else {
+                    setTimeout(() => {
+                        togglePopup()
+                        spaceLoader.classList.add('fade-out')
+                        imageBody.innerHTML =
+                            `
                         <div style="padding:30px;">
                             <div style="margin-bottom:10px;">
                                 <p>press <b style="font-size: x-large;">↔️</b> to move</p>
@@ -397,14 +397,14 @@ async function summonAliens() {
                             </div>
                         </div>
                     `
-                }, 1500)
-                setTimeout(() => {
-                    displayBoard()
-                }, 3500)
-            }
-        }).catch((err) => {
-            alert(`Failed to fetch ${url}`, err)
-        })
+                    }, 1500)
+                    setTimeout(() => {
+                        displayBoard()
+                    }, 3500)
+                }
+            }).catch((err) => {
+                alert(`Failed to fetch ${url}`, err)
+            })
     } else {
         togglePopup('Can\'t summon aliens because you are offline ¯\\_(ツ)_/¯')
     }
@@ -416,27 +416,46 @@ async function openTaskList() {
         loader.classList.remove('fade-out')
         let tasks = `${window.location.href.split('#')[0]}assets/tasks.html`
         await fetch(tasks, { method: 'GET' })
-        .then((res) => {
-            return res.text()
-        })
-        .then((html) => {
-            const displayBoard = () => {
-                imagePopup.style.display = 'block'
-                imageBody.innerHTML = `<iframe class="window-frame"></iframe>`
-                let tasksFrame = document.querySelector('.window-frame').contentWindow.document
-                tasksFrame.open()
-                tasksFrame.write(html)
-                tasksFrame.close()
-                document.querySelector('.window-frame').contentWindow.focus()
-                scrollInto(imageBody)
-            }
-            togglePopup()
-            loader.classList.add('fade-out')
-            imagePopup.style.display = 'none'
-            displayBoard()
-        }).catch((err) => {
-            alert(`Failed to fetch ${url}`, err)
-        })
+            .then((res) => {
+                return res.text()
+            })
+            .then((html) => {
+                const displayBoard = () => {
+                    imagePopup.style.display = 'block'
+                    imageBody.innerHTML = `<iframe class="window-frame"></iframe>`
+                    let tasksFrame = document.querySelector('.window-frame').contentWindow.document
+                    tasksFrame.open()
+                    tasksFrame.write(html)
+                    tasksFrame.close()
+                    document.querySelector('.window-frame').contentWindow.focus()
+                    scrollInto(imageBody)
+                }
+                togglePopup()
+                loader.classList.add('fade-out')
+                imagePopup.style.display = 'none'
+                displayBoard()
+
+                let flagTask = 'Find some flag or whatever'
+                let flagXpath = `(//p[text()="${flagTask}"])[1]`
+                let window = document.querySelector('.window-frame').contentWindow.document
+                let flagElement = window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+                let taskChecked = localStorage.getItem('taskChecked') ? localStorage.getItem('taskChecked') : false
+
+                if (flagElement === null) {
+                    setTimeout(() => window.getElementById('task-input').value = 'Find some flag or whatever', 1000)
+                    setTimeout(() => window.getElementById('add-task').click(), 1500)
+                }
+
+                setTimeout(() => {
+                    if ('flagFound' in localStorage && !taskChecked) {
+                        flagXpath += '//..//..//li'
+                        window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
+                        localStorage.setItem('taskChecked', true)
+                    }
+                }, 2500)
+            }).catch((err) => {
+                alert(`Failed to fetch ${url}`, err)
+            })
     } else {
         togglePopup('You are offline ¯\\_(ツ)_/¯')
     }
@@ -448,7 +467,7 @@ function summonPikachu() {
         pikachu.onclick = () => {
             toggleScrolling()
             navToggler.style.display = 'none'
-            pikachu.style.transform = 'translate(50%, -350%) scale(5)'        
+            pikachu.style.transform = 'translate(50%, -350%) scale(5)'
             setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '10' : '15'}) rotate(-50deg)` }, 500)
             setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '30' : '55'}) rotate(750deg)` }, 1000)
             setTimeout(() => { pikachu.style.transform = `translate(50%, -350%) scale(${isMobileDevice ? '40' : '65'}) rotate(700deg)` }, 2000)
@@ -498,12 +517,12 @@ function captureTheFlag() {
         exposed.classList.add('😱')
         exposed.textContent = '😰'
         body.style.cursor = 'wait'
-        
+
         exposed.onclick = () => {
             window.removeEventListener('resize', captureTheFlag)
             togglePopup('🚩')
             flagFound = true
-            
+
             localStorage.setItem('flagFound', true)
             localStorage.removeItem('exposed')
             changeLoaderColor()
@@ -521,7 +540,7 @@ function captureTheFlag() {
                 backToNormal()
             }, 2000)
 
-            setTimeout(() => {    
+            setTimeout(() => {
                 toggleScrolling()
                 body.style.overflowX = 'none'
                 document.querySelector('.secret-links a:nth-child(7)').remove()
@@ -535,7 +554,7 @@ function captureTheFlag() {
                 setTimeout(() => { document.getElementById('crash-site').style.backgroundImage = 'url(/assets/images/bandage.png)' }, 2000)
                 setTimeout(() => { addIcon('.instagram', 1000) }, 4000)
                 setTimeout(() => { summonPikachu() }, 6000)
-                setTimeout(() => { 
+                setTimeout(() => {
                     setTimeout(() => { midgetSaltBae.click() }, 1500)
                     setTimeout(() => { removeIcon('.html') }, 1200)
                     setTimeout(() => { removeIcon('.css') }, 1100)
@@ -605,28 +624,28 @@ function sendEmail(contactName) {
                     Subject: 'New Client 🤩',
                     Body: createEmailBody()
                 })
-                .then(response => {
-                    console.log(response)
-                    // handle communication buffer resources
-                    if (response.includes('deadlock victim')) {
-                        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                        console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
-                        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                        sendEmail(contactName)
-                    } else if (!response.includes('OK')) {
-                        loader.classList.add('fade-out')
-                        togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
-                    } else {
-                        loader.classList.add('fade-out')
-                        togglePopup(`Your message was sent, thanks for reaching out ${contactName}!`, 'success')
-                    }
-                })
+                    .then(response => {
+                        console.log(response)
+                        // handle communication buffer resources
+                        if (response.includes('deadlock victim')) {
+                            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                            console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
+                            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                            sendEmail(contactName)
+                        } else if (!response.includes('OK')) {
+                            loader.classList.add('fade-out')
+                            togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
+                        } else {
+                            loader.classList.add('fade-out')
+                            togglePopup(`Your message was sent, thanks for reaching out ${contactName}!`, 'success')
+                        }
+                    })
             }
         } catch (error) {
             loader.classList.add('fade-out')
             console.log(error)
         }
-    
+
         document.querySelectorAll('.input-control').forEach((i) => {
             i.style.boxShadow = ''
             i.value = ''
@@ -676,7 +695,7 @@ function createEmailBody() {
                         </td>
                     </tr>
                     ${messageInput.value.trim() !== '' ?
-                    `
+            `
                         <tr style="border: 1px solid #555555;">
                             <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
                                 <strong>Message</strong>
@@ -699,7 +718,7 @@ function createEmailBody() {
 /* LOADER */
 
 if ('exposed' in localStorage) {
-    body.style.backgroundImage = 'var(--red-background)' 
+    body.style.backgroundImage = 'var(--red-background)'
     body.style.transform = 'rotate(16deg)'
     body.style.overflowX = 'visible'
     body.style.cursor = 'progress'
@@ -741,7 +760,7 @@ window.addEventListener('load', () => {
             if (document.querySelector('.html') !== null) removeIcon('.html')
         }, 650)
     })
-    
+
     midgetSaltBae.addEventListener('mouseleave', () => {
         if (giantSaltBae.classList.contains('fade-out')) {
             setTimeout(() => { addIcon('.html') }, 150)
@@ -757,11 +776,11 @@ window.addEventListener('load', () => {
     })
 
     if ('exposed' in localStorage) {
-        setTimeout(() => { 
+        setTimeout(() => {
             let astroid = document.createElement('div')
             astroid.setAttribute('id', 'crash-site')
             body.appendChild(astroid)
-         }, 600)
+        }, 600)
 
         saltBaeWasActivated = true
         bgIconsWereActivated = true
@@ -919,7 +938,7 @@ midgetSaltBae.addEventListener('click', () => {
         classified.addEventListener('mouseover', () => {
             localStorage.setItem('exposed', true)
             console.clear()
-            
+
             let exposed = document.querySelector('.exposed')
             exposed.classList.remove('classified')
             window.addEventListener('resize', captureTheFlag)
