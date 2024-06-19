@@ -57,6 +57,7 @@ const messageInput = document.getElementById('message')
 const offline = document.getElementById('offline')
 const floatRight = document.getElementsByClassName('soon-to-float-right')
 const floatLeft = document.getElementsByClassName('soon-to-float-left')
+const flagFoundMessage = document.getElementById('flagFoundMessage')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
@@ -81,7 +82,7 @@ function getUserDevice() {
         'Zebra': /TC70|TC55/i,
     }
     Object.keys(agent).map(v => navigator.userAgent.match(agent[v]) && (device = v))
-    return device.toLowerCase()
+    return device
 }
 
 async function preloadImages(src) {
@@ -735,7 +736,8 @@ window.addEventListener('load', () => {
     preloadImages(secretImages)
     loadProjects()
 
-    userDevice.textContent = `${getUserDevice()} ${getUserDevice() == 'windows' && 'pc'}`
+    userDevice.textContent = getUserDevice() + `${getUserDevice() == 'Windows' ? ' PC' : ''}`
+    if ('flagFound' in localStorage) flagFoundMessage.textContent = 'Congratulations on finding the 🚩'
 
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
