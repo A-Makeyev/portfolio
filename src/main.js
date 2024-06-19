@@ -520,6 +520,7 @@ function captureTheFlag() {
 
         exposed.onclick = () => {
             window.removeEventListener('resize', captureTheFlag)
+            flagFoundMessage.textContent = 'Congratulations on finding the 🚩'
             togglePopup('🚩')
             flagFound = true
 
