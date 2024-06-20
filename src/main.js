@@ -441,10 +441,12 @@ async function openTaskList() {
                 let window = document.querySelector('.window-frame').contentWindow.document
                 let flagElement = window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
                 let taskChecked = localStorage.getItem('taskChecked') ? localStorage.getItem('taskChecked') : false
+                let taskAdded = localStorage.getItem('taskAdded') ? localStorage.getItem('taskAdded') : false
 
-                if (flagElement === null) {
+                if (flagElement === null && !taskAdded && !('flagFound' in localStorage)) {
                     setTimeout(() => window.getElementById('task-input').value = 'Find some flag or whatever', 1000)
                     setTimeout(() => window.getElementById('add-task').click(), 1500)
+                    localStorage.setItem('taskAdded', true)
                 }
 
                 setTimeout(() => {
@@ -520,11 +522,12 @@ function captureTheFlag() {
 
         exposed.onclick = () => {
             window.removeEventListener('resize', captureTheFlag)
-            flagFoundMessage.textContent = 'Congratulations on finding the 🚩'
+            flagFoundMessage.innerHTML = '<span>Congratulations on finding the <a onclick="openEasterEggs()">🚩</a></span>'
             togglePopup('🚩')
             flagFound = true
 
             localStorage.setItem('flagFound', true)
+            localStorage.removeItem('taskAdded')
             localStorage.removeItem('exposed')
             changeLoaderColor()
 
@@ -577,8 +580,11 @@ function openEasterEggs() {
     setTimeout(() => { document.querySelector('.nav-toggler').click() }, 1000)
     setTimeout(() => { document.querySelector('[href="#home"]').click() }, 1500)
 
-    if ('exposed' in localStorage) setTimeout(() => { document.querySelector('.pikachu').click() }, 2500)
-    else setTimeout(() => { document.querySelector('.github-ninja').click() }, 2500)
+    setTimeout(() => {
+        if (!('exposed' in localStorage) && !('flagFound' in localStorage)) document.querySelector('.github-ninja').click()
+        else if ('exposed' in localStorage) logo.click()
+        else document.querySelector('.pikachu').click()
+    }, 2500)
 }
 
 function validate(input, regex) {
@@ -737,7 +743,7 @@ window.addEventListener('load', () => {
     loadProjects()
 
     userDevice.textContent = getUserDevice() + `${getUserDevice() == 'Windows' ? ' PC' : ''}`
-    if ('flagFound' in localStorage) flagFoundMessage.textContent = 'Congratulations on finding the 🚩'
+    if ('flagFound' in localStorage) flagFoundMessage.innerHTML = '<span>Congratulations on finding the <a onclick="openEasterEggs()">🚩</a></span>'
 
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
@@ -938,6 +944,7 @@ midgetSaltBae.addEventListener('click', () => {
 
         classified.classList.add('exposed')
         classified.addEventListener('mouseover', () => {
+            if ('taskAdded' in localStorage) localStorage.removeItem('taskAdded')
             localStorage.setItem('exposed', true)
             console.clear()
 
