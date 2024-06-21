@@ -431,6 +431,7 @@ async function openTaskList() {
                     document.querySelector('.window-frame').contentWindow.focus()
                     scrollInto(imageBody)
                 }
+
                 togglePopup()
                 loader.classList.add('fade-out')
                 imagePopup.style.display = 'none'
@@ -450,6 +451,16 @@ async function openTaskList() {
                 }
 
                 setTimeout(() => {
+                    flagXpath += '//..//..//li'
+                    flagElement = window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+                    if (!('flagFound' in localStorage)) {
+                        flagElement.style.pointerEvents = 'none'
+                    } else {
+                        flagElement.style.pointerEvents = 'auto'
+                    }
+                }, 2000)
+
+                setTimeout(() => {
                     if ('flagFound' in localStorage && !taskChecked) {
                         flagXpath += '//..//..//li'
                         window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
@@ -457,7 +468,7 @@ async function openTaskList() {
                     }
                 }, 2500)
             }).catch((err) => {
-                alert(`Failed to fetch ${url}`, err)
+                togglePopup(err, 'failure')
             })
     } else {
         togglePopup('You are offline ¯\\_(ツ)_/¯')
