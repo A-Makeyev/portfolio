@@ -593,8 +593,8 @@ function openEasterEggs() {
 
     setTimeout(() => {
         if (!('exposed' in localStorage) && !('flagFound' in localStorage)) document.querySelector('.github-ninja').click()
+        else if ('flagFound' in localStorage) document.querySelector('.pikachu').click()
         else if ('exposed' in localStorage) logo.click()
-        else document.querySelector('.pikachu').click()
     }, 2500)
 }
 
