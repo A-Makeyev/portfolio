@@ -444,7 +444,7 @@ async function openTaskList() {
                 let taskChecked = localStorage.getItem('taskChecked') ? localStorage.getItem('taskChecked') : false
                 let taskAdded = localStorage.getItem('taskAdded') ? localStorage.getItem('taskAdded') : false
 
-                if (flagElement === null && !taskAdded && !('flagFound' in localStorage)) {
+                if ((flagElement === null && !taskAdded && !('flagFound' in localStorage)) || 'flagFound' in localStorage) {
                     setTimeout(() => window.getElementById('task-input').value = 'Find some flag or whatever', 500)
                     setTimeout(() => window.getElementById('add-task').click(), 1000)
                     localStorage.setItem('taskAdded', true)
