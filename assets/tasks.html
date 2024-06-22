@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,7 +98,7 @@
             position: relative;
             overflow-y: scroll;
         }
-        
+
         #list-container li {
             font-size: 20px;
             list-style: none;
@@ -116,7 +117,7 @@
             height: 30px;
             width: 30px;
             left: 8px;
-        } 
+        }
 
         #list-container li.checked {
             color: #555555;
@@ -126,7 +127,7 @@
         #list-container li.checked::before {
             content: '✔️';
             margin-top: 1px;
-        } 
+        }
 
         .close {
             right: 0;
@@ -150,23 +151,37 @@
         .task {
             color: #18293C;
             max-height: 80px;
-            max-width:  90%;
+            max-width: 90%;
         }
 
         @media (max-width: 500px) {
+            #task-input {
+                font-size: 11px;
+            }
+
+            #add-task {
+                font-size: 11px;
+                padding: 10px 30px;
+                transition: all ease 0.25s;
+            }
+
             .list {
                 height: 330px;
             }
+
             .tasks {
                 height: 480px;
             }
+
             .task {
                 font-size: 12px;
                 margin-left: -10px;
             }
+
             #list-container li::before {
                 font-size: 12px;
             }
+
             .close {
                 top: 0;
                 font-size: 25px;
@@ -177,37 +192,29 @@
             .list {
                 height: 295px;
             }
+
             .tasks {
                 height: 430px;
             }
-            .tasks h2 {
-                margin: -20px 0 20px 85px;
-            }
+
             .row {
                 margin: 0 0 15px 10px;
-            }
-            #task-input {
-                font-size: 12px;
-            }
-            #add-task {
-                font-size: 12px;
-                padding: 10px 30px;
-                transition: all ease 0.25s;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="tasks">
             <h2>Task List</h2>
             <div class="row">
-                <input type="text" id="task-input" placeholder="Add New Task" maxlength="200">
+                <input type="text" id="task-input" placeholder="New Task" maxlength="200">
                 <button id="add-task">Add</button>
             </div>
             <div class="list">
                 <ul id="list-container"></ul>
-            </div>      
+            </div>
         </div>
 
         <script>
@@ -223,13 +230,13 @@
                     let value = sanitize(taskInput.value)
 
                     if (value === '') {
-                        taskInput.placeholder = 'Why would you add an empty task?'
+                        taskInput.placeholder = Math.floor(Math.random() * 2) === 0 ? '⚆ _ ⚆' : 'ಠ_ಠ'
                         setTimeout(() => {
-                            taskInput.placeholder = 'Add New Task...'
+                            taskInput.placeholder = 'New Task...'
                         }, 2000)
                     } else {
-                        listContainer.innerHTML += 
-                        `
+                        listContainer.innerHTML +=
+                            `
                             <li>
                                 <p id="task-${counter += 1}" class="task">${value}</p> 
                                 <span class="close">\u00D7</span>
@@ -290,4 +297,5 @@
         </script>
     </div>
 </body>
+
 </html>

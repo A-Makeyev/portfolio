@@ -445,8 +445,8 @@ async function openTaskList() {
                 let taskAdded = localStorage.getItem('taskAdded') ? localStorage.getItem('taskAdded') : false
 
                 if (flagElement === null && !taskAdded && !('flagFound' in localStorage)) {
-                    setTimeout(() => window.getElementById('task-input').value = 'Find some flag or whatever', 1000)
-                    setTimeout(() => window.getElementById('add-task').click(), 1500)
+                    setTimeout(() => window.getElementById('task-input').value = 'Find some flag or whatever', 500)
+                    setTimeout(() => window.getElementById('add-task').click(), 1000)
                     localStorage.setItem('taskAdded', true)
                 }
 
@@ -458,7 +458,7 @@ async function openTaskList() {
                     } else {
                         flagElement.style.pointerEvents = 'auto'
                     }
-                }, 2000)
+                }, 1500)
 
                 setTimeout(() => {
                     if ('flagFound' in localStorage && !taskChecked) {
@@ -920,7 +920,6 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('m-logo')) {
         openTaskList()
-
     }
 
     if (event.target.classList.contains('github-ninja')) {
