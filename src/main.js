@@ -439,6 +439,7 @@ async function openTaskList() {
 
                 let flagTask = 'Find some flag or whatever'
                 let flagXpath = `(//p[text()="${flagTask}"])[1]`
+                let checkFlagXpath = flagXpath + '//..//..//li'
                 let window = document.querySelector('.window-frame').contentWindow.document
                 let flagElement = window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
                 let taskChecked = localStorage.getItem('taskChecked') ? localStorage.getItem('taskChecked') : false
@@ -451,22 +452,22 @@ async function openTaskList() {
                 }
 
                 setTimeout(() => {
-                    flagXpath += '//..//..//li'
-                    flagElement = window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-                    if (!('flagFound' in localStorage)) {
-                        flagElement.style.pointerEvents = 'none'
-                    } else {
-                        flagElement.style.pointerEvents = 'auto'
+                    flagElement = window.evaluate(checkFlagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+                    if (flagElement !== null) {
+                        if (!('flagFound' in localStorage)) {
+                            flagElement.style.pointerEvents = 'none'
+                        } else {
+                            flagElement.style.pointerEvents = 'auto'
+                        }
                     }
                 }, 1500)
 
                 setTimeout(() => {
                     if ('flagFound' in localStorage && !taskChecked) {
-                        flagXpath += '//..//..//li'
-                        window.evaluate(flagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
+                        window.evaluate(checkFlagXpath, window, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
                         localStorage.setItem('taskChecked', true)
                     }
-                }, 2500)
+                }, 2000)
             }).catch((err) => {
                 togglePopup(err, 'failure')
             })
