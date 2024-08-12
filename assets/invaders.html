@@ -240,7 +240,7 @@
             }
 
             function setInvader(getEmoji) {
-                let number = Math.floor(Math.random() * 6)
+                let number = Math.floor(Math.random() * 7)
                 let theChoosenOne
                 switch (number) {
                     case 0:
@@ -261,6 +261,9 @@
                     case 5:
                         theChoosenOne = '🐥'
                         break
+                    case 6:
+                        theChoosenOne = '👽'
+                        break
                 }
 
                 if (getEmoji) return theChoosenOne
@@ -268,7 +271,7 @@
                 let invaderStyle = document.createElement('style')
                 invaderStyle.type = 'text/css'
                 invaderStyle.innerHTML =
-                    `
+                `
                     .invader::before {
                         content: '${theChoosenOne}';
                         font-size: larger;
