@@ -1,9 +1,30 @@
 'use strict'
 
-const icons = '/assets/icons'
+const dev = 'http://127.0.0.1:5500/'
+const prod = 'https://makeyev.onrender.com/'
+const github = 'https://github.com/A-Makeyev/'
 const images = '/assets/images'
+const icons = '/assets/icons'
 
-const secretImages = [`${images}/astroid.gif`, `${images}/explosion.gif`, `${images}/hole.png`]
+const projectNames = [
+    'portfolio', 
+    'makeyev-finance', 
+    'ecommecre-shop', 
+    'chatup'
+]
+
+const projectUrls = [
+    window.location.href, 
+    'https://makeyev-finance.onrender.com', 
+    'https://ecommecre-shop.onrender.com', 
+    'https://chatup.onrender.com'
+]
+
+const secretImages = [
+    `${images}/astroid.gif`, 
+    `${images}/explosion.gif`, 
+    `${images}/hole.png`
+]
 
 const generalImages = [
     `${images}/already-inside.jpg`, `${images}/already-inside-facepalm.jpg`,
@@ -13,8 +34,6 @@ const generalImages = [
     `${images}/about/anatoly.jpg`, `${images}/about/fast-team.jpg`, `${images}/about/startup-awards.jpg`, `${images}/about/awards-video.jpg`, `${images}/about/cloudbeat-conference.jpg`
 ]
 
-const dev = 'http://127.0.0.1:5500/'
-const prod = 'https://makeyev.onrender.com/'
 const validPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
 const validName = /^[^0-9.,_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/
 const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -35,6 +54,7 @@ const imageContent = document.querySelector('.image-content')
 const imagePopupClose = document.querySelector('.image-popup-close')
 const imageInner = document.querySelector('.image-inner')
 const projectPopup = document.querySelector('.project-popup')
+const projectItems = document.querySelectorAll('.project-item')
 const popupBody = document.querySelector('.popup-body')
 const popupThumbnail = document.querySelector('.popup-thumbnail')
 const greeting = document.querySelector('#greeting')
@@ -103,13 +123,26 @@ async function preloadImages(src) {
     }
 }
 
-function loadProjects() {
-    setTimeout(() => {
-        document.getElementById('portfolio-website').src = 'https://makeyev.onrender.com'
-        document.getElementById('makeyev-finance').src = 'https://makeyev-finance.onrender.com'
-        document.getElementById('ecommerce-shop').src = 'https://ecommecre-shop.onrender.com'
-        document.getElementById('chatup').src = 'https://chatup.onrender.com'
-    }, 2000)
+async function loadProjects(projects) {
+    for (let p = 0; p < projects.length; p++) {
+        let title = projectNames[p].split('-')
+        title = title.map(t => t.charAt(0).toUpperCase() + t.slice(1))
+        title = title.join(' ') === 'Portfolio' ? 'This Portfolio Website' : title.join(' ')
+
+        projectItems[p].setAttribute('id', projects[p])
+        projectItems[p].querySelector('.project-item-title').textContent = title
+        projectItems[p].querySelectorAll('.github-link').forEach(x => x.href = github + projectNames[p])
+        projectItems[p].querySelectorAll('.link').forEach(x => x.href = projectUrls[p] === window.location.href ? 'javascript:void(0)' : projectUrls[p])
+
+        let loader = document.querySelector(`#${projects[p]} .loader`)
+        loader.style.transform = 'scale(2.5)'        
+
+        await fetch(projectUrls[p], { method: 'GET', accept: 'text/html', mode: 'no-cors' })
+        .then(() => {
+            loader.classList.add('fade-out')
+            projectItems[p].querySelector('.project-frame').src = projectUrls[p]
+        })
+    }
 }
 
 function randomNumber(min, max) {
@@ -151,25 +184,22 @@ async function displayProjectDetails(projectItem) {
         let projectSrc = getParent(projectItem, '.project-thumbnail-scale iframe', 10).src
 
         await fetch(projectSrc, { method: 'GET', accept: 'text/html', mode: 'no-cors' })
-            .then((res) => {
-                res.text()
-            })
-            .then(() => {
-                let projectDetails = getParent(projectItem, '.project-item-details', 10).innerHTML
+        .then(() => {
+            let projectDetails = getParent(projectItem, '.project-item-details', 10).innerHTML
 
-                popupBody.innerHTML = projectDetails
-                popupThumbnail.innerHTML =
-                    `
-                <div class="project-main-container">
-                    <div class="project-main-scale">
-                        <iframe src="${projectSrc}" frameborder="0"></iframe>
-                    </div>
-                </div> 
-            `
+            popupBody.innerHTML = projectDetails
+            popupThumbnail.innerHTML =
+                `
+            <div class="project-main-container">
+                <div class="project-main-scale">
+                    <iframe src="${projectSrc}" frameborder="0"></iframe>
+                </div>
+            </div> 
+        `
 
-                loader.classList.add('fade-out')
-                toggleProjectPopup()
-            })
+            loader.classList.add('fade-out')
+            toggleProjectPopup()
+        })
     } else {
         togglePopup('Can\'t open project because you are offline ¯\\_(ツ)_/¯')
     }
@@ -350,7 +380,7 @@ async function loadImage(url) {
             imageBody.innerHTML = `<img src="${imageObjectURL}" alt="${imageId}">`
             togglePopup()
         } else {
-            alert(res.status)
+            console.log(res.status)
         }
     } else {
         togglePopup('Can\'t open image because you are offline ¯\\_(ツ)_/¯')
@@ -752,7 +782,7 @@ window.addEventListener('offline', () => { offline.style.opacity = '1' })
 window.addEventListener('load', () => {
     preloadImages(generalImages)
     preloadImages(secretImages)
-    loadProjects()
+    loadProjects(projectNames)
 
     userDevice.textContent = getUserDevice() + `${getUserDevice() == 'Windows' ? ' PC' : ''}`
     if ('flagFound' in localStorage) flagFoundMessage.innerHTML = '<span>Congratulations on finding the <a onclick="openEasterEggs()">🚩</a></span>'
