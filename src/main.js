@@ -123,7 +123,7 @@ async function preloadImages(src) {
     }
 }
 
-async function loadProjects(projects) {
+function loadProjects(projects) {
     for (let p = 0; p < projects.length; p++) {
         let title = projectNames[p].split('-')
         title = title.map(t => t.charAt(0).toUpperCase() + t.slice(1))
@@ -133,14 +133,16 @@ async function loadProjects(projects) {
         projectItems[p].querySelector('.project-item-title').textContent = title
         projectItems[p].querySelectorAll('.github-link').forEach(x => x.href = github + projectNames[p])
         projectItems[p].querySelectorAll('.link').forEach(x => x.href = projectUrls[p] === window.location.href ? 'javascript:void(0)' : projectUrls[p])
+        projectItems[p].querySelectorAll('.project-item-btn').forEach(x => x.style.pointerEvents = 'none')
 
         let loader = document.querySelector(`#${projects[p]} .loader`)
         loader.style.transform = 'scale(2.5)'        
 
-        await fetch(projectUrls[p], { method: 'GET', accept: 'text/html', mode: 'no-cors' })
+        fetch(projectUrls[p], { method: 'GET', accept: 'text/html', mode: 'no-cors' })
         .then(() => {
             loader.classList.add('fade-out')
             projectItems[p].querySelector('.project-frame').src = projectUrls[p]
+            projectItems[p].querySelectorAll('.project-item-btn').forEach(x => x.style.pointerEvents = 'auto')
         })
     }
 }
