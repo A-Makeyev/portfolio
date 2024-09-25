@@ -131,8 +131,21 @@ function loadProjects(projects) {
 
         projectItems[p].setAttribute('id', projects[p])
         projectItems[p].querySelector('.project-item-title').textContent = title
-        projectItems[p].querySelectorAll('.github-link').forEach(x => x.href = github + projectNames[p])
-        projectItems[p].querySelectorAll('.link').forEach(x => x.href = projectUrls[p] === window.location.href ? 'javascript:void(0)' : projectUrls[p])
+
+        projectItems[p].querySelectorAll('.project-details').forEach((x) => {
+            !isMobileDevice && x.setAttribute('data-tooltip', 'view project details')
+        })
+        
+        projectItems[p].querySelectorAll('.github-link').forEach((x) => {
+            x.href = github + projectNames[p]
+            !isMobileDevice && x.setAttribute('data-tooltip', 'view source code')
+        })
+        
+        projectItems[p].querySelectorAll('.link').forEach((x) => {
+            x.href = projectUrls[p] === window.location.href ? 'javascript:void(0)' : projectUrls[p]
+            !isMobileDevice && x.setAttribute('data-tooltip', 'view live website')
+        })
+        
         projectItems[p].querySelectorAll('.project-item-btn').forEach(x => x.style.pointerEvents = 'none')
 
         let loader = document.querySelector(`#${projects[p]} .loader`)
