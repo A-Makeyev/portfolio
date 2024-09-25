@@ -852,31 +852,29 @@ button {
 
 /* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
 
-@media (min-width: 767px) {
-    [data-tooltip]:before {
-        content: attr(data-tooltip);
-        border: 1px solid var(--white-alpha-40);
-        transition: all 0.25s ease;
-        text-transform: capitalize;
-        color: var(--dark-blue);
-        border-radius: 10px;
-        position: absolute;
-        font-size: medium;
-        font-weight: 400;
-        width: 180px;
-        padding: 5px;
-        opacity: 0;
-    }
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    border: 1px solid var(--white-alpha-40);
+    transition: all 0.25s ease;
+    text-transform: capitalize;
+    color: var(--dark-blue);
+    border-radius: 10px;
+    position: absolute;
+    font-size: medium;
+    font-weight: 400;
+    width: 180px;
+    padding: 5px;
+    opacity: 0;
+}
 
-    [data-tooltip]:hover:before {
-        background: var(--white-alpha-25);
-        margin-top: 100px;
-        opacity: 1;
-    }
+[data-tooltip]:hover:before {
+    background: var(--white-alpha-25);
+    margin-top: 100px;
+    opacity: 1;
+}
 
-    [data-tooltip]:not([data-tooltip-persistent]):before {
-        pointer-events: none;
-    }
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~ */
