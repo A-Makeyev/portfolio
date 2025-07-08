@@ -81,8 +81,8 @@ const flagFoundMessage = document.getElementById('flagFoundMessage')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
-var currentSection = ''
 var flagFound = false
+var currentSection = ''
 
 function getUserDevice() {
     let device = 'Unknown'
