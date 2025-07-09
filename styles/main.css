@@ -847,6 +847,7 @@ button {
 
 .image-body img {
     width: 100%;
+    max-height: 700px;
     border-radius: 5px;
 }
 
