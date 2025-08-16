@@ -9,15 +9,17 @@ const icons = '/assets/icons'
 const projectNames = [
     'portfolio', 
     'makeyev-finance', 
-    'ecommecre-shop', 
-    'chatup'
+    'online-learning-platform',
+    'chatup',
+    'ecommecre-shop'
 ]
 
 const projectUrls = [
     window.location.href, 
     'https://makeyev-finance.onrender.com', 
+    'https://rilon.onrender.com',
+    'https://chatup.onrender.com',
     'https://ecommecre-shop.onrender.com', 
-    'https://chatup.onrender.com'
 ]
 
 const secretImages = [
