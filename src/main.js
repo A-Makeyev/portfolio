@@ -440,7 +440,7 @@ async function summonAliens() {
                             `
                         <div style="padding:30px;">
                             <div style="margin-bottom:10px;">
-                                <p>press <b style="font-size: x-large;">↔️</b> to move</p>
+                                <p>press <b style=";">🡨🡪</b> to move</p>
                                 <p>and <b>space</b> to shoot</p>
                             </div>
                         </div>
