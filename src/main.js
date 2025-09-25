@@ -802,7 +802,9 @@ window.addEventListener('load', () => {
     loadProjects(projectNames)
 
     userDevice.textContent = getUserDevice() + `${getUserDevice() == 'Windows' ? ' PC' : ''}`
-    if ('flagFound' in localStorage) flagFoundMessage.innerHTML = '<span>Congratulations on finding the <a onclick="openEasterEggs()">🚩</a></span>'
+    if ('flagFound' in localStorage) {
+        flagFoundMessage.innerHTML = '<span>Congratulations on finding the <a href="https://anatoly-makeyev.onrender.com" target="_blank" onclick="openEasterEggs()">🚩</a></span>'
+    }
 
     let url = window.location.href
     if (url.includes('index.html') || url.includes('/?fbclid=')) window.location.replace('/')
