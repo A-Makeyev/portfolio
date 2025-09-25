@@ -233,7 +233,7 @@ function togglePopup(message, status) {
         `
             <div style="min-height: 150px; max-width: 300px; padding: 50px 25px;">
                 <div style="margin: 10px 0;">
-                    ${message === '🚩' ? `<h1><a href="https://anatoly-makeyev.onrender.com" target="_blank">${message}</a></h1>` : `<h3>${message}</h3>`}  
+                    ${message === '🚩' ? `<h1><a href="https://anatoly-makeyev.onrender.com" target="_blank" class="flag">${message}</a></h1>` : `<h3>${message}</h3>`}  
                 </div>
             </div>
         `
