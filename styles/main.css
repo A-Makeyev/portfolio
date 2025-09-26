@@ -711,9 +711,12 @@ button {
     transform: translate(-53%, -497%) scale(1.1);
 }
 
+.flag {
+    transition: all 0.5s;
+}
+
 .flag:hover {
-    transform: scale(1.1);
-    transition: all 0.25s ease;
+    transform: scale(1.5);
 }
 
 .github-ninja {
