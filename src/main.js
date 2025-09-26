@@ -284,11 +284,12 @@ function backToNormal() {
 }
 
 function sendAstroid() {
+    giantSaltBae.style.pointerEvents = 'none'
+
     setTimeout(() => {
         document.getElementById('impact').play()
-        giantSaltBae.style.pointerEvents = 'none'
-        body.removeEventListener('mouseover', displayPosition)
-
+        body.removeEventListener('mouseover', displayPosition)    
+        
         let astroid = document.createElement('div')
         astroid.setAttribute('id', 'crash-site')
         body.appendChild(astroid)
@@ -376,6 +377,14 @@ function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
         document.querySelector('.secret-links a:nth-child(7)').textContent = !isMobileDevice ? '🤔' : '011'
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
     }, 3500)
+
+    home.onclick = () => {
+        window.open('https://md5decrypt.net/en/Brainfuck-translator', '_blank')
+    }
+
+    profile.onclick = () => {
+        window.open('https://www.base64decode.org', '_blank')
+    }
 }
 
 async function loadImage(url) {
