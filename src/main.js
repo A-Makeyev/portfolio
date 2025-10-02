@@ -9,7 +9,7 @@ const icons = '/assets/icons'
 const projectNames = [
     'portfolio', 
     'makeyev-finance', 
-    'relearn-online-courses-platform,
+    'relearn-online-courses-platform',
     'chatup',
     'ecommecre-shop'
 ]
