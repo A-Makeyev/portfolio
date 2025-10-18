@@ -378,12 +378,12 @@ function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
     }, 3500)
 
-    home.onclick = () => {
-        window.open('https://md5decrypt.net/en/Brainfuck-translator', '_blank')
+    document.querySelector('.secret-links a').onclick = () => {
+        window.open('https://www.base64decode.org', '_blank')
     }
 
-    profile.onclick = () => {
-        window.open('https://www.base64decode.org', '_blank')
+    giantSaltBae.onclick = () => {
+        window.open('https://md5decrypt.net/en/Brainfuck-translator', '_blank')
     }
 }
 
@@ -605,6 +605,9 @@ function captureTheFlag() {
             preloadImages(`${images}/bandage.png`)
             body.style.animation = 'restore 3s ease-in forwards'
             body.style.cursor = 'auto'
+
+            document.querySelector('.secret-links a').onclick = null
+            giantSaltBae.onclick = null
 
             setTimeout(() => {
                 giantSaltBae.style.pointerEvents = 'auto'
