@@ -378,6 +378,7 @@ function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
     }, 3500)
 
+    let exposed = document.querySelector('.exposed')
     exposed.onclick = () => {
       const links = [
         'https://www.base64decode.org',
@@ -605,9 +606,6 @@ function captureTheFlag() {
             preloadImages(`${images}/bandage.png`)
             body.style.animation = 'restore 3s ease-in forwards'
             body.style.cursor = 'auto'
-
-            document.querySelector('.secret-links a').onclick = null
-            giantSaltBae.onclick = null
 
             setTimeout(() => {
                 giantSaltBae.style.pointerEvents = 'auto'
