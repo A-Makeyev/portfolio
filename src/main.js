@@ -378,12 +378,12 @@ function setHint() { // Ⓖ Ⓔ Ⓣ Ⓐ Ⓟ Ⓒ 💻
         !isMobileDevice && document.querySelector('.secret-links a:nth-child(7)').setAttribute('title', 'ベース64のように見えます')
     }, 3500)
 
-    document.querySelector('.secret-links a').onclick = () => {
-        window.open('https://www.base64decode.org', '_blank')
-    }
-
-    giantSaltBae.onclick = () => {
-        window.open('https://md5decrypt.net/en/Brainfuck-translator', '_blank')
+    exposed.onclick = () => {
+      const links = [
+        'https://www.base64decode.org',
+        'https://md5decrypt.net/en/Brainfuck-translator'
+      ]
+      window.open(links[Math.random() < 0.5 ? 0 : 1], '_blank')
     }
 }
 
