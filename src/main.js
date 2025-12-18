@@ -731,65 +731,65 @@ function sendEmail(contactName) {
     }
 }
 
-function createEmailBody() {
-    return `
-        <div>
-            <h4>
-                <span>New submission from</span> 
-                <a href="${prod}" target="_blank" style="text-decoration: none;">
-                    <span style="color: #2A85BE;">Portfolio Website</span>
-                </a>
-            </h4>
-            <table style="border: 1px solid #555555; border-collapse: collapse; width: 100%;">
-                <tbody style="font-family: 'Fira Code', sans-serif; font-size: 15px; text-align: center; color: #18293C">
-                    <tr style="border: 1px solid #2A85BE; background: #2A85BE; color: #F4FAFD; padding: 15px 10px;">
-                        <td style="padding: 10px;"><strong>Details</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr style="border: 1px solid #555555;">
-                        <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
-                            <strong>Name</strong>
-                        </td>
-                        <td style="padding:10px;">
-                            <pre style="margin: 0; white-space: pre-wrap;">${nameInput.value}</pre>
-                        </td>
-                    </tr>
-                    <tr style="border: 1px solid #555555;">
-                        <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
-                            <strong>Phone</strong>
-                        </td>
-                        <td style="padding: 10px;">
-                            <a href="tel:${phoneInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${phoneInput.value}</a>
-                        </td>
-                    </tr>
-                    <tr style="border: 1px solid #555555;">
-                        <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
-                            <strong>Email</strong>
-                        </td>
-                        <td style="padding: 10px;">
-                            <a href="mailto:${emailInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${emailInput.value}</a>
-                        </td>
-                    </tr>
-                    ${messageInput.value.trim() !== '' ?
-                    `
-                        <tr style="border: 1px solid #555555;">
-                            <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
-                                <strong>Message</strong>
-                            </td>
-                            <td style="padding: 10px;">
-                                <pre style="margin: 0; white-space: pre-wrap;">${messageInput.value}</pre>
-                            </td>
-                        </tr>
-                    `
-            : ``}
-                </tbody>
-            </table>
-            <div style="text-align: center; margin-top: 50px;">
-                <img src="${prod}assets/icons/M.png" style="max-width: 250px;">
-            </div>
-        </div>
-    `
-}
+// function createEmailBody() {
+//     return `
+//         <div>
+//             <h4>
+//                 <span>New submission from</span> 
+//                 <a href="${prod}" target="_blank" style="text-decoration: none;">
+//                     <span style="color: #2A85BE;">Portfolio Website</span>
+//                 </a>
+//             </h4>
+//             <table style="border: 1px solid #555555; border-collapse: collapse; width: 100%;">
+//                 <tbody style="font-family: 'Fira Code', sans-serif; font-size: 15px; text-align: center; color: #18293C">
+//                     <tr style="border: 1px solid #2A85BE; background: #2A85BE; color: #F4FAFD; padding: 15px 10px;">
+//                         <td style="padding: 10px;"><strong>Details</strong></td>
+//                         <td></td>
+//                     </tr>
+//                     <tr style="border: 1px solid #555555;">
+//                         <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+//                             <strong>Name</strong>
+//                         </td>
+//                         <td style="padding:10px;">
+//                             <pre style="margin: 0; white-space: pre-wrap;">${nameInput.value}</pre>
+//                         </td>
+//                     </tr>
+//                     <tr style="border: 1px solid #555555;">
+//                         <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+//                             <strong>Phone</strong>
+//                         </td>
+//                         <td style="padding: 10px;">
+//                             <a href="tel:${phoneInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${phoneInput.value}</a>
+//                         </td>
+//                     </tr>
+//                     <tr style="border: 1px solid #555555;">
+//                         <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+//                             <strong>Email</strong>
+//                         </td>
+//                         <td style="padding: 10px;">
+//                             <a href="mailto:${emailInput.value}" target="_blank" style="margin: 0; white-space: pre-wrap; text-decoration: none;">${emailInput.value}</a>
+//                         </td>
+//                     </tr>
+//                     ${messageInput.value.trim() !== '' ?
+//                     `
+//                         <tr style="border: 1px solid #555555;">
+//                             <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
+//                                 <strong>Message</strong>
+//                             </td>
+//                             <td style="padding: 10px;">
+//                                 <pre style="margin: 0; white-space: pre-wrap;">${messageInput.value}</pre>
+//                             </td>
+//                         </tr>
+//                     `
+//             : ``}
+//                 </tbody>
+//             </table>
+//             <div style="text-align: center; margin-top: 50px;">
+//                 <img src="${prod}assets/icons/M.png" style="max-width: 250px;">
+//             </div>
+//         </div>
+//     `
+// }
 
 /* LOADER */
 
