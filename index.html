@@ -1,840 +1,846 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/png" href="/assets/images/avatar.png">
-  <link rel="stylesheet" href="/assets/fontawesome/all.min.css">
-  <link rel="stylesheet" href="styles/navigation.css">
-  <link rel="stylesheet" href="styles/projects.css">
-  <link rel="stylesheet" href="styles/contact.css">
-  <link rel="stylesheet" href="styles/about.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/secret.css">
-  <title>Anatoly Makeyev</title>
-  <script type="speculationrules">
-    {
-      "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }],
-      "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
-    }
-  </script>
-</head>
-<body>
-  
-  <!-- <div>
-  
-    Have you dealt with the invaders yet? Head over to the console 
-  
-  </div> -->
-  
-  <div id="offline">
-    Seems like <br> you are offline <br> 
-    <span style="font-size: larger;">(ツ)</span>
-  </div>
-  
-  <!-- LOADER -->
-
-  <div class="loader accelerate">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <div class="space-loader accelerate fade-out hidden">
-    <div>🚀</div>
-    <div>⭐</div>
-    <div>🛰️</div>
-    <div>🌎</div>
-  </div>
-
-  <!-- BACKGROUND ICONS -->
-
-  <div class="bg-icons-box fade-out accelerate">
-    <div class="bg-icon">
-      <img src="/assets/icons/redux.png" alt="redux icon">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/assets/images/avatar.png">
+    <link rel="stylesheet" href="/assets/fontawesome/all.min.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/projects.css">
+    <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/secret.css">
+    <title>Anatoly Makeyev</title>
+    <script type="speculationrules">
+      {
+        "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }],
+        "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
+      }
+    </script>
+  </head>
+  <body>
+    
+    <!-- <div>
+    
+      Have you dealt with the invaders yet? Head over to the console 
+    
+    </div> -->
+    
+    <div id="offline">
+      Seems like <br> you are offline <br> 
+      <span style="font-size: larger;">(ツ)</span>
     </div>
-    <div class="bg-icon">
-      <img src="/assets/icons/react.png" alt="react icon">
-    </div>
-    <div class="bg-icon">
-      <img src="/assets/icons/python.png" alt="python icon">
-    </div>
-    <div class="bg-icon">
-      <img src="/assets/icons/node.png" alt="node icon">
-    </div>
-    <div class="bg-icon">
-      <img src="/assets/icons/html.png" alt="html icon">
-    </div>
-    <div class="bg-icon">
-      <img src="/assets/icons/css.png" alt="css icon">
-    </div>
-    <div class="bg-icon">
-      <img src="/assets/icons/js.png" alt="js icon">
-    </div>
-  </div>
+    
+    <!-- LOADER -->
 
-  <!-- MAIN -->
+    <div class="loader accelerate">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
 
-  <div class="overlay"></div>
-  <div class="main hidden">
+    <div class="space-loader accelerate fade-out hidden">
+      <div>🚀</div>
+      <div>⭐</div>
+      <div>🛰️</div>
+      <div>🌎</div>
+    </div>
 
-    <!-- HEADER -->
+    <!-- BACKGROUND ICONS -->
 
-    <header class="header">
-      <div class="container">
-        <div class="row flex-end">
-          <button type="button" class="nav-toggler accelerate remove-highlight">
-            <span></span>
-          </button>
-          <nav class="nav-main">
-            <div class="nav-inner">
-              <ul>
-                <li><a href="#home"
-                    class="nav-item link-item accelerate remove-highlight activate-salt-bae soon-to-float-right">home</a>
-                </li>
-                <li><a href="#about" class="nav-item link-item accelerate remove-highlight soon-to-float-left">about</a>
-                </li>
-                <li><a href="#projects"
-                    class="nav-item link-item accelerate remove-highlight soon-to-float-right">projects</a></li>
-                <li><a href="#contact"
-                    class="nav-item link-item accelerate remove-highlight soon-to-float-left">contact</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+    <div class="bg-icons-box fade-out accelerate">
+      <div class="bg-icon">
+        <img src="/assets/icons/redux.png" alt="redux icon">
       </div>
-    </header>
-
-    <!-- HOME -->
-
-    <section id="home" class="home-section center accelerate">
-      <div class="container">
-        <div class="row center">
-          <div class="intro">
-            <div class="intro-text">
-              <p class="soon-to-float-right"><span id="greeting"></span>, i'm</p>
-              <h1 class="soon-to-float-left">anatoly makeyev</h1>
-              <p class="soon-to-float-right">an automation engineer by day</p>
-              <p class="soon-to-float-left">a web developer by night</p>
-            </div>
-            <a href="#about" class="btn accelerate remove-highlight link-item soon-to-float-right">about me</a>
-            <a href="#projects" class="btn accelerate remove-highlight link-item soon-to-float-left">projects</a>
-          </div>
-          <div class="home-img">
-            <div class="img-box">
-              <img src="/assets/images/profile.png" alt="profile image" class="profile">
-            </div>
-
-            <div class="home-icons">
-              <img src="/assets/icons/saltbae.png" alt="salt bae" class="midget-salt-bae accelerate remove-highlight">
-              <img src="/assets/icons/html.png" alt="html" class="html accelerate remove-highlight">
-              <img src="/assets/icons/css.png" alt="css" class="css accelerate remove-highlight">
-              <img src="/assets/icons/js.png" alt="js" class="js accelerate remove-highlight">
-              <img src="/assets/icons/M.png" alt="logo" class="m-logo accelerate remove-highlight">
-              <img src="/assets/icons/github-ninja.png" alt="github-ninja"
-                class="github-ninja accelerate remove-highlight">
-              <img src="/assets/icons/pikachu.png" alt="pikachu" class="pikachu accelerate remove-highlight">
-              <a href="https://instagram.com/a_makeyev" target="_blank" class="instagram accelerate remove-highlight"><i
-                  class="fa-brands fa-instagram"></i></a>
-            </div>
-
-            <!-- SECRET -->
-
-            <audio controls preload="auto" id="impact" class="hidden">
-              <source src="/assets/sounds/impact.mp3" type="audio/mpeg">
-            </audio>
-
-            <div class="secret">
-              <div class="giant-salt-bae fade-out accelerate remove-highlight">
-                <img src="/assets/icons/saltbae.png" alt="surprise bae">
-              </div>
-            </div>
-
-            <div class="secret-links">
-              <a href="https://github.com/a-makeyev" target="_blank" class="fade-out accelerate remove-highlight">
-                <i class="fa-brands fa-github-alt"></i>
-              </a>
-              <a href="https://www.freecodecamp.org/a-makeyev" target="_blank"
-                class="fade-out accelerate remove-highlight">
-                <i class="fa-brands fa-free-code-camp"></i>
-              </a>
-              <a href="https://www.facebook.com/anatoly.makeyev" target="_blank"
-                class="fade-out accelerate remove-highlight">
-                <i class="fa-brands fa-facebook-f"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/a-makeyev" target="_blank"
-                class="fade-out accelerate remove-highlight">
-                <i class="fa-brands fa-linkedin-in"></i>
-              </a>
-              <a href="https://www.youtube.com/@anatolymakeyev" target="_blank"
-                class="fade-out accelerate remove-highlight">
-                <i class="fa-brands fa-youtube"></i>
-              </a>
-              <a href="mailto:anatoly.makeyev@gmail.com" target="_blank" class="fade-out accelerate remove-highlight">
-                <i class="fa-solid fa-envelope"></i>
-              </a>
-              <a href="https://wa.me/972527729974" target="_blank"
-                class="link-to-remove fade-out accelerate remove-highlight">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-              <a href="tel:+972527729974" target="_blank" class="link-to-remove fade-out accelerate remove-highlight">
-                <i class="fa-solid fa-phone"></i>
-              </a>
-              <a class="classified fade-out accelerate remove-highlight"></a>
-            </div>
-
-          </div>
-        </div>
+      <div class="bg-icon">
+        <img src="/assets/icons/react.png" alt="react icon">
       </div>
-    </section>
-
-    <!-- ABOUT -->
-
-    <section id="about" class="about-section section-padding accelerate">
-      <div class="container">
-        <div class="row">
-
-          <div class="about-img soon-to-float-left">
-            <div class="img-box remove-highlight">
-              <a href="javascript: void(0);">
-                <img id="img-to-display-anatoly" src="/assets/images/about/anatoly.jpg" alt="anatoly makeyev">
-              </a>
-            </div>
-            <div class="quote">
-              <q>Excuse me, do you have a moment to talk about the oxygen database module?</q>
-            </div>
-          </div>
-
-          <div class="about-text soon-to-float-right">
-            <div class="section-title">
-              <h2>I'm passionate about the web</h2>
-            </div>
-            <p>
-              From designing web apps and bringing them to life,
-              then watching them shrink smoothly without anything falling off the screen,
-              to building automated processes and seeing them do all sorts of stuff on the page while I take a sip from
-              my caffè mocha
-              and listening to the Joe Rogan podcust. I also like to casually climb walls and jump out of planes.
-            </p>
-
-            <!-- SKILLS -->
-
-            <h2>My core technologies</h2>
-            <div class="skills">
-              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item soon-to-float-left" title="HTML"><i class="fa-brands fa-html5"></i></a>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item soon-to-float-right" title="CSS"><i class="fa-brands fa-css3-alt"></i></a>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item soon-to-float-left" title="JavaScript"><i class="fa-brands fa-square-js"></i></a>
-              <a href="https://getbootstrap.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-bootstrap" title="Bootstrap"></i></a>
-              <a href="https://reactjs.org/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-react" title="React"></i></a>
-              <a href="https://nodejs.org/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-node-js" title="Node"></i></a>
-              <a href="https://www.figma.com/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-figma" title="Figma"></i></a>
-              <a href="https://docker.com/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-docker" title="Docker"></i></a>
-              <a href="https://www.mysql.com/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-solid fa-database" title="SQL"></i></a>
-              <a href="https://jira.atlassian.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-jira" title="Jira"></i></a>
-              <a href="https://www.python.org/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-python" title="Python"></i></a>
-              <a href="https://www.java.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-java" title="Java"></i></a>
-              <a href="https://www.jenkins.io/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-jenkins" title="Jenkins"></i></a>
-              <a href="https://git-scm.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-git" title="Git"></i></a>
-            </div>
-          </div>
-
-          <div class="timeline-box">
-            <div class="about-tabs">
-              <button type="button" class="tab-item soon-to-float-right active"
-                data-target="#experience">experience</button>
-              <button type="button" class="tab-item soon-to-float-left" data-target="#education">education</button>
-            </div>
-
-            <!-- EXPERIENCE -->
-
-            <div class="tab-content soon-to-float-left active" id="experience">
-              <div class="timeline">
-
-                <div class="timeline-item">
-                  <span class="date">2019 - Present</span>
-                  <h5>
-                    Automation Engineer <span>-</span>
-                    <a href="https://cloudbeat.io/" target="_blank" class="timeline-item-link">CloudBeat</a>
-                    <p>cloudbeat.io is a test automation, analytics and monitoring platform</p>
-                  </h5>
-                  <ul>
-                    <li>⦁ Developing and maintaining scripts on web apps such as Microsoft Dynamics & Salesforce.</li>
-                    <li>⦁ Helping various customers to implement test automation from scratch in their organization.</li>
-                    <li>⦁ Creating automated tests for native and hybrid mobile apps using Appium with Oxygen.</li>
-                    <li>⦁ Instructing QA teams on CloudBeat, Oxygen, web & mobile automation best practices.</li>
-                    <li>⦁ Building SOAP and REST API performance tests using JMeter and Postman.</li>
-                    <li>⦁ Managing version control using Git with Github and Bitbucket.</li>
-                  </ul>
-                  <div class="timeline-images remove-highlight">
-                    <a href="javascript: void(0);" class="soon-to-float-left">
-                      <img id="img-to-display-selenium-conf" src="/assets/images/about/selenium-conf.jpg" alt="Selenium Conf">
-                    </a>
-                    <a href="javascript: void(0);" class="soon-to-float-right">
-                      <img id="img-to-display-selenium-conf-valencia" src="/assets/images/about/selenium-conf-valencia.jpg" alt="Selenium Conference Valencia 2025">
-                    </a>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <span class="date">2018 - 2019</span>
-                  <h5>
-                    Quality Assurance Engineer <span>-</span>
-                    <a href="https://www.fast-apps.com/" target="_blank" class="timeline-item-link">FAST</a>
-                    <p>fast-apps.com is a networking platform for the freight industry</p>
-                  </h5>
-                  <ul>
-                    <li>⦁ Helped to insure we release the best possible version in time for the global entrepreneur
-                      week, which we ended up winning and getting an investment from the Israeli Shark Tank.</li>
-                    <li>⦁ Carrying out in depth manual tests including sanity, functionality, error handling, recovery,
-                      integration, compatibility, regression and UI / UX on both web and mobile environments.</li>
-                    <li>⦁ Responsibility for planning and executing STP, STD, STR documents for the entire team.</li>
-                    <li>⦁ Tracking issues, visual bugs as well as logical errors and reporting them using JIRA.</li>
-                  </ul>
-                  <div class="timeline-images remove-highlight">
-                    <a href="javascript: void(0);" class="soon-to-float-right">
-                      <img id="img-to-display-fast-team" src="/assets/images/about/fast-team.jpg"
-                        alt="We won as the most influential startup company of Haifa">
-                    </a>
-                    <a href="javascript: void(0);" class="soon-to-float-left">
-                      <img id="img-to-display-startup-awards" src="/assets/images/about/startup-awards.jpg"
-                        alt="Global Entrepreneurship Week, Israel 2018">
-                    </a>
-                    <a href="https://youtu.be/iuO1K72a8v4" target="_blank" class="soon-to-float-right">
-                      <img src="/assets/images/about/awards-video.jpg" alt="Global Entrepreneurship Week winners video">
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- EDUCATION -->
-
-            <div class="tab-content soon-to-float-left" id="education">
-              <div class="timeline">
-                <div class="timeline-item">
-                  <span class="date">2019 - 2021</span>
-                  <h5>
-                    Web Development <span>-</span>
-                    <a href="https://www.freecodecamp.org/" target="_blank" class="timeline-item-link">freeCodeCamp</a>
-                  </h5>
-                  <ul>
-                    <li>⦁ HTML, CSS (Flexbox & Grid), Accessibility, Applied Visual Design and Responsive Principles.
-                    </li>
-                    <li>⦁ JavaScript, Regex, Debugging, Data Structures, Functional and Object Oriented Programming.
-                    </li>
-                  </ul>
-                  <div class="timeline-images remove-highlight">
-                    <a href="javascript: void(0);" class="soon-to-float-right">
-                      <img id="img-to-display-Responsive-Web-Design"
-                        src="/assets/images/about/Responsive-Web-Design.jpg" alt="Responsive Web Design Certificate">
-                    </a>
-                    <a href="javascript: void(0);" class="soon-to-float-left">
-                      <img id="img-to-display-JavaScript-Algorithms-and-Data-Structures"
-                        src="/assets/images/about/JavaScript-Algorithms-and-Data-Structures.jpg"
-                        alt="JavaScript Algorithms and Data Structures Certificate">
-                    </a>
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <span class="date">2018 - 2019</span>
-                  <h5>
-                    Quality Assurance <span>-</span>
-                    <a href="https://svcollege.co.il/" target="_blank" class="timeline-item-link">SVCollege</a>
-                  </h5>
-                  <ul>
-                    <li>⦁ Understanding the process and various types and methods of testing web and mobile apps.</li>
-                    <li>⦁ Getting familiar with database structures and to manipulate and retrieve data with SQL.</li>
-                    <li>⦁ Learning test automation using Java programming with Selenium and Appium.</li>
-                  </ul>
-                  <div class="timeline-images remove-highlight">
-                    <a href="javascript: void(0);" class="soon-to-float-right">
-                      <img id="img-to-display-Quality-Assurance-Certificate"
-                        src="/assets/images/about/Quality-Assurance-Certificate.jpg"
-                        alt="Quality Assurance Certificate">
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="line"></div> -->
-
-          <div class="about-btns accelerates center">
-            <a href="#contact" class="btn accelerate remove-highlight link-item soon-to-float-left">contect</a>
-            <a href="#projects" class="btn accelerate remove-highlight link-item soon-to-float-right">projects</a>
-            <a href="assets/resume/Anatoly Makeyev - Automation Engineer.pdf" target="_blank"
-              class="btn accelerate remove-highlight soon-to-float-left">resume</a>
-          </div>
-
-        </div>
+      <div class="bg-icon">
+        <img src="/assets/icons/python.png" alt="python icon">
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-
-    <section id="projects" class="project-section section-padding accelerate">
-      <div class="container">
-        <div class="row">
-          <div class="section-title">
-            <h1 class="soon-to-float-right">recent work</h1>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <!-- PROJECT 1 ~ THIS PORTFOLIO WEBSITE -->
-
-          <div class="project-item center">
-            <div class="project-item-thumbnail soon-to-float-left">
-              <div class="project-thumbnail-container">
-                <div class="project-thumbnail-scale">
-
-                  <div class="loader accelerate">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-
-                  <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
-                  <a class="project-frame-cover view-project-btn remove-highlight"></a>
-                </div>
-              </div>
-            </div>
-
-            <h2 class="project-item-title center soon-to-float-right"></h2>
-
-            <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-right"
-              data-tooltip="view project details">
-              <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
-            </a>
-            <a target="_blank"
-              class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
-              data-tooltip="view source code">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="javascript: void(0);" class="link project-item-btn accelerate remove-highlight center"
-              data-tooltip="view live website">
-              <i class="fa-solid fa-globe" id="img-to-display-already-inside"></i>
-            </a>
-
-            <div class="project-item-details">
-              <div class="description">
-                <p>
-                  This is where I convey my true personality and creativity!
-                  Hopefully the animations won't slow your <span id="userDevice">device</span>,
-                  <span id="flagFoundMessage">
-                    and if you're bored enough, you can look for a <a onclick="openEasterEggs()">flag</a> that is hidden around here 
-                    (experienced hackers only) 
-                  </span>
-                </p>
-              </div>
-
-              <div class="general-info">
-                <h5>technologies used</h5>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank"
-                  class="project-skill-item">HTML</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank"
-                  class="project-skill-item">CSS</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
-                  class="project-skill-item">JavaScript</a>
-              </div>
-              <div class="project-links">
-                <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
-                <a target="_blank" class="github-link btn remove-highlight">Source
-                  Code</a>
-                <a href="javascript: void(0);" id="img-to-display-already-inside-facepalm"
-                  class="link btn remove-highlight">Live Website</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 2 -->
-
-          <div class="project-item center">
-            <div class="project-item-thumbnail soon-to-float-right">
-              <div class="project-thumbnail-container">
-                <div class="project-thumbnail-scale">
-                  
-                  <div class="loader accelerate">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-
-                  <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
-                  <a class="project-frame-cover view-project-btn remove-highlight"></a>
-                </div>
-              </div>
-            </div>
-
-            <h2 class="project-item-title center soon-to-float-left">Makeyev Finance</h2>
-
-            <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-left"
-              data-tooltip="view project details">
-              <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
-            </a>
-            <a target="_blank"
-              class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
-              data-tooltip="view source code">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a target="_blank"
-              class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
-              <i class="fa-solid fa-globe"></i>
-            </a>
-
-            <div class="project-item-details">
-              <div class="description">
-                <p>
-                  I love to invest in real estate and I've decided to also become a mortgage advisor.
-                  So I made myself this website to present the services that I provide, related financial articles,
-                  and an api call to fetch data from the Central Bureau of Statistics 
-                  (<a href="https://www.cbs.gov.il" target="_blank">cbs.gov.il</a>)
-                  also sending me emails by using smtp.js & Elastic when a new prospect submits their details in the
-                  contact page or action form.
-                </p>
-              </div>
-
-              <div class="general-info">
-                <h5>technologies used</h5>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank"
-                  class="project-skill-item">HTML</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank"
-                  class="project-skill-item">CSS</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
-                  class="project-skill-item">JavaScript</a>
-                <a href="https://playwright.dev/" target="_blank" class="project-skill-item">Playwright</a>
-              </div>
-              <div class="project-links">
-                <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
-                <a target="_blank"
-                  class="github-link btn remove-highlight">Source Code</a>
-                <a target="_blank" class="link btn remove-highlight">Live
-                  Website</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 3 -->
-
-          <div class="project-item center">
-            <div class="project-item-thumbnail soon-to-float-left">
-              <div class="project-thumbnail-container">
-                <div class="project-thumbnail-scale">
-                  
-                  <div class="loader accelerate">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-
-                  <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
-                  <iframe frameborder="0" scrolling="no"></iframe>
-                  <a class="project-frame-cover view-project-btn remove-highlight"></a>
-                </div>
-              </div>
-            </div>
-
-            <h2 class="project-item-title center soon-to-float-right">Relearn Online Courses Platform</h2>
-
-            <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-right"
-              data-tooltip="view project details">
-              <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
-            </a>
-            <a target="_blank"
-              class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
-              data-tooltip="view source code">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a target="_blank"
-              class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
-              <i class="fa-solid fa-globe"></i>
-            </a>
-
-            <div class="project-item-details">
-              <div class="description">
-                <p>
-                  My fiend is a software engineer and he has his own private tutoring business, 
-                  so I've built him an online learning platform where his students can login, 
-                  explore and filter courses by categories, gain access to them only after purchasing, track course progress.
-                  The teacher has an admin panel where he can upload courses, manage students, recieve and track payments.
-                </p>
-              </div>
-
-              <div class="general-info">
-                <h5>technologies used</h5>
-                <a href="https://reactjs.org/" target="_blank" class="project-skill-item">React</a>
-                <a href="https://nodejs.org/" target="_blank" class="project-skill-item">Node</a>
-                <a href="https://ui.shadcn.com/" target="_blank" class="project-skill-item">Shadcn</a>
-                <a href="https://www.mongodb.com/" target="_blank" class="project-skill-item">MongoDB</a>
-                <a href="https://vite.dev/" target="_blank" class="project-skill-item">Vite</a>
-                <a href="https://developer.paypal.com/" target="_blank" class="project-skill-item">PayPal</a>
-              </div>
-              <div class="project-links">
-                <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
-                <a href="https://github.com/A-Makeyev/rilon" target="_blank" class="github-link btn accelerate remove-highlight">Source Code</a>
-                <a href="https://rilon.onrender.com/" target="_blank" class="link btn accelerate remove-highlight">Live Website</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 4 -->
-
-          <div class="project-item center">
-            <div class="project-item-thumbnail soon-to-float-right">
-              <div class="project-thumbnail-container">
-                <div class="project-thumbnail-scale">
-
-                  <div class="loader accelerate">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-
-                  <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
-                  <a class="project-frame-cover view-project-btn remove-highlight"></a>
-                </div>
-              </div>
-            </div>
-
-            <h2 class="project-item-title center soon-to-float-left">ChatUp</h2>
-
-            <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-left"
-              data-tooltip="view project details">
-              <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
-            </a>
-            <a target="_blank"
-              class="github-link project-item-btn accelerate remove-highlight center soon-to-float-right"
-              data-tooltip="view source code">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a target="_blank"
-              class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
-              <i class="fa-solid fa-globe"></i>
-            </a>
-
-            <div class="project-item-details">
-              <div class="description">
-                <p>
-                  A simple chat app that lets users choose a name and send text messages.
-                  There are two rooms, where one is public which anyone can see and have access to,
-                  and the other one is private and requires a password.
-                </p>
-              </div>
-
-              <div class="general-info">
-                <h5>technologies used</h5>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank"
-                  class="project-skill-item">HTML</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank"
-                  class="project-skill-item">CSS</a>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
-                  class="project-skill-item">JavaScript</a>
-                <a href="https://firebase.google.com/" target="_blank" class="project-skill-item">Firebase</a>
-              </div>
-              <div class="project-links">
-                <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
-                <a target="_blank"
-                  class="github-link btn accelerate remove-highlight">Source Code</a>
-                <a target="_blank" class="link btn accelerate remove-highlight">Live
-                  Website</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECT 5 -->
-
-          <div class="project-item center">
-            <div class="project-item-thumbnail soon-to-float-left">
-              <div class="project-thumbnail-container">
-                <div class="project-thumbnail-scale">
-                  
-                  <div class="loader accelerate">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-
-                  <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
-                  <iframe frameborder="0" scrolling="no"></iframe>
-                  <a class="project-frame-cover view-project-btn remove-highlight"></a>
-                </div>
-              </div>
-            </div>
-
-            <h2 class="project-item-title center soon-to-float-right">eCommecre Shop</h2>
-
-            <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-right"
-              data-tooltip="view project details">
-              <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
-            </a>
-            <a target="_blank"
-              class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
-              data-tooltip="view source code">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a target="_blank"
-              class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
-              <i class="fa-solid fa-globe"></i>
-            </a>
-
-            <div class="project-item-details">
-              <div class="description">
-                <p>
-                  An ecommerce website with full featured shopping cart, product reviews and ratings, search feature,
-                  carousel, pagination,
-                  user registration and authentication, an admin user that can manage users, products and orders, mark
-                  orders as paid and delivered,
-                  a user profile, a checkout process that includes adding a shipping address and PayPal as a payment
-                  method, and saving all the data in MongoDB.
-                  This project was made by following <a href="https://github.com/bradtraversy/" target="_blank">Brad
-                    Traversy's</a> course.
-                </p>
-              </div>
-
-              <div class="general-info">
-                <h5>technologies used</h5>
-                <a href="https://reactjs.org/" target="_blank" class="project-skill-item">React</a>
-                <a href="https://nodejs.org/" target="_blank" class="project-skill-item">Node</a>
-                <a href="https://getbootstrap.com/" target="_blank" class="project-skill-item">Bootstrap</a>
-                <a href="https://www.mongodb.com/" target="_blank" class="project-skill-item">MongoDB</a>
-              </div>
-              <div class="project-links">
-                <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
-                <a href="https://github.com/A-Makeyev/ecommecre-shop/" target="_blank"
-                  class="github-link btn accelerate remove-highlight">Source Code</a>
-                <a href="https://ecommecre-shop.onrender.com/" target="_blank"
-                  class="link btn accelerate remove-highlight">Live
-                  Website</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <div class="bg-icon">
+        <img src="/assets/icons/node.png" alt="node icon">
       </div>
-    </section>
+      <div class="bg-icon">
+        <img src="/assets/icons/html.png" alt="html icon">
+      </div>
+      <div class="bg-icon">
+        <img src="/assets/icons/css.png" alt="css icon">
+      </div>
+      <div class="bg-icon">
+        <img src="/assets/icons/js.png" alt="js icon">
+      </div>
+    </div>
 
-    <!-- CONTACT -->
+    <!-- MAIN -->
 
-    <section id="contact" class="contact-section section-padding accelerate">
-      <div class="container">
-        <div class="row">
-          <div class="section-title">
-            <h1 class="soon-to-float-right">get in touch</h1>
+    <div class="overlay"></div>
+    <div class="main hidden">
+
+      <!-- HEADER -->
+
+      <header class="header">
+        <div class="container">
+          <div class="row flex-end">
+            <button type="button" class="nav-toggler accelerate remove-highlight">
+              <span></span>
+            </button>
+            <nav class="nav-main">
+              <div class="nav-inner">
+                <ul>
+                  <li><a href="#home"
+                      class="nav-item link-item accelerate remove-highlight activate-salt-bae soon-to-float-right">home</a>
+                  </li>
+                  <li><a href="#about" class="nav-item link-item accelerate remove-highlight soon-to-float-left">about</a>
+                  </li>
+                  <li><a href="#projects"
+                      class="nav-item link-item accelerate remove-highlight soon-to-float-right">projects</a></li>
+                  <li><a href="#contact"
+                      class="nav-item link-item accelerate remove-highlight soon-to-float-left">contact</a></li>
+                </ul>
+              </div>
+            </nav>
           </div>
         </div>
-        <div class="row">
-          <div class="contact-form">
-            <div class="form">
-              <div class="row">
-                <div class="input-group">
-                  <input id="name" type="text" placeholder="Name" class="input-control soon-to-float-left"
-                    maxlength="100" required>
-                </div>
-                <div class="input-group">
-                  <input id="email" type="email" placeholder="Email" class="input-control soon-to-float-right"
-                    maxlength="100" required>
-                </div>
-                <div class="input-group">
-                  <input id="phone" type="tel" placeholder="Phone" class="input-control soon-to-float-left"
-                    maxlength="100" required>
-                </div>
-                <div class="input-group">
-                  <textarea id="message" placeholder="Message" class="input-control soon-to-float-right"
-                    maxlength="1000" required></textarea>
+      </header>
+
+      <!-- HOME -->
+
+      <section id="home" class="home-section center accelerate">
+        <div class="container">
+          <div class="row center">
+            <div class="intro">
+              <div class="intro-text">
+                <p class="soon-to-float-right"><span id="greeting"></span>, i'm</p>
+                <h1 class="soon-to-float-left">anatoly makeyev</h1>
+                <p class="soon-to-float-right">an automation engineer by day</p>
+                <p class="soon-to-float-left">a web developer by night</p>
+              </div>
+              <a href="#about" class="btn accelerate remove-highlight link-item soon-to-float-right">about me</a>
+              <a href="#projects" class="btn accelerate remove-highlight link-item soon-to-float-left">projects</a>
+            </div>
+            <div class="home-img">
+              <div class="img-box">
+                <img src="/assets/images/profile.png" alt="profile image" class="profile">
+              </div>
+
+              <div class="home-icons">
+                <img src="/assets/icons/saltbae.png" alt="salt bae" class="midget-salt-bae accelerate remove-highlight">
+                <img src="/assets/icons/html.png" alt="html" class="html accelerate remove-highlight">
+                <img src="/assets/icons/css.png" alt="css" class="css accelerate remove-highlight">
+                <img src="/assets/icons/js.png" alt="js" class="js accelerate remove-highlight">
+                <img src="/assets/icons/M.png" alt="logo" class="m-logo accelerate remove-highlight">
+                <img src="/assets/icons/github-ninja.png" alt="github-ninja"
+                  class="github-ninja accelerate remove-highlight">
+                <img src="/assets/icons/pikachu.png" alt="pikachu" class="pikachu accelerate remove-highlight">
+                <a href="https://instagram.com/a_makeyev" target="_blank" class="instagram accelerate remove-highlight"><i
+                    class="fa-brands fa-instagram"></i></a>
+              </div>
+
+              <!-- SECRET -->
+
+              <audio controls preload="auto" id="impact" class="hidden">
+                <source src="/assets/sounds/impact.mp3" type="audio/mpeg">
+              </audio>
+
+              <div class="secret">
+                <div class="giant-salt-bae fade-out accelerate remove-highlight">
+                  <img src="/assets/icons/saltbae.png" alt="surprise bae">
                 </div>
               </div>
-              <div class="submit-btn accelerate remove-highlight">
-                <button type="submit" id="submit" class="btn accelerate remove-highlight soon-to-float-left"
-                  disabled>send</button>
-              </div>
-            </div>
-          </div>
-          <div class="contact-info">
-            <div class="contact-info-item accelerate remove-highlight soon-to-float-left">
-              <h2>phone</h2>
-              <a href="tel:+972-52-772-9974" target="_blank">+972-52-772-9974</a>
-            </div>
-            <div class="contact-info-item accelerate remove-highlight soon-to-float-left">
-              <h2>email</h2>
-              <a href="mailto:anatoly.makeyev@gmail.com">anatoly.makeyev@gmail.com</a>
-            </div>
-            <div class="contact-info-item">
-              <h2>socials</h2>
-              <div class="social-links">
-                <a href="https://github.com/a-makeyev" target="_blank" rel=”noreferrer”
-                  class="accelerate remove-highlight soon-to-float-right">
+
+              <div class="secret-links">
+                <a href="https://github.com/a-makeyev" target="_blank" class="fade-out accelerate remove-highlight">
                   <i class="fa-brands fa-github-alt"></i>
                 </a>
-                <a href="https://www.freecodecamp.org/a-makeyev" target="_blank" rel=”noreferrer”
-                  class="accelerate remove-highlight soon-to-float-left">
+                <a href="https://www.freecodecamp.org/a-makeyev" target="_blank"
+                  class="fade-out accelerate remove-highlight">
                   <i class="fa-brands fa-free-code-camp"></i>
                 </a>
-                <a href="https://www.youtube.com/@anatolymakeyev" target="_blank" rel=”noreferrer”
-                  class="accelerate remove-highlight soon-to-float-right">
-                  <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.facebook.com/anatoly.makeyev" target="_blank" rel=”noreferrer”
-                  class="accelerate remove-highlight soon-to-float-left">
+                <a href="https://www.facebook.com/anatoly.makeyev" target="_blank"
+                  class="fade-out accelerate remove-highlight">
                   <i class="fa-brands fa-facebook-f"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/a-makeyev/" target="_blank" rel=”noreferrer”
-                  class="accelerate remove-highlight soon-to-float-right">
+                <a href="https://www.linkedin.com/in/a-makeyev" target="_blank"
+                  class="fade-out accelerate remove-highlight">
                   <i class="fa-brands fa-linkedin-in"></i>
                 </a>
+                <a href="https://www.youtube.com/@anatolymakeyev" target="_blank"
+                  class="fade-out accelerate remove-highlight">
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="mailto:anatoly.makeyev@gmail.com" target="_blank" class="fade-out accelerate remove-highlight">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/972527729974" target="_blank"
+                  class="link-to-remove fade-out accelerate remove-highlight">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="tel:+972527729974" target="_blank" class="link-to-remove fade-out accelerate remove-highlight">
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+                <a class="classified fade-out accelerate remove-highlight"></a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+
+      <section id="about" class="about-section section-padding accelerate">
+        <div class="container">
+          <div class="row">
+
+            <div class="about-img soon-to-float-left">
+              <div class="img-box remove-highlight">
+                <a href="javascript: void(0);">
+                  <img id="img-to-display-anatoly" src="/assets/images/about/anatoly.jpg" alt="anatoly makeyev">
+                </a>
+              </div>
+              <div class="quote">
+                <q>Excuse me, do you have a moment to talk about the oxygen database module?</q>
+              </div>
+            </div>
+
+            <div class="about-text soon-to-float-right">
+              <div class="section-title">
+                <h2>I'm passionate about the web</h2>
+              </div>
+              <p>
+                From designing web apps and bringing them to life,
+                then watching them shrink smoothly without anything falling off the screen,
+                to building automated processes and seeing them do all sorts of stuff on the page while I take a sip from
+                my caffè mocha
+                and listening to the Joe Rogan podcust. I also like to casually climb walls and jump out of planes.
+              </p>
+
+              <!-- SKILLS -->
+
+              <h2>My core technologies</h2>
+              <div class="skills">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank" class="skill-item soon-to-float-left" title="HTML"><i class="fa-brands fa-html5"></i></a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank" class="skill-item soon-to-float-right" title="CSS"><i class="fa-brands fa-css3-alt"></i></a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank" class="skill-item soon-to-float-left" title="JavaScript"><i class="fa-brands fa-square-js"></i></a>
+                <a href="https://getbootstrap.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-bootstrap" title="Bootstrap"></i></a>
+                <a href="https://reactjs.org/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-react" title="React"></i></a>
+                <a href="https://nodejs.org/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-node-js" title="Node"></i></a>
+                <a href="https://www.figma.com/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-figma" title="Figma"></i></a>
+                <a href="https://docker.com/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-docker" title="Docker"></i></a>
+                <a href="https://www.mysql.com/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-solid fa-database" title="SQL"></i></a>
+                <a href="https://jira.atlassian.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-jira" title="Jira"></i></a>
+                <a href="https://www.python.org/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-python" title="Python"></i></a>
+                <a href="https://www.java.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-java" title="Java"></i></a>
+                <a href="https://www.jenkins.io/" target="_blank" class="skill-item soon-to-float-left"><i class="fa-brands fa-jenkins" title="Jenkins"></i></a>
+                <a href="https://git-scm.com/" target="_blank" class="skill-item soon-to-float-right"><i class="fa-brands fa-git" title="Git"></i></a>
+              </div>
+            </div>
+
+            <div class="timeline-box">
+              <div class="about-tabs">
+                <button type="button" class="tab-item soon-to-float-right active"
+                  data-target="#experience">experience</button>
+                <button type="button" class="tab-item soon-to-float-left" data-target="#education">education</button>
+              </div>
+
+              <!-- EXPERIENCE -->
+
+              <div class="tab-content soon-to-float-left active" id="experience">
+                <div class="timeline">
+
+                  <div class="timeline-item">
+                    <span class="date">2019 - Present</span>
+                    <h5>
+                      Automation Engineer <span>-</span>
+                      <a href="https://cloudbeat.io/" target="_blank" class="timeline-item-link">CloudBeat</a>
+                      <p>cloudbeat.io is a test automation, analytics and monitoring platform</p>
+                    </h5>
+                    <ul>
+                      <li>⦁ Developing and maintaining scripts on web apps such as Microsoft Dynamics & Salesforce.</li>
+                      <li>⦁ Helping various customers to implement test automation from scratch in their organization.</li>
+                      <li>⦁ Creating automated tests for native and hybrid mobile apps using Appium with Oxygen.</li>
+                      <li>⦁ Instructing QA teams on CloudBeat, Oxygen, web & mobile automation best practices.</li>
+                      <li>⦁ Building SOAP and REST API performance tests using JMeter and Postman.</li>
+                      <li>⦁ Managing version control using Git with Github and Bitbucket.</li>
+                    </ul>
+                    <div class="timeline-images remove-highlight">
+                      <a href="javascript: void(0);" class="soon-to-float-left">
+                        <img id="img-to-display-selenium-conf" src="/assets/images/about/selenium-conf.jpg" alt="Selenium Conf">
+                      </a>
+                      <a href="javascript: void(0);" class="soon-to-float-right">
+                        <img id="img-to-display-selenium-conf-valencia" src="/assets/images/about/selenium-conf-valencia.jpg" alt="Selenium Conference Valencia 2025">
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <span class="date">2018 - 2019</span>
+                    <h5>
+                      Quality Assurance Engineer <span>-</span>
+                      <a href="https://www.fast-apps.com/" target="_blank" class="timeline-item-link">FAST</a>
+                      <p>fast-apps.com is a networking platform for the freight industry</p>
+                    </h5>
+                    <ul>
+                      <li>⦁ Helped to insure we release the best possible version in time for the global entrepreneur
+                        week, which we ended up winning and getting an investment from the Israeli Shark Tank.</li>
+                      <li>⦁ Carrying out in depth manual tests including sanity, functionality, error handling, recovery,
+                        integration, compatibility, regression and UI / UX on both web and mobile environments.</li>
+                      <li>⦁ Responsibility for planning and executing STP, STD, STR documents for the entire team.</li>
+                      <li>⦁ Tracking issues, visual bugs as well as logical errors and reporting them using JIRA.</li>
+                    </ul>
+                    <div class="timeline-images remove-highlight">
+                      <a href="javascript: void(0);" class="soon-to-float-right">
+                        <img id="img-to-display-fast-team" src="/assets/images/about/fast-team.jpg"
+                          alt="We won as the most influential startup company of Haifa">
+                      </a>
+                      <a href="javascript: void(0);" class="soon-to-float-left">
+                        <img id="img-to-display-startup-awards" src="/assets/images/about/startup-awards.jpg"
+                          alt="Global Entrepreneurship Week, Israel 2018">
+                      </a>
+                      <a href="https://youtu.be/iuO1K72a8v4" target="_blank" class="soon-to-float-right">
+                        <img src="/assets/images/about/awards-video.jpg" alt="Global Entrepreneurship Week winners video">
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- EDUCATION -->
+
+              <div class="tab-content soon-to-float-left" id="education">
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <span class="date">2019 - 2021</span>
+                    <h5>
+                      Web Development <span>-</span>
+                      <a href="https://www.freecodecamp.org/" target="_blank" class="timeline-item-link">freeCodeCamp</a>
+                    </h5>
+                    <ul>
+                      <li>⦁ HTML, CSS (Flexbox & Grid), Accessibility, Applied Visual Design and Responsive Principles.
+                      </li>
+                      <li>⦁ JavaScript, Regex, Debugging, Data Structures, Functional and Object Oriented Programming.
+                      </li>
+                    </ul>
+                    <div class="timeline-images remove-highlight">
+                      <a href="javascript: void(0);" class="soon-to-float-right">
+                        <img id="img-to-display-Responsive-Web-Design"
+                          src="/assets/images/about/Responsive-Web-Design.jpg" alt="Responsive Web Design Certificate">
+                      </a>
+                      <a href="javascript: void(0);" class="soon-to-float-left">
+                        <img id="img-to-display-JavaScript-Algorithms-and-Data-Structures"
+                          src="/assets/images/about/JavaScript-Algorithms-and-Data-Structures.jpg"
+                          alt="JavaScript Algorithms and Data Structures Certificate">
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <span class="date">2018 - 2019</span>
+                    <h5>
+                      Quality Assurance <span>-</span>
+                      <a href="https://svcollege.co.il/" target="_blank" class="timeline-item-link">SVCollege</a>
+                    </h5>
+                    <ul>
+                      <li>⦁ Understanding the process and various types and methods of testing web and mobile apps.</li>
+                      <li>⦁ Getting familiar with database structures and to manipulate and retrieve data with SQL.</li>
+                      <li>⦁ Learning test automation using Java programming with Selenium and Appium.</li>
+                    </ul>
+                    <div class="timeline-images remove-highlight">
+                      <a href="javascript: void(0);" class="soon-to-float-right">
+                        <img id="img-to-display-Quality-Assurance-Certificate"
+                          src="/assets/images/about/Quality-Assurance-Certificate.jpg"
+                          alt="Quality Assurance Certificate">
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="line"></div> -->
+
+            <div class="about-btns accelerates center">
+              <a href="#contact" class="btn accelerate remove-highlight link-item soon-to-float-left">contect</a>
+              <a href="#projects" class="btn accelerate remove-highlight link-item soon-to-float-right">projects</a>
+              <a href="assets/resume/Anatoly Makeyev - Automation Engineer.pdf" target="_blank"
+                class="btn accelerate remove-highlight soon-to-float-left">resume</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+
+      <section id="projects" class="project-section section-padding accelerate">
+        <div class="container">
+          <div class="row">
+            <div class="section-title">
+              <h1 class="soon-to-float-right">recent work</h1>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <!-- PROJECT 1 ~ THIS PORTFOLIO WEBSITE -->
+
+            <div class="project-item center">
+              <div class="project-item-thumbnail soon-to-float-left">
+                <div class="project-thumbnail-container">
+                  <div class="project-thumbnail-scale">
+
+                    <div class="loader accelerate">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+
+                    <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
+                    <a class="project-frame-cover view-project-btn remove-highlight"></a>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="project-item-title center soon-to-float-right"></h2>
+
+              <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-right"
+                data-tooltip="view project details">
+                <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
+              </a>
+              <a target="_blank"
+                class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
+                data-tooltip="view source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="javascript: void(0);" class="link project-item-btn accelerate remove-highlight center"
+                data-tooltip="view live website">
+                <i class="fa-solid fa-globe" id="img-to-display-already-inside"></i>
+              </a>
+
+              <div class="project-item-details">
+                <div class="description">
+                  <p>
+                    This is where I convey my true personality and creativity!
+                    Hopefully the animations won't slow your <span id="userDevice">device</span>,
+                    <span id="flagFoundMessage">
+                      and if you're bored enough, you can look for a <a onclick="openEasterEggs()">flag</a> that is hidden around here 
+                      (experienced hackers only) 
+                    </span>
+                  </p>
+                </div>
+
+                <div class="general-info">
+                  <h5>technologies used</h5>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank"
+                    class="project-skill-item">HTML</a>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank"
+                    class="project-skill-item">CSS</a>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
+                    class="project-skill-item">JavaScript</a>
+                </div>
+                <div class="project-links">
+                  <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
+                  <a target="_blank" class="github-link btn remove-highlight">Source
+                    Code</a>
+                  <a href="javascript: void(0);" id="img-to-display-already-inside-facepalm"
+                    class="link btn remove-highlight">Live Website</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+
+            <div class="project-item center">
+              <div class="project-item-thumbnail soon-to-float-right">
+                <div class="project-thumbnail-container">
+                  <div class="project-thumbnail-scale">
+                    
+                    <div class="loader accelerate">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+
+                    <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
+                    <a class="project-frame-cover view-project-btn remove-highlight"></a>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="project-item-title center soon-to-float-left">Makeyev Finance</h2>
+
+              <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-left"
+                data-tooltip="view project details">
+                <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
+              </a>
+              <a target="_blank"
+                class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
+                data-tooltip="view source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a target="_blank"
+                class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
+                <i class="fa-solid fa-globe"></i>
+              </a>
+
+              <div class="project-item-details">
+                <div class="description">
+                  <p>
+                    I love to invest in real estate and I've decided to also become a mortgage advisor.
+                    So I made myself this website to present the services that I provide, related financial articles,
+                    and an api call to fetch data from the Central Bureau of Statistics 
+                    (<a href="https://www.cbs.gov.il" target="_blank">cbs.gov.il</a>)
+                    also sending me emails by using smtp.js & Elastic when a new prospect submits their details in the
+                    contact page or action form.
+                  </p>
+                </div>
+
+                <div class="general-info">
+                  <h5>technologies used</h5>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank"
+                    class="project-skill-item">HTML</a>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank"
+                    class="project-skill-item">CSS</a>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
+                    class="project-skill-item">JavaScript</a>
+                  <a href="https://playwright.dev/" target="_blank" class="project-skill-item">Playwright</a>
+                </div>
+                <div class="project-links">
+                  <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
+                  <a target="_blank"
+                    class="github-link btn remove-highlight">Source Code</a>
+                  <a target="_blank" class="link btn remove-highlight">Live
+                    Website</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 3 -->
+
+            <div class="project-item center">
+              <div class="project-item-thumbnail soon-to-float-left">
+                <div class="project-thumbnail-container">
+                  <div class="project-thumbnail-scale">
+                    
+                    <div class="loader accelerate">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+
+                    <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
+                    <iframe frameborder="0" scrolling="no"></iframe>
+                    <a class="project-frame-cover view-project-btn remove-highlight"></a>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="project-item-title center soon-to-float-right">Relearn Online Courses Platform</h2>
+
+              <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-right"
+                data-tooltip="view project details">
+                <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
+              </a>
+              <a target="_blank"
+                class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
+                data-tooltip="view source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a target="_blank"
+                class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
+                <i class="fa-solid fa-globe"></i>
+              </a>
+
+              <div class="project-item-details">
+                <div class="description">
+                  <p>
+                    My fiend is a software engineer and he has his own private tutoring business, 
+                    so I've built him an online learning platform where his students can login, 
+                    explore and filter courses by categories, gain access to them only after purchasing, track course progress.
+                    The teacher has an admin panel where he can upload courses, manage students, recieve and track payments.
+                  </p>
+                </div>
+
+                <div class="general-info">
+                  <h5>technologies used</h5>
+                  <a href="https://reactjs.org/" target="_blank" class="project-skill-item">React</a>
+                  <a href="https://nodejs.org/" target="_blank" class="project-skill-item">Node</a>
+                  <a href="https://ui.shadcn.com/" target="_blank" class="project-skill-item">Shadcn</a>
+                  <a href="https://www.mongodb.com/" target="_blank" class="project-skill-item">MongoDB</a>
+                  <a href="https://vite.dev/" target="_blank" class="project-skill-item">Vite</a>
+                  <a href="https://developer.paypal.com/" target="_blank" class="project-skill-item">PayPal</a>
+                </div>
+                <div class="project-links">
+                  <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
+                  <a href="https://github.com/A-Makeyev/rilon" target="_blank" class="github-link btn accelerate remove-highlight">Source Code</a>
+                  <a href="https://rilon.onrender.com/" target="_blank" class="link btn accelerate remove-highlight">Live Website</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 4 -->
+
+            <div class="project-item center">
+              <div class="project-item-thumbnail soon-to-float-right">
+                <div class="project-thumbnail-container">
+                  <div class="project-thumbnail-scale">
+
+                    <div class="loader accelerate">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+
+                    <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
+                    <a class="project-frame-cover view-project-btn remove-highlight"></a>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="project-item-title center soon-to-float-left">ChatUp</h2>
+
+              <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-left"
+                data-tooltip="view project details">
+                <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
+              </a>
+              <a target="_blank"
+                class="github-link project-item-btn accelerate remove-highlight center soon-to-float-right"
+                data-tooltip="view source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a target="_blank"
+                class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
+                <i class="fa-solid fa-globe"></i>
+              </a>
+
+              <div class="project-item-details">
+                <div class="description">
+                  <p>
+                    A simple chat app that lets users choose a name and send text messages.
+                    There are two rooms, where one is public which anyone can see and have access to,
+                    and the other one is private and requires a password.
+                  </p>
+                </div>
+
+                <div class="general-info">
+                  <h5>technologies used</h5>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/" target="_blank"
+                    class="project-skill-item">HTML</a>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/" target="_blank"
+                    class="project-skill-item">CSS</a>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank"
+                    class="project-skill-item">JavaScript</a>
+                  <a href="https://firebase.google.com/" target="_blank" class="project-skill-item">Firebase</a>
+                </div>
+                <div class="project-links">
+                  <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
+                  <a target="_blank"
+                    class="github-link btn accelerate remove-highlight">Source Code</a>
+                  <a target="_blank" class="link btn accelerate remove-highlight">Live
+                    Website</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 5 -->
+
+            <div class="project-item center">
+              <div class="project-item-thumbnail soon-to-float-left">
+                <div class="project-thumbnail-container">
+                  <div class="project-thumbnail-scale">
+                    
+                    <div class="loader accelerate">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+
+                    <iframe frameborder="0" scrolling="no" class="project-frame"></iframe>
+                    <iframe frameborder="0" scrolling="no"></iframe>
+                    <a class="project-frame-cover view-project-btn remove-highlight"></a>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="project-item-title center soon-to-float-right">eCommecre Shop</h2>
+
+              <a href="javascript:void(0)" class="project-details project-item-btn accelerate remove-highlight center soon-to-float-right"
+                data-tooltip="view project details">
+                <i class="fa-solid fa-circle-info view-project-btn accelerate remove-highlight"></i>
+              </a>
+              <a target="_blank"
+                class="github-link project-item-btn accelerate remove-highlight center soon-to-float-left"
+                data-tooltip="view source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a target="_blank"
+                class="link project-item-btn accelerate remove-highlight center" data-tooltip="view live website">
+                <i class="fa-solid fa-globe"></i>
+              </a>
+
+              <div class="project-item-details">
+                <div class="description">
+                  <p>
+                    An ecommerce website with full featured shopping cart, product reviews and ratings, search feature,
+                    carousel, pagination,
+                    user registration and authentication, an admin user that can manage users, products and orders, mark
+                    orders as paid and delivered,
+                    a user profile, a checkout process that includes adding a shipping address and PayPal as a payment
+                    method, and saving all the data in MongoDB.
+                    This project was made by following <a href="https://github.com/bradtraversy/" target="_blank">Brad
+                      Traversy's</a> course.
+                  </p>
+                </div>
+
+                <div class="general-info">
+                  <h5>technologies used</h5>
+                  <a href="https://reactjs.org/" target="_blank" class="project-skill-item">React</a>
+                  <a href="https://nodejs.org/" target="_blank" class="project-skill-item">Node</a>
+                  <a href="https://getbootstrap.com/" target="_blank" class="project-skill-item">Bootstrap</a>
+                  <a href="https://www.mongodb.com/" target="_blank" class="project-skill-item">MongoDB</a>
+                </div>
+                <div class="project-links">
+                  <h5>explore <i class="fa-solid fa-arrow-up-right-from-square"></i></h5>
+                  <a href="https://github.com/A-Makeyev/ecommecre-shop/" target="_blank"
+                    class="github-link btn accelerate remove-highlight">Source Code</a>
+                  <a href="https://ecommecre-shop.onrender.com/" target="_blank"
+                    class="link btn accelerate remove-highlight">Live
+                    Website</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+
+      <section id="contact" class="contact-section section-padding accelerate">
+        <div class="container">
+          <div class="row">
+            <div class="section-title">
+              <h1 class="soon-to-float-right">get in touch</h1>
+            </div>
+          </div>
+          <div class="row">
+            <form class="contact-form">
+              <div class="form">
+                <div class="row">
+                  <div class="input-group">
+                    <input id="name" name="name" type="text" placeholder="Name" class="input-control soon-to-float-left"
+                      maxlength="100" required>
+                  </div>
+                  <div class="input-group">
+                    <input id="email" name="email" type="email" placeholder="Email" class="input-control soon-to-float-right"
+                      maxlength="100" required>
+                  </div>
+                  <div class="input-group">
+                    <input id="phone" name="phone" type="tel" placeholder="Phone" class="input-control soon-to-float-left"
+                      maxlength="100" required>
+                  </div>
+                  <div class="input-group">
+                    <textarea id="message" name="message" placeholder="Message" class="input-control soon-to-float-right"
+                      maxlength="1000" required></textarea>
+                  </div>
+                </div>
+                <div class="submit-btn accelerate remove-highlight">
+                  <button type="submit" id="submit" class="btn accelerate remove-highlight soon-to-float-left"
+                    disabled>send</button>
+                </div>
+              </div>
+            </form>
+            <div class="contact-info">
+              <div class="contact-info-item accelerate remove-highlight soon-to-float-left">
+                <h2>phone</h2>
+                <a href="tel:+972-52-772-9974" target="_blank">+972-52-772-9974</a>
+              </div>
+              <div class="contact-info-item accelerate remove-highlight soon-to-float-left">
+                <h2>email</h2>
+                <a href="mailto:anatoly.makeyev@gmail.com">anatoly.makeyev@gmail.com</a>
+              </div>
+              <div class="contact-info-item">
+                <h2>socials</h2>
+                <div class="social-links">
+                  <a href="https://github.com/a-makeyev" target="_blank" rel=”noreferrer”
+                    class="accelerate remove-highlight soon-to-float-right">
+                    <i class="fa-brands fa-github-alt"></i>
+                  </a>
+                  <a href="https://www.freecodecamp.org/a-makeyev" target="_blank" rel=”noreferrer”
+                    class="accelerate remove-highlight soon-to-float-left">
+                    <i class="fa-brands fa-free-code-camp"></i>
+                  </a>
+                  <a href="https://www.youtube.com/@anatolymakeyev" target="_blank" rel=”noreferrer”
+                    class="accelerate remove-highlight soon-to-float-right">
+                    <i class="fa-brands fa-youtube"></i>
+                  </a>
+                  <a href="https://www.facebook.com/anatoly.makeyev" target="_blank" rel=”noreferrer”
+                    class="accelerate remove-highlight soon-to-float-left">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/a-makeyev/" target="_blank" rel=”noreferrer”
+                    class="accelerate remove-highlight soon-to-float-right">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  </div> <!-- main -->
+    </div> <!-- main -->
 
-  <!-- PROJECT DETAILS POPUP -->
+    <!-- PROJECT DETAILS POPUP -->
 
-  <div class="project-popup center accelerate">
-    <div class="popup-inner">
-      <div class="popup-content">
-        <div class="popup-header">
-          <a href="javascript:void(0)" class="btn popup-close remove-highlight">
-            <i class="fa-solid fa-xmark popup-close"></i>
-          </a>
-          <div class="popup-thumbnail"></div>
-          <h2></h2>
+    <div class="project-popup center accelerate">
+      <div class="popup-inner">
+        <div class="popup-content">
+          <div class="popup-header">
+            <a href="javascript:void(0)" class="btn popup-close remove-highlight">
+              <i class="fa-solid fa-xmark popup-close"></i>
+            </a>
+            <div class="popup-thumbnail"></div>
+            <h2></h2>
+          </div>
+          <div class="popup-body"></div>
         </div>
-        <div class="popup-body"></div>
       </div>
     </div>
-  </div>
 
-  <!-- IMAGE POPUP -->
+    <!-- IMAGE POPUP -->
 
-  <div class="image-popup center accelerate">
-    <div class="image-inner">
-      <div class="image-content">
-        <div class="image-popup-header">
-          <a href="javascript:void(0)" class="btn image-popup-close remove-highlight">
-            <i class="fa-solid fa-xmark image-popup-close"></i>
-          </a>
+    <div class="image-popup center accelerate">
+      <div class="image-inner">
+        <div class="image-content">
+          <div class="image-popup-header">
+            <a href="javascript:void(0)" class="btn image-popup-close remove-highlight">
+              <i class="fa-solid fa-xmark image-popup-close"></i>
+            </a>
+          </div>
+          <div class="image-body"></div>
         </div>
-        <div class="image-body"></div>
       </div>
     </div>
-  </div>
 
-  <script src="src/main.js"></script>
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-</body>
-
+    <script src="src/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: '<?= EMAILJS_PRIVATE_KEY ?>'
+            })
+        })()
+    </script>
+  </body>
 </html>

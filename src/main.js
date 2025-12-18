@@ -684,44 +684,46 @@ function validate(input, regex) {
 function sendEmail(contactName) {
     if (window.navigator.onLine) {
         loader.classList.remove('fade-out')
-
         try {
-            if (typeof Email == 'undefined') {
+            if (typeof emailjs === 'undefined') {
                 loader.classList.add('fade-out')
                 togglePopup('Something is blocking me from sending emails on this device', 'failure')
-            } else {
-                Email.send({
-                    // https://smtpjs.com
-                    // https://elasticemail.com
-                    // SMTP Host & Domain -> smtp.elasticemail.com
-                    SecureToken: 'b52b8a29-d8bb-4e74-bff5-3c1dbf06d967',
-                    To: 'anatoly.makeyev@gmail.com',
-                    From: 'anatoly.makeyev@gmail.com',
-                    Subject: 'New Client 🤩',
-                    Body: createEmailBody()
-                })
-                    .then(response => {
-                        console.log(response)
-                        // handle communication buffer resources
-                        if (response.includes('deadlock victim')) {
-                            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                            console.log(`Process (${response.match(/\d/g).join('')}) was deadlocked, resending email...`)
-                            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                            sendEmail(contactName)
-                        } else if (!response.includes('OK')) {
-                            loader.classList.add('fade-out')
-                            togglePopup(`There was a problem with sending your message: ${response}`, 'failure')
-                        } else {
-                            loader.classList.add('fade-out')
-                            togglePopup(`Your message was sent, thanks for reaching out ${contactName}!`, 'success')
-                        }
-                    })
+                return 
             }
+
+            const params = {
+                subject: 'New Client 🤩',
+                name: nameInput.value,
+                phone: phoneInput.value,
+                email: emailInput.value,
+                message: messageInput.value
+            }
+
+            emailjs.send(
+                '<?= process.env.EMAILJS_SERVICE_ID ?>',
+                '<?= process.env.EMAILJS_TEMPLATE_ID ?>',
+                'service_k2c0eve', 
+                'template_kmxsnuc',
+                params, {
+            }).then(response => {
+                console.log(response)
+                if (response.status !== 200) { 
+                    loader.classList.add('fade-out')
+                    togglePopup(`There was a problem with sending your message: ${response.text || 'Unknown error'}`, 'failure')
+                } else {
+                    loader.classList.add('fade-out')
+                    togglePopup(`Your message was sent, thanks for reaching out ${contactName}!`, 'success')
+                }
+            }).catch(error => {
+                loader.classList.add('fade-out')
+                console.error('EmailJS error:', error)
+                togglePopup(`There was a problem with sending your message: ${error.text || error.message}`, 'failure')
+            })
         } catch (error) {
             loader.classList.add('fade-out')
             console.log(error)
+            togglePopup('An unexpected error occurred while sending the email', 'failure')
         }
-
         document.querySelectorAll('.input-control').forEach((i) => {
             i.style.boxShadow = ''
             i.value = ''
@@ -771,7 +773,7 @@ function createEmailBody() {
                         </td>
                     </tr>
                     ${messageInput.value.trim() !== '' ?
-            `
+                    `
                         <tr style="border: 1px solid #555555;">
                             <td style="width: 20%; border-right: 1px solid #555555; padding: 10px;">
                                 <strong>Message</strong>

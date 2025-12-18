@@ -816,6 +816,8 @@ button {
     opacity: 1;
     min-width: 200px;
     transition: all 0.5s ease-in-out;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .image-popup-header {
