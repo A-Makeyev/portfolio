@@ -80,6 +80,7 @@ const offline = document.getElementById('offline')
 const floatRight = document.getElementsByClassName('soon-to-float-right')
 const floatLeft = document.getElementsByClassName('soon-to-float-left')
 const flagFoundMessage = document.getElementById('flagFoundMessage')
+const cv = document.querySelector('.cv')
 const areaListener = new AbortController()
 var bgIconsWereActivated = false
 var saltBaeWasActivated = false
@@ -984,6 +985,12 @@ document.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('github-ninja')) {
         summonAliens()
+    }
+
+    if (event.target.classList.contains('cv')) {
+        setTimeout(() => {
+            displayImage(event.target.id)
+        }, 1000)
     }
 })
 

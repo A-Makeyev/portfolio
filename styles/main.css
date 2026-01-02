@@ -100,7 +100,9 @@ p {
     font-size: large;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: var(--dark-blue);
 }
 
@@ -275,6 +277,7 @@ button {
 }
 
 @keyframes zoomAndSpin {
+
     0%,
     100% {
         transform: scale(0.75) rotate(360deg);
@@ -296,6 +299,7 @@ button {
 }
 
 @keyframes bounceAndSpin {
+
     0%,
     100% {
         transform: translateY(200px) rotate(-360deg);
@@ -312,7 +316,7 @@ button {
     }
 
     to {
-        transform: translateX(-30px) translateY(-30px) rotate(30deg); 
+        transform: translateX(-30px) translateY(-30px) rotate(30deg);
     }
 }
 
@@ -680,7 +684,7 @@ button {
 
 .css:hover {
     transform: translate(-400%, -950%) rotate(40deg) scale(1.1);
-} 
+}
 
 .js {
     z-index: 100;
@@ -695,7 +699,7 @@ button {
 
 .js:hover {
     transform: translate(-450%, -800%) rotate(-40deg) scale(1.1);
-} 
+}
 
 .m-logo {
     z-index: 100;
@@ -758,7 +762,7 @@ button {
     transform: translate(50%, -262%);
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     transform: translate(-50%, -390%) scale(1);
-    -webkit-text-fill-color: transparent;   
+    -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -863,6 +867,33 @@ button {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ TOOLTIP ~~~~~~~~~~~~~~~~~~~~~ */
+
+[data-tooltip-icon]:before {
+    content: attr(data-tooltip-icon);
+    border: 1px solid var(--white-alpha-25);
+    transition: all 0.18s ease;
+    text-transform: capitalize;
+    color: var(--dark-blue);
+    border-radius: 10px;
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: small;
+    font-weight: 400;
+    padding: 5px;
+    z-index: 250;
+    top: calc(85%);
+    left: 50%;
+    opacity: 0;
+}
+
+[data-tooltip-icon]:hover:before {
+    background: var(--white-alpha-40);
+    opacity: 1;
+}
+
+[data-tooltip-icon]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
+}
 
 [data-tooltip]:before {
     content: attr(data-tooltip);
@@ -1000,30 +1031,30 @@ button {
         height: 10px;
         width: 10px;
     }
-    
+
     .html:hover {
         transform: translate(-550%, -1350%) rotate(-40deg) scale(1.1);
     }
-    
+
     .css {
         transform: translate(-500%, -1200%) rotate(40deg);
         height: 10px;
         width: 10px;
     }
-    
+
     .css:hover {
         transform: translate(-500%, -1200%) rotate(40deg) scale(1.1);
-    } 
-    
+    }
+
     .js {
         transform: translate(-550%, -1050%) rotate(-40deg);
         height: 10px;
         width: 10px;
     }
-    
+
     .js:hover {
         transform: translate(-550%, -1050%) rotate(-40deg) scale(1.1);
-    } 
+    }
 
     .m-logo {
         transform: translate(-52%, -486%);
@@ -1050,7 +1081,7 @@ button {
         height: 50px;
         width: 50px;
     }
-    
+
     .pikachu:hover {
         transform: translate(50%, -262%) scale(1.1);
     }
@@ -1058,11 +1089,11 @@ button {
     .instagram {
         transform: translate(-50%, -370%) scale(1);
     }
-    
+
     .instagram i {
         font-size: 25px !important;
     }
-    
+
     .instagram:hover {
         transform: translate(-50%, -370%) scale(1.1);
     }
@@ -1139,30 +1170,30 @@ button {
         transform: translate(-105.5%, -380%) rotate(-35deg);
     }
 
-    
+
     .html {
         transform: translate(-450%, -1150%) rotate(-40deg);
     }
-    
+
     .html:hover {
         transform: translate(-450%, -1150%) rotate(-40deg) scale(1.1);
     }
-    
+
     .css {
         transform: translate(-400%, -1000%) rotate(40deg);
     }
-    
+
     .css:hover {
         transform: translate(-400%, -1000%) rotate(40deg) scale(1.1);
-    } 
-    
+    }
+
     .js {
         transform: translate(-450%, -850%) rotate(-40deg);
     }
-    
+
     .js:hover {
         transform: translate(-450%, -850%) rotate(-40deg) scale(1.1);
-    } 
+    }
 
     .m-logo {
         transform: translate(-53%, -486%);
@@ -1189,11 +1220,11 @@ button {
         height: 40px;
         width: 40px;
     }
-    
+
     .pikachu:hover {
         transform: translate(55%, -270%) scale(1.1);
     }
-    
+
     .instagram i {
         font-size: 20px !important;
     }
