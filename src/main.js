@@ -697,7 +697,7 @@ function sendEmail(contactName) {
                 name: nameInput.value,
                 phone: phoneInput.value,
                 email: emailInput.value,
-                message: inputMessage !== null && messageInput.value.trim() === '' ? 'Not specified' : messageInput.value
+                message: messageInput !== null && messageInput.value.trim() === '' ? 'Not specified' : messageInput.value
             }
 
             emailjs.send(
@@ -710,6 +710,11 @@ function sendEmail(contactName) {
                     loader.classList.add('fade-out')
                     togglePopup(`There was a problem with sending your message: ${response.text || 'Unknown error'}`, 'failure')
                 } else {
+                    document.querySelectorAll('.input-control').forEach((i) => {
+                        i.style.boxShadow = ''
+                        i.value = ''
+                    })
+                    
                     loader.classList.add('fade-out')
                     togglePopup(`Your message was sent, thanks for reaching out ${contactName}!`, 'success')
                 }
@@ -723,10 +728,6 @@ function sendEmail(contactName) {
             console.log(error)
             togglePopup('An unexpected error occurred while sending the email', 'failure')
         }
-        document.querySelectorAll('.input-control').forEach((i) => {
-            i.style.boxShadow = ''
-            i.value = ''
-        })
     } else {
         togglePopup('Can\'t send your message because you are offline ¯\\_(ツ)_/¯')
     }
