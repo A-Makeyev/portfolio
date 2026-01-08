@@ -697,7 +697,7 @@ function sendEmail(contactName) {
                 name: nameInput.value,
                 phone: phoneInput.value,
                 email: emailInput.value,
-                message: messageInput.value
+                message: inputMessage !== null && messageInput.value.trim() === '' ? 'Not specified' : messageInput.value
             }
 
             emailjs.send(
